@@ -1,0 +1,29 @@
+{
+  "logo": "/logo.svg",
+  "links": [
+    {
+      "label": "Training",
+      "url": "/training"
+    },
+    {
+      "label": "Mentorship",
+      "url": "/mentorship"
+    },
+    {
+      "label": "Consulting",
+      "url": "/consulting"
+    }
+  ],
+  "linkButtons": [
+    {
+      "label": "Book Session",
+      "url": "/book-session",
+      "className": "bg-[#DBE1E7] text-[#89C13E] px-4 py-2 border border-white"
+    },
+    {
+      "label": "Enroll Now",
+      "url": "/enroll",
+      "className": "bg-[#89C13E] text-white px-4 py-2"
+    }
+  ]
+}
