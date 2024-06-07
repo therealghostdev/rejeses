@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "question": "What is Lorem Ipsum?",
+    "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "tag": "training"
+  },
+  {
+    "id": 2,
+    "question": "Why do we use it?",
+    "answer": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+    "tag": "consultation"
+  },
+  {
+    "id": 3,
+    "question": "Where can I get some?",
+    "answer": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.",
+    "tag": "mentorship"
+  },
+  {
+    "id": 4,
+    "question": "Where does it come from?",
+    "answer": "Contrary to popular belief, Lorem Ipsum is not simply random text.",
+    "tag": "training"
+  },
+  {
+    "id": 5,
+    "question": "What is the history?",
+    "answer": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.",
+    "tag": "consultation"
+  },
+  {
+    "id": 6,
+    "question": "How can I use it?",
+    "answer": "You can use Lorem Ipsum as a placeholder text.",
+    "tag": "mentorship"
+  },
+  {
+    "id": 7,
+    "question": "Is it safe to use?",
+    "answer": "Yes, it is safe to use as it is just dummy text.",
+    "tag": "training"
+  },
+  {
+    "id": 8,
+    "question": "Can I customize it?",
+    "answer": "Yes, you can customize Lorem Ipsum to fit your needs.",
+    "tag": "consultation"
+  },
+  {
+    "id": 9,
+    "question": "Is it free?",
+    "answer": "Yes, Lorem Ipsum is free to use.",
+    "tag": "mentorship"
+  },
+  {
+    "id": 10,
+    "question": "Where can I learn more?",
+    "answer": "You can find more information about Lorem Ipsum on various websites.",
+    "tag": "training"
+  }
+]

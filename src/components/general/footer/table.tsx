@@ -3,7 +3,18 @@ import React from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import { PlusIcon } from "@radix-ui/react-icons";
 
-const Table = () => (
+interface DataItem {
+  id: number;
+  question: string;
+  answer: string;
+  tag: string;
+}
+
+interface TableProps {
+  data: DataItem[];
+}
+
+const Table: React.FC<TableProps> = ({ data }) => (
   <div className="bg-[#452569] text-white px-6 py-12 flex flex-col gap-y-4">
     <div className="w-full px-4 flex flex-col gap-2">
       <h1 className="text-3xl font-bold">Your questions, answered</h1>
@@ -15,27 +26,12 @@ const Table = () => (
       defaultValue="item-1"
       collapsible
     >
-      <AccordionItem value="item-1" className="bg-[#452569] text-white text-lg">
-        <AccordionTrigger>Is it accessible?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It adheres to the WAI-ARIA design pattern.
-        </AccordionContent>
-      </AccordionItem>
-
-      <AccordionItem value="item-2" className="bg-[#452569] text-white text-lg">
-        <AccordionTrigger>Is it unstyled?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It&apos;s unstyled by default, giving you freedom over the look
-          and feel.
-        </AccordionContent>
-      </AccordionItem>
-
-      <AccordionItem value="item-3" className="bg-[#452569] text-white text-lg">
-        <AccordionTrigger>Can it be animated?</AccordionTrigger>
-        <AccordionContent>
-          Yes! You can animate the Accordion with CSS or JavaScript.
-        </AccordionContent>
-      </AccordionItem>
+      {data.map((item) => (
+        <AccordionItem key={item.id} value={`item-${item.id}`} className="bg-[#452569] text-white text-lg">
+          <AccordionTrigger>{item.question}</AccordionTrigger>
+          <AccordionContent>{item.answer}</AccordionContent>
+        </AccordionItem>
+      ))}
     </Accordion.Root>
   </div>
 );

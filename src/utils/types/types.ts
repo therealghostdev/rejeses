@@ -1,4 +1,3 @@
-// types.ts
 export interface NavTypes {
   logo: string;
   links: {
@@ -17,4 +16,8 @@ export interface ButtonProps {
   bg: string;
   text: string;
   icon?: React.ReactNode;
+}
+
+export interface FooterProps {
+  pathname: "training" | "mentorship" | "consultation" | "/";
 }

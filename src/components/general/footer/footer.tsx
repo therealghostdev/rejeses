@@ -1,13 +1,31 @@
+"use client";
+import React, { useEffect } from "react";
 import Table from "./table";
-import Book_session from "./book_session";
-import Last_el from "./last_el";
+import BookSession from "./book_session";
+import LastEl from "./last_el";
+import tableData from "@/utils/data/table_data.json";
+import { usePathname } from "next/navigation";
+import { FooterProps } from "@/utils/types/types";
 
-export default function Footer() {
+const Footer: React.FC<FooterProps> = () => {
+  const pathname = usePathname();
+
+  const filteredData =
+    pathname === "/"
+      ? tableData
+      : tableData.filter((item) => item.tag === pathname);
+
+  useEffect(() => {
+    console.log(pathname);
+  }, [pathname]);
+
   return (
     <footer>
-      <Table />
-      <Book_session />
-      <Last_el />
+      <Table data={filteredData} />
+      <BookSession />
+      <LastEl />
     </footer>
   );
-}
+};
+
+export default Footer;
