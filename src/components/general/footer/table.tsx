@@ -1,0 +1,99 @@
+"use client";
+import React from "react";
+import * as Accordion from "@radix-ui/react-accordion";
+import { PlusIcon } from "@radix-ui/react-icons";
+
+const Table = () => (
+  <div className="bg-[#452569] text-white px-6 py-12 flex flex-col gap-y-4">
+    <div className="w-full px-4 flex flex-col gap-2">
+      <h1 className="text-3xl font-bold">Your questions, answered</h1>
+      <small>Have another question? Email us at info@rejeses.com.</small>
+    </div>
+    <Accordion.Root
+      className="w-full rounded-md"
+      type="single"
+      defaultValue="item-1"
+      collapsible
+    >
+      <AccordionItem value="item-1" className="bg-[#452569] text-white text-lg">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value="item-2" className="bg-[#452569] text-white text-lg">
+        <AccordionTrigger>Is it unstyled?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It&apos;s unstyled by default, giving you freedom over the look
+          and feel.
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value="item-3" className="bg-[#452569] text-white text-lg">
+        <AccordionTrigger>Can it be animated?</AccordionTrigger>
+        <AccordionContent>
+          Yes! You can animate the Accordion with CSS or JavaScript.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion.Root>
+  </div>
+);
+
+const AccordionItem = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof Accordion.Item>
+>(({ children, className, ...props }, forwardedRef) => (
+  <Accordion.Item
+    className={`mt-px overflow-hidden first:mt-0 first:rounded-t last:rounded-b focus-within:relative focus-within:z-10 ${
+      className ?? ""
+    }`}
+    {...props}
+    ref={forwardedRef}
+  >
+    {children}
+  </Accordion.Item>
+));
+AccordionItem.displayName = "AccordionItem";
+
+const AccordionTrigger = React.forwardRef<
+  HTMLButtonElement,
+  React.ComponentPropsWithoutRef<typeof Accordion.Trigger>
+>(({ children, className, ...props }, forwardedRef) => (
+  <Accordion.Header className="flex">
+    <Accordion.Trigger
+      className={`hover:bg-[#3c205c] cursor-pointer group flex h-[45px] flex-1 my-2 items-center justify-between py-8 bg-[#452569] text-white px-5 text-[15px] leading-none shadow-[0_1px_0] outline-none ${
+        className ?? ""
+      }`}
+      {...props}
+      ref={forwardedRef}
+    >
+      {children}
+      <PlusIcon
+        width="25px"
+        height="25px"
+        className="ease-[cubic-bezier(0.87,_0,_0.13,_1)] transition-transform duration-300 group-data-[state=open]:rotate-180"
+        aria-hidden
+      />
+    </Accordion.Trigger>
+  </Accordion.Header>
+));
+AccordionTrigger.displayName = "AccordionTrigger";
+
+const AccordionContent = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof Accordion.Content>
+>(({ children, className, ...props }, forwardedRef) => (
+  <Accordion.Content
+    className={`data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden text-[15px] ${
+      className ?? ""
+    }`}
+    {...props}
+    ref={forwardedRef}
+  >
+    <div className="py-[15px] px-5">{children}</div>
+  </Accordion.Content>
+));
+AccordionContent.displayName = "AccordionContent";
+
+export default Table;

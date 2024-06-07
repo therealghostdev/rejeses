@@ -15,3 +15,7 @@ body {
   background:
     rgb(var(--background-general));
 }
+
+.bg-img {
+  background: url("/Consultation.svg") center/cover;
+}
