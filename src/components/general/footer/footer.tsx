@@ -5,6 +5,7 @@ import BookSession from "./book_session";
 import LastEl from "./last_el";
 import tableData from "@/utils/data/table_data.json";
 import { usePathname } from "next/navigation";
+import Testimonial from "./testimonial";
 
 const Footer: React.FC = () => {
   const pathname = usePathname();
@@ -20,6 +21,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer>
+      <Testimonial />
       <Table data={filteredData} />
       <BookSession />
       <LastEl />

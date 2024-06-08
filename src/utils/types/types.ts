@@ -37,3 +37,11 @@ export interface TableProps {
     tag: string;
   }>;
 }
+
+export interface GeneralCardProps {
+  id: number;
+  pin?: string;
+  person?: { name: string; job_title: string };
+  title?: string;
+  comment: string;
+}

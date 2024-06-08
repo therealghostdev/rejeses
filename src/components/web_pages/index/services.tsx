@@ -4,7 +4,7 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 export default function Services() {
   return (
-    <section className="w-full px-8 py-4 flex flex-col gap-12 my-8">
+    <section className="w-full px-8 py-4 flex flex-col gap-12 my-8 bg-[#FEF9F6]">
       <h1 className="lg:text-4xl text-2xl font-bold text-center my-8">
         Our Services
       </h1>
