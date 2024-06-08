@@ -15,9 +15,16 @@ export interface ButtonProps {
   url?: string;
   bg: string;
   text: string;
-  icon?: React.ReactNode; 
+  icon?: React.ReactNode;
 }
 
 export interface FooterProps {
   pathname: "training" | "mentorship" | "consultation" | "/";
+}
+
+export interface CardProps {
+  id: number;
+  title: string;
+  date: string;
+  description: string;
 }
