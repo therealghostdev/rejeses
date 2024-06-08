@@ -45,3 +45,16 @@ export interface GeneralCardProps {
   title?: string;
   comment: string;
 }
+export interface UniqueComponentsProps {
+  data: Array<{
+    id: number;
+    title?: string;
+    pin?: string;
+    comment: string;
+    person?: {
+      name: string;
+      job_title: string;
+    };
+    tag: string;
+  }>;
+}

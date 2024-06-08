@@ -1,8 +1,9 @@
 import React from "react";
 import GeneralCard from "@/components/reusables/card";
 import data from "@/utils/data/testimonial_data.json";
+import { UniqueComponentsProps } from "@/utils/types/types";
 
-export default function Testimonial() {
+export default function Testimonial(props: UniqueComponentsProps) {
   return (
     <section className="w-full flex flex-col px-12 py-4">
       <div className="my-8 flex flex-col gap-2">
@@ -15,7 +16,7 @@ export default function Testimonial() {
       </div>
 
       <div className="w-full flex flex-wrap py-2">
-        {data.map((item, index) => (
+        {props.data.map((item, index) => (
           <div
             key={index}
             className="lg:w-[30%] md:w-[45%] w-full border border-[#DBE1E7] mx-1 my-2 rounded-2xl shadow-sm shadow-[#0000001A]"

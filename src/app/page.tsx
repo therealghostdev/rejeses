@@ -1,13 +1,22 @@
+"use client";
 import Services from "@/components/web_pages/index/services";
 import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
 import Why_us from "@/components/general/why_us";
+import { usePathname } from "next/navigation";
+import whyUsData from "@/utils/data/why_us_data.json";
 
 export default function Home() {
+  const pathname = usePathname();
+  const filteredWhyData =
+    pathname === "/"
+      ? whyUsData
+      : whyUsData.filter((item) => item.tag === pathname.slice(1));
+
   return (
     <main className="flex min-h-screen flex-col text-[#090909]">
       <Services />
       <UpcomingCohorts />
-      <Why_us />
+      <Why_us data={filteredWhyData} />
     </main>
   );
 }
