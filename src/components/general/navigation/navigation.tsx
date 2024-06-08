@@ -84,7 +84,10 @@ export default function Nav_desktop() {
                 key={index}
                 href={button.url}
                 className={`${button.className}`}
-                style={{ borderRadius: ".5rem" }}
+                style={{
+                  backgroundColor: index === 0 ? "#DBE1E7" : "#89C13E",
+                  borderRadius: ".5rem",
+                }}
               >
                 {button.label}
               </Link>
@@ -121,7 +124,10 @@ export default function Nav_desktop() {
                     key={index}
                     href={button.url}
                     className={`${button.className} text-center`}
-                    style={{ borderRadius: ".5rem" }}
+                    style={{
+                      backgroundColor: index === 0 ? "#DBE1E7" : "#89C13E",
+                      borderRadius: ".5rem",
+                    }}
                   >
                     {button.label}
                   </Link>
