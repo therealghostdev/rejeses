@@ -83,7 +83,7 @@ export default function Nav_desktop() {
               <Link
                 key={index}
                 href={button.url}
-                className={button.className}
+                className={`${button.className}`}
                 style={{ borderRadius: ".5rem" }}
               >
                 {button.label}
