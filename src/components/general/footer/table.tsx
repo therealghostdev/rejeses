@@ -2,17 +2,7 @@
 import React from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import { PlusIcon } from "@radix-ui/react-icons";
-
-interface DataItem {
-  id: number;
-  question: string;
-  answer: string;
-  tag: string;
-}
-
-interface TableProps {
-  data: DataItem[];
-}
+import { TableProps } from "@/utils/types/types";
 
 const Table: React.FC<TableProps> = ({ data }) => (
   <div className="bg-[#452569] text-white px-6 py-12 flex flex-col gap-y-4">
@@ -27,9 +17,9 @@ const Table: React.FC<TableProps> = ({ data }) => (
       collapsible
     >
       {data.map((item) => (
-        <AccordionItem key={item.id} value={`item-${item.id}`} className="bg-[#452569] text-white text-lg">
-          <AccordionTrigger>{item.question}</AccordionTrigger>
-          <AccordionContent>{item.answer}</AccordionContent>
+        <AccordionItem key={item.id} value={item.id} className="bg-[#452569] text-white text-lg">
+          <AccordionTrigger>{item.title}</AccordionTrigger>
+          <AccordionContent>{item.content}</AccordionContent>
         </AccordionItem>
       ))}
     </Accordion.Root>

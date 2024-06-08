@@ -28,3 +28,12 @@ export interface CardProps {
   date: string;
   description: string;
 }
+
+export interface TableProps {
+  data: Array<{
+    id: string;
+    title: string;
+    content: string;
+    tag: string;
+  }>;
+}

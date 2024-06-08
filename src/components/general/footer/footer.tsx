@@ -5,15 +5,14 @@ import BookSession from "./book_session";
 import LastEl from "./last_el";
 import tableData from "@/utils/data/table_data.json";
 import { usePathname } from "next/navigation";
-import { FooterProps } from "@/utils/types/types";
 
-const Footer: React.FC<FooterProps> = () => {
+const Footer: React.FC = () => {
   const pathname = usePathname();
 
   const filteredData =
     pathname === "/"
       ? tableData
-      : tableData.filter((item) => item.tag === pathname);
+      : tableData.filter((item) => item.tag === pathname.slice(1));
 
   useEffect(() => {
     console.log(pathname);
