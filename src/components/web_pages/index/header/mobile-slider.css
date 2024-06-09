@@ -3,11 +3,17 @@
 }
 
 .slide-container>.container-1 {
-    transform: rotateX(0deg) rotateY(10deg);
+    transform: rotateX(0deg) rotateY(10deg) !important;
     transform-style: preserve-3d;
 }
 
 .slide-container>.container-2 {
-    transform: rotateX(0deg) rotateY(350deg);
+    transform: rotateX(0deg) rotateY(350deg) !important;
     transform-style: preserve-3d;
+}
+
+.slide-container>.container-1.animating-left,
+.slide-container>.container-2.animating-right {
+    transform: none !important;
+    transform-style: none;
 }
