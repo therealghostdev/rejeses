@@ -100,7 +100,7 @@ export default function Header() {
             alt="visafone-logo"
             width={100}
             height={100}
-            className="w-44 md:my-0 my-2"
+            className="w-44 md:my-0 my-2 filter grayscale"
           />
         </div>
       </div>
