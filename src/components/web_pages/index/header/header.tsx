@@ -2,8 +2,31 @@ import Link from "next/link";
 import Image_slider from "./image_slider";
 import Image from "next/image";
 import Mobile_Image_slider from "./mobile_image_slider";
+import { useState, useEffect } from "react";
 
 export default function Header() {
+  const [width, setWidth] = useState<number>(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      const newWidth = window.innerWidth;
+      setWidth(newWidth);
+      setIsMobile(newWidth <= 767);
+    };
+
+    window.addEventListener("resize", updateWidth);
+
+    // Initial check
+    updateWidth();
+
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    };
+  }, []);
+
   return (
     <header className="bg-[#F5F0FA] flex flex-col w-full gap-4">
       <div className="w-full flex flex-col justify-center items-center gap-3 my-8">
@@ -36,8 +59,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* <Image_slider /> */}
-      <Mobile_Image_slider />
+      {!isMobile ? <Image_slider /> : <Mobile_Image_slider />}
 
       <div className="flex w-full flex-col justify-center items-center bg-[#FCFCFC] py-12 px-4 gap-6">
         <p className="text-lg text-center">
