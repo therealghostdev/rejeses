@@ -1,0 +1,13 @@
+.slide-container {
+    perspective: 150px;
+}
+
+.slide-container>.container1 {
+    transform: rotateX(0deg) rotateY(10deg);
+    transform-style: preserve-3d;
+}
+
+.slide-container>.container2 {
+    transform: rotateX(0deg) rotateY(350deg);
+    transform-style: preserve-3d;
+}

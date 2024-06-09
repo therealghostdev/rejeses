@@ -4,6 +4,7 @@ import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
 import Why_us from "@/components/general/why_us";
 import { usePathname } from "next/navigation";
 import whyUsData from "@/utils/data/why_us_data.json";
+import Header from "@/components/web_pages/index/header/header";
 
 export default function Home() {
   const pathname = usePathname();
@@ -14,6 +15,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col text-[#090909]">
+      <Header />
       <Services />
       <UpcomingCohorts />
       <Why_us data={filteredWhyData} />

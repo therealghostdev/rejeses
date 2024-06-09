@@ -16,6 +16,7 @@ export interface ButtonProps {
   bg: string;
   text: string;
   icon?: React.ReactNode;
+  text_color?: string;
 }
 
 export interface FooterProps {
