@@ -17,3 +17,9 @@
     transform: none !important;
     transform-style: none;
 }
+
+.slide-container>.container-1.animating-left>img,
+.slide-container>.container-2.animating-right>img {
+    height: 175px !important;
+
+}
