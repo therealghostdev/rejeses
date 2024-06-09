@@ -3,24 +3,24 @@
 }
 
 .slide-container>.container1 {
-    transform: rotateX(0deg) rotateY(15deg);
+    transform: rotateX(0deg) rotateY(15deg) !important;
     transform-style: preserve-3d;
 }
 
 .slide-container>.container2 {
-    transform: rotateX(0deg) rotateY(2deg);
+    transform: rotateX(0deg) rotateY(2deg) !important;
     transform-style: preserve-3d;
     margin: 0 0 0 4%;
 }
 
 .slide-container>.container3 {
-    transform: rotateX(0deg) rotateY(358deg);
+    transform: rotateX(0deg) rotateY(358deg) !important;
     transform-style: preserve-3d;
     margin: 0 4% 0 -4%;
 }
 
 .slide-container>.container4 {
-    transform: rotateX(0deg) rotateY(345deg);
+    transform: rotateX(0deg) rotateY(345deg) !important;
     transform-style: preserve-3d;
 }
 

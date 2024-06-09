@@ -14,5 +14,21 @@
   {
     "id": 4,
     "image": "/meeting4.svg"
+  },
+  {
+    "id": 1,
+    "image": "/meeting1.svg"
+  },
+  {
+    "id": 2,
+    "image": "/meeting2.svg"
+  },
+  {
+    "id": 3,
+    "image": "/meeting3.svg"
+  },
+  {
+    "id": 4,
+    "image": "/meeting4.svg"
   }
 ]
