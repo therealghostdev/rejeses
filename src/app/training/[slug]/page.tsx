@@ -13,8 +13,11 @@ export async function generateStaticParams() {
 
 export default function Page({ params }: { params: { slug: string } }) {
   const decodedSlug = decodeURIComponent(params.slug);
-  const trainingItem = data.find((item) => item.title === decodedSlug);
+  const trainingItem = data.find((item) => item.title.toString() === decodedSlug.toString());
   const whyUsItems = whyUsData.filter((item) => item.tag === "training");
+
+  console.log(decodedSlug);
+  
 
   if (!trainingItem) {
     return <div>Training not found</div>;
