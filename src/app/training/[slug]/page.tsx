@@ -2,6 +2,8 @@ import data from "@/utils/data/training_data.json";
 import Link from "next/link";
 import { ArchiveIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
+import Why_us from "@/components/general/why_us";
+import whyUsData from "@/utils/data/why_us_data.json";
 
 export async function generateStaticParams() {
   return data.map((item) => ({
@@ -12,6 +14,7 @@ export async function generateStaticParams() {
 export default function Page({ params }: { params: { slug: string } }) {
   const decodedSlug = decodeURIComponent(params.slug);
   const trainingItem = data.find((item) => item.title === decodedSlug);
+  const whyUsItems = whyUsData.filter((item) => item.tag === "training");
 
   if (!trainingItem) {
     return <div>Training not found</div>;
@@ -84,6 +87,8 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
         </div>
       ))}
+
+      <Why_us data={whyUsItems} />
     </section>
   );
 }

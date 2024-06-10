@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { NavTypes } from "@/utils/types/types";
 import navData from "@/utils/data/nav_data.json";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { usePathname } from "next/navigation";
 
@@ -17,6 +17,11 @@ export default function Nav_desktop() {
   const [openMobileNav, setOpenMobileNav] = useState<boolean>(false);
   const navRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
+
+  const decodedPathname = useMemo(
+    () => decodeURIComponent(pathname),
+    [pathname]
+  );
 
   useEffect(() => {
     const updateWidth = () => {
@@ -53,6 +58,13 @@ export default function Nav_desktop() {
     };
   }, []);
 
+  const isActive = (linkUrl: string) => {
+    const cleanLinkUrl = linkUrl.replace(/\/$/, '');
+    const cleanPathname = decodedPathname.replace(/\/$/, '');
+
+    return cleanPathname === cleanLinkUrl || cleanPathname.startsWith(cleanLinkUrl);
+  };
+
   return (
     <nav
       className="flex w-full justify-between items-center px-4 bg-white py-2"
@@ -76,7 +88,9 @@ export default function Nav_desktop() {
                 <li key={index} className="list-none">
                   <Link
                     href={link.url}
-                    className={`${pathname === link.url ? "text-[#89C13E]" : ""}`}
+                    className={`${
+                      isActive(link.url) ? "text-[#89C13E]" : ""
+                    }`}
                   >
                     {link.label}
                   </Link>
