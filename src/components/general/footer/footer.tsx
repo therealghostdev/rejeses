@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import Table from "./table";
 import BookSession from "./book_session";
 import LastEl from "./last_el";
@@ -11,19 +11,32 @@ import TestimonialData from "@/utils/data/testimonial_data.json";
 const Footer: React.FC = () => {
   const pathname = usePathname();
 
-  const filteredTableData =
-    pathname === "/"
-      ? tableData
-      : tableData.filter((item) => item.tag === pathname.slice(1));
+  // Decode the pathname to match with the table data tags
+  const decodedPathname = useMemo(() => decodeURIComponent(pathname), [pathname]);
 
-  const filteredTestimonalData =
-    pathname === "/"
-      ? TestimonialData
-      : TestimonialData.filter((item) => item.tag === pathname.slice(1));
+  const filteredTableData = useMemo(() => {
+    if (decodedPathname === "/") {
+      return tableData;
+    }
+
+    // Extract the tag from the pathname, ignoring the leading slash
+    const tag = decodedPathname.split("/")[1]; // "training", "mentorship", etc.
+    return tableData.filter((item) => item.tag.toLowerCase() === tag.toLowerCase());
+  }, [decodedPathname]);
+
+  const filteredTestimonalData = useMemo(() => {
+    if (decodedPathname === "/") {
+      return TestimonialData;
+    }
+
+    const tag = decodedPathname.split("/")[1];
+    return TestimonialData.filter((item) => item.tag.toLowerCase() === tag.toLowerCase());
+  }, [decodedPathname]);
 
   useEffect(() => {
-    console.log(pathname);
-  }, [pathname]);
+    console.log("Current pathname:", pathname);
+    console.log("Decoded pathname:", decodedPathname);
+  }, [pathname, decodedPathname]);
 
   return (
     <footer>

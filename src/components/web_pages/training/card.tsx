@@ -16,7 +16,7 @@ export default function Card(props: CardProps) {
       <div className="w-full">
         <Link
           className="bg-transparent flex items-center py-2 px-2 text-[#89C13E]"
-          href={`training/${props.title}`}
+          href={`/training/${encodeURIComponent(props.title)}`}
         >
           Register
           <span className="mx-2 flex items-center">

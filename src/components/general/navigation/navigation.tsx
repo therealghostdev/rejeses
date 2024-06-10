@@ -6,6 +6,7 @@ import { NavTypes } from "@/utils/types/types";
 import navData from "@/utils/data/nav_data.json";
 import { useEffect, useRef, useState } from "react";
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
+import { usePathname } from "next/navigation";
 
 export default function Nav_desktop() {
   const { logo, links, linkButtons }: NavTypes = navData;
@@ -15,6 +16,7 @@ export default function Nav_desktop() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [openMobileNav, setOpenMobileNav] = useState<boolean>(false);
   const navRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const updateWidth = () => {
@@ -72,7 +74,12 @@ export default function Nav_desktop() {
             <ul className="flex space-x-4">
               {links.map((link, index) => (
                 <li key={index} className="list-none">
-                  <Link href={link.url}>{link.label}</Link>
+                  <Link
+                    href={link.url}
+                    className={`${pathname === link.url ? "text-[#89C13E]" : ""}`}
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
