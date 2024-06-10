@@ -7,17 +7,18 @@ import whyUsData from "@/utils/data/why_us_data.json";
 
 export async function generateStaticParams() {
   return data.map((item) => ({
-    slug: encodeURIComponent(item.title),
+    slug: item.title,
   }));
 }
 
 export default function Page({ params }: { params: { slug: string } }) {
   const decodedSlug = decodeURIComponent(params.slug);
-  const trainingItem = data.find((item) => item.title.toString() === decodedSlug.toString());
+  const trainingItem = data.find(
+    (item) => item.title.toString() === decodedSlug.toString()
+  );
   const whyUsItems = whyUsData.filter((item) => item.tag === "training");
 
   console.log(decodedSlug);
-  
 
   if (!trainingItem) {
     return <div>Training not found</div>;
