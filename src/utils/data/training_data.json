@@ -19,6 +19,141 @@
       "software": "Software requirement:",
       "how": "This course will be taught using:",
       "tool": "Zoom"
+    },
+    "payment": {
+      "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
+      "includes": ["/trophy.svg", "Certificate on completion"],
+      "total": 200,
+      "curriculum": [
+        {
+          "week": "week 1",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 2",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 3",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 4",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 5",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 6",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 7",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 8",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 9",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 10",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        }
+      ]
+    },
+    "pricing": {
+      "individuals": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 150,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ],
+      "group": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 100,
+            "amount_saved": 50,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "amount_saved": 200,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ]
     }
   },
   {
@@ -41,6 +176,141 @@
       "software": "Software requirement:",
       "how": "This course will be taught using:",
       "tool": "Zoom"
+    },
+    "payment": {
+      "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
+      "includes": ["/trophy.svg", "Certificate on completion"],
+      "total": 200,
+      "curriculum": [
+        {
+          "week": "week 1",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 2",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 3",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 4",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 5",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 6",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 7",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 8",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 9",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 10",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        }
+      ]
+    },
+    "pricing": {
+      "individuals": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 150,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ],
+      "group": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 100,
+            "amount_saved": 50,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "amount_saved": 200,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ]
     }
   },
   {
@@ -63,6 +333,141 @@
       "software": "Software requirement:",
       "how": "This course will be taught using:",
       "tool": "Zoom"
+    },
+    "payment": {
+      "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
+      "includes": ["/trophy.svg", "Certificate on completion"],
+      "total": 200,
+      "curriculum": [
+        {
+          "week": "week 1",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 2",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 3",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 4",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 5",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 6",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 7",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 8",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 9",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 10",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        }
+      ]
+    },
+    "pricing": {
+      "individuals": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 150,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ],
+      "group": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 100,
+            "amount_saved": 50,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "amount_saved": 200,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ]
     }
   },
   {
@@ -85,6 +490,141 @@
       "software": "Software requirement:",
       "how": "This course will be taught using:",
       "tool": "Zoom"
+    },
+    "payment": {
+      "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
+      "includes": ["/trophy.svg", "Certificate on completion"],
+      "total": 200,
+      "curriculum": [
+        {
+          "week": "week 1",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 2",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 3",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 4",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 5",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 6",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 7",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 8",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 9",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 10",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        }
+      ]
+    },
+    "pricing": {
+      "individuals": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 150,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ],
+      "group": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 100,
+            "amount_saved": 50,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "amount_saved": 200,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ]
     }
   },
   {
@@ -107,6 +647,141 @@
       "software": "Software requirement:",
       "how": "This course will be taught using:",
       "tool": "Zoom"
+    },
+    "payment": {
+      "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
+      "includes": ["/trophy.svg", "Certificate on completion"],
+      "total": 200,
+      "curriculum": [
+        {
+          "week": "week 1",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 2",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 3",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 4",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 5",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 6",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 7",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 8",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 9",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 10",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        }
+      ]
+    },
+    "pricing": {
+      "individuals": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 150,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ],
+      "group": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 100,
+            "amount_saved": 50,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "amount_saved": 200,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ]
     }
   },
   {
@@ -129,6 +804,141 @@
       "software": "Software requirement:",
       "how": "This course will be taught using:",
       "tool": "Zoom"
+    },
+    "payment": {
+      "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
+      "includes": ["/trophy.svg", "Certificate on completion"],
+      "total": 200,
+      "curriculum": [
+        {
+          "week": "week 1",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 2",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 3",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 4",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 5",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 6",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 7",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 8",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 9",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        },
+        {
+          "week": "week 10",
+          "topic": "Weekly Topic/Title Goes Here",
+          "duration": "MON - FRI (2PM - 4PM WAT)"
+        }
+      ]
+    },
+    "pricing": {
+      "individuals": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 150,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ],
+      "group": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 100,
+            "amount_saved": 50,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "amount_saved": 200,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ]
     }
   }
 ]

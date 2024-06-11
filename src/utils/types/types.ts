@@ -59,3 +59,35 @@ export interface UniqueComponentsProps {
     tag: string;
   }>;
 }
+
+interface TrainingOption {
+  name: string;
+  price: number;
+  payment_type: string;
+  payment_description: string;
+  extra_details: string[];
+  register_link: string;
+  amount_saved?: number; // Optional
+}
+
+export interface PricingDataItem {
+  training_only?: TrainingOption;
+  training_with_mentorship?: TrainingOption;
+}
+
+export interface PricingData {
+  individuals: PricingDataItem[];
+  group: PricingDataItem[];
+}
+
+
+export interface PricingProps {
+  item: PricingData;
+}
+
+export interface PriceCardProps {
+  data: {
+    training_only?: TrainingOption;
+    training_with_mentorship?: TrainingOption;
+  };
+}

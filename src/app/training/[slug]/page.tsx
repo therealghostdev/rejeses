@@ -18,8 +18,6 @@ export default function Page({ params }: { params: { slug: string } }) {
   );
   const whyUsItems = whyUsData.filter((item) => item.tag === "training");
 
-  console.log(decodedSlug);
-
   if (!trainingItem) {
     return <div>Training not found</div>;
   }
@@ -43,13 +41,16 @@ export default function Page({ params }: { params: { slug: string } }) {
       </div>
 
       <div className="flex gap-x-4 px-6">
-        <Link href="" className="bg-[#89C13E] text-white px-4 py-4">
+        <Link
+          href={`/training/${trainingItem.title}/${trainingItem.id}`}
+          className="bg-[#89C13E] text-white px-6 py-4 rounded-md"
+        >
           Enroll Now
         </Link>
 
         <Link
           href=""
-          className="bg-[#DBE1E7] text-[#89C13E] px-8 py-4 flex gap-x-4 items-center justify-center"
+          className="bg-[#DBE1E7] text-[#89C13E] px-8 py-4 flex gap-x-4 items-center justify-center rounded-md"
         >
           <span>
             <ArchiveIcon />
