@@ -13,7 +13,7 @@ export default function PriceCard({ data }: PriceCardProps) {
           <p className="text-2xl font-bold">${training_only.price}</p>
           <p>{training_only.payment_description}</p>
           {training_only.amount_saved && (
-            <div className="absolute right-2 top-6 bg-[#EFFBF2] text-[#2EAE4E] rounded-3xl w-24 text-center p-2">
+            <div className="absolute right-2 lg:top-6 top-16 bg-[#EFFBF2] text-[#2EAE4E] rounded-3xl w-24 text-center p-2">
               <p>Save {training_only?.amount_saved}</p>
             </div>
           )}
@@ -39,7 +39,7 @@ export default function PriceCard({ data }: PriceCardProps) {
       )}
 
       {training_with_mentorship && (
-        <div className="flex flex-col md:w-2/4 w-full md:h-[800px] h-auto gap-4 p-4 border my-2 border-[#DBE1E7] rounded-2xl md:relative md:mx-4 mx-0">
+        <div className="flex flex-col md:w-2/4 w-full md:h-[800px] h-auto gap-4 p-4 border my-2 border-[#DBE1E7] rounded-2xl relative md:mx-4 mx-0">
           <h2 className="text-2xl font-bold">
             {training_with_mentorship.name}
           </h2>
@@ -49,7 +49,7 @@ export default function PriceCard({ data }: PriceCardProps) {
           <p>{training_with_mentorship.payment_description}</p>
 
           {training_with_mentorship.amount_saved && (
-            <div className="absolute right-2 top-6 bg-[#EFFBF2] text-[#2EAE4E] rounded-3xl w-24 text-center p-2">
+            <div className="absolute right-2 lg:top-6 top-16 bg-[#EFFBF2] text-[#2EAE4E] rounded-3xl w-24 text-center p-2">
               <p>Save {training_with_mentorship?.amount_saved}</p>
             </div>
           )}

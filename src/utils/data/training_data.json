@@ -135,7 +135,7 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 1000,
+            "price": 800,
             "amount_saved": 200,
             "payment_type": "Single_payment",
             "payment_description": "For individuals who wants to be trained and mentored",
@@ -292,7 +292,7 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 1000,
+            "price": 800,
             "amount_saved": 200,
             "payment_type": "Single_payment",
             "payment_description": "For individuals who wants to be trained and mentored",
@@ -449,7 +449,7 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 1000,
+            "price": 800,
             "amount_saved": 200,
             "payment_type": "Single_payment",
             "payment_description": "For individuals who wants to be trained and mentored",
@@ -606,7 +606,7 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 1000,
+            "price": 800,
             "amount_saved": 200,
             "payment_type": "Single_payment",
             "payment_description": "For individuals who wants to be trained and mentored",
@@ -763,7 +763,7 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 1000,
+            "price": 800,
             "amount_saved": 200,
             "payment_type": "Single_payment",
             "payment_description": "For individuals who wants to be trained and mentored",
@@ -920,7 +920,7 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 1000,
+            "price": 800,
             "amount_saved": 200,
             "payment_type": "Single_payment",
             "payment_description": "For individuals who wants to be trained and mentored",
