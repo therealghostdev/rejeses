@@ -49,7 +49,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         </Link>
 
         <Link
-          href=""
+          href={`/training/Project Management for Beginners/${trainingItem.id}/class_schedule`}
           className="bg-[#DBE1E7] text-[#89C13E] px-8 py-4 flex gap-x-4 items-center justify-center rounded-md"
         >
           <span>

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArchiveIcon } from "@radix-ui/react-icons";
 import Pricing from "@/components/reusables/pricing/pricing";
 import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
-import { Item } from "@radix-ui/react-accordion";
 
 export async function generateStaticParams() {
   return data.map((item) => ({
@@ -66,7 +65,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
           </Link>
 
           <Link
-            href=""
+            href={`/training/Project Management for Beginners/${pricingItem.id}/class_schedule`}
             className="bg-[#DBE1E7] text-[#89C13E] md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
           >
             <span>
