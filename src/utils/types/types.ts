@@ -80,7 +80,6 @@ export interface PricingData {
   group: PricingDataItem[];
 }
 
-
 export interface PricingProps {
   item: PricingData;
 }
@@ -90,4 +89,21 @@ export interface PriceCardProps {
     training_only?: TrainingOption;
     training_with_mentorship?: TrainingOption;
   };
+}
+
+export interface DynamicNavProps {
+  link1: string;
+  link_text1: string;
+  link2: string;
+  link_text2: string;
+}
+
+export interface Class {
+  day: string;
+  time: string;
+}
+
+export interface ScheduleData {
+  days: string[];
+  times: string[];
 }

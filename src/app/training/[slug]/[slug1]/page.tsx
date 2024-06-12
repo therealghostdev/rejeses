@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { ArchiveIcon } from "@radix-ui/react-icons";
 import Pricing from "@/components/reusables/pricing/pricing";
+import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
+import { Item } from "@radix-ui/react-accordion";
 
 export async function generateStaticParams() {
   return data.map((item) => ({
@@ -22,6 +24,12 @@ export default function Page({ params }: { params: { slug1: string } }) {
 
   return (
     <section className="w-full px-6 flex flex-col gap-12 py-12">
+      <Dynamic_nav
+        link1={`/training/Project Management for Beginners/${pricingItem.id}`}
+        link2=""
+        link_text1="Upcoming Cohorts"
+        link_text2="Project Management for Beginners"
+      />
       <section className="w-full border-2 border-[#DBE1E7] p-8 rounded-lg flex flex-col gap-4">
         <div className="flex flex-col gap-4 border-b-2 border-b-[#DBE1E7] py-6">
           <h1 className="lg:text-3xl text-2xl font-bold">Order Summary</h1>
@@ -49,17 +57,17 @@ export default function Page({ params }: { params: { slug1: string } }) {
           </div>
         </div>
 
-        <div className="flex gap-x-4 px-6 justify-center">
+        <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center w-full sm_btn-container">
           <Link
             href={``}
-            className="bg-[#89C13E] text-white px-6 py-4 rounded-md"
+            className="bg-[#89C13E] text-white md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
           >
             Enroll Now
           </Link>
 
           <Link
             href=""
-            className="bg-[#DBE1E7] text-[#89C13E] px-8 py-4 flex gap-x-4 items-center justify-center rounded-md"
+            className="bg-[#DBE1E7] text-[#89C13E] md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
           >
             <span>
               <ArchiveIcon />

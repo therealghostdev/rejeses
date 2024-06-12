@@ -19,3 +19,15 @@ body {
 .bg-img {
   background: url("/Consultation.svg") center/cover;
 }
+
+@media screen and (max-width: 360px) {
+  .sm_btn-container {
+    flex-wrap: wrap;
+  }
+
+  .sm_btn-container>.btn {
+    width: 100%;
+    margin: 2% 0;
+    text-align: center;
+  }
+}
