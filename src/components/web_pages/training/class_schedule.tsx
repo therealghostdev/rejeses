@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import data from "@/utils/data/schedule/schedule.json";
+import data from "@/utils/data/schedule.json";
 import Image from "next/image";
 import Link from "next/link";
 import { DownloadIcon } from "@radix-ui/react-icons";
@@ -21,7 +21,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
     <div className="flex flex-col items-center p-6 w-full">
       <div className="w-full overflow-x-auto">
         <table className="min-w-full border-collapse">
-          <thead className="bg-[#c3ff74]">
+          <thead className="bg-[#c3ff74] text-[#89C13E]">
             <tr>
               <th className="border border-black md:p-6 p-2 text-xs sm:text-sm">
                 Day
