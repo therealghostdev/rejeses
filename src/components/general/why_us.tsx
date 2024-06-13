@@ -17,7 +17,7 @@ export default function Why_us(props: UniqueComponentsProps) {
       decodedPathname === "/" ||
       decodedPathname === "/training" ||
       decodedPathname === "/mentorship" ||
-      decodedPathname === "consultation"
+      decodedPathname === "/consultation"
     ) {
       return props.data;
     }

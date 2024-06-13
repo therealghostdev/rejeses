@@ -73,13 +73,15 @@ export default function Nav_desktop() {
       ref={navRef}
     >
       <section>
-        <Image
-          src={logo}
-          alt="logo"
-          width={100}
-          height={50}
-          className="md:h-12 h-12"
-        />
+        <Link href={`/`}>
+          <Image
+            src={logo}
+            alt="logo"
+            width={100}
+            height={50}
+            className="md:h-12 h-12"
+          />
+        </Link>
       </section>
 
       {!isMobile && (

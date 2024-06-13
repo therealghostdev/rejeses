@@ -21,7 +21,11 @@ const Footer: React.FC = () => {
   );
 
   const filteredTableData = useMemo(() => {
-    if (decodedPathname === "/") {
+    if (
+      decodedPathname === "/" ||
+      decodedPathname === "/book-session" ||
+      decodedPathname === "/enroll"
+    ) {
       return tableData;
     }
 
@@ -32,7 +36,11 @@ const Footer: React.FC = () => {
   }, [decodedPathname]);
 
   const filteredTestimonalData = useMemo(() => {
-    if (decodedPathname === "/") {
+    if (
+      decodedPathname === "/" ||
+      decodedPathname === "/book-session" ||
+      decodedPathname === "/enroll"
+    ) {
       return TestimonialData;
     }
 
