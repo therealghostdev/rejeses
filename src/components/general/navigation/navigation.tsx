@@ -67,6 +67,10 @@ export default function Nav_desktop() {
     );
   };
 
+  const handleMobileNavClick = () => {
+    setOpenMobileNav(false);
+  };
+
   return (
     <nav
       className="flex w-full justify-between items-center px-4 bg-white py-2"
@@ -136,6 +140,7 @@ export default function Nav_desktop() {
                   {links.map((link, index) => (
                     <li key={index} className="list-none">
                       <Link
+                      onClick={handleMobileNavClick}
                         href={link.url}
                         className={`${
                           isActive(link.url) ? "text-[#89C13E]" : ""
