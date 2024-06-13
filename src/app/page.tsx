@@ -18,7 +18,9 @@ export default function Home() {
       <Header />
       <Services />
       <UpcomingCohorts />
-      <Why_us data={filteredWhyData} />
+      <section className="lg:px-2 px-6">
+        <Why_us data={filteredWhyData} />
+      </section>
     </main>
   );
 }
