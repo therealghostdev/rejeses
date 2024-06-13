@@ -25,7 +25,10 @@ export default function Benefits(props: UniqueComponentsProps) {
       ? "training"
       : decodedPathname.startsWith("/mentorship/")
       ? "mentorship"
-      : decodedPathname.startsWith("/mentorship");
+      : decodedPathname.startsWith("/consultation") ||
+        decodedPathname === "/consultation"
+      ? "consultation"
+      : "";
 
     return dynamicTag
       ? props.data.filter((item) => item.tag === dynamicTag)
@@ -33,7 +36,7 @@ export default function Benefits(props: UniqueComponentsProps) {
   }, [decodedPathname, props.data]);
 
   return (
-    <section className="w-full flex flex-col px-12 py-4">
+    <section className="w-full flex flex-col lg:px-12 py-4">
       <h1 className="md:text-4xl text-2xl my-8 font-bold">Benefits</h1>
 
       <div className="w-full flex flex-wrap py-2">

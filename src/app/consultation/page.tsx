@@ -21,6 +21,10 @@ export default function Page() {
 
   const filteredPricing = priceData.find((item) => item.tag === currentTag);
 
+  console.log(filteredWhyData);
+  console.log(filteredBenefits);
+  
+
   return (
     <section className="w-full px-6 flex flex-col gap-6 py-12">
       <div className="flex flex-col w-full gap-4 lg:px-6 md:px-3">
@@ -37,7 +41,7 @@ export default function Page() {
 
       <div className="flex gap-x-4 lg:px-6 md:px-3">
         <Link
-          href={`/mentorship/pricing`}
+          href={``}
           className="bg-[#89C13E] text-white px-6 py-4 rounded-md"
         >
           View Pricing
@@ -46,7 +50,7 @@ export default function Page() {
 
       <div className="lg:px-6 md:px-3 h-[50vw] lg:w-[90vw] my-4">
         <Image
-          src={`/mentorship_hero.svg`}
+          src={`/consultation_hero.svg`}
           alt="image"
           width={100}
           height={100}

@@ -24,11 +24,11 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   return (
     <section className="w-full px-6 flex flex-col gap-6 py-12">
-      <div className="flex flex-col w-full gap-4 px-6">
+      <div className="flex flex-col w-full gap-4 lg:px-6 md:px-3">
         <h1 className="md:text-4xl text-2xl font-bold">{trainingItem.title}</h1>
         <p className="text-lg">{trainingItem.expanded_description}</p>
       </div>
-      <div className="px-6">
+      <div className="lg:px-6 md:px-3">
         <h1 className="text-2xl text-[#89C13E]">NOTE:</h1>
         <p className="text-lg">
           For students who are unable to join the live sessions due to
@@ -40,17 +40,17 @@ export default function Page({ params }: { params: { slug: string } }) {
         </p>
       </div>
 
-      <div className="flex gap-x-4 px-6">
+      <div className="flex md:gap-x-4 gap-x-2 lg:px-6 md:px-3 w-full sm_btn-container">
         <Link
           href={`/training/${trainingItem.title}/${trainingItem.id}`}
-          className="bg-[#89C13E] text-white px-6 py-4 rounded-md"
+          className="bg-[#89C13E] text-white md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
         >
           Enroll Now
         </Link>
 
         <Link
           href={`/training/Project Management for Beginners/${trainingItem.id}/class_schedule`}
-          className="bg-[#DBE1E7] text-[#89C13E] px-8 py-4 flex gap-x-4 items-center justify-center rounded-md"
+          className="bg-[#DBE1E7] text-[#89C13E] md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
         >
           <span>
             <ArchiveIcon />
@@ -60,7 +60,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       </div>
 
       {trainingItem.image && trainingItem.image !== "" && (
-        <div className="px-6 h-[50vw] w-[90vw] my-4">
+        <div className="lg:px-6 h-[50vw] lg:w-[90vw] my-4">
           <Image
             src={trainingItem.image}
             alt="image"
@@ -74,7 +74,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       {trainingItem.benefits.map((item, index) => (
         <div
           key={index}
-          className="w-full flex md:flex-row gap-4 flex-col px-12"
+          className="w-full flex md:flex-row gap-4 flex-col lg:px-12"
         >
           <div className="border border-[#DBE1E7] rounded-2xl md:w-2/4 w-full flex flex-col md:mx-2 mx-0 px-4 py-4 gap-3">
             <h1 className="font-bold text-2xl">{item.why}</h1>
@@ -94,6 +94,45 @@ export default function Page({ params }: { params: { slug: string } }) {
       ))}
 
       <Why_us data={whyUsItems} />
+
+      <section className="w-full flex flex-col gap-4">
+        <h1 className="lg:text-3xl text-2xl font-bold">Curriculum</h1>
+        {trainingItem.payment.curriculum.map((item, index) => (
+          <div
+            key={index}
+            className="w-full border border-[#DBE1E7] p-4 rounded-md"
+          >
+            <h1 className="lg:text3xl text-2xl font-bold">{item.week}</h1>
+            <p className="text-lg">{item.topic}</p>
+            <small>{item.duration}</small>
+          </div>
+        ))}
+
+        <div className="w-full flex flex-col gap-4">
+          <p className="text-lg font-bold">
+            Start date: {trainingItem.start_date}
+          </p>
+
+          <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
+            <Link
+              href={`/training/${trainingItem.title}/${trainingItem.id}`}
+              className="bg-[#89C13E] text-white md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
+            >
+              Enroll Now
+            </Link>
+
+            <Link
+              href={`/training/Project Management for Beginners/${trainingItem.id}/class_schedule`}
+              className="bg-[#DBE1E7] text-[#89C13E] md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
+            >
+              <span>
+                <ArchiveIcon />
+              </span>
+              View Class Schedule
+            </Link>
+          </div>
+        </div>
+      </section>
     </section>
   );
 }

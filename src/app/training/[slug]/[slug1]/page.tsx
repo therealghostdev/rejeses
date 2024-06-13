@@ -22,7 +22,6 @@ export default function Page({ params }: { params: { slug1: string } }) {
   }
 
   console.log(pricingItem.pricing);
-  
 
   return (
     <section className="w-full px-6 flex flex-col gap-12 py-12">
@@ -91,6 +90,25 @@ export default function Page({ params }: { params: { slug1: string } }) {
             <small>{item.duration}</small>
           </div>
         ))}
+
+        <div className="flex md:gap-x-4 gap-x-2 md:px-6 w-full sm_btn-container">
+          <Link
+            href={``}
+            className="bg-[#89C13E] text-white md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
+          >
+            Enroll Now
+          </Link>
+
+          <Link
+            href={`/training/Project Management for Beginners/${pricingItem.id}/class_schedule`}
+            className="bg-[#DBE1E7] text-[#89C13E] md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
+          >
+            <span>
+              <ArchiveIcon />
+            </span>
+            View Class Schedule
+          </Link>
+        </div>
       </section>
 
       <Pricing item={pricingItem.pricing} />

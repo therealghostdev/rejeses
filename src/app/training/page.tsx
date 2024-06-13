@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import data from "@/utils/data/training_data.json";
 import Card from "@/components/web_pages/training/card";
 import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
@@ -14,7 +14,9 @@ export default function Page() {
   return (
     <div>
       <UpcomingCohorts />
-      <Why_us data={filteredWhyData} />
+      <div className="px-6">
+        <Why_us data={filteredWhyData} />
+      </div>
     </div>
   );
 }

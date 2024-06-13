@@ -5,7 +5,7 @@ import { PlusIcon } from "@radix-ui/react-icons";
 import { TableProps } from "@/utils/types/types";
 
 const Table: React.FC<TableProps> = ({ data }) => (
-  <div className="bg-[#452569] text-white px-6 py-12 flex flex-col gap-y-4">
+  <div className="bg-[#452569] text-white lg:px-6 md:px-3 px-2 py-12 flex flex-col gap-y-4">
     <div className="w-full px-4 flex flex-col gap-2">
       <h1 className="text-3xl font-bold">Your questions, answered</h1>
       <small>Have another question? Email us at info@rejeses.com.</small>

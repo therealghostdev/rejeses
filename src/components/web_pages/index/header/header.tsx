@@ -52,7 +52,7 @@ export default function Header() {
                 href=""
                 className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border border-[#89C13E]"
               >
-                Enroll Now
+                Book Session
               </Link>
             </span>
           </div>

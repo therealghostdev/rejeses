@@ -16,7 +16,8 @@ export default function Why_us(props: UniqueComponentsProps) {
     if (
       decodedPathname === "/" ||
       decodedPathname === "/training" ||
-      decodedPathname === "/mentorship"
+      decodedPathname === "/mentorship" ||
+      decodedPathname === "consultation"
     ) {
       return props.data;
     }
@@ -25,7 +26,9 @@ export default function Why_us(props: UniqueComponentsProps) {
       ? "training"
       : decodedPathname.startsWith("/mentorship/")
       ? "mentorship"
-      : decodedPathname.startsWith("/mentorship");
+      : decodedPathname.startsWith("/consultation")
+      ? "consultation"
+      : "";
 
     return dynamicTag
       ? props.data.filter((item) => item.tag === dynamicTag)
@@ -33,11 +36,7 @@ export default function Why_us(props: UniqueComponentsProps) {
   }, [decodedPathname, props.data]);
 
   const getHeadingText = () => {
-    if (
-      decodedPathname === "/" ||
-      decodedPathname === "/training" ||
-      decodedPathname === "/consulting"
-    ) {
+    if (decodedPathname === "/" || decodedPathname === "/training") {
       return "Why us";
     } else if (decodedPathname.startsWith("/training/")) {
       return "Why you should join this training?";
@@ -46,14 +45,14 @@ export default function Why_us(props: UniqueComponentsProps) {
       decodedPathname === "/mentorship"
     ) {
       return "Who is this for?";
-    } else if (decodedPathname.startsWith("/consulting")) {
+    } else if (decodedPathname.startsWith("/consultation") || decodedPathname === "/consultation") {
       return "Who is this for?";
     }
     return "Why us";
   };
 
   return (
-    <section className="w-full flex flex-col px-12 py-4">
+    <section className="w-full flex flex-col lg:px-12 py-4">
       <h1 className="md:text-4xl text-2xl my-8 font-bold">
         {getHeadingText()}
       </h1>

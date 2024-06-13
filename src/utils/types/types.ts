@@ -77,7 +77,7 @@ export interface PricingDataItem {
 
 export interface PricingData {
   individuals: PricingDataItem[];
-  group: PricingDataItem[];
+  group?: PricingDataItem[];
 }
 
 export interface PricingProps {
