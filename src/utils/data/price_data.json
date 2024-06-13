@@ -1,0 +1,164 @@
+[
+  {
+    "tag": "mentorship",
+    "pricing": {
+      "individuals": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 150,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ],
+      "group": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 100,
+            "amount_saved": 50,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 800,
+            "amount_saved": 200,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ]
+    }
+  },
+  {
+    "tag": "mentorship",
+    "pricing": {
+      "individuals": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 150,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 1000,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ],
+      "group": [
+        {
+          "training_only": {
+            "name": "Training only",
+            "price": 100,
+            "amount_saved": 50,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained only",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides"
+            ],
+            "register_link": ""
+          }
+        },
+        {
+          "training_with_mentorship": {
+            "name": "Training & Mentorship",
+            "price": 800,
+            "amount_saved": 200,
+            "payment_type": "Single_payment",
+            "payment_description": "For individuals who wants to be trained and mentored",
+            "extra_details": [
+              "Full PMP/PMI-ACP training",
+              "Exam practice questions",
+              "Explanation of exam questions and answers",
+              "Textbooks and guides",
+              "Access to templates",
+              "Training on the use of some popular PM software",
+              "Opportunity to connect with like-minded professionals",
+              "Regular attention to real world issues on projects",
+              "Full mentorship for as long as you need it"
+            ],
+            "register_link": ""
+          }
+        }
+      ]
+    }
+  }
+]

@@ -21,6 +21,9 @@ export default function Page({ params }: { params: { slug1: string } }) {
     return <div>Training not found</div>;
   }
 
+  console.log(pricingItem.pricing);
+  
+
   return (
     <section className="w-full px-6 flex flex-col gap-12 py-12">
       <Dynamic_nav

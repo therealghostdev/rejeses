@@ -36,16 +36,18 @@ export default function Why_us(props: UniqueComponentsProps) {
     if (
       decodedPathname === "/" ||
       decodedPathname === "/training" ||
-      decodedPathname === "/mentorship" ||
       decodedPathname === "/consulting"
     ) {
       return "Why us";
     } else if (decodedPathname.startsWith("/training/")) {
       return "Why you should join this training?";
-    } else if (decodedPathname.startsWith("/mentorship/")) {
-      return "Why you should join this mentorship?";
+    } else if (
+      decodedPathname.startsWith("/mentorship/") ||
+      decodedPathname === "/mentorship"
+    ) {
+      return "Who is this for?";
     } else if (decodedPathname.startsWith("/consulting")) {
-      return "why you should join this mentorship";
+      return "Who is this for?";
     }
     return "Why us";
   };
