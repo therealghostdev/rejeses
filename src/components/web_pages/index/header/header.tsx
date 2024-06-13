@@ -75,7 +75,7 @@ export default function Header() {
             className="w-36 md:my-0 my-2"
           />
           <Image
-            src="Huawei-logo.svg"
+            src="Huawei1-logo.svg"
             alt="huawei-logo"
             width={60}
             height={80}
