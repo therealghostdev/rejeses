@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import Table from "./table";
 import BookSession from "./book_session";
 import LastEl from "./last_el";
@@ -10,6 +10,10 @@ import TestimonialData from "@/utils/data/testimonial_data.json";
 
 const Footer: React.FC = () => {
   const pathname = usePathname();
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [width, setWidth] = useState<number>(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
 
   const decodedPathname = useMemo(
     () => decodeURIComponent(pathname),
@@ -38,11 +42,28 @@ const Footer: React.FC = () => {
     );
   }, [decodedPathname]);
 
+  useEffect(() => {
+    const updateWidth = () => {
+      const newWidth = window.innerWidth;
+      setWidth(newWidth);
+      setIsMobile(newWidth <= 767);
+    };
+
+    window.addEventListener("resize", updateWidth);
+
+    // Initial check
+    updateWidth();
+
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    };
+  }, []);
+
   return (
     <footer>
       <Testimonial data={filteredTestimonalData} />
       <Table data={filteredTableData} />
-      <BookSession />
+      {pathname === "/" && !isMobile && <BookSession />}
       <LastEl />
     </footer>
   );

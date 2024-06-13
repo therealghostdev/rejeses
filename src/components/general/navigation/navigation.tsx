@@ -59,10 +59,12 @@ export default function Nav_desktop() {
   }, []);
 
   const isActive = (linkUrl: string) => {
-    const cleanLinkUrl = linkUrl.replace(/\/$/, '');
-    const cleanPathname = decodedPathname.replace(/\/$/, '');
+    const cleanLinkUrl = linkUrl.replace(/\/$/, "");
+    const cleanPathname = decodedPathname.replace(/\/$/, "");
 
-    return cleanPathname === cleanLinkUrl || cleanPathname.startsWith(cleanLinkUrl);
+    return (
+      cleanPathname === cleanLinkUrl || cleanPathname.startsWith(cleanLinkUrl)
+    );
   };
 
   return (
@@ -88,9 +90,7 @@ export default function Nav_desktop() {
                 <li key={index} className="list-none">
                   <Link
                     href={link.url}
-                    className={`${
-                      isActive(link.url) ? "text-[#89C13E]" : ""
-                    }`}
+                    className={`${isActive(link.url) ? "text-[#89C13E]" : ""}`}
                   >
                     {link.label}
                   </Link>
@@ -133,7 +133,14 @@ export default function Nav_desktop() {
                 <ul className="flex flex-col space-y-4">
                   {links.map((link, index) => (
                     <li key={index} className="list-none">
-                      <Link href={link.url}>{link.label}</Link>
+                      <Link
+                        href={link.url}
+                        className={`${
+                          isActive(link.url) ? "text-[#89C13E]" : ""
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>

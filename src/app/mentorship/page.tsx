@@ -20,8 +20,6 @@ export default function Page() {
   );
 
   const filteredPricing = priceData.find((item) => item.tag === currentTag);
-  console.log(filteredPricing?.pricing);
-  
 
   return (
     <section className="w-full px-6 flex flex-col gap-6 py-12">
@@ -39,7 +37,7 @@ export default function Page() {
 
       <div className="flex gap-x-4 px-6">
         <Link
-          href={``}
+          href={`/mentorship/pricing`}
           className="bg-[#89C13E] text-white px-6 py-4 rounded-md"
         >
           View Pricing
