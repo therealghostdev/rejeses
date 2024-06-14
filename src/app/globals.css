@@ -10,10 +10,15 @@
   --header-color: #F5F0FA;
 }
 
+html{
+  overflow-x: hidden;
+}
+
 body {
   color: rgb(var(--text-general));
   background:
     rgb(var(--background-general));
+    overflow-x: hidden;
 }
 
 .bg-img {

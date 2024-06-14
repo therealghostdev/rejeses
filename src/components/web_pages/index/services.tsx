@@ -29,7 +29,12 @@ export default function Services() {
           </p>
 
           <span className="text-white">
-            <Button text="Learn More" icon={<ArrowRightIcon />} bg="#89C13E" />
+            <Button
+              text="Learn More"
+              icon={<ArrowRightIcon />}
+              bg="#89C13E"
+              url="/training"
+            />
           </span>
         </div>
       </div>
@@ -44,7 +49,12 @@ export default function Services() {
           </p>
 
           <span className="text-white">
-            <Button text="Learn More" icon={<ArrowRightIcon />} bg="#89C13E" />
+            <Button
+              text="Learn More"
+              icon={<ArrowRightIcon />}
+              bg="#89C13E"
+              url="/mentorship"
+            />
           </span>
         </div>
 
@@ -79,7 +89,12 @@ export default function Services() {
           </p>
 
           <span className="text-white">
-            <Button text="Learn More" icon={<ArrowRightIcon />} bg="#89C13E" />
+            <Button
+              text="Learn More"
+              icon={<ArrowRightIcon />}
+              bg="#89C13E"
+              url="/consultation"
+            />
           </span>
         </div>
       </div>

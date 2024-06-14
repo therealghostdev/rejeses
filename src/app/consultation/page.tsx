@@ -23,19 +23,16 @@ export default function Page() {
 
   console.log(filteredWhyData);
   console.log(filteredBenefits);
-  
 
   return (
     <section className="w-full px-6 flex flex-col gap-6 py-12">
       <div className="flex flex-col w-full gap-4 lg:px-6 md:px-3">
-        <h1 className="md:text-4xl text-2xl font-bold">
-          Personalised Mentorship
-        </h1>
+        <h1 className="md:text-4xl text-2xl font-bold">Consultation</h1>
         <p className="text-lg">
-          Our personalised mentorship program is thoughtfully designed to
-          accelerate growth, overcome challenges, and achieve goals for
-          individuals at any stage or in any field. It offers rich and
-          substantial support.
+          Our customised consultation services are thoughtfully designed to
+          propel the growth, address challenges, and achieve goals for companies
+          of any size or industry, providing comprehensive and substantial
+          support.
         </p>
       </div>
 
