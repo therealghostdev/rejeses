@@ -31,7 +31,7 @@ export default function Header() {
     <header className="bg-[#F5F0FA] flex flex-col w-full gap-4">
       <div className="w-full flex flex-col justify-center items-center gap-3 my-8">
         <div className="md:w-3/4 w-full flex flex-col justify-center items-center gap-3 px-4">
-          <h1 className="lg:text-[60px] md:text-[28px] text-2xl text-center font-bold leading-tight">
+          <h1 className="lg:text-[60px] md:text-[28px] text-2xl text-center font-bold leading-tight font-[BricolageGrotesque]">
             Learn and become excellent at project management
           </h1>
           <p className="text-lg text-center">
@@ -42,7 +42,7 @@ export default function Header() {
 
           <div className="w-full flex justify-center items-center my-4">
             <span className="mx-2">
-              <Link href="/enroll" className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem]">
+              <Link href="/enroll" className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] font-[BricolageGrotesque]">
                 Enroll Now
               </Link>
             </span>
@@ -50,7 +50,7 @@ export default function Header() {
             <span className="mx-2">
               <Link
                 href="/book-session"
-                className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border border-[#89C13E] rounded-[.3rem]"
+                className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border border-[#89C13E] rounded-[.3rem] font-[BricolageGrotesque]"
               >
                 Book Session
               </Link>
@@ -62,7 +62,7 @@ export default function Header() {
       {!isMobile ? <Image_slider /> : <Mobile_Image_slider />}
 
       <div className="flex w-full flex-col justify-center items-center bg-[#FCFCFC] py-12 px-4 gap-6">
-        <p className="text-lg text-center">
+        <p className="text-lg text-center font-[BricolageGrotesque]">
           Learn directly from people who worked at companies such as
         </p>
 

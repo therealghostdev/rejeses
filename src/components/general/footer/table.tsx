@@ -7,7 +7,7 @@ import { TableProps } from "@/utils/types/types";
 const Table: React.FC<TableProps> = ({ data }) => (
   <div className="bg-[#452569] text-white lg:px-6 md:px-3 px-2 py-12 flex flex-col gap-y-4">
     <div className="w-full px-4 flex flex-col gap-2">
-      <h1 className="text-3xl font-bold">Your questions, answered</h1>
+      <h1 className="text-3xl font-bold font-[BricolageGrotesque]">Your questions, answered</h1>
       <small>Have another question? Email us at info@rejeses.com.</small>
     </div>
     <Accordion.Root
@@ -18,7 +18,7 @@ const Table: React.FC<TableProps> = ({ data }) => (
     >
       {data.map((item) => (
         <AccordionItem key={item.id} value={item.id} className="bg-[#452569] text-white text-lg">
-          <AccordionTrigger>{item.title}</AccordionTrigger>
+          <AccordionTrigger className="font-[BricolageGrotesque]">{item.title}</AccordionTrigger>
           <AccordionContent>{item.content}</AccordionContent>
         </AccordionItem>
       ))}

@@ -73,7 +73,7 @@ export default function Nav_desktop() {
 
   return (
     <nav
-      className="flex w-full justify-between items-center px-4 bg-white py-2"
+      className="flex w-full justify-between items-center px-4 bg-white py-2 font-[BricolageGrotesque]"
       ref={navRef}
     >
       <section>

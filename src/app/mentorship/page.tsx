@@ -24,7 +24,7 @@ export default function Page() {
   return (
     <section className="w-full px-6 flex flex-col gap-6 py-12">
       <div className="flex flex-col w-full gap-4 lg:px-6 md:px-3">
-        <h1 className="md:text-4xl text-2xl font-bold">
+        <h1 className="md:text-4xl text-2xl font-bold font-[BricolageGrotesque]">
           Personalised Mentorship
         </h1>
         <p className="text-lg">
@@ -38,7 +38,7 @@ export default function Page() {
       <div className="flex gap-x-4 lg:px-6 md:px-3">
         <Link
           href={`/mentorship/pricing`}
-          className="bg-[#89C13E] text-white px-6 py-4 rounded-md"
+          className="bg-[#89C13E] text-white px-6 py-4 rounded-md font-[BricolageGrotesque]"
         >
           View Pricing
         </Link>

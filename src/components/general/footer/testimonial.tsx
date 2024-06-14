@@ -7,7 +7,7 @@ export default function Testimonial(props: UniqueComponentsProps) {
   return (
     <section className="w-full flex flex-col lg:px-12 px-6 py-4">
       <div className="my-8 flex flex-col gap-2">
-        <h1 className="md:text-4xl text-2xl font-bold">
+        <h1 className="md:text-4xl text-2xl font-bold font-[BricolageGrotesque]">
           Don&apos;t just take our word for it...
         </h1>
         <p className="text-lg">

@@ -17,14 +17,14 @@ export default function Page({ params }: { params: { slug1: string } }) {
       />
       <section className="w-full border-2 border-[#DBE1E7] p-8 rounded-lg flex flex-col gap-4">
         <div className="flex flex-col gap-4 border-b-2 border-b-[#DBE1E7] py-6">
-          <h1 className="lg:text-3xl text-2xl font-bold">Order Summary</h1>
+          <h1 className="lg:text-3xl text-2xl font-bold font-[BricolageGrotesque]">Order Summary</h1>
           <p>
             You are subscribing to rejeses Consult one year personalised
             mentorship plan. You will be charged $400.00 for the first year and
             subsequently $200.00 per month or $2,200.00 per year.
           </p>
 
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between w-full font-[BricolageGrotesque]">
             <span className="text-2xl font-bold">Total:</span>
             <span className="text-2xl font-bold text-[#89C13E]">&#x24;400</span>
           </div>
@@ -33,7 +33,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
         <div className="w-full flex flex-col gap-8 justify-center items-center py-4">
           <Link
             href={``}
-            className="bg-[#89C13E] text-white px-6 py-4 rounded-md"
+            className="bg-[#89C13E] text-white px-6 py-4 rounded-md font-[BricolageGrotesque]"
           >
             View Pricing
           </Link>

@@ -1,3 +1,5 @@
+@import url("/assets/styles/fonts.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,15 +12,17 @@
   --header-color: #F5F0FA;
 }
 
-html{
+html {
   overflow-x: hidden;
 }
 
 body {
+  font-family: "Inter_V", sans-serif !important;
+  font-weight: 400;
   color: rgb(var(--text-general));
   background:
     rgb(var(--background-general));
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .bg-img {

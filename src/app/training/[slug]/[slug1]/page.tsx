@@ -33,7 +33,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
       />
       <section className="w-full border-2 border-[#DBE1E7] p-8 rounded-lg flex flex-col gap-4">
         <div className="flex flex-col gap-4 border-b-2 border-b-[#DBE1E7] py-6">
-          <h1 className="lg:text-3xl text-2xl font-bold">Order Summary</h1>
+          <h1 className="lg:text-3xl text-2xl font-bold font-[BricolageGrotesque]">Order Summary</h1>
           <p>{pricingItem.payment.order_summary}</p>
           <div className="w-full">
             <p className="text-[#89C13E]">Includes</p>
@@ -50,7 +50,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
             </p>
           </div>
 
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between w-full font-[BricolageGrotesque]">
             <span className="text-2xl font-bold">Total:</span>
             <span className="text-2xl font-bold text-[#89C13E]">
               &#x24;{pricingItem.payment.total}
@@ -61,14 +61,14 @@ export default function Page({ params }: { params: { slug1: string } }) {
         <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center w-full sm_btn-container">
           <Link
             href={``}
-            className="bg-[#89C13E] text-white md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
+            className="bg-[#89C13E] text-white font-[BricolageGrotesque] md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
           >
             Enroll Now
           </Link>
 
           <Link
             href={`/training/Project Management for Beginners/${pricingItem.id}/class_schedule`}
-            className="bg-[#DBE1E7] text-[#89C13E] md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
+            className="bg-[#DBE1E7] text-[#89C13E] font-[BricolageGrotesque] md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
           >
             <span>
               <ArchiveIcon />
@@ -79,11 +79,11 @@ export default function Page({ params }: { params: { slug1: string } }) {
       </section>
 
       <section className="w-full flex flex-col gap-4">
-        <h1 className="lg:text-3xl text-2xl font-bold">Curriculum</h1>
+        <h1 className="lg:text-3xl text-2xl font-bold font-[BricolageGrotesque]">Curriculum</h1>
         {pricingItem.payment.curriculum.map((item, index) => (
           <div
             key={index}
-            className="w-full border border-[#DBE1E7] p-4 rounded-md"
+            className="w-full border border-[#DBE1E7] p-4 rounded-md font-[BricolageGrotesque]"
           >
             <h1 className="lg:text3xl text-2xl font-bold">{item.week}</h1>
             <p className="text-lg">{item.topic}</p>
@@ -94,14 +94,14 @@ export default function Page({ params }: { params: { slug1: string } }) {
         <div className="flex md:gap-x-4 gap-x-2 md:px-6 w-full sm_btn-container">
           <Link
             href={``}
-            className="bg-[#89C13E] text-white md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
+            className="bg-[#89C13E] text-white font-[BricolageGrotesque] md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
           >
             Enroll Now
           </Link>
 
           <Link
             href={`/training/Project Management for Beginners/${pricingItem.id}/class_schedule`}
-            className="bg-[#DBE1E7] text-[#89C13E] md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
+            className="bg-[#DBE1E7] text-[#89C13E] font-[BricolageGrotesque] md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
           >
             <span>
               <ArchiveIcon />

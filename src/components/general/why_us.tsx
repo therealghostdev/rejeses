@@ -53,7 +53,7 @@ export default function Why_us(props: UniqueComponentsProps) {
 
   return (
     <section className="w-full flex flex-col lg:px-12 py-4">
-      <h1 className="md:text-4xl text-2xl my-8 font-bold">
+      <h1 className="md:text-4xl text-2xl my-8 font-bold font-[BricolageGrotesque]">
         {getHeadingText()}
       </h1>
 

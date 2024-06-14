@@ -5,7 +5,7 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 export default function Services() {
   return (
     <section className="w-full px-8 py-4 flex flex-col gap-12 bg-[#FEF9F6]">
-      <h1 className="lg:text-[48px] md:text-3xl text-2xl font-bold text-center my-8">
+      <h1 className="lg:text-[48px] md:text-3xl text-2xl font-bold text-center my-8 font-[BricolageGrotesque]">
         Our Services
       </h1>
 
@@ -21,7 +21,7 @@ export default function Services() {
         </div>
 
         <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
-          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold">Trainings</h1>
+          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold font-[BricolageGrotesque]">Trainings</h1>
           <p>
             Our consultation services offer guidance to overcome project
             challenges, optimize processes, and achieve your specific goals.
@@ -41,7 +41,7 @@ export default function Services() {
 
       <div className="flex md:flex-row flex-col w-full gap-8">
         <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
-          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold">Personalized Mentorship</h1>
+          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold font-[BricolageGrotesque]">Personalized Mentorship</h1>
           <p>
             Our mentoring programs foster one-on-one relationships to guide and
             support your professional development. Experience personalized
@@ -81,7 +81,7 @@ export default function Services() {
         </div>
 
         <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
-          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold">Consultation</h1>
+          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold font-[BricolageGrotesque]">Consultation</h1>
           <p>
             Our consultation services offer guidance to overcome project
             challenges, optimize processes, and achieve your specific goals.
