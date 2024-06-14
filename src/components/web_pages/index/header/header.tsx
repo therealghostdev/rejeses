@@ -31,26 +31,26 @@ export default function Header() {
     <header className="bg-[#F5F0FA] flex flex-col w-full gap-4">
       <div className="w-full flex flex-col justify-center items-center gap-3 my-8">
         <div className="md:w-3/4 w-full flex flex-col justify-center items-center gap-3 px-4">
-          <h1 className="md:text-4xl text-2xl text-center font-bold">
+          <h1 className="lg:text-[60px] md:text-[28px] text-2xl text-center font-bold leading-tight">
             Learn and become excellent at project management
           </h1>
           <p className="text-lg text-center">
             Everything from learning about project management to one-on-one
-            mentoring and even consultation, rejeses is here to help you learn
+            mentoring and even consultation, <span className="font-bold">rejeses</span> is here to help you learn
             and master project management.
           </p>
 
           <div className="w-full flex justify-center items-center my-4">
             <span className="mx-2">
-              <Link href="" className="bg-[#89C13E] text-white px-6 py-4">
+              <Link href="/enroll" className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem]">
                 Enroll Now
               </Link>
             </span>
 
             <span className="mx-2">
               <Link
-                href=""
-                className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border border-[#89C13E]"
+                href="/book-session"
+                className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border border-[#89C13E] rounded-[.3rem]"
               >
                 Book Session
               </Link>

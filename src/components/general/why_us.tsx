@@ -61,7 +61,7 @@ export default function Why_us(props: UniqueComponentsProps) {
         {filteredData.map((item, index) => (
           <div
             key={index}
-            className="lg:w-[30%] md:w-[45%] w-full border border-[#DBE1E7] mx-1 my-2 rounded-2xl shadow-sm shadow-[#0000001A]"
+            className="lg:w-[30%] md:w-[45%] w-full border border-[#DBE1E7] mx-1 my-2 rounded-2xl"
           >
             <GeneralCard
               pin={item.pin}

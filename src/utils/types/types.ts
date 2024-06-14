@@ -60,7 +60,7 @@ export interface UniqueComponentsProps {
   }>;
 }
 
-interface TrainingOption {
+export interface TrainingOption {
   name: string;
   price: number;
   payment_type: string;
@@ -107,3 +107,44 @@ export interface ScheduleData {
   days: string[];
   times: string[];
 }
+
+// !------------------------------> for class schedule <-------------------------------------------------!
+export interface Curriculum {
+  week: string;
+  topic: string;
+  duration: string;
+}
+
+export interface Payment {
+  order_summary: string;
+  includes: string[];
+  total: number;
+  curriculum: Curriculum[];
+}
+
+export interface ClassSchedule {
+  day: string;
+  time: string;
+}
+
+export interface TrainingOption1 {
+  id: number;
+  title: string;
+  expanded_description: string;
+  description: string;
+  start_date: string;
+  image: string;
+  benefits: {
+    why: string;
+    answer: string[];
+  }[];
+  requirements: {
+    software: string;
+    how: string;
+    tool: string;
+  };
+  payment: Payment;
+  pricing: PricingData;
+  class_schedule: ClassSchedule[];
+}
+// !-------------------------------------------- end for class schedule --------------------------------------!

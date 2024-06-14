@@ -90,7 +90,7 @@ export default function Nav_desktop() {
 
       {!isMobile && (
         <>
-          <section className="flex">
+          <section className="flex lg:ml-12">
             <ul className="flex space-x-4">
               {links.map((link, index) => (
                 <li key={index} className="list-none">
@@ -112,8 +112,8 @@ export default function Nav_desktop() {
                 href={button.url}
                 className={`${button.className}`}
                 style={{
-                  backgroundColor: index === 0 ? "#DBE1E7" : "#89C13E",
-                  borderRadius: ".5rem",
+                  backgroundColor: index === 0 ? "#FFFFFF" : "#89C13E",
+                  borderRadius: ".3rem",
                 }}
               >
                 {button.label}
@@ -160,8 +160,8 @@ export default function Nav_desktop() {
                     href={button.url}
                     className={`${button.className} text-center`}
                     style={{
-                      backgroundColor: index === 0 ? "#DBE1E7" : "#89C13E",
-                      borderRadius: ".5rem",
+                      backgroundColor: index === 0 ? "#FFFFFF" : "#89C13E",
+                      borderRadius: ".3rem",
                     }}
                   >
                     {button.label}
