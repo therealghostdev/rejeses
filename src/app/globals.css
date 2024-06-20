@@ -29,6 +29,11 @@ body {
   background: url("/Consultation.svg") center/cover;
 }
 
+
+.bricolage_text {
+  font-family: "BricolageGrotesque", sans-serif;
+}
+
 @media screen and (max-width: 360px) {
   .sm_btn-container {
     flex-wrap: wrap;

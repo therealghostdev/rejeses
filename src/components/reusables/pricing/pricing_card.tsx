@@ -10,8 +10,8 @@ export default function PriceCard({ data }: PriceCardProps) {
     <>
       {training_only && (
         <div className="flex flex-col md:w-2/4 w-full md:h-[800px] h-auto md:mx-4 mx-0 my-2 gap-4 p-4 border border-[#DBE1E7] rounded-2xl relative">
-          <h2 className="text-2xl font-bold font-[BricolageGrotesque]">{training_only.name}</h2>
-          <p className="text-2xl font-bold font-[BricolageGrotesque]">${training_only.price}</p>
+          <h2 className="text-2xl font-bold bricolage_text">{training_only.name}</h2>
+          <p className="text-2xl font-bold bricolage_text">${training_only.price}</p>
           <div className="w-full mt-5 flex flex-col gap-2 my-2">
             <h1 className="text-lg font-bold">{training_only.payment_type}</h1>
             <p>{training_only.payment_description}</p>
@@ -34,7 +34,7 @@ export default function PriceCard({ data }: PriceCardProps) {
           <div className="bottom-6 md:absolute left-0 w-full px-4">
             <Link
               href={training_only.register_link}
-              className="bg-[#89C13E] text-white w-full inline-block p-4 text-center rounded-md font-[BricolageGrotesque]"
+              className="bg-[#89C13E] text-white w-full inline-block p-4 text-center rounded-md bricolage_text"
             >
               Register
             </Link>
@@ -44,10 +44,10 @@ export default function PriceCard({ data }: PriceCardProps) {
 
       {training_with_mentorship && (
         <div className="flex flex-col md:w-2/4 w-full md:h-[800px] h-auto gap-4 p-4 border my-2 border-[#DBE1E7] rounded-2xl relative md:mx-4 mx-0">
-          <h2 className="text-2xl font-bold font-[BricolageGrotesque]">
+          <h2 className="text-2xl font-bold bricolage_text">
             {training_with_mentorship.name}
           </h2>
-          <p className="text-2xl font-bold font-[BricolageGrotesque]">
+          <p className="text-2xl font-bold bricolage_text">
             ${training_with_mentorship.price}
           </p>
           <div className="w-full mt-5 flex flex-col gap-2 my-2">
@@ -77,7 +77,7 @@ export default function PriceCard({ data }: PriceCardProps) {
           <div className="bottom-6 md:absolute left-0 w-full px-4">
             <Link
               href={training_with_mentorship.register_link}
-              className="bg-[#89C13E] text-white w-full font-[BricolageGrotesque] inline-block p-4 text-center rounded-md"
+              className="bg-[#89C13E] text-white w-full bricolage_text inline-block p-4 text-center rounded-md"
             >
               Register
             </Link>

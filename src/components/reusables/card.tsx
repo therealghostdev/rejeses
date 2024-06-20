@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import { GeneralCardProps } from "@/utils/types/types";
-import { Item } from "@radix-ui/react-accordion";
 
 export default function GeneralCard(props: GeneralCardProps) {
   return (
@@ -13,7 +12,7 @@ export default function GeneralCard(props: GeneralCardProps) {
       )}
 
       <div className="w-full flex flex-col gap-4 py-4">
-        {props.title && <h1 className="text-lg font-bold font-[BricolageGrotesque]">{props.title}</h1>}
+        {props.title && <h1 className="text-lg font-bold bricolage_text">{props.title}</h1>}
         <p>{props.comment}</p>
       </div>
 

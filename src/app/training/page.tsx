@@ -1,6 +1,4 @@
 "use client";
-import data from "@/utils/data/training_data.json";
-import Card from "@/components/web_pages/training/card";
 import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
 import { usePathname } from "next/navigation";
 import whyUsData from "@/utils/data/why_us_data.json";

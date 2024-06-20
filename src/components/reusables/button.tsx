@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       onClick={handleClick}
       style={{ background: bg, color: text_color ? text_color : "" }}
-      className="flex items-center justify-center space-x-2 rounded-md px-6 py-4 font-[BricolageGrotesque]"
+      className="flex items-center justify-center space-x-2 rounded-md px-6 py-4 bricolage_text"
     >
       <span>{text}</span>
       {Icon && <span className="ml-2">{Icon}</span>}

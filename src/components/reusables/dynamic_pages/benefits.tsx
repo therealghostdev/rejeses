@@ -37,7 +37,7 @@ export default function Benefits(props: UniqueComponentsProps) {
 
   return (
     <section className="w-full flex flex-col lg:px-12 py-4">
-      <h1 className="md:text-4xl text-2xl my-8 font-bold font-[BricolageGrotesque]">Benefits</h1>
+      <h1 className="md:text-4xl text-2xl my-8 font-bold bricolage_text">Benefits</h1>
 
       <div className="w-full flex flex-wrap py-2">
         {filteredData.map((item, index) => (

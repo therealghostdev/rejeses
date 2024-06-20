@@ -7,7 +7,7 @@ export default function Dynamic_nav(props: DynamicNavProps) {
   const router = useRouter();
 
   return (
-    <nav className="flex px-4 font-[BricolageGrotesque]">
+    <nav className="flex px-4 bricolage_text">
       <Link href={props.link1} className="mx-2 text-[#005A5A]">
         {props.link_text1}
       </Link>
