@@ -25,8 +25,8 @@ export default function Page() {
   console.log(filteredBenefits);
 
   return (
-    <section className="w-full px-6 flex flex-col gap-6 py-12">
-      <div className="flex flex-col w-full gap-4 lg:px-6 md:px-3">
+    <section className="w-full px-8 flex flex-col gap-6 py-12">
+      <div className="flex flex-col md:max-w-[90%] w-full gap-4 lg:px-12 md:px-6">
         <h1 className="md:text-4xl text-2xl font-bold bricolage_text">Consultation</h1>
         <p className="text-lg">
           Our customised consultation services are thoughtfully designed to
@@ -36,7 +36,7 @@ export default function Page() {
         </p>
       </div>
 
-      <div className="flex gap-x-4 lg:px-6 md:px-3">
+      <div className="flex gap-x-4 lg:px-12 md:px-6">
         <Link
           href={``}
           className="bg-[#89C13E] text-white px-6 py-4 rounded-md bricolage_text"
@@ -45,7 +45,7 @@ export default function Page() {
         </Link>
       </div>
 
-      <div className="lg:px-6 md:px-3 h-[50vw] lg:w-[90vw] my-4">
+      <div className="lg:px-12 md:px-3 lg:h-[800px] h-[50vw] lg:w-[90vw] my-4">
         <Image
           src={`/consultation_hero.svg`}
           alt="image"

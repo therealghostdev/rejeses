@@ -15,9 +15,11 @@ export default function Page({ params }: { params: { slug1: string } }) {
         link_text1="Personalised Mentorship"
         link_text2="One-on-One Mentorship"
       />
-      <section className="w-full border-2 border-[#DBE1E7] p-8 rounded-lg flex flex-col gap-4">
+      <section className="w-full border-2 border-[#DBE1E7] md:max-w-[90%] gap-4 lg:px-12 py-8 px-6 rounded-lg flex flex-col m-auto">
         <div className="flex flex-col gap-4 border-b-2 border-b-[#DBE1E7] py-6">
-          <h1 className="lg:text-3xl text-2xl font-bold bricolage_text">Order Summary</h1>
+          <h1 className="lg:text-3xl text-2xl font-bold bricolage_text">
+            Order Summary
+          </h1>
           <p>
             You are subscribing to rejeses Consult one year personalised
             mentorship plan. You will be charged $400.00 for the first year and
@@ -31,17 +33,19 @@ export default function Page({ params }: { params: { slug1: string } }) {
         </div>
 
         <div className="w-full flex flex-col gap-8 justify-center items-center py-4">
-          <Link
-            href={``}
-            className="bg-[#89C13E] text-white px-6 py-4 rounded-md bricolage_text"
-          >
-            View Pricing
-          </Link>
-          <small>
-            By paying for this plan, you agree that you will show up for your
-            mentorship session on set date and on days when you don&apos;t show up,
-            would not be revisited.
-          </small>
+          <div className="md:max-w-[60%] w-full flex flex-col gap-8 justify-center items-center py-4">
+            <Link
+              href={``}
+              className="bg-[#89C13E] text-white px-8 py-4 rounded-md bricolage_text"
+            >
+              View Pricing
+            </Link>
+            <p className="text-center">
+              By paying for this plan, you agree that you will show up for your
+              mentorship session on set date and on days when you don&apos;t
+              show up, would not be revisited.
+            </p>
+          </div>
         </div>
       </section>
     </section>

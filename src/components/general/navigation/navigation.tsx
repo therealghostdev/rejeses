@@ -73,7 +73,7 @@ export default function Nav_desktop() {
 
   return (
     <nav
-      className="flex w-full justify-between items-center px-4 bg-white py-2 bricolage_text"
+      className="flex w-full justify-between items-center px-4 bg-white py-2 bricolage_text md:px-8 md:py-4"
       ref={navRef}
     >
       <section>
@@ -110,7 +110,7 @@ export default function Nav_desktop() {
               <Link
                 key={index}
                 href={button.url}
-                className={`${button.className}`}
+                className={`${button.className} lg:w-[140px] md:text-center`}
                 style={{
                   backgroundColor: index === 0 ? "#FFFFFF" : "#89C13E",
                   borderRadius: ".3rem",

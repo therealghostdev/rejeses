@@ -6,7 +6,7 @@ import { TableProps } from "@/utils/types/types";
 import Link from "next/link";
 
 const Table: React.FC<TableProps> = ({ data }) => (
-  <div className="bg-[#452569] text-white lg:px-6 md:px-3 px-2 py-12 flex flex-col gap-y-4">
+  <div className="bg-[#452569] text-white lg:px-12 md:px-6 px-4 py-12 flex flex-col gap-y-4">
     <div className="w-full px-4 flex flex-col gap-2">
       <h1 className="text-3xl font-bold bricolage_text">Your questions, answered</h1>
       <small>Have another question? Email us at <Link href={`mailto:info@rejeses.com`}>info@rejeses.com. </Link></small>
@@ -20,7 +20,7 @@ const Table: React.FC<TableProps> = ({ data }) => (
       {data.map((item) => (
         <AccordionItem key={item.id} value={item.id} className="bg-[#452569] text-white text-lg">
           <AccordionTrigger className="bricolage_text">{item.title}</AccordionTrigger>
-          <AccordionContent>{item.content}</AccordionContent>
+          <AccordionContent className="md:text-[20px] text-[15px]">{item.content}</AccordionContent>
         </AccordionItem>
       ))}
     </Accordion.Root>
@@ -49,7 +49,7 @@ const AccordionTrigger = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
   <Accordion.Header className="flex">
     <Accordion.Trigger
-      className={`hover:bg-[#3c205c] cursor-pointer group flex h-[45px] flex-1 my-2 items-center justify-between py-8 bg-[#452569] text-white px-5 text-[15px] leading-none shadow-[0_1px_0] outline-none ${
+      className={`hover:bg-[#3c205c] cursor-pointer group flex h-[45px] flex-1 my-2 items-center justify-between lg:py-12 py-8 bg-[#452569] text-white px-5 md:text-[25px] font-bold text-[15px] leading-none shadow-[0_1px_0] outline-none ${
         className ?? ""
       }`}
       {...props}
@@ -78,7 +78,7 @@ const AccordionContent = React.forwardRef<
     {...props}
     ref={forwardedRef}
   >
-    <div className="py-[15px] px-5">{children}</div>
+    <div className="py-[25px] px-5">{children}</div>
   </Accordion.Content>
 ));
 AccordionContent.displayName = "AccordionContent";

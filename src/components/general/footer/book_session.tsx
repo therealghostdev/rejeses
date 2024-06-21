@@ -2,7 +2,7 @@ import Button from "@/components/reusables/button";
 
 export default function Book_session() {
   return (
-    <div className="bg-img mx-4 flex flex-col justify-center items-center h-80 my-8 text-white text-center gap-2">
+    <div className="bg-img mx-4 flex flex-col justify-center items-center rounded-2xl h-[394px] my-8 text-white text-center gap-2">
       <h1 className="text-3xl font-bold bricolage_text">
         Get a consultation or a personal mentoring
       </h1>

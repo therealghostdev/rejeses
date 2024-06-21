@@ -22,12 +22,12 @@ export default function Page() {
   const filteredPricing = priceData.find((item) => item.tag === currentTag);
 
   return (
-    <section className="w-full px-6 flex flex-col gap-6 py-12">
-      <div className="flex flex-col w-full gap-4 lg:px-6 md:px-3">
+    <section className="w-full px-8 flex flex-col gap-6 py-12">
+      <div className="flex flex-col md:max-w-[90%] w-full gap-4 lg:px-12 md:px-6">
         <h1 className="md:text-4xl text-2xl font-bold bricolage_text">
           Personalised Mentorship
         </h1>
-        <p className="text-lg">
+        <p className="text-lg text-wrap">
           Our personalised mentorship program is thoughtfully designed to
           accelerate growth, overcome challenges, and achieve goals for
           individuals at any stage or in any field. It offers rich and
@@ -35,7 +35,7 @@ export default function Page() {
         </p>
       </div>
 
-      <div className="flex gap-x-4 lg:px-6 md:px-3">
+      <div className="flex gap-x-4 lg:px-12 md:px-6">
         <Link
           href={`/mentorship/pricing`}
           className="bg-[#89C13E] text-white px-6 py-4 rounded-md bricolage_text"
@@ -44,7 +44,7 @@ export default function Page() {
         </Link>
       </div>
 
-      <div className="lg:px-6 md:px-3 h-[50vw] lg:w-[90vw] my-4">
+      <div className="lg:px-12 md:px-3 lg:h-[800px] h-[50vw] lg:w-[90vw] my-4">
         <Image
           src={`/mentorship_hero.svg`}
           alt="image"

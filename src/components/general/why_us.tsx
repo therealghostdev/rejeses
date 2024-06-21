@@ -52,7 +52,7 @@ export default function Why_us(props: UniqueComponentsProps) {
   };
 
   return (
-    <section className="w-full flex flex-col lg:px-12 py-4">
+    <section className="w-full flex flex-col lg:px-12 md:px-6 py-4">
       <h1 className="md:text-4xl text-2xl my-8 font-bold bricolage_text">
         {getHeadingText()}
       </h1>
@@ -61,7 +61,7 @@ export default function Why_us(props: UniqueComponentsProps) {
         {filteredData.map((item, index) => (
           <div
             key={index}
-            className="lg:w-[30%] md:w-[45%] w-full border border-[#DBE1E7] mx-1 my-2 rounded-2xl"
+            className="lg:w-[30%] md:w-[45%] w-full border border-[#DBE1E7] md:mx-4 md:my-4 mx-2 my-2 rounded-2xl"
           >
             <GeneralCard
               pin={item.pin}

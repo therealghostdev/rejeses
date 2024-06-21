@@ -37,13 +37,13 @@ export default function Benefits(props: UniqueComponentsProps) {
 
   return (
     <section className="w-full flex flex-col lg:px-12 py-4">
-      <h1 className="md:text-4xl text-2xl my-8 font-bold bricolage_text">Benefits</h1>
+      <h1 className="md:text-4xl text-2xl my-8 font-bold bricolage_text lg:px-0 md:px-6">Benefits</h1>
 
       <div className="w-full flex flex-wrap py-2">
         {filteredData.map((item, index) => (
           <div
             key={index}
-            className="lg:w-[30%] md:w-[45%] w-full border border-[#DBE1E7] mx-1 my-2 rounded-2xl shadow-sm shadow-[#0000001A]"
+            className="lg:w-[30%] md:w-[45%] w-full border border-[#DBE1E7] md:mx-4 md:my-2 mx-2 my-2 rounded-2xl shadow-sm shadow-[#0000001A]"
           >
             <GeneralCard
               pin={item.pin}

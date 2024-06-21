@@ -4,7 +4,7 @@ import { GeneralCardProps } from "@/utils/types/types";
 
 export default function GeneralCard(props: GeneralCardProps) {
   return (
-    <div className="rounded-md px-6 py-4 w-full" key={props.id}>
+    <div className="rounded-md px-6 py-4 w-full flex flex-col gap-6" key={props.id}>
       {props.pin && (
         <div className="w-[40px]">
           <Image src={props.pin} alt="pin" width={100} height={100} />

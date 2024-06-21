@@ -55,7 +55,7 @@ export default function Pricing({ item }: PricingProps) {
         </div>
       )}
 
-      <div className="w-full flex flex-col md:flex-row justify-center items-center">
+      <div className="w-full flex flex-col md:flex-row justify-center items-center md:px-8 md:py-6 px-4 py-2">
         {pricingData?.map((data, index) => (
           <PriceCard key={index} data={data} />
         ))}

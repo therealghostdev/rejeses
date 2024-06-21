@@ -24,18 +24,18 @@ export default function Page({ params }: { params: { slug1: string } }) {
   console.log(pricingItem.pricing);
 
   return (
-    <section className="w-full px-6 flex flex-col gap-12 py-12">
+    <section className="w-full px-8 flex flex-col gap-12 py-12">
       <Dynamic_nav
         link1={`/training/Project Management for Beginners/${pricingItem.id}`}
         link2=""
         link_text1="Upcoming Cohorts"
         link_text2="Project Management for Beginners"
       />
-      <section className="w-full border-2 border-[#DBE1E7] p-8 rounded-lg flex flex-col gap-4">
+      <section className="w-full border-2 border-[#DBE1E7] md:max-w-[90%] gap-4 lg:px-12 py-8 px-6 rounded-lg flex flex-col m-auto">
         <div className="flex flex-col gap-4 border-b-2 border-b-[#DBE1E7] py-6">
           <h1 className="lg:text-3xl text-2xl font-bold bricolage_text">Order Summary</h1>
           <p>{pricingItem.payment.order_summary}</p>
-          <div className="w-full">
+          <div className="w-full flex flex-col gap-4">
             <p className="text-[#89C13E]">Includes</p>
             <p className="flex gap-x-3 items-center">
               <span>
@@ -58,7 +58,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
           </div>
         </div>
 
-        <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center w-full sm_btn-container">
+        <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center items-center py-4 w-full sm_btn-container">
           <Link
             href={``}
             className="bg-[#89C13E] text-white bricolage_text md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
@@ -68,7 +68,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
 
           <Link
             href={`/training/Project Management for Beginners/${pricingItem.id}/class_schedule`}
-            className="bg-[#DBE1E7] text-[#89C13E] bricolage_text md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
+            className="bg-[#FFFFFF] border border-[#DBE1E7] text-[#89C13E] bricolage_text md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
           >
             <span>
               <ArchiveIcon />
@@ -78,7 +78,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
         </div>
       </section>
 
-      <section className="w-full flex flex-col gap-4">
+      <section className="w-full flex flex-col gap-4 lg:px-12 md:px-6">
         <h1 className="lg:text-3xl text-2xl font-bold bricolage_text">Curriculum</h1>
         {pricingItem.payment.curriculum.map((item, index) => (
           <div
@@ -91,7 +91,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
           </div>
         ))}
 
-        <div className="flex md:gap-x-4 gap-x-2 md:px-6 w-full sm_btn-container">
+        <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
           <Link
             href={``}
             className="bg-[#89C13E] text-white bricolage_text md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
@@ -101,7 +101,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
 
           <Link
             href={`/training/Project Management for Beginners/${pricingItem.id}/class_schedule`}
-            className="bg-[#DBE1E7] text-[#89C13E] bricolage_text md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
+            className="bg-[#FFFFFF] border border-[#89C13E] text-[#89C13E] bricolage_text md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
           >
             <span>
               <ArchiveIcon />

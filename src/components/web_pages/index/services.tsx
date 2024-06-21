@@ -4,13 +4,13 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 export default function Services() {
   return (
-    <section className="w-full px-8 py-4 flex flex-col gap-12 bg-[#FEF9F6]">
+    <section className="w-full lg:px-12 px-8 py-4 flex flex-col gap-12 bg-[#FEF9F6]">
       <h1 className="lg:text-[48px] md:text-3xl text-2xl font-bold text-center my-8 bricolage_text">
         Our Services
       </h1>
 
       <div className="flex md:flex-row flex-col w-full gap-8">
-        <div className="md:w-2/4 w-full">
+        <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full">
           <Image
             src="/man-board.svg"
             alt="man"
@@ -58,7 +58,7 @@ export default function Services() {
           </span>
         </div>
 
-        <div className="md:w-2/4 w-full">
+        <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full">
           <Image
             src="/discussion.svg"
             alt="man"
@@ -70,7 +70,7 @@ export default function Services() {
       </div>
 
       <div className="flex md:flex-row flex-col w-full gap-8">
-        <div className="md:w-2/4 w-full">
+        <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full">
           <Image
             src="/meeting.svg"
             alt="man"
