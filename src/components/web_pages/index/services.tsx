@@ -63,7 +63,7 @@ export default function Services() {
         </div>
       </div>
 
-      <div className="flex md:flex-row flex-col w-full gap-8">
+      <div className="flex md:flex-row flex-col-reverse w-full gap-8">
         <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
           <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">
             Personalized Mentorship
