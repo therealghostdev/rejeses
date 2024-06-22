@@ -52,6 +52,8 @@ export default function Page() {
           width={100}
           height={100}
           className="w-full h-full"
+          placeholder="blur"
+          blurDataURL="/consultation_hero.svg"
         />
       </div>
 

@@ -86,6 +86,8 @@ export default function Image_slider() {
             alt={`slider-${currentIndex + 1}`}
             width={100}
             height={100}
+            placeholder="blur"
+            blurDataURL={data[currentIndex].image}
             className="w-full"
           />
         </motion.div>
@@ -104,6 +106,8 @@ export default function Image_slider() {
             alt={`slider-${(currentIndex + 2) % data.length}`}
             width={100}
             height={50}
+            placeholder="blur"
+            blurDataURL={data[(currentIndex + 1) % data.length].image}
             className="w-full lg:h-[280px] h-[220px]"
             id="img2"
           />
@@ -122,6 +126,8 @@ export default function Image_slider() {
             width={100}
             height={50}
             className="w-full lg:h-[280px] h-[220px]"
+            placeholder="blur"
+            blurDataURL={data[(currentIndex + 2) % data.length].image}
             id="img3"
           />
         </motion.div>
@@ -138,6 +144,8 @@ export default function Image_slider() {
             alt={`slider-${(currentIndex + 4) % data.length}`}
             width={100}
             height={100}
+            placeholder="blur"
+            blurDataURL={data[(currentIndex + 3) % data.length].image}
             className="w-full"
           />
         </motion.div>

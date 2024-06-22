@@ -1,8 +1,18 @@
 import Button from "@/components/reusables/button";
 import Image from "next/image";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
+import SkeletalLoader from "@/components/reusables/animation/skeletol_loader";
+import { useState } from "react";
 
 export default function Services() {
+  const [imageLoading1, setImageLoading1] = useState<boolean>(true);
+  const [imageLoading2, setImageLoading2] = useState<boolean>(true);
+  const [imageLoading3, setImageLoading3] = useState<boolean>(true);
+
+  const handleImageLoad = (setLoading: (loading: boolean) => void) => {
+    setLoading(false);
+  };
+
   return (
     <section className="w-full lg:px-12 px-8 py-4 flex flex-col gap-12 bg-[#FEF9F6]">
       <h1 className="lg:text-[48px] md:text-3xl text-2xl font-bold text-center my-8 bricolage_text">
@@ -10,18 +20,32 @@ export default function Services() {
       </h1>
 
       <div className="flex md:flex-row flex-col w-full gap-8">
-        <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full">
+        <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
+          {imageLoading1 && (
+            <SkeletalLoader
+              blockWidth="w-[80%]"
+              cardColor="bg-[#FEF9F6]"
+              cardContentColor="bg-[#FEF9F6]"
+              cardImageColor="bg-[#F5F0FA]"
+            />
+          )}
           <Image
             src="/man-board.svg"
             alt="man"
-            width={100}
-            height={100}
-            className="w-full h-full"
+            width={640}
+            height={460}
+            className={`w-full h-full transition-opacity duration-500 ${
+              imageLoading1 ? "opacity-0" : "opacity-100"
+            }`}
+            onLoad={() => handleImageLoad(setImageLoading1)}
+            priority
           />
         </div>
 
         <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
-          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">Trainings</h1>
+          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">
+            Trainings
+          </h1>
           <p>
             Our consultation services offer guidance to overcome project
             challenges, optimize processes, and achieve your specific goals.
@@ -41,7 +65,9 @@ export default function Services() {
 
       <div className="flex md:flex-row flex-col w-full gap-8">
         <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
-          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">Personalized Mentorship</h1>
+          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">
+            Personalized Mentorship
+          </h1>
           <p>
             Our mentoring programs foster one-on-one relationships to guide and
             support your professional development. Experience personalized
@@ -58,30 +84,56 @@ export default function Services() {
           </span>
         </div>
 
-        <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full">
+        <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
+          {imageLoading2 && (
+            <SkeletalLoader
+              blockWidth="w-[80%]"
+              cardColor="bg-[#FEF9F6]"
+              cardContentColor="bg-[#FEF9F6]"
+              cardImageColor="bg-[#F5F0FA]"
+            />
+          )}
           <Image
             src="/discussion.svg"
-            alt="man"
-            width={100}
-            height={100}
-            className="w-full h-full"
+            alt="discussion"
+            width={640}
+            height={460}
+            className={`w-full h-full transition-opacity duration-500 ${
+              imageLoading2 ? "opacity-0" : "opacity-100"
+            }`}
+            onLoad={() => handleImageLoad(setImageLoading2)}
+            priority
           />
         </div>
       </div>
 
       <div className="flex md:flex-row flex-col w-full gap-8">
-        <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full">
+        <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
+          {imageLoading3 && (
+            <SkeletalLoader
+              blockWidth="w-[80%]"
+              cardColor="bg-[#FEF9F6]"
+              cardContentColor="bg-[#FEF9F6]"
+              cardImageColor="bg-[#F5F0FA]"
+            />
+          )}
           <Image
             src="/meeting.svg"
-            alt="man"
-            width={100}
-            height={100}
-            className="w-full h-full"
+            alt="meeting"
+            width={640}
+            height={460}
+            className={`w-full h-full transition-opacity duration-500 ${
+              imageLoading3 ? "opacity-0" : "opacity-100"
+            }`}
+            onLoad={() => handleImageLoad(setImageLoading3)}
+            priority
           />
         </div>
 
         <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
-          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">Consultation</h1>
+          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">
+            Consultation
+          </h1>
           <p>
             Our consultation services offer guidance to overcome project
             challenges, optimize processes, and achieve your specific goals.

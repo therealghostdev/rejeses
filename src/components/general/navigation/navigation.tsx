@@ -90,7 +90,7 @@ export default function Nav_desktop() {
 
       {!isMobile && (
         <>
-          <section className="flex lg:ml-12">
+          <section className="flex lg:ml-12 items-center">
             <ul className="flex space-x-4">
               {links.map((link, index) => (
                 <li key={index} className="list-none">
