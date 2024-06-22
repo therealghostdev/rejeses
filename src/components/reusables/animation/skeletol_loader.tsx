@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Skeleton_loader.css'; // Ensure this CSS file is created
+import './skeleton_loader.css';
 
 export default function SkeletalLoader({
   blockWidth = 'w-64',
