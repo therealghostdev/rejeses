@@ -10,6 +10,7 @@ import whyUsData from "@/utils/data/why_us_data.json";
 import benefit_data from "@/utils/data/benefits_data.json";
 import priceData from "@/utils/data/price_data.json";
 import { useState } from "react";
+import SkeletalLoader from "@/components/reusables/animation/skeletol_loader";
 
 export default function Page() {
   const pathname = usePathname();
@@ -56,6 +57,14 @@ export default function Page() {
             imageLoading ? "blur-2xl" : "blur-none"
           } transition duration-1000 ease-in-out`}
         >
+           {imageLoading && (
+            <SkeletalLoader
+              blockWidth="w-[80%]"
+              cardColor="bg-[#FEF9F6]"
+              cardContentColor="bg-[#FEF9F6]"
+              cardImageColor="bg-[#F5F0FA]"
+            />
+          )}
           <Image
             src={`/consultation_hero.svg`}
             alt="image"
