@@ -1,9 +1,9 @@
 import data from "@/utils/data/training_data.json";
 import Link from "next/link";
 import { ArchiveIcon } from "@radix-ui/react-icons";
-import Image from "next/image";
 import Why_us from "@/components/general/why_us";
 import whyUsData from "@/utils/data/why_us_data.json";
+import ClientImage from "@/components/web_pages/training/client_image";
 
 export async function generateStaticParams() {
   return data.map((item) => ({
@@ -61,15 +61,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
       {trainingItem.image && trainingItem.image !== "" && (
         <div className="lg:px-12 md:px-3 lg:h-[800px] h-[50vw] lg:w-[90vw] my-4">
-          <Image
-            src={trainingItem.image}
-            alt="image"
-            width={100}
-            height={100}
-            className="w-full h-full"
-            placeholder="blur"
-            blurDataURL={trainingItem.image}
-          />
+         <ClientImage trainingItem={trainingItem} />
         </div>
       )}
 

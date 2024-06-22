@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import whyUsData from "@/utils/data/why_us_data.json";
 import benefit_data from "@/utils/data/benefits_data.json";
 import priceData from "@/utils/data/price_data.json";
+import { useState } from "react";
 
 export default function Page() {
   const pathname = usePathname();
@@ -24,10 +25,14 @@ export default function Page() {
   console.log(filteredWhyData);
   console.log(filteredBenefits);
 
+  const [imageLoading, setImageLoading] = useState<boolean>(true);
+
   return (
     <section className="w-full px-8 flex flex-col gap-6 py-12">
       <div className="flex flex-col md:max-w-[90%] w-full gap-4 lg:px-12 md:px-6">
-        <h1 className="md:text-4xl text-2xl font-bold bricolage_text">Consultation</h1>
+        <h1 className="md:text-4xl text-2xl font-bold bricolage_text">
+          Consultation
+        </h1>
         <p className="text-lg">
           Our customised consultation services are thoughtfully designed to
           propel the growth, address challenges, and achieve goals for companies
@@ -46,15 +51,25 @@ export default function Page() {
       </div>
 
       <div className="lg:px-12 md:px-3 lg:h-[800px] h-[50vw] lg:w-[90vw] my-4">
-        <Image
-          src={`/consultation_hero.svg`}
-          alt="image"
-          width={100}
-          height={100}
-          className="w-full h-full"
-          placeholder="blur"
-          blurDataURL="/consultation_hero.svg"
-        />
+        <div
+          className={`filter w-full h-full ${
+            imageLoading ? "blur-2xl" : "blur-none"
+          } transition duration-1000 ease-in-out`}
+        >
+          <Image
+            src={`/consultation_hero.svg`}
+            alt="image"
+            layout="fill"
+            objectFit="cover"
+            className={`w-full h-full ${
+              imageLoading ? "blur-2xl" : "blur-none"
+            }`}
+            placeholder="blur"
+            blurDataURL="/consultation_hero.svg"
+            onLoad={() => setImageLoading(false)}
+            priority
+          />
+        </div>
       </div>
 
       <Benefits data={filteredBenefits} />

@@ -108,6 +108,12 @@ export interface ScheduleData {
   times: string[];
 }
 
+export interface ClientImageProps {
+  trainingItem: {
+    image: string;
+  };
+}
+
 // !------------------------------> for class schedule <-------------------------------------------------!
 export interface Curriculum {
   week: string;

@@ -89,6 +89,7 @@ export default function Image_slider() {
             placeholder="blur"
             blurDataURL={data[currentIndex].image}
             className="w-full"
+            priority
           />
         </motion.div>
         <motion.div
@@ -110,6 +111,7 @@ export default function Image_slider() {
             blurDataURL={data[(currentIndex + 1) % data.length].image}
             className="w-full lg:h-[280px] h-[220px]"
             id="img2"
+            priority
           />
         </motion.div>
         <motion.div
@@ -129,6 +131,7 @@ export default function Image_slider() {
             placeholder="blur"
             blurDataURL={data[(currentIndex + 2) % data.length].image}
             id="img3"
+            priority
           />
         </motion.div>
         <motion.div
@@ -147,6 +150,7 @@ export default function Image_slider() {
             placeholder="blur"
             blurDataURL={data[(currentIndex + 3) % data.length].image}
             className="w-full"
+            priority
           />
         </motion.div>
       </AnimatePresence>

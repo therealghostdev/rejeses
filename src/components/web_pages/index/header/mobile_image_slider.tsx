@@ -88,6 +88,9 @@ const Mobile_Image_slider = () => {
             width={100}
             height={100}
             className="w-full"
+            placeholder="blur"
+            blurDataURL={data[currentIndex].image}
+            priority
           />
         </motion.div>
         <motion.div
@@ -106,6 +109,9 @@ const Mobile_Image_slider = () => {
             width={100}
             height={100}
             className="w-full"
+            placeholder="blur"
+            blurDataURL={data[(currentIndex + 1) % data.length].image}
+            priority
           />
         </motion.div>
       </AnimatePresence>
