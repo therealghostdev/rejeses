@@ -4,6 +4,7 @@ import { ArchiveIcon } from "@radix-ui/react-icons";
 import Why_us from "@/components/general/why_us";
 import whyUsData from "@/utils/data/why_us_data.json";
 import ClientImage from "@/components/web_pages/training/client_image";
+import Pricing from "@/components/reusables/pricing/pricing";
 
 export async function generateStaticParams() {
   return data.map((item) => ({
@@ -25,7 +26,9 @@ export default function Page({ params }: { params: { slug: string } }) {
   return (
     <section className="w-full px-8 flex flex-col gap-6 py-12">
       <div className="flex flex-col md:max-w-[90%] w-full gap-4 lg:px-12 md:px-6">
-        <h1 className="md:text-4xl text-2xl font-bold bricolage_text">{trainingItem.title}</h1>
+        <h1 className="md:text-4xl text-2xl font-bold bricolage_text">
+          {trainingItem.title}
+        </h1>
         <p className="text-lg">{trainingItem.expanded_description}</p>
       </div>
       <div className="lg:px-12 md:px-6">
@@ -61,7 +64,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
       {trainingItem.image && trainingItem.image !== "" && (
         <div className="lg:px-12 md:px-3 lg:h-[800px] h-[50vw] lg:w-[90vw] my-4">
-         <ClientImage trainingItem={trainingItem} />
+          <ClientImage trainingItem={trainingItem} />
         </div>
       )}
 
@@ -90,7 +93,9 @@ export default function Page({ params }: { params: { slug: string } }) {
       <Why_us data={whyUsItems} />
 
       <section className="w-full flex flex-col gap-4 lg:px-12 md:px-6">
-        <h1 className="lg:text-4xl text-2xl font-bold bricolage_text">Curriculum</h1>
+        <h1 className="lg:text-4xl text-2xl font-bold bricolage_text">
+          Curriculum
+        </h1>
         {trainingItem.payment.curriculum.map((item, index) => (
           <div
             key={index}
@@ -126,6 +131,9 @@ export default function Page({ params }: { params: { slug: string } }) {
             </Link>
           </div>
         </div>
+      </section>
+      <section className="my-12">
+        <Pricing item={trainingItem.pricing} />
       </section>
     </section>
   );

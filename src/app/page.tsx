@@ -10,7 +10,7 @@ export default function Home() {
   const pathname = usePathname();
   const filteredWhyData =
     pathname === "/"
-      ? whyUsData
+      ? whyUsData.filter((item) => item.tag === "training")
       : whyUsData.filter((item) => item.tag === pathname.slice(1));
 
   return (
@@ -19,7 +19,7 @@ export default function Home() {
       <Services />
       <UpcomingCohorts />
       <section className="lg:px-6 px-6">
-      <Why_us data={filteredWhyData} />
+        <Why_us data={filteredWhyData} />
       </section>
     </main>
   );

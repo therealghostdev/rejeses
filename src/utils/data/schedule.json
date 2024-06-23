@@ -1,5 +1,5 @@
 {
-  "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+  "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
   "times": [
     "10:00",
     "11:00",

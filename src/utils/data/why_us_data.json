@@ -2,57 +2,127 @@
   {
     "id": 1,
     "pin": "/pin.svg",
-    "title": "What is training?",
-    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "title": "Customised Guidance",
+    "comment": "You will receive tailored advice and support based on your specific goals, challenges, and learning style. The guidance you receive at rejeses are tailored to your needs, strengths, weaknesses, and goals.",
     "tag": "training"
   },
   {
     "id": 2,
     "pin": "/pin.svg",
-    "title": "What is training?",
-    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tag": "consultation"
+    "title": "Accelerated Learning",
+    "comment": "You will gain access to the knowledge and experience of a mentor who has achieved success in your field of interest. Our mentors have already traveled the path you're embarking on.",
+    "tag": "training"
   },
   {
     "id": 3,
     "pin": "/pin.svg",
-    "title": "What is training?",
-    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tag": "mentorship"
+    "title": "Networking Opportunities",
+    "comment": "Build connections within your industry or field through our mentorU+2019;s network, opening up potential opportunities for collaboration or career advancement.",
+    "tag": "training"
   },
   {
     "id": 4,
     "pin": "/pin.svg",
-    "title": "What is training?",
-    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "title": "Accountability",
+    "comment": "Stay accountable to your goals with regular check-ins and guidance from your mentor. One of the key benefits of having a mentor is the accountability factor.",
     "tag": "training"
   },
   {
     "id": 5,
     "pin": "/pin.svg",
-    "title": "What is training?",
-    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tag": "consultation"
-  },
-  {
-    "id": 5,
-    "pin": "/pin.svg",
-    "title": "What is training?",
-    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tag": "mentorship"
+    "title": "Personal Development",
+    "comment": "With rejeses, you will develop new skills, perspectives, and confidence through our mentorship program, accelerating both your personal and professional growth.",
+    "tag": "training"
   },
   {
     "id": 6,
     "pin": "/pin.svg",
-    "title": "What is training?",
-    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tag": "consultation"
+    "title": "Career Advancement",
+    "comment": "With rejeses, you will receive guidance from our mentors on career growth, strategies, advancement opportunities, and how to navigate challenges in your chosen industry.",
+    "tag": "training"
   },
   {
     "id": 7,
     "pin": "/pin.svg",
-    "title": "What is training?",
-    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "title": "Students",
+    "comment": "Whether in high school, college, or graduate school, students can benefit from ourmentorship program to navigate academic challenges, career decisions, internships, and skill development.",
     "tag": "mentorship"
+  },
+  {
+    "id": 8,
+    "pin": "/pin.svg",
+    "title": "Early-Career Professionals",
+    "comment": "Those who are just starting their careers can gain valuable guidance from our mentors to establish themselves in their chosen field, build networks, and develop essential skills for success.",
+    "tag": "mentorship"
+  },
+  {
+    "id": 9,
+    "pin": "/pin.svg",
+    "title": "Mid-Career Professionals",
+    "comment": "Individuals in the middle stages of their careers can use our mentorship to advance to higher levels, transition to new roles or industries, or develop leadership skills to take on more responsibilities.",
+    "tag": "mentorship"
+  },
+  {
+    "id": 10,
+    "pin": "/pin.svg",
+    "title": "Entrepreneurs",
+    "comment": "Aspiring entrepreneurs can thrive with our mentorship, guiding them in business planning, fundraising, marketing, and overcoming startup challenges.",
+    "tag": "mentorship"
+  },
+  {
+    "id": 11,
+    "pin": "/pin.svg",
+    "title": "Career Changers",
+    "comment": "Individuals looking to transition to a new career path can leverage mentorship to gain insights into their desired industry, develop new skills, and create a strategic plan for making a successful transition.",
+    "tag": "mentorship"
+  },
+  {
+    "id": 12,
+    "pin": "/pin.svg",
+    "title": "Executives and Leaders",
+    "comment": "Even seasoned professionals and executives can benefit from mentorship to refine their leadership skills, gain new perspectives, and stay relevant in a rapidly changing business environment.",
+    "tag": "mentorship"
+  },
+  {
+    "id": 13,
+    "pin": "/pin.svg",
+    "title": "Large Corporations",
+    "comment": "Our consultancy service caters to large companies handling intricate projects, assisting in streamlining project delivery, effective risk management, and achieving successful outcomes.",
+    "tag": "consultation"
+  },
+  {
+    "id": 14,
+    "pin": "/pin.svg",
+    "title": "Small and Medium-sized Enterprises",
+    "comment": "SMEs often lack the resources or expertise for internal project management. Our services give them access to experienced managers and tailored solutions for efficient project handling.",
+    "tag": "consultation"
+  },
+  {
+    "id": 15,
+    "pin": "/pin.svg",
+    "title": "Startups",
+    "comment": "We help startups establish effective project management practices from the beginning, enabling efficient scaling and timely project delivery despite limited resources and tight timelines.",
+    "tag": "consultation"
+  },
+  {
+    "id": 16,
+    "pin": "/pin.svg",
+    "title": "Government Organizations",
+    "comment": "We aid government entities in navigating regulations, meeting standards, and achieving project objectives, spanning infrastructure development to policy implementation.",
+    "tag": "consultation"
+  },
+  {
+    "id": 17,
+    "pin": "/pin.svg",
+    "title": "Nonprofit Organizations",
+    "comment": "We assist nonprofits in managing donor-funded projects, optimizing resource allocation, and maximizing the impact of their initiatives, crucial for achieving their mission within limited budgets.",
+    "tag": "consultation"
+  },
+  {
+    "id": 18,
+    "pin": "/pin.svg",
+    "title": "Construction and Engineering Firms",
+    "comment": "We help construction and engineering firms with meticulous project planning and execution, including scheduling, budgeting, risk management, and stakeholder coordination.",
+    "tag": "consultation"
   }
 ]

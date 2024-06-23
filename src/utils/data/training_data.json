@@ -23,57 +23,57 @@
     "payment": {
       "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
       "includes": ["/trophy.svg", "Certificate on completion"],
-      "total": 200,
+      "total": 100,
       "curriculum": [
         {
           "week": "week 1",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 2",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 3",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 4",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 5",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 6",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 7",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 8",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 9",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 10",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         }
       ]
     },
@@ -82,8 +82,8 @@
         {
           "training_only": {
             "name": "Training only",
-            "price": 150,
-            "payment_type": "Single_payment",
+            "price": 100,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -97,8 +97,8 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 1000,
-            "payment_type": "Single_payment",
+            "price": 500,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -119,9 +119,9 @@
         {
           "training_only": {
             "name": "Training only",
-            "price": 100,
-            "amount_saved": 50,
-            "payment_type": "Single_payment",
+            "price": 80,
+            "amount_saved": 20,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -135,9 +135,9 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 800,
-            "amount_saved": 200,
-            "payment_type": "Single_payment",
+            "price": 400,
+            "amount_saved": 100,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -156,16 +156,31 @@
       ]
     },
     "class_schedule": [
-      { "day": "Monday", "time": "14:00" },
-      { "day": "Monday", "time": "15:00" },
-      { "day": "Tuesday", "time": "10:00" },
-      { "day": "Tuesday", "time": "11:00" },
-      { "day": "Wednesday", "time": "12:00" },
-      { "day": "Wednesday", "time": "13:00" },
-      { "day": "Thursday", "time": "16:00" },
+      { "day": "Monday", "time": "17:00" },
+      { "day": "Monday", "time": "18:00" },
+      { "day": "Monday", "time": "19:00" },
+      { "day": "Tuesday", "time": "17:00" },
+      { "day": "Tuesday", "time": "18:00" },
+      { "day": "Tuesday", "time": "19:00" },
+      { "day": "Wednesday", "time": "17:00" },
+      { "day": "Wednesday", "time": "18:00" },
+      { "day": "Wednesday", "time": "19:00" },
+      { "day": "Thursday", "time": "17:00" },
+      { "day": "Thursday", "time": "18:00" },
       { "day": "Thursday", "time": "19:00" },
-      { "day": "Friday", "time": "16:00" },
-      { "day": "Friday", "time": "17:00" }
+      { "day": "Friday", "time": "18:00" },
+      { "day": "Friday", "time": "19:00" },
+      { "day": "Saturday", "time": "14:00" },
+      { "day": "Saturday", "time": "15:00" },
+      { "day": "Saturday", "time": "16:00" },
+      { "day": "Saturday", "time": "17:00" },
+      { "day": "Saturday", "time": "18:00" },
+      { "day": "Saturday", "time": "19:00" },
+      { "day": "Sunday", "time": "14:00" },
+      { "day": "Sunday", "time": "15:00" },
+      { "day": "Sunday", "time": "16:00" },
+      { "day": "Sunday", "time": "17:00" },
+      { "day": "Sunday", "time": "18:00" }
     ]
   },
   {
@@ -192,57 +207,57 @@
     "payment": {
       "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
       "includes": ["/trophy.svg", "Certificate on completion"],
-      "total": 200,
+      "total": 100,
       "curriculum": [
         {
           "week": "week 1",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 2",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 3",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 4",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 5",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 6",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 7",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 8",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 9",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 10",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         }
       ]
     },
@@ -251,8 +266,8 @@
         {
           "training_only": {
             "name": "Training only",
-            "price": 150,
-            "payment_type": "Single_payment",
+            "price": 100,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -266,8 +281,8 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 1000,
-            "payment_type": "Single_payment",
+            "price": 500,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -288,9 +303,9 @@
         {
           "training_only": {
             "name": "Training only",
-            "price": 100,
-            "amount_saved": 50,
-            "payment_type": "Single_payment",
+            "price": 80,
+            "amount_saved": 20,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -304,9 +319,9 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 800,
-            "amount_saved": 200,
-            "payment_type": "Single_payment",
+            "price": 400,
+            "amount_saved": 100,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -325,16 +340,31 @@
       ]
     },
     "class_schedule": [
-      { "day": "Monday", "time": "14:00" },
-      { "day": "Monday", "time": "15:00" },
-      { "day": "Tuesday", "time": "10:00" },
-      { "day": "Tuesday", "time": "11:00" },
-      { "day": "Wednesday", "time": "12:00" },
-      { "day": "Wednesday", "time": "13:00" },
-      { "day": "Thursday", "time": "16:00" },
+      { "day": "Monday", "time": "17:00" },
+      { "day": "Monday", "time": "18:00" },
+      { "day": "Monday", "time": "19:00" },
+      { "day": "Tuesday", "time": "17:00" },
+      { "day": "Tuesday", "time": "18:00" },
+      { "day": "Tuesday", "time": "19:00" },
+      { "day": "Wednesday", "time": "17:00" },
+      { "day": "Wednesday", "time": "18:00" },
+      { "day": "Wednesday", "time": "19:00" },
+      { "day": "Thursday", "time": "17:00" },
+      { "day": "Thursday", "time": "18:00" },
       { "day": "Thursday", "time": "19:00" },
-      { "day": "Friday", "time": "16:00" },
-      { "day": "Friday", "time": "17:00" }
+      { "day": "Friday", "time": "18:00" },
+      { "day": "Friday", "time": "19:00" },
+      { "day": "Saturday", "time": "14:00" },
+      { "day": "Saturday", "time": "15:00" },
+      { "day": "Saturday", "time": "16:00" },
+      { "day": "Saturday", "time": "17:00" },
+      { "day": "Saturday", "time": "18:00" },
+      { "day": "Saturday", "time": "19:00" },
+      { "day": "Sunday", "time": "14:00" },
+      { "day": "Sunday", "time": "15:00" },
+      { "day": "Sunday", "time": "16:00" },
+      { "day": "Sunday", "time": "17:00" },
+      { "day": "Sunday", "time": "18:00" }
     ]
   },
   {
@@ -361,57 +391,57 @@
     "payment": {
       "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
       "includes": ["/trophy.svg", "Certificate on completion"],
-      "total": 200,
+      "total": 100,
       "curriculum": [
         {
           "week": "week 1",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 2",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 3",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 4",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 5",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 6",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 7",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 8",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 9",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 10",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         }
       ]
     },
@@ -420,8 +450,8 @@
         {
           "training_only": {
             "name": "Training only",
-            "price": 150,
-            "payment_type": "Single_payment",
+            "price": 100,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -435,8 +465,8 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 1000,
-            "payment_type": "Single_payment",
+            "price": 500,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -457,9 +487,9 @@
         {
           "training_only": {
             "name": "Training only",
-            "price": 100,
-            "amount_saved": 50,
-            "payment_type": "Single_payment",
+            "price": 80,
+            "amount_saved": 20,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -473,9 +503,9 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 800,
-            "amount_saved": 200,
-            "payment_type": "Single_payment",
+            "price": 400,
+            "amount_saved": 100,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -494,16 +524,31 @@
       ]
     },
     "class_schedule": [
-      { "day": "Monday", "time": "14:00" },
-      { "day": "Monday", "time": "15:00" },
-      { "day": "Tuesday", "time": "10:00" },
-      { "day": "Tuesday", "time": "11:00" },
-      { "day": "Wednesday", "time": "12:00" },
-      { "day": "Wednesday", "time": "13:00" },
-      { "day": "Thursday", "time": "16:00" },
+      { "day": "Monday", "time": "17:00" },
+      { "day": "Monday", "time": "18:00" },
+      { "day": "Monday", "time": "19:00" },
+      { "day": "Tuesday", "time": "17:00" },
+      { "day": "Tuesday", "time": "18:00" },
+      { "day": "Tuesday", "time": "19:00" },
+      { "day": "Wednesday", "time": "17:00" },
+      { "day": "Wednesday", "time": "18:00" },
+      { "day": "Wednesday", "time": "19:00" },
+      { "day": "Thursday", "time": "17:00" },
+      { "day": "Thursday", "time": "18:00" },
       { "day": "Thursday", "time": "19:00" },
-      { "day": "Friday", "time": "16:00" },
-      { "day": "Friday", "time": "17:00" }
+      { "day": "Friday", "time": "18:00" },
+      { "day": "Friday", "time": "19:00" },
+      { "day": "Saturday", "time": "14:00" },
+      { "day": "Saturday", "time": "15:00" },
+      { "day": "Saturday", "time": "16:00" },
+      { "day": "Saturday", "time": "17:00" },
+      { "day": "Saturday", "time": "18:00" },
+      { "day": "Saturday", "time": "19:00" },
+      { "day": "Sunday", "time": "14:00" },
+      { "day": "Sunday", "time": "15:00" },
+      { "day": "Sunday", "time": "16:00" },
+      { "day": "Sunday", "time": "17:00" },
+      { "day": "Sunday", "time": "18:00" }
     ]
   },
   {
@@ -530,57 +575,57 @@
     "payment": {
       "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
       "includes": ["/trophy.svg", "Certificate on completion"],
-      "total": 200,
+      "total": 100,
       "curriculum": [
         {
           "week": "week 1",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 2",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 3",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 4",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 5",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 6",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 7",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 8",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 9",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 10",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         }
       ]
     },
@@ -589,8 +634,8 @@
         {
           "training_only": {
             "name": "Training only",
-            "price": 150,
-            "payment_type": "Single_payment",
+            "price": 100,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -604,8 +649,8 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 1000,
-            "payment_type": "Single_payment",
+            "price": 500,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -626,9 +671,9 @@
         {
           "training_only": {
             "name": "Training only",
-            "price": 100,
-            "amount_saved": 50,
-            "payment_type": "Single_payment",
+            "price": 80,
+            "amount_saved": 20,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -642,9 +687,9 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 800,
-            "amount_saved": 200,
-            "payment_type": "Single_payment",
+            "price": 400,
+            "amount_saved": 100,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -663,16 +708,31 @@
       ]
     },
     "class_schedule": [
-      { "day": "Monday", "time": "14:00" },
-      { "day": "Monday", "time": "15:00" },
-      { "day": "Tuesday", "time": "10:00" },
-      { "day": "Tuesday", "time": "11:00" },
-      { "day": "Wednesday", "time": "12:00" },
-      { "day": "Wednesday", "time": "13:00" },
-      { "day": "Thursday", "time": "16:00" },
+      { "day": "Monday", "time": "17:00" },
+      { "day": "Monday", "time": "18:00" },
+      { "day": "Monday", "time": "19:00" },
+      { "day": "Tuesday", "time": "17:00" },
+      { "day": "Tuesday", "time": "18:00" },
+      { "day": "Tuesday", "time": "19:00" },
+      { "day": "Wednesday", "time": "17:00" },
+      { "day": "Wednesday", "time": "18:00" },
+      { "day": "Wednesday", "time": "19:00" },
+      { "day": "Thursday", "time": "17:00" },
+      { "day": "Thursday", "time": "18:00" },
       { "day": "Thursday", "time": "19:00" },
-      { "day": "Friday", "time": "16:00" },
-      { "day": "Friday", "time": "17:00" }
+      { "day": "Friday", "time": "18:00" },
+      { "day": "Friday", "time": "19:00" },
+      { "day": "Saturday", "time": "14:00" },
+      { "day": "Saturday", "time": "15:00" },
+      { "day": "Saturday", "time": "16:00" },
+      { "day": "Saturday", "time": "17:00" },
+      { "day": "Saturday", "time": "18:00" },
+      { "day": "Saturday", "time": "19:00" },
+      { "day": "Sunday", "time": "14:00" },
+      { "day": "Sunday", "time": "15:00" },
+      { "day": "Sunday", "time": "16:00" },
+      { "day": "Sunday", "time": "17:00" },
+      { "day": "Sunday", "time": "18:00" }
     ]
   },
   {
@@ -699,57 +759,57 @@
     "payment": {
       "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
       "includes": ["/trophy.svg", "Certificate on completion"],
-      "total": 200,
+      "total": 100,
       "curriculum": [
         {
           "week": "week 1",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 2",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 3",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 4",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 5",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 6",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 7",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 8",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 9",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 10",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         }
       ]
     },
@@ -758,8 +818,8 @@
         {
           "training_only": {
             "name": "Training only",
-            "price": 150,
-            "payment_type": "Single_payment",
+            "price": 100,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -773,8 +833,8 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 1000,
-            "payment_type": "Single_payment",
+            "price": 500,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -795,9 +855,9 @@
         {
           "training_only": {
             "name": "Training only",
-            "price": 100,
-            "amount_saved": 50,
-            "payment_type": "Single_payment",
+            "price": 80,
+            "amount_saved": 20,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -811,9 +871,9 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 800,
-            "amount_saved": 200,
-            "payment_type": "Single_payment",
+            "price": 400,
+            "amount_saved": 100,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -832,16 +892,31 @@
       ]
     },
     "class_schedule": [
-      { "day": "Monday", "time": "14:00" },
-      { "day": "Monday", "time": "15:00" },
-      { "day": "Tuesday", "time": "10:00" },
-      { "day": "Tuesday", "time": "11:00" },
-      { "day": "Wednesday", "time": "12:00" },
-      { "day": "Wednesday", "time": "13:00" },
-      { "day": "Thursday", "time": "16:00" },
+      { "day": "Monday", "time": "17:00" },
+      { "day": "Monday", "time": "18:00" },
+      { "day": "Monday", "time": "19:00" },
+      { "day": "Tuesday", "time": "17:00" },
+      { "day": "Tuesday", "time": "18:00" },
+      { "day": "Tuesday", "time": "19:00" },
+      { "day": "Wednesday", "time": "17:00" },
+      { "day": "Wednesday", "time": "18:00" },
+      { "day": "Wednesday", "time": "19:00" },
+      { "day": "Thursday", "time": "17:00" },
+      { "day": "Thursday", "time": "18:00" },
       { "day": "Thursday", "time": "19:00" },
-      { "day": "Friday", "time": "16:00" },
-      { "day": "Friday", "time": "17:00" }
+      { "day": "Friday", "time": "18:00" },
+      { "day": "Friday", "time": "19:00" },
+      { "day": "Saturday", "time": "14:00" },
+      { "day": "Saturday", "time": "15:00" },
+      { "day": "Saturday", "time": "16:00" },
+      { "day": "Saturday", "time": "17:00" },
+      { "day": "Saturday", "time": "18:00" },
+      { "day": "Saturday", "time": "19:00" },
+      { "day": "Sunday", "time": "14:00" },
+      { "day": "Sunday", "time": "15:00" },
+      { "day": "Sunday", "time": "16:00" },
+      { "day": "Sunday", "time": "17:00" },
+      { "day": "Sunday", "time": "18:00" }
     ]
   },
   {
@@ -868,57 +943,57 @@
     "payment": {
       "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
       "includes": ["/trophy.svg", "Certificate on completion"],
-      "total": 200,
+      "total": 100,
       "curriculum": [
         {
           "week": "week 1",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 2",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 3",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 4",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 5",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 6",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 7",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 8",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 9",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
           "week": "week 10",
           "topic": "Weekly Topic/Title Goes Here",
-          "duration": "MON - FRI (2PM - 4PM WAT)"
+          "duration": "MON - FRI (17:00 -19:00 UTC)"
         }
       ]
     },
@@ -927,8 +1002,8 @@
         {
           "training_only": {
             "name": "Training only",
-            "price": 150,
-            "payment_type": "Single_payment",
+            "price": 100,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -942,8 +1017,8 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 1000,
-            "payment_type": "Single_payment",
+            "price": 500,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -964,9 +1039,9 @@
         {
           "training_only": {
             "name": "Training only",
-            "price": 100,
-            "amount_saved": 50,
-            "payment_type": "Single_payment",
+            "price": 80,
+            "amount_saved": 20,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -980,9 +1055,9 @@
         {
           "training_with_mentorship": {
             "name": "Training & Mentorship",
-            "price": 800,
-            "amount_saved": 200,
-            "payment_type": "Single_payment",
+            "price": 400,
+            "amount_saved": 100,
+            "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "extra_details": [
               "Full PMP/PMI-ACP training",
@@ -1001,16 +1076,31 @@
       ]
     },
     "class_schedule": [
-      { "day": "Monday", "time": "14:00" },
-      { "day": "Monday", "time": "15:00" },
-      { "day": "Tuesday", "time": "10:00" },
-      { "day": "Tuesday", "time": "11:00" },
-      { "day": "Wednesday", "time": "12:00" },
-      { "day": "Wednesday", "time": "13:00" },
-      { "day": "Thursday", "time": "16:00" },
+      { "day": "Monday", "time": "17:00" },
+      { "day": "Monday", "time": "18:00" },
+      { "day": "Monday", "time": "19:00" },
+      { "day": "Tuesday", "time": "17:00" },
+      { "day": "Tuesday", "time": "18:00" },
+      { "day": "Tuesday", "time": "19:00" },
+      { "day": "Wednesday", "time": "17:00" },
+      { "day": "Wednesday", "time": "18:00" },
+      { "day": "Wednesday", "time": "19:00" },
+      { "day": "Thursday", "time": "17:00" },
+      { "day": "Thursday", "time": "18:00" },
       { "day": "Thursday", "time": "19:00" },
-      { "day": "Friday", "time": "16:00" },
-      { "day": "Friday", "time": "17:00" }
+      { "day": "Friday", "time": "18:00" },
+      { "day": "Friday", "time": "19:00" },
+      { "day": "Saturday", "time": "14:00" },
+      { "day": "Saturday", "time": "15:00" },
+      { "day": "Saturday", "time": "16:00" },
+      { "day": "Saturday", "time": "17:00" },
+      { "day": "Saturday", "time": "18:00" },
+      { "day": "Saturday", "time": "19:00" },
+      { "day": "Sunday", "time": "14:00" },
+      { "day": "Sunday", "time": "15:00" },
+      { "day": "Sunday", "time": "16:00" },
+      { "day": "Sunday", "time": "17:00" },
+      { "day": "Sunday", "time": "18:00" }
     ]
   }
 ]
