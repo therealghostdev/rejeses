@@ -1,25 +1,44 @@
-.slide-container {
-    perspective: 150px;
+.container-item {
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    --v-offset: 60px;
+    --curve-height: 120px;
 }
 
-.slide-container>.container-1 {
-    transform: rotateX(0deg) rotateY(10deg) !important;
-    transform-style: preserve-3d;
+.container-item::before,
+.container-item::after {
+    content: "";
+    display: block;
+    background: #F5F0FA;
+    width: calc(100vw + 2 * var(--v-offset));
+    height: var(--curve-height);
+    position: absolute;
+    border-radius: 50%;
+    left: calc(-1 * var(--v-offset));
+    right: calc(-1 * var(--v-offset));
 }
 
-.slide-container>.container-2 {
-    transform: rotateX(0deg) rotateY(350deg) !important;
-    transform-style: preserve-3d;
+.container-item::before {
+    top: calc(-0.6 * var(--curve-height));
+    z-index: 1;
 }
 
-.slide-container>.container-1.animating-left,
-.slide-container>.container-2.animating-right {
-    transform: none !important;
-    transform-style: none;
+.container-item::after {
+    bottom: calc(-0.6 * var(--curve-height));
 }
 
-.slide-container>.container-1.animating-left>img,
-.slide-container>.container-2.animating-right>img {
-    height: 175px !important;
+.wrapper {
+    display: grid;
+    /* grid-template-rows: 400px; */
+    grid-auto-flow: column;
+    grid-gap: 24px;
+    overflow: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    transform: translateX(0%) translateZ(0) !important;
+}
 
+.item {
+    scroll-snap-align: center;
 }
