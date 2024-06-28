@@ -61,7 +61,7 @@ export default function Header() {
 
       {!isMobile ? <Image_slider /> : <Mobile_Image_slider />}
 
-      <div className="flex w-full flex-col justify-center items-center bg-[#FCFCFC] py-12 px-4 gap-6">
+      <div className="flex w-full flex-col justify-center items-center bg-[#FCFCFC] py-12 px-4 gap-6 md:mt-16 mt-6">
         <p className="text-lg text-center bricolage_text">
           Learn directly from people who worked at companies such as
         </p>
@@ -93,14 +93,14 @@ export default function Header() {
             alt="nnpc-logo"
             width={100}
             height={100}
-            className="w-44 md:my-0 my-2"
+            className="w-44 md:my-0 my-12 -ml-16"
           />
           <Image
             src="visafone-logo.svg"
             alt="visafone-logo"
             width={100}
             height={100}
-            className="w-44 md:my-0 my-2 filter grayscale"
+            className="w-44 md:my-0 my-12 filter grayscale -ml-8"
           />
         </div>
       </div>

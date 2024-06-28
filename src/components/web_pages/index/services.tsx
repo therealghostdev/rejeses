@@ -14,140 +14,144 @@ export default function Services() {
   };
 
   return (
-    <section className="w-full lg:px-12 px-8 py-4 flex flex-col gap-12 bg-[#FEF9F6]">
-      <h1 className="lg:text-[48px] md:text-3xl text-2xl font-bold text-center my-8 bricolage_text">
-        Our Services
-      </h1>
+    <section className="w-full lg:px-3 px-8 py-12 md:pb-32 flex flex-col justify-center items-center gap-12 bg-[#FEF9F6]">
+      <div className="lg:max-w-[90%] max-w-[98%] flex flex-col gap-12 justify-center">
+        <h1 className="lg:text-[48px] md:text-3xl text-2xl font-bold text-center md:my-12 my-8 bricolage_text">
+          Our Services
+        </h1>
 
-      <div className="flex md:flex-row flex-col w-full gap-8">
-        <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
-          {imageLoading1 && (
-            <SkeletalLoader
-              blockWidth="w-[80%]"
-              cardColor="bg-[#FEF9F6]"
-              cardContentColor="bg-[#FEF9F6]"
-              cardImageColor="bg-[#F5F0FA]"
+        <div className="flex md:flex-row flex-col w-full gap-y-8 gap-x-12">
+          <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
+            {imageLoading1 && (
+              <SkeletalLoader
+                blockWidth="w-[80%]"
+                cardColor="bg-[#FEF9F6]"
+                cardContentColor="bg-[#FEF9F6]"
+                cardImageColor="bg-[#F5F0FA]"
+              />
+            )}
+            <Image
+              src="/man-board.svg"
+              alt="man"
+              width={640}
+              height={460}
+              className={`w-full h-full transition-opacity duration-500 ${
+                imageLoading1 ? "opacity-0" : "opacity-100"
+              }`}
+              onLoad={() => handleImageLoad(setImageLoading1)}
+              priority
             />
-          )}
-          <Image
-            src="/man-board.svg"
-            alt="man"
-            width={640}
-            height={460}
-            className={`w-full h-full transition-opacity duration-500 ${
-              imageLoading1 ? "opacity-0" : "opacity-100"
-            }`}
-            onLoad={() => handleImageLoad(setImageLoading1)}
-            priority
-          />
+          </div>
+
+          <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-y-8 gap-x-12">
+            <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">
+              Trainings
+            </h1>
+            <p className="lg-text-[24px]">
+              Our consultation services offer guidance to overcome project
+              challenges, optimize processes, and achieve your specific goals.
+              Schedule a consultation to discuss your project&apos;s unique
+              needs.
+            </p>
+
+            <span className="text-white">
+              <Button
+                text="Learn More"
+                icon={<ArrowRightIcon />}
+                bg="#89C13E"
+                url="/training"
+              />
+            </span>
+          </div>
         </div>
 
-        <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
-          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">
-            Trainings
-          </h1>
-          <p>
-            Our consultation services offer guidance to overcome project
-            challenges, optimize processes, and achieve your specific goals.
-            Schedule a consultation to discuss your project&apos;s unique needs.
-          </p>
+        <div className="flex md:flex-row flex-col-reverse w-full gap-y-8 gap-x-12">
+          <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
+            <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">
+              Personalized Mentorship
+            </h1>
+            <p>
+              Our mentoring programs foster one-on-one relationships to guide
+              and support your professional development. Experience personalized
+              mentorship that aligns with your career aspirations.
+            </p>
 
-          <span className="text-white">
-            <Button
-              text="Learn More"
-              icon={<ArrowRightIcon />}
-              bg="#89C13E"
-              url="/training"
+            <span className="text-white">
+              <Button
+                text="Learn More"
+                icon={<ArrowRightIcon />}
+                bg="#89C13E"
+                url="/mentorship"
+              />
+            </span>
+          </div>
+
+          <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
+            {imageLoading2 && (
+              <SkeletalLoader
+                blockWidth="w-[80%]"
+                cardColor="bg-[#FEF9F6]"
+                cardContentColor="bg-[#FEF9F6]"
+                cardImageColor="bg-[#F5F0FA]"
+              />
+            )}
+            <Image
+              src="/discussion.svg"
+              alt="discussion"
+              width={640}
+              height={460}
+              className={`w-full h-full transition-opacity duration-500 ${
+                imageLoading2 ? "opacity-0" : "opacity-100"
+              }`}
+              onLoad={() => handleImageLoad(setImageLoading2)}
+              priority
             />
-          </span>
-        </div>
-      </div>
-
-      <div className="flex md:flex-row flex-col-reverse w-full gap-8">
-        <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
-          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">
-            Personalized Mentorship
-          </h1>
-          <p>
-            Our mentoring programs foster one-on-one relationships to guide and
-            support your professional development. Experience personalized
-            mentorship that aligns with your career aspirations.
-          </p>
-
-          <span className="text-white">
-            <Button
-              text="Learn More"
-              icon={<ArrowRightIcon />}
-              bg="#89C13E"
-              url="/mentorship"
-            />
-          </span>
-        </div>
-
-        <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
-          {imageLoading2 && (
-            <SkeletalLoader
-              blockWidth="w-[80%]"
-              cardColor="bg-[#FEF9F6]"
-              cardContentColor="bg-[#FEF9F6]"
-              cardImageColor="bg-[#F5F0FA]"
-            />
-          )}
-          <Image
-            src="/discussion.svg"
-            alt="discussion"
-            width={640}
-            height={460}
-            className={`w-full h-full transition-opacity duration-500 ${
-              imageLoading2 ? "opacity-0" : "opacity-100"
-            }`}
-            onLoad={() => handleImageLoad(setImageLoading2)}
-            priority
-          />
-        </div>
-      </div>
-
-      <div className="flex md:flex-row flex-col w-full gap-8">
-        <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
-          {imageLoading3 && (
-            <SkeletalLoader
-              blockWidth="w-[80%]"
-              cardColor="bg-[#FEF9F6]"
-              cardContentColor="bg-[#FEF9F6]"
-              cardImageColor="bg-[#F5F0FA]"
-            />
-          )}
-          <Image
-            src="/meeting.svg"
-            alt="meeting"
-            width={640}
-            height={460}
-            className={`w-full h-full transition-opacity duration-500 ${
-              imageLoading3 ? "opacity-0" : "opacity-100"
-            }`}
-            onLoad={() => handleImageLoad(setImageLoading3)}
-            priority
-          />
+          </div>
         </div>
 
-        <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
-          <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">
-            Consultation
-          </h1>
-          <p>
-            Our consultation services offer guidance to overcome project
-            challenges, optimize processes, and achieve your specific goals.
-            Schedule a consultation to discuss your project&apos;s unique needs.
-          </p>
-
-          <span className="text-white">
-            <Button
-              text="Learn More"
-              icon={<ArrowRightIcon />}
-              bg="#89C13E"
-              url="/consultation"
+        <div className="flex md:flex-row flex-col w-full gap-y-8 gap-x-12">
+          <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
+            {imageLoading3 && (
+              <SkeletalLoader
+                blockWidth="w-[80%]"
+                cardColor="bg-[#FEF9F6]"
+                cardContentColor="bg-[#FEF9F6]"
+                cardImageColor="bg-[#F5F0FA]"
+              />
+            )}
+            <Image
+              src="/meeting.svg"
+              alt="meeting"
+              width={640}
+              height={460}
+              className={`w-full h-full transition-opacity duration-500 ${
+                imageLoading3 ? "opacity-0" : "opacity-100"
+              }`}
+              onLoad={() => handleImageLoad(setImageLoading3)}
+              priority
             />
-          </span>
+          </div>
+
+          <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
+            <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">
+              Consultation
+            </h1>
+            <p>
+              Our consultation services offer guidance to overcome project
+              challenges, optimize processes, and achieve your specific goals.
+              Schedule a consultation to discuss your project&apos;s unique
+              needs.
+            </p>
+
+            <span className="text-white">
+              <Button
+                text="Learn More"
+                icon={<ArrowRightIcon />}
+                bg="#89C13E"
+                url="/consultation"
+              />
+            </span>
+          </div>
         </div>
       </div>
     </section>

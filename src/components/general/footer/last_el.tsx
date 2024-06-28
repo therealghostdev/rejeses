@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Last_el() {
   return (
     <div className="flex justify-between items-center py-8 md:px-12 px-6 w-full text-[#5B5B5B] md:flex-nowrap flex-wrap-reverse">
-      <div className="lg:w-1/4 md:w-[50%] w-full flex lg:justify-between md:justify-around justify-between items-center">
+      <div className="lg:w-[30%] md:w-[50%] w-full flex lg:justify-between md:justify-around justify-between items-center">
         <p className="text-2xl">&copy;</p>
 
         <p className="text-lg">2023 rejeses.</p>
