@@ -39,7 +39,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
   };
 
   return (
-    <div className="flex flex-col items-center px-6 md:max-w-[90%] gap-6 w-full">
+    <div className="flex flex-col items-center px-6 md:max-w-[90%] gap-6 w-full my-4 mt-12">
       <div className="flex flex-col w-full gap-4">
         <h1 className="lg:text-4xl text-2xl font-bold">Class Schedule</h1>
         <p>
@@ -52,7 +52,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
         <table className="min-w-full border-collapse bricolage_text">
           <thead className="bg-[#deffb3] text-[#89C13E] font-bold">
             <tr>
-              <th className="border border-black md:p-6 p-2 text-xs sm:text-sm">
+              <th className="border border-black md:p-6 p-2 md:w-[100px] md:h-[100px] text-xs sm:text-sm">
                 Day
               </th>
               {times.map((time) => (
@@ -68,7 +68,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
           <tbody>
             {days.map((day) => (
               <tr key={day}>
-                <td className="border border-black md:p-6 p-2 text-xs sm:text-sm bg-[#deffb3] text-[#89C13E] font-bold">
+                <td className="border border-black md:p-6 md:w-[100px] md:h-[100px] p-2 text-xs sm:text-sm bg-[#deffb3] text-[#89C13E] font-bold">
                   {day}
                 </td>
                 {times.map((time) => (

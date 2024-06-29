@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
   }, []);
 
   return (
-    <footer className="md:mt-16 my-8">
+    <footer className="md:mt-12 my-4">
       <Testimonial data={filteredTestimonalData} />
       <Table data={filteredTableData} />
       {pathname === "/" && !isMobile && <BookSession />}
