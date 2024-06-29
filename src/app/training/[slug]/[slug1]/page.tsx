@@ -25,7 +25,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
 
   return (
     <section className="w-full px-8 flex flex-col gap-12 py-12 justify-center items-center">
-      <div className="md:max-w-[95%] w-full py-12 gap-6 md:px-8 flex flex-col gap-y-6 justify-center">
+      <div className="md:max-w-[98%] w-full py-12 gap-6 md:px-8 flex flex-col gap-y-6 justify-center">
         <Dynamic_nav
           link1={`/training/Project Management for Beginners/${pricingItem.id}`}
           link2=""
@@ -88,9 +88,9 @@ export default function Page({ params }: { params: { slug1: string } }) {
           {pricingItem.payment.curriculum.map((item, index) => (
             <div
               key={index}
-              className="w-full border border-[#DBE1E7] p-4 rounded-md bricolage_text"
+              className="w-full border border-[#DBE1E7] p-4 rounded-md bricolage_text text-[#5B5B5B]"
             >
-              <h1 className="lg:text3xl text-2xl font-bold">{item.week}</h1>
+              <h1 className="lg:text3xl text-2xl font-bold text-[#090909]">{item.week}</h1>
               <p className="text-lg">{item.topic}</p>
               <small>{item.duration}</small>
             </div>

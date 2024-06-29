@@ -27,7 +27,7 @@ export default function Page() {
 
   return (
     <section className="w-full flex flex-col justify-center items-center">
-      <section className="w-full px-8 flex flex-col gap-6 py-12 md:max-w-[95%]">
+      <section className="w-full px-8 flex flex-col gap-6 py-12 md:max-w-[98%]">
         <div className="flex flex-col w-full gap-4 lg:px-12 md:px-6 md:mt-10">
           <h1 className="md:text-4xl text-2xl font-bold bricolage_text">
             Personalised Mentorship

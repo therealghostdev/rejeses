@@ -25,7 +25,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   return (
     <section className="w-full flex flex-col justify-center items-center">
-      <section className="w-full px-8 flex flex-col gap-6 py-12  md:max-w-[95%] justify-center">
+      <section className="w-full px-8 flex flex-col gap-6 py-12  md:max-w-[98%] justify-center">
         <div className="flex flex-col w-full gap-4 lg:px-12 md:px-6 md:mt-10">
           <h1 className="md:text-4xl text-2xl font-bold bricolage_text">
             {trainingItem.title}
@@ -100,9 +100,9 @@ export default function Page({ params }: { params: { slug: string } }) {
           {trainingItem.payment.curriculum.map((item, index) => (
             <div
               key={index}
-              className="w-full border border-[#DBE1E7] p-4 rounded-md bricolage_text"
+              className="w-full border border-[#DBE1E7] p-4 rounded-md bricolage_text text-[#5B5B5B]"
             >
-              <h1 className="lg:text3xl text-2xl font-bold">{item.week}</h1>
+              <h1 className="lg:text3xl text-2xl font-bold text-[#090909]">{item.week}</h1>
               <p className="text-lg">{item.topic}</p>
               <small>{item.duration}</small>
             </div>

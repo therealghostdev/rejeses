@@ -35,7 +35,7 @@ export default function Pricing({ item }: PricingProps) {
           <button
             className={`py-3 px-6 rounded-md -mx-2 text-nowrap text-ellipsis btn bricolage_text ${
               individuals
-                ? "bg-[#FFFFFF] text-[#89C13E]"
+                ? "bg-[#FFFFFF] text-[#89C13E] border border-[#DBE1E7] shadow-md shadow-[#0000000D] z-10"
                 : "bg-[#DBE1E7] text-[#848484]"
             }`}
             onClick={() => setIndividuals(true)}
@@ -45,7 +45,7 @@ export default function Pricing({ item }: PricingProps) {
           <button
             className={`py-3 px-6 rounded-md -mx-2 text-nowrap text-ellipsis btn bricolage_text ${
               !individuals
-                ? "bg-[#FFFFFF] text-[#89C13E]"
+                ? "bg-[#FFFFFF] text-[#89C13E] border border-[#DBE1E7] shadow-md shadow-[#0000000D] z-10"
                 : "bg-[#DBE1E7] text-[#848484]"
             }`}
             onClick={() => setIndividuals(false)}
@@ -55,7 +55,7 @@ export default function Pricing({ item }: PricingProps) {
         </div>
       )}
 
-      <div className="w-full flex flex-col md:flex-row justify-center items-center md:px-8 md:py-6 px-4 py-2">
+      <div className="w-full flex flex-col md:flex-row justify-center items-center md:px-8 md:py-6 px-4 py-2 text-[#5B5B5B]">
         {pricingData?.map((data, index) => (
           <PriceCard key={index} data={data} />
         ))}

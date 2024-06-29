@@ -13,13 +13,13 @@ export default function GeneralCard(props: GeneralCardProps) {
 
       <div className="w-full flex flex-col gap-4 py-4">
         {props.title && <h1 className="text-lg font-bold bricolage_text">{props.title}</h1>}
-        <p>{props.comment}</p>
+        <p className="text-[#5B5B5B]">{props.comment}</p>
       </div>
 
       {props.person && (
         <div className="w-full">
           <p className="text-[#89C13E]">{props.person.name}</p>
-          <p>{props.person.job_title}</p>
+          <p className="text-[#5B5B5B]">{props.person.job_title}</p>
         </div>
       )}
     </div>
