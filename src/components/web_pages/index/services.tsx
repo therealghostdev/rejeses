@@ -20,8 +20,8 @@ export default function Services() {
           Our Services
         </h1>
 
-        <div className="flex md:flex-row flex-col w-full justify-center items-center gap-y-8 gap-x-12">
-          <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
+        <div className="flex md:flex-row flex-col w-full lg:justify-center lg:items-center gap-y-8 gap-x-12">
+          <div className="lg:w-[640px] lg:h-[460px] md:h-[350px] md:w-[500px] h-[320px] w-full relative">
             {imageLoading1 && (
               <SkeletalLoader
                 blockWidth="w-[80%]"
@@ -86,7 +86,7 @@ export default function Services() {
             </span>
           </div>
 
-          <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
+          <div className="lg:w-[640px] lg:h-[460px] md:h-[350px] md:w-[500px] h-[320px] w-full relative">
             {imageLoading2 && (
               <SkeletalLoader
                 blockWidth="w-[80%]"
@@ -110,7 +110,7 @@ export default function Services() {
         </div>
 
         <div className="flex md:flex-row flex-col w-full gap-y-8 gap-x-12 justify-center items-center">
-          <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
+          <div className="lg:w-[640px] lg:h-[460px] md:h-[350px] md:w-[500px] h-[320px] w-full relative">
             {imageLoading3 && (
               <SkeletalLoader
                 blockWidth="w-[80%]"
