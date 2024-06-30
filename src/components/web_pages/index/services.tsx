@@ -47,7 +47,7 @@ export default function Services() {
             <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold font-bricolage_grotesque">
               Trainings
             </h1>
-            <p className="lg:text-[24px] lg:max-w-[80%] text-wrap text-[16px]">
+            <p className="lg:text-[24px] lg:max-w-[95%] text-wrap text-[16px]">
               Our consultation services offer guidance to overcome project
               challenges, optimize processes, and achieve your specific goals.
               Schedule a consultation to discuss your project&apos;s unique
@@ -70,7 +70,7 @@ export default function Services() {
             <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold font-bricolage_grotesque">
               Personalized Mentorship
             </h1>
-            <p className="lg:max-w-[80%] text-wrap lg:text-[24px] text-[16px]">
+            <p className="lg:max-w-[95%] text-wrap lg:text-[24px] text-[16px]">
               Our mentoring programs foster one-on-one relationships to guide
               and support your professional development. Experience personalized
               mentorship that aligns with your career aspirations.
@@ -136,7 +136,7 @@ export default function Services() {
             <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold font-bricolage_grotesque">
               Consultation
             </h1>
-            <p className="lg:max-w-[80%] text-wrap lg:text-[24px] text-[16px]">
+            <p className="lg:max-w-[95%] text-wrap lg:text-[24px] text-[16px]">
               Our consultation services offer guidance to overcome project
               challenges, optimize processes, and achieve your specific goals.
               Schedule a consultation to discuss your project&apos;s unique
