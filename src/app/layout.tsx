@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/general/navigation/navigation";
 import Footer from "@/components/general/footer/footer";
 import localfont from "next/font/local";
+import { PaymentProvider } from "@/utils/context/payment";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,9 +39,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${bricolage_grotesque.variable}`}>
-        <Navigation />
-        {children}
-        <Footer />
+        <PaymentProvider>
+          <Navigation />
+          {children}
+          <Footer />
+        </PaymentProvider>
       </body>
     </html>
   );

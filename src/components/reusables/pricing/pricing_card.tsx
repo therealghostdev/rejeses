@@ -1,9 +1,31 @@
+"use client";
 import { CheckIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { PriceCardProps } from "@/utils/types/types";
+import { usePayment } from "@/utils/context/payment";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 export default function PriceCard({ data }: PriceCardProps) {
   const { training_only, training_with_mentorship } = data;
+
+  const pathname = usePathname();
+  const { setPaymentInfo } = usePayment();
+
+  const registerBtnClick = (item: number) => {
+    const currentPath = decodeURIComponent(pathname).split("/")[1];
+    if (currentPath === "training") {
+      setPaymentInfo((prev) => ({ ...prev, price: item }));
+    }
+  };
+
+  const resetPriceInfo = () => {
+    setPaymentInfo((prev) => ({ ...prev, price: 0 }));
+  };
+
+  useEffect(() => {
+    resetPriceInfo();
+  }, []);
 
   return (
     <>
@@ -43,6 +65,7 @@ export default function PriceCard({ data }: PriceCardProps) {
 
           <div className="bottom-6 md:absolute left-0 w-full px-4">
             <Link
+              onClick={() => registerBtnClick(training_only.price)}
               href={training_only.register_link}
               className="bg-[#89C13E] text-white w-full inline-block p-4 text-center rounded-md font-bricolage_grotesque"
             >
@@ -67,7 +90,7 @@ export default function PriceCard({ data }: PriceCardProps) {
               </h1>
               <p>{training_with_mentorship.payment_description}</p>
             </div>
-            
+
             <div className="w-full border border-[#DBE1E7] my-6"></div>
 
             <p>{training_with_mentorship.payment_description}</p>
@@ -90,6 +113,7 @@ export default function PriceCard({ data }: PriceCardProps) {
 
           <div className="bottom-6 md:absolute left-0 w-full px-4">
             <Link
+              onClick={() => registerBtnClick(training_with_mentorship.price)}
               href={training_with_mentorship.register_link}
               className="bg-[#89C13E] text-white w-full font-bricolage_grotesque inline-block p-4 text-center rounded-md"
             >

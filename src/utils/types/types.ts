@@ -154,3 +154,9 @@ export interface TrainingOption1 {
   class_schedule: ClassSchedule[];
 }
 // !-------------------------------------------- end for class schedule --------------------------------------!
+export interface PaymentInfo {
+  training_name: string;
+  price: number;
+  duration: string;
+  name: string;
+}
