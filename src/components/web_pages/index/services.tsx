@@ -15,12 +15,12 @@ export default function Services() {
 
   return (
     <section className="w-full lg:px-3 px-8 py-12 md:pb-32 flex flex-col justify-center items-center gap-12 bg-[#FEF9F6]">
-      <div className="lg:max-w-[90%] max-w-[98%] flex flex-col gap-12 justify-center">
-        <h1 className="lg:text-[48px] md:text-3xl text-2xl font-bold text-center md:my-12 my-8 bricolage_text">
+      <div className="lg:max-w-[90%] max-w-[98%] flex flex-col gap-12 justify-center items-center">
+        <h1 className="lg:text-[48px] md:text-3xl text-2xl font-bold text-center md:my-12 my-8 font-bricolage_grotesque">
           Our Services
         </h1>
 
-        <div className="flex md:flex-row flex-col w-full gap-y-8 gap-x-12">
+        <div className="flex md:flex-row flex-col w-full justify-center items-center gap-y-8 gap-x-12">
           <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
             {imageLoading1 && (
               <SkeletalLoader
@@ -44,10 +44,10 @@ export default function Services() {
           </div>
 
           <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-y-8 gap-x-12">
-            <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">
+            <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold font-bricolage_grotesque">
               Trainings
             </h1>
-            <p className="lg-text-[24px]">
+            <p className="lg:text-[24px] lg:max-w-[80%] text-wrap text-[16px]">
               Our consultation services offer guidance to overcome project
               challenges, optimize processes, and achieve your specific goals.
               Schedule a consultation to discuss your project&apos;s unique
@@ -65,12 +65,12 @@ export default function Services() {
           </div>
         </div>
 
-        <div className="flex md:flex-row flex-col-reverse w-full gap-y-8 gap-x-12">
+        <div className="flex md:flex-row flex-col-reverse w-full gap-y-8 gap-x-12 justify-center items-center">
           <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
-            <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">
+            <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold font-bricolage_grotesque">
               Personalized Mentorship
             </h1>
-            <p>
+            <p className="lg:max-w-[80%] text-wrap lg:text-[24px] text-[16px]">
               Our mentoring programs foster one-on-one relationships to guide
               and support your professional development. Experience personalized
               mentorship that aligns with your career aspirations.
@@ -109,7 +109,7 @@ export default function Services() {
           </div>
         </div>
 
-        <div className="flex md:flex-row flex-col w-full gap-y-8 gap-x-12">
+        <div className="flex md:flex-row flex-col w-full gap-y-8 gap-x-12 justify-center items-center">
           <div className="lg:w-[640px] lg:h-[460px] md:w-2/4 w-full relative">
             {imageLoading3 && (
               <SkeletalLoader
@@ -133,10 +133,10 @@ export default function Services() {
           </div>
 
           <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
-            <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold bricolage_text">
+            <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold font-bricolage_grotesque">
               Consultation
             </h1>
-            <p>
+            <p className="lg:max-w-[80%] text-wrap lg:text-[24px] text-[16px]">
               Our consultation services offer guidance to overcome project
               challenges, optimize processes, and achieve your specific goals.
               Schedule a consultation to discuss your project&apos;s unique

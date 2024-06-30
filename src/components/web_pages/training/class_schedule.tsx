@@ -49,7 +49,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
         </p>
       </div>
       <div ref={scheduleRef} className="w-full overflow-x-auto">
-        <table className="min-w-full border-collapse bricolage_text">
+        <table className="min-w-full border-collapse font-bricolage_grotesque">
           <thead className="bg-[#deffb3] text-[#89C13E] font-bold">
             <tr>
               <th className="border border-black md:p-6 p-2 md:w-[100px] md:h-[100px] text-xs sm:text-sm">
@@ -95,7 +95,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
         </table>
       </div>
 
-      <div className="flex flex-col sm:flex-row justify-center items-center py-6 gap-4 w-full bricolage_text">
+      <div className="flex flex-col sm:flex-row justify-center items-center py-6 gap-4 w-full font-bricolage_grotesque">
         <Link
           href={``}
           className="bg-[#89C13E] text-white px-12 py-3 flex justify-center items-center rounded-md w-full sm:w-auto text-xs sm:text-sm"

@@ -5,7 +5,7 @@ import Card from "./card";
 export default function UpcomingCohorts() {
   return (
     <section className="w-full flex flex-col lg:px-12 px-6 py-4 md:mt-16 my-8">
-      <h1 className="md:text-4xl text-2xl my-8 font-bold bricolage_text lg:px-6 md:px-6">
+      <h1 className="md:text-4xl text-2xl my-8 font-bold font-bricolage_grotesque lg:px-6 md:px-6">
         Upcoming Trainings
       </h1>
 

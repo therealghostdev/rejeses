@@ -18,7 +18,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
         />
         <section className="w-full border-2 border-[#DBE1E7] gap-4 lg:px-12 py-8 px-6 rounded-lg flex flex-col m-auto">
           <div className="flex flex-col gap-4 border-b-2 border-b-[#DBE1E7] py-6">
-            <h1 className="lg:text-3xl text-2xl font-bold bricolage_text">
+            <h1 className="lg:text-3xl text-2xl font-bold font-bricolage_grotesque">
               Order Summary
             </h1>
             <p className="text-wrap lg:max-w-[80%]">
@@ -27,7 +27,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
               and subsequently $200.00 per month or $2,200.00 per year.
             </p>
 
-            <div className="flex justify-between w-full bricolage_text">
+            <div className="flex justify-between w-full font-bricolage_grotesque">
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
                 &#x24;400
@@ -39,7 +39,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
             <div className="md:max-w-[60%] w-full flex flex-col gap-8 justify-center items-center py-4">
               <Link
                 href={``}
-                className="bg-[#89C13E] text-white px-8 py-4 rounded-md bricolage_text"
+                className="bg-[#89C13E] text-white px-8 py-4 rounded-md font-bricolage_grotesque"
               >
                 View Pricing
               </Link>

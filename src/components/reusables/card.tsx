@@ -12,7 +12,7 @@ export default function GeneralCard(props: GeneralCardProps) {
       )}
 
       <div className="w-full flex flex-col gap-4 py-4">
-        {props.title && <h1 className="text-lg font-bold bricolage_text">{props.title}</h1>}
+        {props.title && <h1 className="text-lg font-bold font-bricolage_grotesque">{props.title}</h1>}
         <p className="text-[#5B5B5B]">{props.comment}</p>
       </div>
 

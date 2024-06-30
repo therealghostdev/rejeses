@@ -24,7 +24,7 @@ export default function Pricing({ item }: PricingProps) {
   return (
     <section className="w-full flex flex-col gap-4 lg:px-6">
       <div className="flex flex-col gap-4">
-        <h1 className="lg:text-4xl text-2xl font-bold text-center bricolage_text">Pricing</h1>
+        <h1 className="lg:text-4xl text-2xl font-bold text-center font-bricolage_grotesque">Pricing</h1>
         <p className="text-lg text-center">
           We believe in keeping a simple and transparent pricing model.
         </p>
@@ -33,7 +33,7 @@ export default function Pricing({ item }: PricingProps) {
       {item.group && (
         <div className="flex justify-center items-center gap-2 my-4">
           <button
-            className={`py-3 px-6 rounded-md -mx-2 text-nowrap text-ellipsis btn bricolage_text ${
+            className={`py-3 px-6 rounded-md -mx-2 text-nowrap text-ellipsis btn font-bricolage_grotesque ${
               individuals
                 ? "bg-[#FFFFFF] text-[#89C13E] border border-[#DBE1E7] shadow-md shadow-[#0000000D] z-10"
                 : "bg-[#DBE1E7] text-[#848484]"
@@ -43,7 +43,7 @@ export default function Pricing({ item }: PricingProps) {
             Individuals
           </button>
           <button
-            className={`py-3 px-6 rounded-md -mx-2 text-nowrap text-ellipsis btn bricolage_text ${
+            className={`py-3 px-6 rounded-md -mx-2 text-nowrap text-ellipsis btn font-bricolage_grotesque ${
               !individuals
                 ? "bg-[#FFFFFF] text-[#89C13E] border border-[#DBE1E7] shadow-md shadow-[#0000000D] z-10"
                 : "bg-[#DBE1E7] text-[#848484]"

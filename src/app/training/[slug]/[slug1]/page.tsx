@@ -34,7 +34,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
         />
         <section className="w-full border-2 border-[#DBE1E7] gap-4 py-8 px-6 rounded-lg flex flex-col m-auto">
           <div className="flex flex-col gap-4 border-b-2 border-b-[#DBE1E7] py-6">
-            <h1 className="lg:text-3xl text-2xl font-bold bricolage_text">
+            <h1 className="lg:text-3xl text-2xl font-bold font-bricolage_grotesque">
               Order Summary
             </h1>
             <p>{pricingItem.payment.order_summary}</p>
@@ -53,7 +53,7 @@ export default function Page({ params }: { params: { slug1: string } }) {
               </p>
             </div>
 
-            <div className="flex justify-between w-full bricolage_text">
+            <div className="flex justify-between w-full font-bricolage_grotesque">
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
                 &#x24;{pricingItem.payment.total}
@@ -64,14 +64,14 @@ export default function Page({ params }: { params: { slug1: string } }) {
           <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center items-center py-4 w-full sm_btn-container">
             <Link
               href={``}
-              className="bg-[#89C13E] text-white bricolage_text md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
+              className="bg-[#89C13E] text-white font-bricolage_grotesque md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
             >
               Enroll Now
             </Link>
 
             <Link
               href={`/training/Project Management for Beginners/${pricingItem.id}/class_schedule`}
-              className="bg-[#FFFFFF] border border-[#DBE1E7] text-[#89C13E] bricolage_text md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
+              className="bg-[#FFFFFF] border border-[#DBE1E7] text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
             >
               <span>
                 <ArchiveIcon />
@@ -82,13 +82,13 @@ export default function Page({ params }: { params: { slug1: string } }) {
         </section>
 
         <section className="w-full flex flex-col gap-4 lg:mt-24 mt-12">
-          <h1 className="lg:text-3xl text-2xl font-bold bricolage_text">
+          <h1 className="lg:text-3xl text-2xl font-bold font-bricolage_grotesque">
             Curriculum
           </h1>
           {pricingItem.payment.curriculum.map((item, index) => (
             <div
               key={index}
-              className="w-full border border-[#DBE1E7] p-4 rounded-md bricolage_text text-[#5B5B5B]"
+              className="w-full border border-[#DBE1E7] p-4 rounded-md font-bricolage_grotesque text-[#5B5B5B]"
             >
               <h1 className="lg:text3xl text-2xl font-bold text-[#090909]">{item.week}</h1>
               <p className="text-lg">{item.topic}</p>
@@ -99,14 +99,14 @@ export default function Page({ params }: { params: { slug1: string } }) {
           <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
             <Link
               href={``}
-              className="bg-[#89C13E] text-white bricolage_text md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
+              className="bg-[#89C13E] text-white font-bricolage_grotesque md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
             >
               Enroll Now
             </Link>
 
             <Link
               href={`/training/Project Management for Beginners/${pricingItem.id}/class_schedule`}
-              className="bg-[#FFFFFF] border border-[#89C13E] text-[#89C13E] bricolage_text md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
+              className="bg-[#FFFFFF] border border-[#89C13E] text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
             >
               <span>
                 <ArchiveIcon />

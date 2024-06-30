@@ -1,4 +1,4 @@
-@import url("/assets/styles/fonts.css");
+/* @import url("/assets/styles/fonts.css"); */
 
 @tailwind base;
 @tailwind components;
@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  font-family: "Inter_V", sans-serif !important;
+  font-family: var(--font-inter);
   font-weight: 400;
   color: rgb(var(--text-general));
   background:
@@ -27,11 +27,6 @@ body {
 
 .bg-img {
   background: url("/Consultation.svg") center/cover;
-}
-
-
-.bricolage_text {
-  font-family: "BricolageGrotesque", sans-serif;
 }
 
 .custom-scrollbar::-webkit-scrollbar {

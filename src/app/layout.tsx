@@ -3,8 +3,27 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/general/navigation/navigation";
 import Footer from "@/components/general/footer/footer";
+import localfont from "next/font/local";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const bricolage_grotesque = localfont({
+  src: [
+    {
+      path: "../../public/fonts/BricolageGrotesque/BricolageGrotesque-Bold.ttf",
+      weight: "700",
+    },
+    {
+      path: "../../public/fonts/BricolageGrotesque/BricolageGrotesque-Medium.ttf",
+      weight: "500",
+    },
+    {
+      path: "../../public/fonts/BricolageGrotesque/BricolageGrotesque-Light.ttf",
+      weight: "200",
+    },
+  ],
+  variable: "--font-bricolage-grotesque",
+});
 
 export const metadata: Metadata = {
   title: "Rejeses PM Consulting",
@@ -18,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${bricolage_grotesque.variable}`}>
         <Navigation />
         {children}
         <Footer />

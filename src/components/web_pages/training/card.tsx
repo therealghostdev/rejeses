@@ -6,9 +6,9 @@ export default function Card(props: CardProps) {
   return (
     <div className="rounded-md px-6 py-4 w-full flex flex-col gap-6" key={props.id}>
       <div className="w-full flex flex-col gap-4 border-b border-b-[#DBE1E7] py-4">
-        <h1 className="text-lg font-bold bricolage_text">{props.title}</h1>
-        <p>{props.description}</p>
-        <p className="font-bold bricolage_text">
+        <h1 className="text-lg font-bold font-bricolage_grotesque">{props.title}</h1>
+        <p className="text-[#5B5B5B]">{props.description}</p>
+        <p className="font-bold font-bricolage_grotesque">
           <span>Start date:</span> {props.date}
         </p>
       </div>

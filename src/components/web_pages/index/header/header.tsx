@@ -31,7 +31,7 @@ export default function Header() {
     <header className="bg-[#F5F0FA] flex flex-col w-full gap-4 overflow-hidden">
       <div className="w-full flex flex-col justify-center items-center gap-3 my-8">
         <div className="md:w-3/4 w-full flex flex-col justify-center items-center gap-3 px-4">
-          <h1 className="lg:text-[60px] md:text-[28px] text-2xl text-center font-bold lg:leading-[80px] leading-tight bricolage_text">
+          <h1 className="lg:text-[60px] md:text-[28px] text-2xl text-center font-bold lg:leading-[80px] leading-tight font-bricolage_grotesque">
             Learn and become excellent at project management
           </h1>
           <p className="text-lg text-center max-w-[90%] lg:leading-[36px] leading-[28px]">
@@ -42,7 +42,7 @@ export default function Header() {
 
           <div className="w-full flex justify-center items-center my-4">
             <span className="mx-2">
-              <Link href="/enroll" className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] bricolage_text">
+              <Link href="/enroll" className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] font-bricolage_grotesque">
                 Enroll Now
               </Link>
             </span>
@@ -50,7 +50,7 @@ export default function Header() {
             <span className="mx-2">
               <Link
                 href="/book-session"
-                className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border border-[#89C13E] rounded-[.3rem] bricolage_text"
+                className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
               >
                 Book Session
               </Link>
@@ -62,7 +62,7 @@ export default function Header() {
       {!isMobile ? <Image_slider /> : <Mobile_Image_slider />}
 
       <div className="flex w-full flex-col justify-center items-center bg-[#FCFCFC] py-12 px-4 gap-6 md:mt-16 mt-6">
-        <p className="text-lg text-center bricolage_text">
+        <p className="text-lg text-center font-bricolage_grotesque text-[#5B5B5B]">
           Learn directly from people who worked at companies such as
         </p>
 
