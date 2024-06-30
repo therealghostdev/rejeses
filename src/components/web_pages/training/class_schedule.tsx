@@ -41,7 +41,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
   return (
     <div className="flex flex-col items-center px-6 md:max-w-[90%] gap-6 w-full my-4 mt-12">
       <div className="flex flex-col w-full gap-4">
-        <h1 className="lg:text-4xl text-2xl font-bold">Class Schedule</h1>
+        <h1 className="lg:text-4xl text-2xl font-bold font-bricolage_grotesque">Class Schedule</h1>
         <p>
           For students who are unable to join the live sessions due to
           conflicting schedules, the recording of any live class you miss will
