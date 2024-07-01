@@ -1,34 +1,42 @@
 [
   {
     "id": 1,
-    "image": "/meeting1(copy).svg"
+    "image": "/meeting1.svg",
+    "pre": "/meeting1.webp"
   },
   {
     "id": 2,
-    "image": "/meeting2.svg"
+    "image": "/meeting2.svg",
+    "pre": "/meeting2.webp"
   },
   {
     "id": 3,
-    "image": "/meeting3.svg"
+    "image": "/meeting3.svg",
+    "pre": "/meeting3.webp"
   },
   {
     "id": 4,
-    "image": "/meeting4.svg"
+    "image": "/meeting4.svg",
+    "pre": "/meeting4.webp"
   },
   {
     "id": 1,
-    "image": "/meeting1(copy).svg"
+    "image": "/meeting1.svg",
+    "pre": "/meeting1.webp"
   },
   {
     "id": 2,
-    "image": "/meeting2.svg"
+    "image": "/meeting2.svg",
+    "pre": "/meeting2.webp"
   },
   {
     "id": 3,
-    "image": "/meeting3.svg"
+    "image": "/meeting3.svg",
+    "pre": "/meeting3.webp"
   },
   {
     "id": 4,
-    "image": "/meeting4.svg"
+    "image": "/meeting4.svg",
+    "pre": "/meeting4.webp"
   }
 ]

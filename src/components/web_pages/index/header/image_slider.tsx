@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useSwipeable } from "react-swipeable";
-import "./slider-style.css";
 import data from "@/utils/data/slider_data.json";
 import Image from "next/image";
 
@@ -11,19 +10,16 @@ export default function ImageSlider() {
   const totalSlides = data.length;
   const slidesToShow = 3; // Number of slides to show at once
 
-  // Auto-slide function
   const autoSlide = useCallback(() => {
     setDirection(1);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
   }, [totalSlides]);
 
-  // Set up interval for auto-slide
   useEffect(() => {
     const interval = setInterval(autoSlide, 3000);
     return () => clearInterval(interval);
   }, [autoSlide]);
 
-  // Swipe handlers
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       setDirection(1);
@@ -31,11 +27,12 @@ export default function ImageSlider() {
     },
     onSwipedRight: () => {
       setDirection(-1);
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides);
+      setCurrentIndex(
+        (prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides
+      );
     },
   });
 
-  // Get slider items
   const getVisibleItems = () => {
     const items = [];
     for (let i = 0; i < slidesToShow + 1; i++) {
@@ -43,6 +40,18 @@ export default function ImageSlider() {
       items.push({ ...data[index], key: `${index}-${i}` });
     }
     return items;
+  };
+
+  const [loadingStates, setLoadingStates] = useState<boolean[]>(() =>
+    Array(slidesToShow + 1).fill(true)
+  );
+
+  const handleImageLoad = (index: number) => {
+    setLoadingStates((prevStates) => {
+      const newStates = [...prevStates];
+      newStates[index] = false;
+      return newStates;
+    });
   };
 
   return (
@@ -59,7 +68,7 @@ export default function ImageSlider() {
         {getVisibleItems().map((item, index) => (
           <motion.div
             key={item.key}
-            className="item"
+            className="item relative w-full h-full"
             initial={{
               x: direction === 1 ? "100%" : "-100%",
             }}
@@ -67,13 +76,21 @@ export default function ImageSlider() {
             exit={{ x: direction === 1 ? "-100%" : "100%" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <Image
-              src={item.image}
-              alt={`slider-image-${index}`}
-              width={100}
-              height={100}
-              className="w-full h-full"
-            />
+            <div className={`w-full h-full relative`}>
+              <Image
+                src={item.image}
+                alt={`slider-image-${index}`}
+                width={100}
+                height={100}
+                className={`w-full h-full ${
+                  loadingStates[index] ? "blur-2xl" : "blur-none"
+                } transition duration-1000 ease-in-out`}
+                placeholder="blur"
+                blurDataURL={item.pre}
+                onLoad={() => handleImageLoad(index)}
+                priority
+              />
+            </div>
           </motion.div>
         ))}
       </motion.div>

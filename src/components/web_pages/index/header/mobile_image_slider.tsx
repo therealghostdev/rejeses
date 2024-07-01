@@ -31,7 +31,9 @@ export default function ImageSlider() {
     },
     onSwipedRight: () => {
       setDirection(-1);
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides);
+      setCurrentIndex(
+        (prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides
+      );
     },
   });
 
@@ -43,6 +45,18 @@ export default function ImageSlider() {
       items.push({ ...data[index], key: `${index}-${i}` });
     }
     return items;
+  };
+
+  const [loadingStates, setLoadingStates] = useState<boolean[]>(() =>
+    Array(slidesToShow + 1).fill(true)
+  );
+
+  const handleImageLoad = (index: number) => {
+    setLoadingStates((prevStates) => {
+      const newStates = [...prevStates];
+      newStates[index] = false;
+      return newStates;
+    });
   };
 
   return (
@@ -59,7 +73,7 @@ export default function ImageSlider() {
         {getVisibleItems().map((item, index) => (
           <motion.div
             key={item.key}
-            className="item"
+            className="item relative w-full h-full"
             initial={{
               x: direction === 1 ? "100%" : "-100%",
             }}
@@ -67,13 +81,19 @@ export default function ImageSlider() {
             exit={{ x: direction === 1 ? "-100%" : "100%" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <Image
-              src={item.image}
-              alt={`slider-image-${index}`}
-              width={100}
-              height={100}
-              className="w-full h-full"
-            />
+            <div className={`w-full h-full relative`}>
+              <Image
+                src={item.image}
+                alt={`slider-image-${index}`}
+                width={100}
+                height={100}
+                className={`w-full h-full ${
+                  loadingStates[index] ? "blur-2xl" : "blur-none"
+                }`}
+                onLoad={() => handleImageLoad(index)}
+                priority
+              />
+            </div>
           </motion.div>
         ))}
       </motion.div>
