@@ -53,4 +53,8 @@ body {
     margin: 2% 0;
     text-align: center;
   }
+
+  .margin-sm-override {
+    margin: 0;
+  }
 }

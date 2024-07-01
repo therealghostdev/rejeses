@@ -1,44 +1,53 @@
-.container-item {
-    width: 100vw;
-    overflow: hidden;
-    position: relative;
-    --v-offset: 60px;
-    --curve-height: 120px;
+@media screen and (max-width: 767px) {
+    .container-item {
+        width: 100vw;
+        overflow: hidden;
+        position: relative;
+        --v-offset: 30px;
+        --curve-height: 60px;
+    }
+
+    .container-item::before,
+    .container-item::after {
+        content: "";
+        display: block;
+        background: #F5F0FA;
+        width: calc(100vw + 2 * var(--v-offset));
+        height: var(--curve-height);
+        position: absolute;
+        border-radius: 50%;
+        left: calc(-1 * var(--v-offset));
+        right: calc(-1 * var(--v-offset));
+    }
+
+    .container-item::before {
+        top: calc(-0.6 * var(--curve-height));
+        z-index: 1;
+    }
+
+    .container-item::after {
+        bottom: calc(-0.6 * var(--curve-height));
+    }
+
+    .wrapper {
+        display: grid;
+        /* grid-template-rows: 400px; */
+        grid-auto-flow: column;
+        grid-gap: 24px;
+        overflow: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        transform: translateX(0%) translateZ(0) !important;
+    }
+
+    .item {
+        scroll-snap-align: center;
+    }
 }
 
-.container-item::before,
-.container-item::after {
-    content: "";
-    display: block;
-    background: #F5F0FA;
-    width: calc(100vw + 2 * var(--v-offset));
-    height: var(--curve-height);
-    position: absolute;
-    border-radius: 50%;
-    left: calc(-1 * var(--v-offset));
-    right: calc(-1 * var(--v-offset));
-}
-
-.container-item::before {
-    top: calc(-0.6 * var(--curve-height));
-    z-index: 1;
-}
-
-.container-item::after {
-    bottom: calc(-0.6 * var(--curve-height));
-}
-
-.wrapper {
-    display: grid;
-    /* grid-template-rows: 400px; */
-    grid-auto-flow: column;
-    grid-gap: 24px;
-    overflow: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    transform: translateX(0%) translateZ(0) !important;
-}
-
-.item {
-    scroll-snap-align: center;
+@media screen and (max-width:360px) {
+    .container-item {
+        --v-offset: 25px;
+        --curve-height: 50px;
+    }
 }

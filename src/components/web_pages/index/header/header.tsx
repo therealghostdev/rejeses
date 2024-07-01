@@ -47,7 +47,7 @@ export default function Header() {
               </Link>
             </span>
 
-            <span className="mx-2">
+            <span className="mx-2 margin-sm-override">
               <Link
                 href="/book-session"
                 className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
