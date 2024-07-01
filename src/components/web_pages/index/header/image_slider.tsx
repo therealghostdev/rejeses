@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useSwipeable } from "react-swipeable";
 import data from "@/utils/data/slider_data.json";
 import Image from "next/image";
+import "./slider-style.css"
 
 export default function ImageSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
