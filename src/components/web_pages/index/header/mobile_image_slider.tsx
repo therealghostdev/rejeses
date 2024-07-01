@@ -5,7 +5,7 @@ import "./mobile-slider.css";
 import data from "@/utils/data/slider_data.json";
 import Image from "next/image";
 
-export default function ImageSlider() {
+export default function Mobile_Image_slider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const totalSlides = data.length;
@@ -89,7 +89,7 @@ export default function ImageSlider() {
                 height={100}
                 className={`w-full h-full ${
                   loadingStates[index] ? "blur-2xl" : "blur-none"
-                }`}
+                } transition duration-1000 ease-in-out`}
                 onLoad={() => handleImageLoad(index)}
                 priority
               />
