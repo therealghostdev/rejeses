@@ -9,7 +9,7 @@ export default function Mobile_Image_slider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const totalSlides = data.length;
-  const slidesToShow = 1; // Number of slides to show at once
+  const slidesToShow = 2; // Number of slides to show at once
 
   // Auto-slide function
   const autoSlide = useCallback(() => {
