@@ -61,7 +61,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
       </div>
       <div ref={scheduleRef} className="w-full overflow-x-auto">
         <table className="min-w-full border-collapse font-bricolage_grotesque">
-          <thead className="bg-[#deffb3] text-[#89C13E] font-bold">
+          <thead className="bg-[#ECF5E0] text-[#89C13E] font-bold">
             <tr>
               <th className="border border-black md:p-6 p-2 md:w-[100px] md:h-[100px] text-xs sm:text-sm">
                 Day
@@ -79,7 +79,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
           <tbody>
             {days.map((day) => (
               <tr key={day}>
-                <td className="border border-black md:p-6 md:w-[100px] md:h-[100px] p-2 text-xs sm:text-sm bg-[#deffb3] text-[#89C13E] font-bold">
+                <td className="border border-black md:p-6 md:w-[100px] md:h-[100px] p-2 text-xs sm:text-sm bg-[#ECF5E0] text-[#89C13E] font-bold">
                   {day}
                 </td>
                 {times.map((time) => (
@@ -111,7 +111,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
           href={``}
           className="bg-[#89C13E] text-white px-12 py-4 flex justify-center items-center rounded-md w-full sm:w-auto text-xs sm:text-sm"
         >
-          Pay now ${getPriceData()}
+          Pay now &#36;{getPriceData()}
         </Link>
         <button
           onClick={downloadPdf}
