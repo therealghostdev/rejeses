@@ -26,12 +26,13 @@ export default function ClientImage({ trainingItem }: ClientImageProps) {
         />
       )}
       <Image
-        src={trainingItem.image}
+        src={trainingItem?.image || "/meeting.svg"}
         alt="image"
         layout="fill"
         objectFit="cover"
         placeholder="blur"
-        blurDataURL={trainingItem.image}
+        className={`w-full h-full`}
+        blurDataURL={trainingItem?.image || "/meeting.svg"}
         priority
         onLoad={handleImageLoad}
       />

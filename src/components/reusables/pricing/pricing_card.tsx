@@ -1,13 +1,15 @@
 "use client";
 import { CheckIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
+import button from "next/link";
 import { PriceCardProps } from "@/utils/types/types";
 import { usePayment } from "@/utils/context/payment";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter, redirect } from "next/navigation";
 import { useEffect } from "react";
 
-export default function PriceCard({ data }: PriceCardProps) {
+export default function PriceCard({ data, id }: PriceCardProps) {
   const { training_only, training_with_mentorship } = data;
+
+  const directTo = useRouter();
 
   const pathname = usePathname();
   const { setPaymentInfo } = usePayment();
@@ -16,6 +18,17 @@ export default function PriceCard({ data }: PriceCardProps) {
     const currentPath = decodeURIComponent(pathname).split("/")[1];
     if (currentPath === "training") {
       setPaymentInfo((prev) => ({ ...prev, price: item }));
+      const routePath = decodeURIComponent(pathname).split("/")[2];
+
+      const goTo = (data.path = `/training/${routePath}/${id}`);
+      directTo.push(goTo);
+    } else if (currentPath === "mentorship") {
+      setPaymentInfo((prev) => ({ ...prev, price: item }));
+      const goTo = `/${currentPath}/pricing`;
+      directTo.push(goTo);
+    } else if (currentPath === "consultation") {
+      // const goTo = `${currentPath}/`
+    } else {
     }
   };
 
@@ -24,7 +37,9 @@ export default function PriceCard({ data }: PriceCardProps) {
   };
 
   useEffect(() => {
-    resetPriceInfo();
+    const val = ["Project", "pricing"];
+    const includesAny = val.some((substring) => pathname.includes(substring));
+    if (!includesAny) resetPriceInfo();
   }, []);
 
   return (
@@ -64,13 +79,13 @@ export default function PriceCard({ data }: PriceCardProps) {
           </div>
 
           <div className="bottom-6 md:absolute left-0 w-full px-4">
-            <Link
+            <button
               onClick={() => registerBtnClick(training_only.price)}
-              href={training_only.register_link}
+              // href={training_only.register_link}
               className="bg-[#89C13E] text-white w-full inline-block p-4 text-center rounded-md font-bricolage_grotesque"
             >
               Register
-            </Link>
+            </button>
           </div>
         </div>
       )}
@@ -112,13 +127,13 @@ export default function PriceCard({ data }: PriceCardProps) {
           </div>
 
           <div className="bottom-6 md:absolute left-0 w-full px-4">
-            <Link
+            <button
               onClick={() => registerBtnClick(training_with_mentorship.price)}
-              href={training_with_mentorship.register_link}
+              // href={training_with_mentorship.register_link}
               className="bg-[#89C13E] text-white w-full font-bricolage_grotesque inline-block p-4 text-center rounded-md"
             >
               Register
-            </Link>
+            </button>
           </div>
         </div>
       )}

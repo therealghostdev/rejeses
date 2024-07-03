@@ -11,9 +11,8 @@ export default function Book_session() {
         </h1>
         <div className="w-[661px] flex justify-center items-center px-12 z-10">
           <p className="text-lg text-center break-words text-wrap">
-            Still have questions? Schedule a free 30-minute consultation with
-            one of our experts to discuss your specifics and clear whatever
-            questions you have
+            Still have questions? Schedule a 30-minute consultation with
+            one of our experts to discuss your specifics.
           </p>
         </div>
 

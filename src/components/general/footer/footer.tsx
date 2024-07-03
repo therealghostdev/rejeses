@@ -24,7 +24,8 @@ const Footer: React.FC = () => {
     if (
       decodedPathname === "/" ||
       decodedPathname === "/book-session" ||
-      decodedPathname === "/enroll"
+      decodedPathname === "/enroll" ||
+      decodedPathname === "/contact-us"
     ) {
       return tableData;
     }
@@ -39,7 +40,8 @@ const Footer: React.FC = () => {
     if (
       decodedPathname === "/" ||
       decodedPathname === "/book-session" ||
-      decodedPathname === "/enroll"
+      decodedPathname === "/enroll" ||
+      decodedPathname === "/contact-us"
     ) {
       return TestimonialData;
     }
@@ -68,7 +70,7 @@ const Footer: React.FC = () => {
   }, []);
 
   return (
-    <footer className="md:mt-12 my-4">
+    <footer className="my-4">
       <Testimonial data={filteredTestimonalData} />
       <Table data={filteredTableData} />
       {pathname === "/" && !isMobile && <BookSession />}

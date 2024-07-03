@@ -12,6 +12,10 @@
     {
       "label": "Consulting",
       "url": "/consultation"
+    },
+    {
+      "label": "Contact us",
+      "url": "/contact-us"
     }
   ],
   "linkButtons": [

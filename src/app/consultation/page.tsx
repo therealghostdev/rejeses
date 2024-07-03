@@ -23,9 +23,6 @@ export default function Page() {
 
   const filteredPricing = priceData.find((item) => item.tag === currentTag);
 
-  console.log(filteredWhyData);
-  console.log(filteredBenefits);
-
   const [imageLoading, setImageLoading] = useState<boolean>(true);
 
   return (
@@ -36,23 +33,23 @@ export default function Page() {
             Consultation
           </h1>
           <p className="text-lg lg:max-w-[80%]">
-            Our customised consultation services are thoughtfully designed to
+            Our customized consultation services are thoughtfully designed to
             propel the growth, address challenges, and achieve goals for
             companies of any size or industry, providing comprehensive and
             substantial support.
           </p>
         </div>
 
-        <div className="flex gap-x-4 lg:px-12 md:px-6">
+        {/* <div className="flex gap-x-4 lg:px-12 md:px-6">
           <Link
             href={``}
             className="bg-[#89C13E] text-white px-6 py-4 rounded-md font-bricolage_grotesque"
           >
             View Pricing
           </Link>
-        </div>
+        </div> */}
 
-        <div className="lg:px-12 md:px-3 lg:h-[800px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6">
+        <div className="lg:px-12 md:px-3 lg:h-[620px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6">
           <div
             className={`filter w-full h-full ${
               imageLoading ? "blur-2xl" : "blur-none"

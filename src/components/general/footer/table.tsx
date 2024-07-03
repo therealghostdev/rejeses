@@ -8,8 +8,18 @@ import Link from "next/link";
 const Table: React.FC<TableProps> = ({ data }) => (
   <div className="bg-[#452569] text-white lg:px-12 md:px-6 px-4 py-12 flex flex-col gap-y-4">
     <div className="w-full px-4 flex flex-col gap-2">
-      <h1 className="text-3xl font-bold  font-bricolage_grotesque">Your questions, answered</h1>
-      <small>Have another question? Email us at <Link href={`mailto:info@rejeses.com`}>info@rejeses.com. </Link></small>
+      <h1 className="text-3xl font-bold  font-bricolage_grotesque">
+        Your questions, answered
+      </h1>
+      <small>
+        Have another question?{" "}
+        <Link
+          href={`/contact-us`}
+          className="font-bold transition_border py-1 italic"
+        >
+          Contact us{" "}
+        </Link>
+      </small>
     </div>
     <Accordion.Root
       className="w-full rounded-md"
@@ -18,9 +28,17 @@ const Table: React.FC<TableProps> = ({ data }) => (
       collapsible
     >
       {data.map((item) => (
-        <AccordionItem key={item.id} value={item.id} className="bg-[#452569] text-white text-lg">
-          <AccordionTrigger className="font-bricolage_grotesque">{item.title}</AccordionTrigger>
-          <AccordionContent className="md:text-[20px] text-[15px]">{item.content}</AccordionContent>
+        <AccordionItem
+          key={item.id}
+          value={item.id}
+          className="bg-[#452569] text-white text-lg"
+        >
+          <AccordionTrigger className="font-bricolage_grotesque">
+            {item.title}
+          </AccordionTrigger>
+          <AccordionContent className="md:text-[20px] text-[15px]">
+            {item.content}
+          </AccordionContent>
         </AccordionItem>
       ))}
     </Accordion.Root>

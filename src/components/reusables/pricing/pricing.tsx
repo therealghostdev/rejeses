@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import PriceCard from "./pricing_card";
 import { PricingProps, PricingData } from "@/utils/types/types";
 
-export default function Pricing({ item }: PricingProps) {
+export default function Pricing({ item, id }: PricingProps) {
   const [individuals, setIndividuals] = useState<boolean>(true); // Default to "individuals"
   const [pricingData, setPricingData] = useState<
     PricingData["individuals"] | PricingData["group"] | undefined
@@ -57,7 +57,7 @@ export default function Pricing({ item }: PricingProps) {
 
       <div className="w-full flex flex-col md:flex-row justify-center items-center md:px-8 md:py-6 px-4 py-2 text-[#5B5B5B]">
         {pricingData?.map((data, index) => (
-          <PriceCard key={index} data={data} />
+          <PriceCard key={index} data={data} id={id} />
         ))}
       </div>
     </section>

@@ -32,7 +32,7 @@
     display: grid;
     /* grid-template-rows: 400px; */
     grid-auto-flow: column;
-    grid-gap: 24px;
+    grid-gap: 10px;
     overflow: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;

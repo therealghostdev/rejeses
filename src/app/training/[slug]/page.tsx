@@ -30,10 +30,14 @@ export default function Page({ params }: { params: { slug: string } }) {
           <h1 className="md:text-4xl text-2xl font-bold font-bricolage_grotesque">
             {trainingItem.title}
           </h1>
-          <p className="text-lg lg:max-w-[80%]">{trainingItem.expanded_description}</p>
+          <p className="text-lg lg:max-w-[80%]">
+            {trainingItem.expanded_description}
+          </p>
         </div>
         <div className="w-full flex flex-col gap-2 lg:px-12 md:px-6">
-          <h1 className="text-2xl text-[#89C13E] font-bricolage_grotesque">NOTE:</h1>
+          <h1 className="text-2xl text-[#89C13E] font-bricolage_grotesque">
+            NOTE:
+          </h1>
           <p className="text-lg text-wrap lg:max-w-[80%]">
             For students who are unable to join the live sessions due to
             conflicting schedules, the recording of any live class you miss will
@@ -64,7 +68,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         </div>
 
         {trainingItem.image && trainingItem.image !== "" && (
-          <div className="lg:px-12 md:px-3 lg:h-[800px] h-[50vw] lg:w-[100%] my-4">
+          <div className="lg:px-12 md:px-3 lg:h-[700px] h-[50vw] lg:w-[100%] object-cover my-4 m-auto">
             <ClientImage trainingItem={trainingItem} />
           </div>
         )}
@@ -75,7 +79,9 @@ export default function Page({ params }: { params: { slug: string } }) {
             className="w-full flex md:flex-row gap-4 flex-col lg:px-12 md:mb-8"
           >
             <div className="border border-[#DBE1E7] rounded-2xl md:w-2/4 w-full flex flex-col md:mx-2 mx-0 md:py-6 px-8 py-4 gap-3">
-              <h1 className="font-bold text-2xl font-bricolage_grotesque">{item.why}</h1>
+              <h1 className="font-bold text-2xl font-bricolage_grotesque">
+                {item.why}
+              </h1>
               {item.answer.map((value, index) => (
                 <li key={index}>{value}</li>
               ))}
@@ -91,7 +97,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
         ))}
 
-        <Why_us data={whyUsItems} />
+        {/* <Why_us data={whyUsItems} /> */}
 
         <section className="w-full flex flex-col gap-4 lg:px-12 md:px-6 md:mt-8 md:mb-12">
           <h1 className="lg:text-4xl text-2xl font-bold font-bricolage_grotesque">
@@ -102,7 +108,9 @@ export default function Page({ params }: { params: { slug: string } }) {
               key={index}
               className="w-full border border-[#DBE1E7] p-4 rounded-md font-bricolage_grotesque text-[#5B5B5B]"
             >
-              <h1 className="lg:text3xl text-2xl font-bold text-[#090909]">{item.week}</h1>
+              <h1 className="lg:text3xl text-2xl font-bold text-[#090909]">
+                {item.week}
+              </h1>
               <p className="text-lg">{item.topic}</p>
               <small>{item.duration}</small>
             </div>
@@ -134,7 +142,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
         </section>
         <section className="my-12">
-          <Pricing item={trainingItem.pricing} />
+          <Pricing item={trainingItem.pricing} id={trainingItem.id} />
         </section>
       </section>
     </section>

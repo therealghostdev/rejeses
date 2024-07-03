@@ -42,6 +42,29 @@ body {
   overflow: auto;
 }
 
+.transition_border {
+  text-align: center;
+  position: relative;
+}
+
+.transition_border::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  display: block;
+  width: 0;
+  background: #FFFFFF;
+  height: 3px;
+  opacity: 0;
+  transition: opacity 0.3s, width 0.3s;
+}
+
+.transition_border:hover::after {
+  opacity: 1;
+  width: 100%;
+}
+
 
 @media screen and (max-width: 360px) {
   .sm_btn-container {

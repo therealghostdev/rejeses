@@ -27,7 +27,7 @@ export default function Nav_desktop() {
     const updateWidth = () => {
       const newWidth = window.innerWidth;
       setWidth(newWidth);
-      setIsMobile(newWidth <= 767);
+      setIsMobile(newWidth <= 1023);
     };
 
     window.addEventListener("resize", updateWidth);
@@ -83,17 +83,17 @@ export default function Nav_desktop() {
             alt="logo"
             width={100}
             height={50}
-            className="md:h-12 h-12"
+            className="md:h-16 h-12"
           />
         </Link>
       </section>
 
       {!isMobile && (
         <>
-          <section className="flex lg:ml-12 items-center">
-            <ul className="flex lg:space-x-12 space-x-4">
+          <section className="flex lg:ml-12 lg:mr-12 items-center">
+            <ul className="flex lg:space-x-6 space-x-4">
               {links.map((link, index) => (
-                <li key={index} className="list-none">
+                <li key={index} className="list-none text-nowrap text-ellipsis font-bold">
                   <Link
                     href={link.url}
                     className={`${isActive(link.url) ? "text-[#89C13E]" : ""}`}
@@ -134,7 +134,7 @@ export default function Nav_desktop() {
           </button>
 
           {openMobileNav && (
-            <div className="absolute top-12 left-0 w-full bg-white z-10 p-4">
+            <div className="absolute md:top-20 top-12 left-0 w-full bg-white z-10 p-4 md:px-14 px-8">
               <section className="flex flex-col space-y-4">
                 <ul className="flex flex-col space-y-4">
                   {links.map((link, index) => (

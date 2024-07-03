@@ -30,26 +30,26 @@ export default function Page() {
       <section className="w-full px-8 flex flex-col gap-6 py-12 md:max-w-[98%]">
         <div className="flex flex-col w-full gap-4 lg:px-12 md:px-6 md:mt-10">
           <h1 className="md:text-4xl text-2xl font-bold font-bricolage_grotesque">
-            Personalised Mentorship
+            Personalized Mentorship
           </h1>
           <p className="text-lg text-wrap lg:max-w-[80%]">
-            Our personalised mentorship program is thoughtfully designed to
+            Our personalized mentorship program is thoughtfully designed to
             accelerate growth, overcome challenges, and achieve goals for
             individuals at any stage or in any field. It offers rich and
             substantial support.
           </p>
         </div>
 
-        <div className="flex gap-x-4 lg:px-12 md:px-6">
+        {/* <div className="flex gap-x-4 lg:px-12 md:px-6">
           <Link
             href={`/mentorship/pricing`}
             className="bg-[#89C13E] text-white px-6 py-4 rounded-md font-bricolage_grotesque"
           >
             View Pricing
           </Link>
-        </div>
+        </div> */}
 
-        <div className="lg:px-12 md:px-3 lg:h-[800px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6">
+        <div className="lg:px-12 md:px-3 lg:h-[680px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6 object-cover m-auto">
           <div
             className={`filter w-full h-full ${
               imageLoading ? "blur-2xl" : "blur-none"

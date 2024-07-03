@@ -82,13 +82,16 @@ export interface PricingData {
 
 export interface PricingProps {
   item: PricingData;
+  id?: number;
 }
 
 export interface PriceCardProps {
   data: {
     training_only?: TrainingOption;
     training_with_mentorship?: TrainingOption;
+    path?: string;
   };
+  id?: number;
 }
 
 export interface DynamicNavProps {
@@ -109,7 +112,7 @@ export interface ScheduleData {
 }
 
 export interface ClientImageProps {
-  trainingItem: {
+  trainingItem?: {
     image: string;
   };
 }

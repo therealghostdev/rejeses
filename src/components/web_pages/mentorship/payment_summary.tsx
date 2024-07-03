@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePayment } from "@/utils/context/payment";
 
 export default function MentorshipPaymentSummary() {
-  const { paymentInfo, setPaymentInfo } = usePayment();
+  const { paymentInfo } = usePayment();
 
   return (
     <section className="w-full px-8 flex flex-col gap-12 py-12 justify-center items-center">
@@ -22,15 +22,15 @@ export default function MentorshipPaymentSummary() {
               Order Summary
             </h1>
             <p className="text-wrap lg:max-w-[80%]">
-              You are subscribing to rejeses Consult one year personalised
-              mentorship plan. You will be charged $400.00 for the first year
+              You are subscribing to rejeses Consult one year personalized
+              mentorship plan. You will be charged &#x24;{paymentInfo.price || 300} for the first year
               and subsequently $200.00 per month or $2,200.00 per year.
             </p>
 
             <div className="flex justify-between w-full font-bricolage_grotesque">
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
-                &#x24;400
+                &#x24;{paymentInfo.price || 300}
               </span>
             </div>
           </div>
