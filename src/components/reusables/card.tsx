@@ -22,8 +22,8 @@ export default function GeneralCard(props: GeneralCardProps) {
       key={props.id}
     >
       {props.pin && (
-        <div className="w-[40px]">
-          <Image src={props.pin} alt="pin" width={100} height={100} />
+        <div className={`${props.person ? "bg-[#89C13E] rounded-full flex justify-center items-center h-[40px] w-[40px]" : "w-[40px]"}`}>
+          <Image src={props.pin} alt="pin" width={100} height={100} className={`${props.person ? "w-3/4 h-3/4" : ""}`} />
         </div>
       )}
 
