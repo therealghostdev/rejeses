@@ -38,5 +38,35 @@
     "id": 4,
     "image": "/meeting4.svg",
     "pre": "/meeting4.webp"
+  },
+  {
+    "id": 5,
+    "image": "/meeting5.svg",
+    "pre": "/meeting5.webp"
+  },
+  {
+    "id": 6,
+    "image": "/meeting6.svg",
+    "pre": "/meeting6.webp"
+  },
+  {
+    "id": 7,
+    "image": "/meeting6.svg",
+    "pre": "/meeting6.webp"
+  },
+  {
+    "id": 8,
+    "image": "/meeting8.svg",
+    "pre": "/meeting8.webp"
+  },
+  {
+    "id": 9,
+    "image": "/meeting9.svg",
+    "pre": "/meeting9.webp"
+  },
+  {
+    "id": 10,
+    "image": "/meeting10.svg",
+    "pre": "/meeting10.webp"
   }
 ]

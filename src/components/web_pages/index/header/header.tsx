@@ -61,7 +61,7 @@ export default function Header() {
 
       {!isMobile ? <Image_slider /> : <Mobile_Image_slider />}
 
-      <div className="flex w-full flex-col justify-center items-center bg-[#FCFCFC] py-12 px-4 gap-6 md:mt-16 mt-6">
+      <div className="flex w-full flex-col justify-center items-center bg-[#FCFCFC] py-12 px-4 gap-6 mt-6">
         <p className="text-lg text-center font-bricolage_grotesque text-[#5B5B5B]">
           Learn directly from people who worked at companies such as
         </p>
