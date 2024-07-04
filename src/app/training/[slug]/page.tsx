@@ -97,7 +97,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
         ))}
 
-        {/* <Why_us data={whyUsItems} /> */}
+        <Why_us data={whyUsItems} />
 
         <section className="w-full flex flex-col gap-4 lg:px-12 md:px-6 md:mt-8 md:mb-12">
           <h1 className="lg:text-4xl text-2xl font-bold font-bricolage_grotesque">

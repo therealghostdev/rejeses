@@ -3,8 +3,24 @@ import Image from "next/image";
 import { GeneralCardProps } from "@/utils/types/types";
 
 export default function GeneralCard(props: GeneralCardProps) {
+  const formatComment = (comment: string) => {
+    const parts = comment.split(/(rejeses)/i);
+    return parts.map((part, index) =>
+      /rejeses/i.test(part) ? (
+        <span key={index} className="font-bold italic">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+
   return (
-    <div className="rounded-md px-6 py-4 w-full flex flex-col gap-6" key={props.id}>
+    <div
+      className="rounded-md px-6 py-4 w-full flex flex-col gap-6"
+      key={props.id}
+    >
       {props.pin && (
         <div className="w-[40px]">
           <Image src={props.pin} alt="pin" width={100} height={100} />
@@ -12,8 +28,12 @@ export default function GeneralCard(props: GeneralCardProps) {
       )}
 
       <div className="w-full flex flex-col gap-4 py-4">
-        {props.title && <h1 className="text-lg font-bold font-bricolage_grotesque">{props.title}</h1>}
-        <p className="text-[#5B5B5B]">{props.comment}</p>
+        {props.title && (
+          <h1 className="text-lg font-bold font-bricolage_grotesque">
+            {props.title}
+          </h1>
+        )}
+        <p className="text-[#5B5B5B]">{formatComment(props.comment)}</p>
       </div>
 
       {props.person && (

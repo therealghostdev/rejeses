@@ -36,7 +36,7 @@ export default function Header() {
           </h1>
           <p className="text-lg text-center max-w-[90%] lg:leading-[36px] leading-[28px]">
             Everything from learning about project management to one-on-one
-            mentoring and even consultation, <span className="font-bold">rejeses</span> is here to help you learn
+            mentoring and even consultation, <span className="font-bold italic">rejeses</span> is here to help you learn
             and master project management.
           </p>
 

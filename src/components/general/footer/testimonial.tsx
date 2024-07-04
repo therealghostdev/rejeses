@@ -24,6 +24,7 @@ export default function Testimonial(props: UniqueComponentsProps) {
               person={item.person}
               id={item.id}
               comment={item.comment}
+              pin={item.pin}
             />
           </div>
         ))}

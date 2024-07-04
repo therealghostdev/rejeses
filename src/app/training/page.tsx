@@ -16,9 +16,9 @@ export default function Page() {
         <ClientImage />
       </div>
       <UpcomingCohorts />
-      <div className="px-6">
+      {/* <div className="px-6">
         <Why_us data={filteredWhyData} />
-      </div>
+      </div> */}
     </div>
   );
 }

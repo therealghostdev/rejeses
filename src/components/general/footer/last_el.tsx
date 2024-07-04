@@ -7,7 +7,7 @@ export default function Last_el() {
       <div className="lg:w-[30%] md:w-[50%] w-full flex lg:justify-between md:justify-around justify-between items-center">
         <p className="text-2xl">&copy;</p>
 
-        <p className="text-lg">2023 rejeses.</p>
+        <p className="text-lg">2023 <span className="font-bold italic">rejeses</span>.</p>
 
         <p className="text-lg">All rights reserved</p>
       </div>
