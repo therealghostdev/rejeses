@@ -12,7 +12,7 @@ export default function Page() {
   );
   return (
     <div className="py-8">
-      <div className="lg:px-12 md:px-3 lg:h-[800px] h-[50vw] lg:max-w-[95%] my-4 object-cover m-auto">
+      <div className="lg:px-12 md:px-3 lg:h-[680px] h-[50vw] lg:max-w-[95%] max-w-[90%] my-4 object-cover object-center m-auto">
         <ClientImage />
       </div>
       <UpcomingCohorts />

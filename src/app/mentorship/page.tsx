@@ -49,7 +49,7 @@ export default function Page() {
           </Link>
         </div> */}
 
-        <div className="lg:px-12 md:px-3 lg:h-[680px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6 object-cover m-auto">
+        <div className="lg:px-12 md:px-3 lg:h-[680px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6 object-cover">
           <div
             className={`filter w-full h-full ${
               imageLoading ? "blur-2xl" : "blur-none"
@@ -68,7 +68,7 @@ export default function Page() {
               alt="image"
               layout="fill"
               objectFit="cover"
-              className={`w-full h-full ${
+              className={`w-full h-full object-contain object-top ${
                 imageLoading ? "blur-2xl" : "blur-none"
               }`}
               placeholder="blur"

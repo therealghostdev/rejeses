@@ -68,7 +68,7 @@ export default function Page() {
               alt="image"
               layout="fill"
               objectFit="cover"
-              className={`w-full h-full ${
+              className={`w-full h-full object-contain object-top ${
                 imageLoading ? "blur-2xl" : "blur-none"
               }`}
               placeholder="blur"

@@ -31,7 +31,7 @@ export default function ClientImage({ trainingItem }: ClientImageProps) {
         layout="fill"
         objectFit="cover"
         placeholder="blur"
-        className={`w-full h-full`}
+        className={`w-full h-full object-contain object-top`}
         blurDataURL={trainingItem?.image || "/meeting.svg"}
         priority
         onLoad={handleImageLoad}

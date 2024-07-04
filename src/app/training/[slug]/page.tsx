@@ -68,7 +68,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         </div>
 
         {trainingItem.image && trainingItem.image !== "" && (
-          <div className="lg:px-12 md:px-3 lg:h-[700px] h-[50vw] lg:w-[100%] object-cover my-4 m-auto">
+          <div className="lg:px-12 md:px-3 lg:h-[700px] h-[50vw] lg:w-[100%] my-4">
             <ClientImage trainingItem={trainingItem} />
           </div>
         )}
