@@ -14,6 +14,20 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: { bricolage_grotesque: ["var(--font-bricolage-grotesque)"] },
+      keyframes: {
+        slideDown: {
+          "0%": { height: "0" },
+          "100%": { height: "var(--radix-accordion-content-height)" },
+        },
+        slideUp: {
+          "0%": { height: "var(--radix-accordion-content-height)" },
+          "100%": { height: "0" },
+        },
+      },
+      animation: {
+        slideDown: "slideDown 300ms ease-out",
+        slideUp: "slideUp 300ms ease-out",
+      },
     },
   },
   plugins: [],

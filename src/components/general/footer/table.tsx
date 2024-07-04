@@ -1,14 +1,14 @@
 "use client";
 import React from "react";
 import * as Accordion from "@radix-ui/react-accordion";
-import { PlusIcon } from "@radix-ui/react-icons";
+import { PlusIcon, MinusIcon } from "@radix-ui/react-icons";
 import { TableProps } from "@/utils/types/types";
 import Link from "next/link";
 
 const Table: React.FC<TableProps> = ({ data }) => (
   <div className="bg-[#452569] text-white lg:px-12 md:px-6 px-4 py-12 flex flex-col gap-y-4">
     <div className="w-full px-4 flex flex-col gap-2">
-      <h1 className="text-3xl font-bold  font-bricolage_grotesque">
+      <h1 className="text-3xl font-bold font-bricolage_grotesque">
         Your questions, answered
       </h1>
       <small>
@@ -33,11 +33,11 @@ const Table: React.FC<TableProps> = ({ data }) => (
           value={item.id}
           className="bg-[#452569] text-white text-lg"
         >
-          <AccordionTrigger className="font-bricolage_grotesque">
-            {item.title}
+          <AccordionTrigger className="font-bricolage_grotesque text-left">
+            <div className="max-w-[80%] leading-relaxed">{item.title}</div>
           </AccordionTrigger>
           <AccordionContent className="md:text-[20px] text-[15px]">
-            {item.content}
+            <div className="max-w-[80%] leading-relaxed">{item.content}</div>
           </AccordionContent>
         </AccordionItem>
       ))}
@@ -67,19 +67,27 @@ const AccordionTrigger = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
   <Accordion.Header className="flex">
     <Accordion.Trigger
-      className={`hover:bg-[#3c205c] cursor-pointer group flex h-[45px] flex-1 my-2 items-center justify-between lg:py-12 py-8 bg-[#452569] text-white px-5 md:text-[25px] font-bold text-[15px] leading-none shadow-[0_1px_0] outline-none ${
+      className={`hover:bg-[#3c205c] cursor-pointer group pb-12 flex h-[45px] flex-1 my-2 items-center justify-between lg:py-12 py-8 bg-[#452569] text-white px-5 md:text-[25px] font-bold text-[15px] leading-none shadow-[0_1px_0] outline-none ${
         className ?? ""
       }`}
       {...props}
       ref={forwardedRef}
     >
       {children}
-      <PlusIcon
-        width="25px"
-        height="25px"
-        className="ease-[cubic-bezier(0.87,_0,_0.13,_1)] transition-transform duration-300 group-data-[state=open]:rotate-180"
-        aria-hidden
-      />
+      <span className="relative">
+        <PlusIcon
+          width="25px"
+          height="25px"
+          className="transition-transform duration-1000 group-data-[state=open]:rotate-180 group-data-[state=open]:opacity-0"
+          aria-hidden
+        />
+        <MinusIcon
+          width="25px"
+          height="25px"
+          className="absolute top-0 left-0 transition-opacity duration-1000 opacity-0 group-data-[state=open]:opacity-100 group-data-[state=closed]:opacity-0"
+          aria-hidden
+        />
+      </span>
     </Accordion.Trigger>
   </Accordion.Header>
 ));
@@ -90,7 +98,7 @@ const AccordionContent = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof Accordion.Content>
 >(({ children, className, ...props }, forwardedRef) => (
   <Accordion.Content
-    className={`data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp overflow-hidden text-[15px] ${
+    className={`overflow-hidden data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp text-[15px] ${
       className ?? ""
     }`}
     {...props}

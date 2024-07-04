@@ -57,7 +57,7 @@ body {
   background: #FFFFFF;
   height: 3px;
   opacity: 0;
-  transition: opacity 0.3s, width 0.3s;
+  transition: opacity .8s, width .8s, left .8s;
 }
 
 .transition_border:hover::after {
@@ -65,6 +65,11 @@ body {
   width: 100%;
 }
 
+.transition_border:not(:hover)::after {
+  left: auto;
+  right: 0;
+  width: 0;
+}
 
 @media screen and (max-width: 360px) {
   .sm_btn-container {

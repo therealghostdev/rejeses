@@ -1,62 +1,146 @@
 [
   {
     "id": "1",
-    "title": "What is training?",
-    "content": "Training is a process to build skills.",
-    "tag": "training"
+    "title": "How will your training program benefit me?",
+    "content": "Our training will equip you with practical skills, tools, and methodologies, fostering your ability to lead successful projects, adapt to challenges, and achieve optimal results.",
+    "tag": "homepage"
   },
   {
     "id": "2",
-    "title": "What is mentorship?",
-    "content": "Mentorship involves guidance by a more experienced person.",
-    "tag": "mentorship"
+    "title": "How does your mentorship program work?",
+    "content": "Our mentorship program pairs you with an experienced project manager who provides personalized guidance on time-tested project management principles, shares industry insights, and helps you navigate challenges. Sessions can be conducted virtually, or in-person based on your preference.",
+    "tag": "homepage"
   },
   {
     "id": "3",
-    "title": "What is consultation?",
-    "content": "Consultation is providing professional advice.",
-    "tag": "consultation"
+    "title": "How would I benefit from your PM consulting?",
+    "content": "Our consulting services help streamline your projects, optimize resources, and improve overall project efficiency. We tailor solutions to meet your specific needs, ensuring successful project outcomes.",
+    "tag": "homepage"
   },
   {
     "id": "4",
-    "title": "How does training work?",
-    "content": "Training involves practical and theoretical learning.",
-    "tag": "training"
+    "title": "Are your consulting and training services industry-specific?",
+    "content": "We have experience across diverse industries, tailoring our consulting and training services to address industry-specific challenges and requirements. Our adaptable approach ensures relevance to your sector.",
+    "tag": "homepage"
   },
   {
     "id": "5",
-    "title": "Who can be a mentor?",
-    "content": "Mentors are typically experienced professionals.",
-    "tag": "mentorship"
+    "title": "How do you assess the effectiveness of your training programs?",
+    "content": "We utilize feedback mechanisms, assessments, and post-training evaluations to measure the impact of our programs. Continuous improvement is a key aspect of our training methodology.",
+    "tag": "homepage"
   },
   {
     "id": "6",
-    "title": "Why choose consultation?",
-    "content": "Consultation can provide tailored advice and strategies.",
-    "tag": "consultation"
+    "title": "How do I get started with your services?",
+    "content": "Simply reach out to us by clicking on the button below. We’ll discuss your needs, tailor a plan, and initiate the consulting, training or mentorship process tailored to your goals.",
+    "tag": "homepage"
   },
   {
     "id": "7",
-    "title": "What is the duration of training?",
-    "content": "Training duration varies by course.",
+    "title": "How will your training program benefit me?",
+    "content": "Our training will equip you with practical skills, tools, and methodologies, fostering your ability to lead successful projects, adapt to challenges, and achieve optimal results.",
     "tag": "training"
   },
   {
     "id": "8",
-    "title": "Benefits of mentorship?",
-    "content": "Mentorship helps in career growth and personal development.",
-    "tag": "mentorship"
+    "title": "How is your training curriculum like?",
+    "content": "Our training curriculum covers the entire Project Management Body of Knowledge (PMBOK) Guide as well as the Agile Practice Guide, both produced by the Project Management Institute (PMI).",
+    "tag": "training"
   },
   {
     "id": "9",
-    "title": "What fields offer consultation?",
-    "content": "Consultation is available in various fields like business, healthcare.",
-    "tag": "consultation"
+    "title": "Do you provide virtual training options for remote teams?",
+    "content": "Yes, we offer virtual training sessions to accommodate remote teams, ensuring accessibility and flexibility in learning for geographically dispersed project management teams.",
+    "tag": "training"
   },
   {
     "id": "10",
-    "title": "How to become a mentor?",
-    "content": "To become a mentor, one should have significant experience and willingness to guide others.",
+    "title": "How do you assess the effectiveness of your training programs?",
+    "content": "We utilize feedback mechanisms, assessments, and post-training evaluations to measure the impact of our programs. Continuous improvement is a key aspect of our training methodology.",
+    "tag": "training"
+  },
+  {
+    "id": "11",
+    "title": "Do you offer certifications as part of your training programs?",
+    "content": "While we don't provide certifications directly, our training programs are designed to prepare participants for recognized industry certifications, particularly the Project Management Professional (PMP) and Agile Certified Practitioner (PMI-ACP) certifications. If you choose to take any of these exams, we guarantee 100% success at your first try.",
+    "tag": "training"
+  },
+  {
+    "id": "12",
+    "title": "What if I have more questions?",
+    "content": "Simply reach out to us by clicking on the button below. We'll discuss your needs, tailor a plan, and initiate the consulting, training or mentorship process tailored to your goals.",
+    "tag": "training"
+  },
+  {
+    "id": "13",
+    "title": "How does your mentorship program work?",
+    "content": "Our mentorship program pairs you with an experienced project manager who provides personalized guidance on time-tested project management principles, shares industry insights, and helps you navigate challenges. Sessions can be conducted virtually, or in-person based on your preference.",
     "tag": "mentorship"
+  },
+  {
+    "id": "14",
+    "title": "How do you support ongoing professional development through mentorship?",
+    "content": "Our mentorship program offers ongoing support, helping you set and achieve professional development goals. Mentors share industry insights, provide guidance on challenges, and facilitate networking opportunities.",
+    "tag": "mentorship"
+  },
+  {
+    "id": "15",
+    "title": "Is the mentorship program suitable for both new and experienced project managers?",
+    "content": "Absolutely. Our mentorship program is tailored to the individual needs of both novice and experienced project managers, providing guidance at various career stages.",
+    "tag": "mentorship"
+  },
+  {
+    "id": "16",
+    "title": "What qualifications do your consultants and mentors have?",
+    "content": "Our team consists of experienced project managers with proven track records. They hold the prestigious Project Management Professional (PMP) certification, from the Project Management Institute (PMI), as well as other relevant certifications, and stay updated on industry best practices, ensuring top-notch guidance and support.",
+    "tag": "mentorship"
+  },
+  {
+    "id": "17",
+    "title": "What if I have more questions?",
+    "content": "Simply reach out to us by clicking on the button below. We'll discuss your needs, tailor a plan, and initiate the consulting, training or mentorship process tailored to your goals.",
+    "tag": "mentorship"
+  },
+  {
+    "id": "18",
+    "title": "How would I benefit from your PM consulting?",
+    "content": "Our consulting services help streamline your projects, optimize resources, and improve overall project efficiency. We tailor solutions to meet your specific needs, ensuring successful project outcomes.",
+    "tag": "consultation"
+  },
+  {
+    "id": "19",
+    "title": "Can you customize consulting services for specific project management methodologies?",
+    "content": "Certainly. Our consulting services are adaptable and can be customized to align with various project management methodologies, including Agile, Waterfall, and hybrid approaches.",
+    "tag": "consultation"
+  },
+  {
+    "id": "20",
+    "title": "Can you assist with specific project management methodologies?",
+    "content": "Of course, we can. Whether you follow Agile (or, adaptive), Waterfall (or, predictive), or hybrid methodologies, our consultants and mentors are well-versed in various approaches, ensuring we align with your project's specific requirements.",
+    "tag": "consultation"
+  },
+  {
+    "id": "21",
+    "title": "What industries do you specialize in for project management consulting?",
+    "content": "We have experience across diverse industries, including IT, software development, healthcare, finance, construction, oil and gas, and more. Our consultants adapt their expertise to meet the unique challenges of your industry.",
+    "tag": "consultation"
+  },
+  {
+    "id": "22",
+    "title": "How do you handle confidentiality and sensitive project information?",
+    "content": "We prioritize confidentiality and adhere to strict ethical standards. Our team signs non-disclosure agreements, ensuring that your project details remain secure and protected throughout our engagement.",
+    "tag": "consultation"
+  },
+  {
+    "id": "23",
+    "title": "Can you provide references or case studies from previous clients?",
+    "content": "Sure. We can share references and case studies showcasing our successful project management consulting and mentorship engagements upon request.",
+    "tag": "consultation"
+  },
+  {
+    "id": "24",
+    "title": "What if I have more questions?",
+    "content": "Simply reach out to us by clicking on the button below. We'll discuss your needs, tailor a plan, and initiate the consulting, training or mentorship process tailored to your goals.",
+    "tag": "consultation"
   }
 ]

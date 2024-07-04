@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
       decodedPathname === "/enroll" ||
       decodedPathname === "/contact-us"
     ) {
-      return tableData;
+      return tableData.filter((item) => item.tag === "homepage");
     }
 
     const tag = decodedPathname.split("/")[1];
