@@ -66,41 +66,41 @@ export default function Header() {
           Learn directly from people who worked at companies such as
         </p>
 
-        <div className="lg:w-3/4 w-full flex md:justify-around justify-center items-center md:flex-nowrap flex-wrap gap-x-6">
+        <div className="lg:w-3/4 w-full flex md:justify-around justify-center items-center md:flex-nowrap flex-wrap gap-x-3">
           <Image
-            src="mtn-logo.svg"
+            src="mtn-3-logo.svg"
             alt="mtn-logo"
             width={60}
             height={80}
-            className="w-36 md:my-0 my-2"
+            className="w-36 md:my-0 filter grayscale hover:grayscale-0 my-2"
           />
           <Image
-            src="huawei.svg"
+            src="huawei-logo.svg"
             alt="huawei-logo"
             width={60}
             height={80}
-            className="w-20 md:my-0 my-2"
+            className="w-20 md:my-0 filter grayscale hover:grayscale-0 my-2"
           />
           <Image
-            src="9mobile-logo.svg"
+            src="/9mobile-logo.png"
             alt="9mobile-logo"
             width={60}
             height={80}
-            className="w-20 md:my-0 my-2"
+            className="w-20 md:my-0 filter grayscale hover:grayscale-0 my-2"
           />
           <Image
-            src="nnpc-logo.svg"
+            src="/nnpc-logo.jpg"
             alt="nnpc-logo"
             width={100}
             height={100}
-            className="w-44 md:my-0 my-12 -ml-16"
+            className="w-40 md:my-0 my-12 filter grayscale hover:grayscale-0 md:-ml-8 -ml-1"
           />
           <Image
             src="visafone-logo.svg"
             alt="visafone-logo"
             width={100}
             height={100}
-            className="w-44 md:my-0 my-12 filter grayscale -ml-8"
+            className="w-40 md:my-0 my-12 filter grayscale hover:grayscale-0 md:-ml-5 -ml-1"
           />
         </div>
       </div>
