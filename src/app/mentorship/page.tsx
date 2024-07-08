@@ -33,7 +33,7 @@ export default function Page() {
             Personalized Mentorship
           </h1>
           <p className="text-lg text-wrap lg:max-w-[80%]">
-            Our personalized mentorship program is thoughtfully designed to
+            Our personalized mentoring program is thoughtfully designed to
             accelerate growth, overcome challenges, and achieve goals for
             individuals at any stage or in any field. It offers rich and
             substantial support.
