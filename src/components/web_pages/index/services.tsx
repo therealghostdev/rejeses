@@ -48,10 +48,10 @@ export default function Services() {
               Trainings
             </h1>
             <p className="lg:text-[24px] lg:max-w-[95%] text-wrap text-[16px]">
-              Our consultation services offer guidance to overcome project
-              challenges, optimize processes, and achieve your specific goals.
-              Schedule a consultation to discuss your project&apos;s unique
-              needs.
+              Our 35-hour training program is excellently designed to help you 
+              master the skills needed to become a seasoned project manager and
+              pass the prestigiuos Project Management Professional (PMP) 
+              certification examination on your first try! 
             </p>
 
             <span className="text-white">
@@ -68,12 +68,12 @@ export default function Services() {
         <div className="flex md:flex-row flex-col-reverse w-full gap-y-8 gap-x-12 justify-center items-center">
           <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
             <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold font-bricolage_grotesque">
-              Personalized Mentorship
+              Personalized Mentoring
             </h1>
             <p className="lg:max-w-[95%] text-wrap lg:text-[24px] text-[16px]">
               Our mentoring programs foster one-on-one relationships to guide
               and support your professional development. Experience personalized
-              mentorship that aligns with your career aspirations.
+              mentoring that aligns with your career aspirations.
             </p>
 
             <span className="text-white">
