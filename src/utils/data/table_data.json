@@ -2,13 +2,13 @@
   {
     "id": "1",
     "title": "How will your training program benefit me?",
-    "content": "Our training will equip you with practical skills, tools, and methodologies, fostering your ability to lead successful projects, adapt to challenges, and achieve optimal results.",
+    "content": "Our training will equip you with practical skills, tools, and methodologies, fostering your ability to lead successful projects. You'd be able to pass the Project Management Professional (PMP) professional examination exam on your first try!",
     "tag": "homepage"
   },
   {
     "id": "2",
-    "title": "How does your mentorship program work?",
-    "content": "Our mentorship program pairs you with an experienced project manager who provides personalized guidance on time-tested project management principles, shares industry insights, and helps you navigate challenges. Sessions can be conducted virtually, or in-person based on your preference.",
+    "title": "How does your mentoring program work?",
+    "content": "Our mentoring program pairs you with an experienced project manager who provides personalized guidance on time-tested project management principles, shares industry insights, and helps you navigate challenges. Sessions can be conducted virtually, or in-person based on your preference.",
     "tag": "homepage"
   },
   {
@@ -68,25 +68,25 @@
   {
     "id": "12",
     "title": "What if I have more questions?",
-    "content": "Simply reach out to us by clicking on the button below. We'll discuss your needs, tailor a plan, and initiate the consulting, training or mentorship process tailored to your goals.",
+    "content": "Simply reach out to us by clicking on the button below. We'll discuss your needs, tailor a plan, and initiate the training process tailored to your goals.",
     "tag": "training"
   },
   {
     "id": "13",
-    "title": "How does your mentorship program work?",
-    "content": "Our mentorship program pairs you with an experienced project manager who provides personalized guidance on time-tested project management principles, shares industry insights, and helps you navigate challenges. Sessions can be conducted virtually, or in-person based on your preference.",
+    "title": "How does your mentoring program work?",
+    "content": "Our mentoring program pairs you with an experienced project manager who provides personalized guidance on time-tested project management principles, shares industry insights, and helps you navigate challenges. Sessions can be conducted virtually, or in-person based on your preference.",
     "tag": "mentorship"
   },
   {
     "id": "14",
     "title": "How do you support ongoing professional development through mentorship?",
-    "content": "Our mentorship program offers ongoing support, helping you set and achieve professional development goals. Mentors share industry insights, provide guidance on challenges, and facilitate networking opportunities.",
+    "content": "Our mentoring program offers ongoing support, helping you set and achieve professional development goals. Mentors share industry insights, provide guidance on challenges, and facilitate networking opportunities.",
     "tag": "mentorship"
   },
   {
     "id": "15",
-    "title": "Is the mentorship program suitable for both new and experienced project managers?",
-    "content": "Absolutely. Our mentorship program is tailored to the individual needs of both novice and experienced project managers, providing guidance at various career stages.",
+    "title": "Is the mentoring program suitable for both new and experienced project managers?",
+    "content": "Absolutely. Our mentoring program is tailored to the individual needs of both novice and experienced project managers, providing guidance at various career stages.",
     "tag": "mentorship"
   },
   {
@@ -98,7 +98,7 @@
   {
     "id": "17",
     "title": "What if I have more questions?",
-    "content": "Simply reach out to us by clicking on the button below. We'll discuss your needs, tailor a plan, and initiate the consulting, training or mentorship process tailored to your goals.",
+    "content": "Simply reach out to us by clicking on the button below. We'll discuss your needs, tailor a plan, and initiate the mentoring process tailored to your goals.",
     "tag": "mentorship"
   },
   {
@@ -140,7 +140,7 @@
   {
     "id": "24",
     "title": "What if I have more questions?",
-    "content": "Simply reach out to us by clicking on the button below. We'll discuss your needs, tailor a plan, and initiate the consulting, training or mentorship process tailored to your goals.",
+    "content": "Simply reach out to us by clicking on the button below. We'll discuss your needs, tailor a plan, and initiate the consulting process tailored to your goals.",
     "tag": "consultation"
   }
 ]
