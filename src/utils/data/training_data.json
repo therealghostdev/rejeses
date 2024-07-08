@@ -26,22 +26,22 @@
       "total": 100,
       "curriculum": [
         {
-          "week": "week 1",
+          "week": "Week 1",
           "topic": "Introduction To Product Management & The Predictive Approach (Project Management Plan)",
           "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
-          "week": "week 2",
+          "week": "Week 2",
           "topic": "The Predictive Approach (Project Management Plan, Excecution & Monitoring and Control)",
           "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
-          "week": "week 3",
+          "week": "Week 3",
           "topic": "The Predictive Approach (Project Closure & Monitoring and Control) & The Agile Approach (Introduction, Integration, Project Excecution)",
           "duration": "MON - FRI (17:00 -19:00 UTC)"
         },
         {
-          "week": "week 4",
+          "week": "Week 4",
           "topic": "The Agile Approach (Project Execution & Product Release To Operations) & Next Steps",
           "duration": "MON - FRI (17:00 -19:00 UTC)"
         }
@@ -54,9 +54,9 @@
             "name": "Training only",
             "price": 100,
             "payment_type": "Single Payment",
-            "payment_description": "For individuals who wants to be trained only",
+            "payment_description": "For individuals who wish to be trained only",
             "extra_details": [
-              "Full PMP/PMI-ACP training",
+              "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
               "Explanation of exam questions and answers",
               "Textbooks and guides"
@@ -66,20 +66,20 @@
         },
         {
           "training_with_mentorship": {
-            "name": "Training & Mentorship",
-            "price": 500,
+            "name": "Training & Mentoring",
+            "price": 400,
             "payment_type": "Single Payment",
-            "payment_description": "For individuals who wants to be trained and mentored",
+            "payment_description": "For individuals who wish to be trained and mentored",
             "extra_details": [
-              "Full PMP/PMI-ACP training",
+              "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
               "Explanation of exam questions and answers",
               "Textbooks and guides",
-              "Access to templates",
+              "Access to PM templates",
               "Training on the use of some popular PM software",
               "Opportunity to connect with like-minded professionals",
               "Regular attention to real world issues on projects",
-              "Full mentorship for as long as you need it"
+              "Full mentorship for 6 months"
             ],
             "register_link": ""
           }
@@ -92,9 +92,9 @@
             "price": 80,
             "amount_saved": 20,
             "payment_type": "Single Payment",
-            "payment_description": "For individuals who wants to be trained only",
+            "payment_description": "For individuals who wish to be trained only",
             "extra_details": [
-              "Full PMP/PMI-ACP training",
+              "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
               "Explanation of exam questions and answers",
               "Textbooks and guides"
@@ -104,21 +104,21 @@
         },
         {
           "training_with_mentorship": {
-            "name": "Training & Mentorship",
-            "price": 400,
-            "amount_saved": 100,
+            "name": "Training & Mentoring",
+            "price": 380,
+            "amount_saved": 20,
             "payment_type": "Single Payment",
-            "payment_description": "For individuals who wants to be trained and mentored",
+            "payment_description": "For individuals who wish to be trained and mentored",
             "extra_details": [
-              "Full PMP/PMI-ACP training",
+              "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
               "Explanation of exam questions and answers",
               "Textbooks and guides",
-              "Access to templates",
+              "Access to PM templates",
               "Training on the use of some popular PM software",
               "Opportunity to connect with like-minded professionals",
               "Regular attention to real world issues on projects",
-              "Full mentorship for as long as you need it"
+              "Full mentorship for 6 months"
             ],
             "register_link": ""
           }
