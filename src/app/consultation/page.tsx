@@ -34,9 +34,8 @@ export default function Page() {
           </h1>
           <p className="text-lg lg:max-w-[80%]">
             Our customized consultation services are thoughtfully designed to
-            propel the growth, address challenges, and achieve goals for
-            companies of any size or industry, providing comprehensive and
-            substantial support.
+            propel growth, address challenges, and achieve goals for
+            companies of any size or industry.
           </p>
         </div>
 
