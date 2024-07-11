@@ -8,7 +8,7 @@
             "name": "Mentoring only",
             "price": 300,
             "payment_type": "Single Payment",
-            "payment_description": "For individuals who only want to be mentored",
+            "payment_description": "For individuals who only wish to be mentored",
             "extra_details": [
               "Access to PM templates",
               "Textbooks and guides",
@@ -25,7 +25,7 @@
             "name": "Training & Mentoring",
             "price": 400,
             "payment_type": "Single Payment",
-            "payment_description": "For individuals who want to be trained and mentored",
+            "payment_description": "For individuals who wish to be trained and mentored",
             "extra_details": [
               "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
@@ -48,7 +48,7 @@
             "price": 280,
             "amount_saved": 20,
             "payment_type": "Single Payment",
-             "payment_description": "For individuals who only want to be mentored",
+             "payment_description": "For individuals who only wish to be mentored",
             "extra_details": [
               "Access to PM templates",
               "Textbooks and guides",
@@ -66,7 +66,7 @@
             "price": 380,
             "amount_saved": 20,
             "payment_type": "Single Payment",
-            "payment_description": "For individuals who want to be trained and mentored",
+            "payment_description": "For individuals who wish to be trained and mentored",
             "extra_details": [
               "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
@@ -93,7 +93,7 @@
             "name": "Training only",
             "price": 100,
             "payment_type": "Single Payment",
-            "payment_description": "For individuals who only want to be trained",
+            "payment_description": "For individuals who only wish to be trained",
             "extra_details": [
               "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
@@ -108,7 +108,7 @@
             "name": "Training & Mentoring",
             "price": 400,
             "payment_type": "Single Payment",
-            "payment_description": "For individuals who want to be trained and mentored",
+            "payment_description": "For individuals who wish to be trained and mentored",
             "extra_details": [
               "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
@@ -131,7 +131,7 @@
             "price": 100,
             "amount_saved": 50,
             "payment_type": "Single Payment",
-            "payment_description": "For individuals who only want to be trained",
+            "payment_description": "For individuals who only wish to be trained",
             "extra_details": [
               "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
@@ -147,7 +147,7 @@
             "price": 380,
             "amount_saved": 20,
             "payment_type": "Single Payment",
-            "payment_description": "For individuals who want to be trained and mentored",
+            "payment_description": "For individuals who wish to be trained and mentored",
             "extra_details": [
               "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
