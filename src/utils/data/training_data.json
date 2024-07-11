@@ -11,7 +11,8 @@
         "why": "Who is this course for?",
         "answer": [
           "Anyone looking to build a successful career in project management.",
-          "Anyone who is interested in taking the Project Management Professional (PMP) certification exam"
+          "Anyone who is interested in taking the Project Management Professional (PMP), the Certified Associate in Project Management (CAPM), or the Agile Certified Practitioner (PMI-ACP) certification examinations",
+"
         ]
       }
     ],
@@ -22,7 +23,7 @@
     },
     "payment": {
       "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
-      "includes": ["/trophy.svg", "Certificate on completion"],
+      "includes": ["/trophy.svg", "Certificate of completion"],
       "total": 100,
       "curriculum": [
         {
