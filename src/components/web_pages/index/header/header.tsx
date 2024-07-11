@@ -41,12 +41,6 @@ export default function Header() {
           </p>
 
           <div className="w-full flex justify-center items-center my-4">
-            <span className="mx-2">
-              <Link href="/enroll" className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] font-bricolage_grotesque">
-                Enroll Now
-              </Link>
-            </span>
-
             <span className="mx-2 margin-sm-override">
               <Link
                 href="/book-session"
@@ -55,6 +49,13 @@ export default function Header() {
                 Book Session
               </Link>
             </span>
+            
+            <span className="mx-2">
+              <Link href="/enroll" className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] font-bricolage_grotesque">
+                Enroll Now
+              </Link>
+            </span>
+            
           </div>
         </div>
       </div>
