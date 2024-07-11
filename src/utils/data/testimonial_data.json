@@ -43,7 +43,7 @@
   },
   {
     "id": 7,
-    "person": { "name": "Saraphina B.", "job_title": "COO, Raph Travels and Tours" },
+    "person": { "name": "Saraphina B.", "job_title": "CEO, Raph Travels and Tours" },
     "pin": "/boy.png",
     "comment": "Choosing rejeses for project management consulting was one of the best decisions we made for our organization. Their team took the time to understand our unique needs and challenges, delivering tailored solutions that made a significant impact on our project.",
     "tag": "consultation"
@@ -57,7 +57,7 @@
   },
   {
     "id": 9,
-    "person": { "name": " Stephen I.", "job_title": "Owner, Codes By Steve" },
+    "person": { "name": " Stephen I.", "job_title": "Founder, Codes By Steve" },
     "pin": "/boy.png",
     "comment": "Working with rejeses was a game-changer for our team. Their software consulting services helped streamline our project processes and improve overall efficiency. The mentorship provided ongoing support, ensuring that we stayed on track and achieved our project goals.",
     "tag": "consultation"
