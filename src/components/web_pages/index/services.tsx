@@ -45,12 +45,12 @@ export default function Services() {
 
           <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-y-8 gap-x-12">
             <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold font-bricolage_grotesque">
-              Trainings
+              Training
             </h1>
             <p className="lg:text-[24px] lg:max-w-[95%] text-wrap text-[16px]">
               Our 35-hour training program is excellently designed to help you 
               master the skills needed to become a seasoned project manager and
-              pass the prestigiuos Project Management Professional (PMP) 
+              pass the prestigious Project Management Professional (PMP) 
               certification examination on your first try! 
             </p>
 
