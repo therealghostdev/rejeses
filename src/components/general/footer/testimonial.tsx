@@ -7,10 +7,10 @@ export default function Testimonial(props: UniqueComponentsProps) {
     <section className="w-full flex flex-col lg:px-12 px-6 py-4">
       <div className="my-8 flex flex-col gap-2 lg:px-6 md:px-6">
         <h1 className="md:text-4xl text-2xl font-bold font-bricolage_grotesque">
-          Don&apos;t just take our word for it...
+          Don&apos;t just take our word for it . . .
         </h1>
         <p className="text-lg">
-          Some nice words from people that have tried us
+          Nice words from some people that have tried us
         </p>
       </div>
 
