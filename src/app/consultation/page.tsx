@@ -84,7 +84,7 @@ export default function Page() {
             </p>
 
             <div className="flex justify-center items-center w-full">
-              <Button url="" text="Book session" text_color="#ffffff" bg="#89C13E" />
+              <Button url="" text="Book session" bg="#89C13E" transition_class="transition_button4" />
             </div>
           </div>
         </div>

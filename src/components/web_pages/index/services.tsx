@@ -48,10 +48,10 @@ export default function Services() {
               Training
             </h1>
             <p className="lg:text-[24px] lg:max-w-[95%] text-wrap text-[16px]">
-              Our 35-hour training program is excellently designed to help you 
+              Our 35-hour training program is excellently designed to help you
               master the skills needed to become a seasoned project manager and
-              pass the prestigious Project Management Professional (PMP) 
-              certification examination on your first try! 
+              pass the prestigious Project Management Professional (PMP)
+              certification examination on your first try!
             </p>
 
             <span className="text-white">
@@ -60,6 +60,7 @@ export default function Services() {
                 icon={<ArrowRightIcon />}
                 bg="#89C13E"
                 url="/training"
+                transition_class="transition_button4"
               />
             </span>
           </div>
@@ -82,6 +83,7 @@ export default function Services() {
                 icon={<ArrowRightIcon />}
                 bg="#89C13E"
                 url="/mentorship"
+                transition_class="transition_button4"
               />
             </span>
           </div>
@@ -149,6 +151,7 @@ export default function Services() {
                 icon={<ArrowRightIcon />}
                 bg="#89C13E"
                 url="/consultation"
+                transition_class="transition_button4"
               />
             </span>
           </div>

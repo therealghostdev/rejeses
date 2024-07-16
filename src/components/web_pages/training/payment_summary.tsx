@@ -9,6 +9,7 @@ import Pricing from "@/components/reusables/pricing/pricing";
 import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
 import { usePayment } from "@/utils/context/payment";
 import { TrainingOption1 } from "@/utils/types/types";
+import Button from "@/components/reusables/button";
 
 interface ClientPageProps {
   pricingItem: TrainingOption1;
@@ -62,17 +63,24 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
           </div>
 
           <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center items-center py-4 w-full sm_btn-container">
-            <Link
+            {/* <Link
               onClick={enrollBtnClick}
               href={``}
               className="bg-[#89C13E] text-white font-bricolage_grotesque md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
             >
               Enroll Now
-            </Link>
+            </Link> */}
+
+            <Button
+              click={enrollBtnClick}
+              text="Enroll Now"
+              bg="#89C13E"
+              transition_class="transition_button4"
+            />
 
             <Link
               href={`/training/${pricingItem.id}/class_schedule`}
-              className="bg-[#FFFFFF] border border-[#DBE1E7] text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
+              className="bg-[#FFFFFF] border border-[#DBE1E7] transition_button text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
             >
               <span>
                 <ArchiveIcon />
@@ -100,17 +108,19 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
           ))}
 
           <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
-            <Link
-            onClick={enrollBtnClick}
-              href={``}
-              className="bg-[#89C13E] text-white font-bricolage_grotesque md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
-            >
-              Enroll Now
-            </Link>
+            <span className="bg-[#89C13E] rounded-md flex justify-center items-center">
+              <Link
+                onClick={enrollBtnClick}
+                href={``}
+                className="text-white font-bricolage_grotesque transition_button4 md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
+              >
+                Enroll Now
+              </Link>
+            </span>
 
             <Link
               href={`/training/${pricingItem.id}/class_schedule`}
-              className="bg-[#FFFFFF] border border-[#89C13E] text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
+              className="bg-[#FFFFFF] border border-[#89C13E] text-[#89C13E] transition_button font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
             >
               <span>
                 <ArchiveIcon />

@@ -3,12 +3,31 @@ import Image_slider from "./image_slider";
 import Image from "next/image";
 import Mobile_Image_slider from "./mobile_image_slider";
 import { useState, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
   const [width, setWidth] = useState<number>(
     typeof window !== "undefined" ? window.innerWidth : 0
   );
   const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleEnrollClick = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+
+    if (pathname === "/training") {
+      const pricingSection = document.getElementById("pricing");
+      if (pricingSection) {
+        pricingSection.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      router.push("/training#pricing");
+    }
+  };
 
   useEffect(() => {
     const updateWidth = () => {
@@ -36,26 +55,30 @@ export default function Header() {
           </h1>
           <p className="text-lg text-center max-w-[90%] lg:leading-[36px] leading-[28px]">
             Everything from learning about project management to one-on-one
-            mentoring and even consultation, <span className="font-bold italic">rejeses</span> is here to help you learn
-            and master project management.
+            mentoring and even consultation,{" "}
+            <span className="font-bold italic">rejeses</span> is here to help
+            you learn and master project management.
           </p>
 
           <div className="w-full flex justify-center items-center my-4">
             <span className="mx-2 margin-sm-override">
               <Link
                 href="/book-session"
-                className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
+                className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border transition_button border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
               >
                 Book Session
               </Link>
             </span>
-            
-            <span className="mx-2">
-              <Link href="/enroll" className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] font-bricolage_grotesque">
+
+            <span className="mx-2 bg-[#89C13E] py-3 rounded-[.3rem]">
+              <Link
+                onClick={handleEnrollClick}
+                href="/training"
+                className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] font-bricolage_grotesque transition_button4"
+              >
                 Enroll Now
               </Link>
             </span>
-            
           </div>
         </div>
       </div>

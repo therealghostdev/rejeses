@@ -9,6 +9,7 @@ import ClientImage from "@/components/web_pages/training/client_image";
 import Pricing from "@/components/reusables/pricing/pricing";
 import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
 import { usePayment } from "@/utils/context/payment";
+import Button from "@/components/reusables/button";
 
 export default function Trainin_page() {
   const trainingItem = data[0];
@@ -63,12 +64,18 @@ export default function Trainin_page() {
         </div>
 
         <div className="flex md:gap-x-4 gap-x-2 lg:px-12 md:px-6 w-full sm_btn-container">
-          <Link
+          {/* <Link
             href={`/training/${trainingItem.id}`}
             className="bg-[#89C13E] text-white font-bricolage_grotesque md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
           >
             Enroll Now
-          </Link>
+          </Link> */}
+          <Button
+            text="Enroll Now"
+            url={`/training/${trainingItem.id}`}
+            transition_class="transition_button4"
+            bg="#89C13E"
+          />
 
           <Link
             onClick={() => {
@@ -79,7 +86,7 @@ export default function Trainin_page() {
               }));
             }}
             href={`/training/${trainingItem.id}/class_schedule`}
-            className="bg-[#FFFFFF] border border-[#DBE1E7] text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
+            className="bg-[#FFFFFF] border border-[#DBE1E7] transition_button text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
           >
             <span>
               <ArchiveIcon />
@@ -145,16 +152,22 @@ export default function Trainin_page() {
             </p>
 
             <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
-              <Link
+              {/* <Link
                 href={`/training/${trainingItem.id}`}
                 className="bg-[#89C13E] text-white font-bricolage_grotesque md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
               >
                 Enroll Now
-              </Link>
+              </Link> */}
+              <Button
+                text="Enroll Now"
+                url={`/training/${trainingItem.id}`}
+                transition_class="transition_button4"
+                bg="#89C13E"
+              />
 
               <Link
                 href={`/training/${trainingItem.id}/class_schedule`}
-                className="bg-[#FFFFFF] border border-[#DBE1E7] text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
+                className="bg-[#FFFFFF] border border-[#DBE1E7] transition_button text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
               >
                 <span>
                   <ArchiveIcon />

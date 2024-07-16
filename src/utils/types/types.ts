@@ -17,6 +17,8 @@ export interface ButtonProps {
   text: string;
   icon?: React.ReactNode;
   text_color?: string;
+  transition_class?: string;
+  click?: () => void;
 }
 
 export interface FooterProps {

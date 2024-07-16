@@ -1,11 +1,15 @@
 "use client";
 import React from "react";
 import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
-import Link from "next/link";
 import { usePayment } from "@/utils/context/payment";
+import Button from "@/components/reusables/button";
 
 export default function MentorshipPaymentSummary() {
   const { paymentInfo } = usePayment();
+
+  const pay = () => {
+    // console.log(paymentInfo);
+  };
 
   return (
     <section className="w-full px-8 flex flex-col gap-12 py-12 justify-center items-center">
@@ -23,8 +27,9 @@ export default function MentorshipPaymentSummary() {
             </h1>
             <p className="text-wrap lg:max-w-[80%]">
               You are subscribing to rejeses Consult one year personalized
-              mentorship plan. You will be charged &#x24;{paymentInfo.price || 300} for the first year
-              and subsequently $200.00 per month or $2,200.00 per year.
+              mentorship plan. You will be charged &#x24;
+              {paymentInfo.price || 300} for the first year and subsequently
+              $200.00 per month or $2,200.00 per year.
             </p>
 
             <div className="flex justify-between w-full font-bricolage_grotesque">
@@ -37,12 +42,13 @@ export default function MentorshipPaymentSummary() {
 
           <div className="w-full flex flex-col gap-8 justify-center items-center py-4">
             <div className="md:max-w-[60%] w-full flex flex-col gap-8 justify-center items-center py-4">
-              <Link
-                href={``}
-                className="bg-[#89C13E] text-white px-8 py-4 rounded-md font-bricolage_grotesque"
-              >
-                View Pricing
-              </Link>
+              <Button
+                click={pay}
+                text="View Pricing"
+                transition_class="transition_button4"
+                url=""
+                bg="#89C13E"
+              />
               <p className="text-center">
                 By paying for this plan, you agree that you will show up for
                 your mentorship session on set date and on days when you
