@@ -58,7 +58,7 @@ export default function ImageSlider() {
   return (
     <section className="container-item" {...handlers}>
       <motion.div
-        className="wrapper"
+        className="wrapper bg-red-600"
         initial={false}
         animate={{
           x: `-${(100 / slidesToShow) * (currentIndex % slidesToShow)}%`,
@@ -69,7 +69,7 @@ export default function ImageSlider() {
         {getVisibleItems().map((item, index) => (
           <motion.div
             key={item.key}
-            className="item relative w-full h-full"
+            className="item relative w-full h-full bg-red-600"
             initial={{
               x: direction === 1 ? "100%" : "-100%",
             }}
@@ -77,7 +77,7 @@ export default function ImageSlider() {
             exit={{ x: direction === 1 ? "-100%" : "100%" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <div className={`w-full h-full relative`}>
+            <div className={`w-full h-full relative bg-red-600`}>
               <Image
                 src={item.image}
                 alt={`slider-image-${index}`}
@@ -85,7 +85,7 @@ export default function ImageSlider() {
                 height={100}
                 className={`w-full h-full ${
                   loadingStates[index] ? "blur-2xl" : "blur-none"
-                } transition duration-1000 ease-in-out`}
+                } transition duration-1000 ease-in-out object-cover`}
                 placeholder="blur"
                 blurDataURL={item.pre}
                 onLoad={() => handleImageLoad(index)}

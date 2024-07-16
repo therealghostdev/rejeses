@@ -2,16 +2,26 @@
 import { CardProps } from "@/utils/types/types";
 import Link from "next/link";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { usePayment } from "@/utils/context/payment";
+import { Item } from "@radix-ui/react-accordion";
 
 export default function Card(props: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const goTo = useRouter();
+  const { setPaymentInfo } = usePayment();
+
+  useEffect(() => {
+    const price = props.price?.individuals.map(
+      (Item) => Item.training_only?.price
+    );
+    setPaymentInfo((prev) => ({ ...prev, price: Number(price) }));
+  }, [props.price?.individuals]);
 
   return (
     <div
-      onClick={() => goTo.push(`/training/${props.title}`)}
+      onClick={() => goTo.push(`/training/${props.id2}`)}
       className="rounded-md px-6 py-4 w-full flex flex-col gap-6"
       key={props.id}
       onMouseEnter={() => setIsHovered(true)}
@@ -30,7 +40,7 @@ export default function Card(props: CardProps) {
       <div className="w-full flex items-center justify-between">
         <Link
           className="bg-transparent flex items-center py-2 px-2 text-[#89C13E] font-semibold font-bricolage_grotesque transition-all duration-300"
-          href={`/training/${props.title}`}
+          href={`/training/${props.id2}`}
         >
           REGISTER
           <span

@@ -2,63 +2,63 @@
   {
     "id": 1,
     "person": { "name": "Trost M.", "job_title": "Project Director, Reltek Ltd" },
-    "pin": "/boy.png",
+    "pin": "/trost.jpg",
     "comment": "I cannot recommend rejeses enough! Their project management training program was incredibly informative and well-structured. The mentorship I received was invaluable in helping me navigate complex projects with confidence.",
     "tag": "training"
   },
   {
     "id": 2,
     "person": { "name": "Daniel I.", "job_title": "Production Manager, Hydro Petroleum" },
-    "pin": "/boy.png",
+    "pin": "/daniel.jpg",
     "comment": "Thanks to rejeses, I was able to pass my PMP exam on the first try! Their comprehensive study materials and personalised coaching gave me the edge I needed to succeed. I am now equipped with the skills and knowledge to excel in my project management career.",
     "tag": "training"
   },
   {
     "id": 3,
     "person": { "name": "Emily L.", "job_title": "Project Manager, Visafone" },
-    "pin": "/boy.png",
+    "pin": "/emily.jpg",
     "comment": "I attended rejeses' project management training workshop, and it exceeded my expectations! The instructor was engaging, knowledgeable, and provided practical insights that I could immediately apply in my work. I left feeling empowered to take on new challenges.",
     "tag": "training"
   },
   {
     "id": 4,
     "person": { "name": "Chiamaka U.", "job_title": "CEO, Kama Stitches" },
-    "pin": "/boy.png",
+    "pin": "/chiamaka.jpg",
     "comment": "The rejeses mentoring program provided me with personalised guidance and support as I transitioned into a project management role. Thanks to their expertise and encouragement, I have achieved milestones I once thought were out of reach.",
     "tag": "mentorship"
   },
   {
     "id": 5,
     "person": { "name": "Natasha W.", "job_title": "Program Manager, Landon Motors" },
-    "pin": "/boy.png",
+    "pin": "/natasha.jpg",
     "comment": "The rejeses approach to project management is refreshing and effective. Their emphasis on practical, real-world applications sets them apart from other training providers. The mentorship component of their program was particularly beneficial, providing ongoing support and guidance as I navigated challenging projects.",
     "tag": "mentorship"
   },
   {
     "id": 6,
     "person": { "name": "Olajide M.", "job_title": "Owner, Molar Parks" },
-    "pin": "/boy.png",
+    "pin": "/olajide.jpg",
     "comment": "rejeses played a crucial role in my professional development journey. Their mentoring program provided me with personalized guidance and support as I transitioned into a project management role. Thanks to their expertise and encouragement, I have achieved milestones I once thought were out of reach.",
     "tag": "mentorship"
   },
   {
     "id": 7,
     "person": { "name": "Saraphina B.", "job_title": "CEO, Raph Travels and Tours" },
-    "pin": "/boy.png",
+    "pin": "/seraphina.jpg",
     "comment": "Choosing rejeses for project management consulting was one of the best decisions we made for our organization. Their team took the time to understand our unique needs and challenges, delivering tailored solutions that made a significant impact on our project.",
     "tag": "consultation"
   },
   {
     "id": 8,
     "person": { "name": "Bamidele O.", "job_title": "Project Manager, Loxx Designs" },
-    "pin": "/boy.png",
+    "pin": "/bamidele.jpg",
     "comment": "Partnering with Rejeses changed our team dynamics. Their consulting expertise was instrumental in optimizing our project workflows, leading to heightened efficiency across the board.",
     "tag": "consultation"
   },
   {
     "id": 9,
     "person": { "name": " Stephen I.", "job_title": "Founder, Codes By Steve" },
-    "pin": "/boy.png",
+    "pin": "/stephen.jpg",
     "comment": "Working with rejeses was a game-changer for our team. Their software consulting services helped streamline our project processes and improve overall efficiency. The mentorship provided ongoing support, ensuring that we stayed on track and achieved our project goals.",
     "tag": "consultation"
   }

@@ -21,6 +21,8 @@ export default function UpcomingCohorts() {
               description={item.description}
               date={item.start_date}
               title={item.title}
+              id2={item.id}
+              price={item.pricing}
             />
           </div>
         ))}

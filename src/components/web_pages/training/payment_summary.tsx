@@ -18,15 +18,17 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   const { paymentInfo, setPaymentInfo } = usePayment();
 
   const enrollBtnClick = () => {
-    setPaymentInfo((prev) => ({ ...prev, price: pricingItem.payment.total }));
+    if (paymentInfo.price && paymentInfo.price === 0) {
+      setPaymentInfo((prev) => ({ ...prev, price: pricingItem.payment.total }));
+    }
   };
 
   return (
     <section className="w-full px-8 flex flex-col gap-12 py-12 justify-center items-center">
       <div className="md:max-w-[98%] w-full py-12 gap-6 md:px-8 flex flex-col gap-y-6 justify-center">
         <Dynamic_nav
-          link1={`/training/Project Management for Beginners/${pricingItem.id}`}
-          link2=""
+          link1={`/training/${pricingItem.id}`}
+          link2="/training"
           link_text1="Upcoming Cohorts"
           link_text2="Project Management for Beginners"
         />
@@ -69,7 +71,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
             </Link>
 
             <Link
-              href={`/training/Project Management for Beginners/${pricingItem.id}/class_schedule`}
+              href={`/training/${pricingItem.id}/class_schedule`}
               className="bg-[#FFFFFF] border border-[#DBE1E7] text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
             >
               <span>
@@ -99,6 +101,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
 
           <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
             <Link
+            onClick={enrollBtnClick}
               href={``}
               className="bg-[#89C13E] text-white font-bricolage_grotesque md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
             >
@@ -106,7 +109,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
             </Link>
 
             <Link
-              href={`/training/Project Management for Beginners/${pricingItem.id}/class_schedule`}
+              href={`/training/${pricingItem.id}/class_schedule`}
               className="bg-[#FFFFFF] border border-[#89C13E] text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
             >
               <span>
@@ -118,7 +121,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
         </section>
 
         <div className="mt-20">
-          <Pricing item={pricingItem.pricing} />
+          <Pricing item={pricingItem.pricing} id={pricingItem.id} />
         </div>
       </div>
     </section>

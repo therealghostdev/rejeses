@@ -55,8 +55,8 @@ export default function ClassSchedule(props: SchedulePropsData) {
         </h1>
         <p>
           For students who are unable to join the live sessions due to
-          conflicting schedules, class recordings will be made available
-          3-5 hours after the class ends.
+          conflicting schedules, class recordings will be made available 3-5
+          hours after the class ends.
         </p>
       </div>
       <div ref={scheduleRef} className="w-full overflow-x-auto">
@@ -108,7 +108,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
 
       <div className="flex flex-col sm:flex-row justify-center items-center py-6 gap-4 w-full font-medium font-bricolage_grotesque">
         <Link
-          href={``}
+          href={`/training/${paymentInfo.training_id?.toString()}`}
           className="bg-[#89C13E] text-white px-12 py-4 flex justify-center items-center rounded-md w-full sm:w-auto text-xs sm:text-sm"
         >
           Pay now &#36;{getPriceData()}

@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useRef } from "react";
 import data from "@/utils/data/training_data.json";
 import Link from "next/link";
 import { ArchiveIcon } from "@radix-ui/react-icons";
@@ -5,22 +7,29 @@ import Why_us from "@/components/general/why_us";
 import whyUsData from "@/utils/data/why_us_data.json";
 import ClientImage from "@/components/web_pages/training/client_image";
 import Pricing from "@/components/reusables/pricing/pricing";
+import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
 
-export async function generateStaticParams() {
-  return data.map((item) => ({
-    slug: item.title,
-  }));
-}
-
-export default function Page({ params }: { params: { slug: string } }) {
-  const decodedSlug = decodeURIComponent(params.slug);
-  const trainingItem = data.find(
-    (item) => item.title.toString() === decodedSlug.toString()
-  );
+export default function Trainin_page() {
+  const trainingItem = data[0];
   const whyUsItems = whyUsData.filter((item) => item.tag === "training");
 
+  const pricingRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (window.location.hash === "#pricing" && pricingRef.current) {
+      pricingRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+    console.log(window.location.hash);
+  }, []);
+
   if (!trainingItem) {
-    return <div>Training not found</div>;
+    return (
+      <div className="flex flex-col gap-8 w-full min-h-screen justify-center items-center">
+        <h2 className="lg:text-4xl md:text-3xl text-2xl font-bold font-bricolage_grotesque">
+          Training not found!
+        </h2>
+      </div>
+    );
   }
 
   return (
@@ -50,14 +59,14 @@ export default function Page({ params }: { params: { slug: string } }) {
 
         <div className="flex md:gap-x-4 gap-x-2 lg:px-12 md:px-6 w-full sm_btn-container">
           <Link
-            href={`/training/${trainingItem.title}/${trainingItem.id}`}
+            href={`/training/${trainingItem.id}`}
             className="bg-[#89C13E] text-white font-bricolage_grotesque md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
           >
             Enroll Now
           </Link>
 
           <Link
-            href={`/training/Project Management for Beginners/${trainingItem.id}/class_schedule`}
+            href={`/training/${trainingItem.id}/class_schedule`}
             className="bg-[#FFFFFF] border border-[#DBE1E7] text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
           >
             <span>
@@ -99,6 +108,8 @@ export default function Page({ params }: { params: { slug: string } }) {
 
         <Why_us data={whyUsItems} />
 
+        <UpcomingCohorts />
+
         <section className="w-full flex flex-col gap-4 lg:px-12 md:px-6 md:mt-8 md:mb-12">
           <h1 className="lg:text-4xl text-2xl font-bold font-bricolage_grotesque">
             Curriculum
@@ -123,14 +134,14 @@ export default function Page({ params }: { params: { slug: string } }) {
 
             <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
               <Link
-                href={`/training/${trainingItem.title}/${trainingItem.id}`}
+                href={`/training/${trainingItem.id}`}
                 className="bg-[#89C13E] text-white font-bricolage_grotesque md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
               >
                 Enroll Now
               </Link>
 
               <Link
-                href={`/training/Project Management for Beginners/${trainingItem.id}/class_schedule`}
+                href={`/training/${trainingItem.id}/class_schedule`}
                 className="bg-[#FFFFFF] border border-[#DBE1E7] text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
               >
                 <span>
@@ -141,7 +152,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             </div>
           </div>
         </section>
-        <section className="my-12">
+        <section className="my-12" ref={pricingRef} id="pricing">
           <Pricing item={trainingItem.pricing} id={trainingItem.id} />
         </section>
       </section>

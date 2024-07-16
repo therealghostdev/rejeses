@@ -6,7 +6,7 @@ import { NavTypes } from "@/utils/types/types";
 import navData from "@/utils/data/nav_data.json";
 import { useEffect, useRef, useState, useMemo } from "react";
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Nav_desktop() {
   const { logo, links, linkButtons }: NavTypes = navData;
@@ -71,9 +71,26 @@ export default function Nav_desktop() {
     setOpenMobileNav(false);
   };
 
+  const router = useRouter();
+
+  const handleEnrollClick = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+
+    if (pathname === "/training") {
+      const pricingSection = document.getElementById("pricing");
+      if (pricingSection) {
+        pricingSection.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      router.push("/training#pricing");
+    }
+  };
+
   return (
     <nav
-      className="flex w-full justify-between items-center px-4 bg-white py-2 font-bricolage_grotesque lg:px-20 md:px-8 md:py-5"
+      className="flex w-full justify-between items-center px-4 bg-white py-2 font-bricolage_grotesque lg:px-16 md:px-8 md:py-5"
       ref={navRef}
     >
       <section>
@@ -91,9 +108,12 @@ export default function Nav_desktop() {
       {!isMobile && (
         <>
           <section className="flex lg:ml-12 lg:mr-12 items-center">
-            <ul className="flex lg:space-x-6 space-x-4">
+            <ul className="flex lg:space-x-10 space-x-4">
               {links.map((link, index) => (
-                <li key={index} className="list-none text-nowrap text-ellipsis font-bold">
+                <li
+                  key={index}
+                  className="list-none text-nowrap text-ellipsis font-bold"
+                >
                   <Link
                     href={link.url}
                     className={`${isActive(link.url) ? "text-[#89C13E]" : ""}`}
@@ -110,6 +130,9 @@ export default function Nav_desktop() {
               <Link
                 key={index}
                 href={button.url}
+                onClick={
+                  button.label === "Enroll Now" ? handleEnrollClick : undefined
+                }
                 className={`${button.className} lg:w-[140px] md:text-center`}
                 style={{
                   backgroundColor: index === 0 ? "#FFFFFF" : "#89C13E",
@@ -140,7 +163,7 @@ export default function Nav_desktop() {
                   {links.map((link, index) => (
                     <li key={index} className="list-none">
                       <Link
-                      onClick={handleMobileNavClick}
+                        onClick={handleMobileNavClick}
                         href={link.url}
                         className={`${
                           isActive(link.url) ? "text-[#89C13E]" : ""
@@ -153,12 +176,17 @@ export default function Nav_desktop() {
                 </ul>
               </section>
 
-              <section className="flex flex-col space-y-4 mt-4">
+              <section className="flex space-x-4">
                 {linkButtons.map((button, index) => (
                   <Link
                     key={index}
                     href={button.url}
-                    className={`${button.className} text-center`}
+                    onClick={
+                      button.label === "Enroll Now"
+                        ? handleEnrollClick
+                        : undefined
+                    }
+                    className={`${button.className} lg:w-[140px] md:text-center`}
                     style={{
                       backgroundColor: index === 0 ? "#FFFFFF" : "#89C13E",
                       borderRadius: ".3rem",

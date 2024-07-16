@@ -17,7 +17,6 @@ export default function Home() {
     <main className="flex min-h-screen flex-col text-[#090909]">
       <Header />
       <Services />
-      <UpcomingCohorts />
       <section className="lg:px-6 px-6">
         <Why_us data={filteredWhyData} />
       </section>

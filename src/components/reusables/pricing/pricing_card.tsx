@@ -17,10 +17,14 @@ export default function PriceCard({ data, id }: PriceCardProps) {
   const registerBtnClick = (item: number) => {
     const currentPath = decodeURIComponent(pathname).split("/")[1];
     if (currentPath === "training") {
-      setPaymentInfo((prev) => ({ ...prev, price: item }));
       const routePath = decodeURIComponent(pathname).split("/")[2];
 
-      const goTo = (data.path = `/training/${routePath}/${id}`);
+      setPaymentInfo((prev) => ({
+        ...prev,
+        price: item,
+        training_id: Number(id),
+      }));
+      const goTo = `/training/${id}`;
       directTo.push(goTo);
     } else if (currentPath === "mentorship") {
       setPaymentInfo((prev) => ({ ...prev, price: item }));
@@ -33,11 +37,11 @@ export default function PriceCard({ data, id }: PriceCardProps) {
   };
 
   const resetPriceInfo = () => {
-    setPaymentInfo((prev) => ({ ...prev, price: 0 }));
+    setPaymentInfo((prev) => ({ ...prev, price: 0, training_id: null }));
   };
 
   useEffect(() => {
-    const val = ["Project", "pricing"];
+    const val = ["Project", "pricing", "training"];
     const includesAny = val.some((substring) => pathname.includes(substring));
     if (!includesAny) resetPriceInfo();
   }, []);

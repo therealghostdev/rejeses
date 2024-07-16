@@ -11,6 +11,7 @@ import benefit_data from "@/utils/data/benefits_data.json";
 import priceData from "@/utils/data/price_data.json";
 import { useState } from "react";
 import SkeletalLoader from "@/components/reusables/animation/skeletol_loader";
+import Button from "@/components/reusables/button";
 
 export default function Page() {
   const pathname = usePathname();
@@ -34,19 +35,10 @@ export default function Page() {
           </h1>
           <p className="text-lg lg:max-w-[80%]">
             Our customized consultation services are thoughtfully designed to
-            propel growth, address challenges, and achieve goals for
-            companies of any size or industry.
+            propel growth, address challenges, and achieve goals for companies
+            of any size or industry.
           </p>
         </div>
-
-        {/* <div className="flex gap-x-4 lg:px-12 md:px-6">
-          <Link
-            href={``}
-            className="bg-[#89C13E] text-white px-6 py-4 rounded-md font-bricolage_grotesque"
-          >
-            View Pricing
-          </Link>
-        </div> */}
 
         <div className="lg:px-12 md:px-3 lg:h-[620px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6">
           <div
@@ -67,7 +59,7 @@ export default function Page() {
               alt="image"
               layout="fill"
               objectFit="cover"
-              className={`w-full h-full object-contain object-top ${
+              className={`w-full h-full object-contain object-top rounded-2xl ${
                 imageLoading ? "blur-2xl" : "blur-none"
               }`}
               placeholder="blur"
@@ -81,7 +73,20 @@ export default function Page() {
         <Benefits data={filteredBenefits} />
         <Why_us data={filteredWhyData} />
         <div className="my-12">
-          {filteredPricing && <Pricing item={filteredPricing.pricing} />}
+          <div className="flex flex-col gap-6">
+            <h1 className="lg:text-4xl text-2xl font-bold text-center font-bricolage_grotesque">
+              Pricing
+            </h1>
+            <p className="text-lg text-center">
+              Due to the uniqueness and complexity of each project we would
+              appreciate if you book session with us to discuss more of your
+              needs.
+            </p>
+
+            <div className="flex justify-center items-center w-full">
+              <Button url="" text="Book session" text_color="#ffffff" bg="#89C13E" />
+            </div>
+          </div>
         </div>
       </section>
     </section>

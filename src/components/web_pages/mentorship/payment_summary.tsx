@@ -12,9 +12,9 @@ export default function MentorshipPaymentSummary() {
       <div className="md:max-w-[98%] w-full py-12 gap-6 md:px-8 flex flex-col gap-y-6 justify-center">
         <Dynamic_nav
           link1={`/mentorship/pricing`}
-          link2=""
-          link_text1="Personalised Mentorship"
-          link_text2="One-on-One Mentorship"
+          link2="/mentorship"
+          link_text1="Personalised Mentoring"
+          link_text2="One-on-One Mentoring"
         />
         <section className="w-full border-2 border-[#DBE1E7] gap-4 lg:px-12 py-8 px-6 rounded-lg flex flex-col m-auto">
           <div className="flex flex-col gap-4 border-b-2 border-b-[#DBE1E7] py-6">

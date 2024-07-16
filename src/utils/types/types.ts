@@ -28,6 +28,8 @@ export interface CardProps {
   title: string;
   date: string;
   description: string;
+  id2: number;
+  price?: PricingData;
 }
 
 export interface TableProps {
@@ -162,4 +164,5 @@ export interface PaymentInfo {
   price: number;
   duration: string;
   name: string;
+  training_id: number | string | null;
 }
