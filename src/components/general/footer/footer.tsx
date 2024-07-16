@@ -37,13 +37,17 @@ const Footer: React.FC = () => {
   }, [decodedPathname]);
 
   const filteredTestimonalData = useMemo(() => {
+    const excludePaths = ["book-session", "enroll", "contact-us"];
+    const numberPattern = /\/(1[0-9]|20|[1-9])(?:\/|$)/; // Matches numbers from 1 to 20
+    const pricingPattern = /pricing/; // Matches the word "pricing"
+
     if (
       decodedPathname === "/" ||
-      decodedPathname === "/book-session" ||
-      decodedPathname === "/enroll" ||
-      decodedPathname === "/contact-us"
+      excludePaths.includes(decodedPathname) ||
+      numberPattern.test(decodedPathname) ||
+      pricingPattern.test(decodedPathname)
     ) {
-      return TestimonialData;
+      return [];
     }
 
     const tag = decodedPathname.split("/")[1];
@@ -71,8 +75,12 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="my-4">
-      <Testimonial data={filteredTestimonalData} />
-      <Table data={filteredTableData} />
+      {filteredTestimonalData.length === 0 ? null : (
+        <Testimonial data={filteredTestimonalData} />
+      )}
+      {filteredTableData.length === 0 ? null : (
+        <Table data={filteredTableData} />
+      )}
       {pathname === "/" && !isMobile && <BookSession />}
       <LastEl />
     </footer>

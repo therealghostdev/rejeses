@@ -14,7 +14,13 @@ export default function Page({ params }: { params: { slug1: string } }) {
   );
 
   if (!pricingItem) {
-    return <div>Training not found</div>;
+    return (
+      <div className="flex flex-col gap-8 w-full min-h-screen justify-center items-center">
+        <h2 className="lg:text-4xl md:text-3xl text-2xl font-bold font-bricolage_grotesque">
+          Training not found!
+        </h2>
+      </div>
+    );
   }
 
   return <ClientPage pricingItem={pricingItem} />;

@@ -36,9 +36,9 @@ export default function Why_us(props: UniqueComponentsProps) {
   }, [decodedPathname, props.data]);
 
   const getHeadingText = () => {
-    if (decodedPathname === "/" || decodedPathname === "/training") {
+    if (decodedPathname === "/") {
       return "Why us";
-    } else if (decodedPathname.startsWith("/training/")) {
+    } else if (decodedPathname.startsWith("/training/") || decodedPathname === "/training") {
       return "Why you should join this training?";
     } else if (
       decodedPathname.startsWith("/mentorship/") ||

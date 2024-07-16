@@ -1,12 +1,5 @@
 [
   {
-    "id": 1,
-    "pin": "/pin.svg",
-    "title": "What is training?",
-    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    "tag": "training"
-  },
-  {
     "id": 2,
     "pin": "/pin.svg",
     "title": "Expertise and Experience",

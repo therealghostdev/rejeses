@@ -73,7 +73,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
             )}
 
             {training_only.extra_details.map((detail, index) => (
-              <p key={index} className="flex gap-x-4">
+              <p key={index} className="flex gap-x-4 items-center">
                 <span className="rounded-full border border-[#89C13E] w-4 h-4 flex justify-center items-center">
                   <CheckIcon className="text-[#89C13E]" />
                 </span>
@@ -112,8 +112,6 @@ export default function PriceCard({ data, id }: PriceCardProps) {
 
             <div className="w-full border border-[#DBE1E7] my-6"></div>
 
-            <p>{training_with_mentorship.payment_description}</p>
-
             {training_with_mentorship.amount_saved && (
               <div className="absolute right-2 lg:top-6 top-16 bg-[#EFFBF2] text-[#2EAE4E] rounded-3xl w-24 text-center p-2">
                 <p>Save &#36;{training_with_mentorship?.amount_saved}</p>
@@ -121,7 +119,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
             )}
 
             {training_with_mentorship.extra_details.map((detail, index) => (
-              <p key={index} className="flex gap-x-4">
+              <p key={index} className="flex gap-x-4 items-center">
                 <span className="rounded-full border border-[#89C13E] w-4 h-4 flex justify-center items-center">
                   <CheckIcon className="text-[#89C13E]" />
                 </span>

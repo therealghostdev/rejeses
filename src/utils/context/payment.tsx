@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { PaymentInfo } from "@/utils/types/types";
 
@@ -7,6 +7,7 @@ const defaultPaymentInfo: PaymentInfo = {
   price: 0,
   duration: "N/A",
   name: "Default User",
+  training_id: null,
 };
 
 // payment context type

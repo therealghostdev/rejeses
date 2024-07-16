@@ -5,45 +5,65 @@ import { PlusIcon, MinusIcon } from "@radix-ui/react-icons";
 import { TableProps } from "@/utils/types/types";
 import Link from "next/link";
 
-const Table: React.FC<TableProps> = ({ data }) => (
-  <div className="bg-[#452569] text-white lg:px-12 md:px-6 px-4 py-12 flex flex-col gap-y-4">
-    <div className="w-full px-4 flex flex-col gap-2">
-      <h1 className="text-3xl font-bold font-bricolage_grotesque">
-        Your questions, answered
-      </h1>
-      <small>
-        Have another question?{" "}
-        <Link
-          href={`/contact-us`}
-          className="font-bold transition_border py-1 italic"
-        >
-          Contact us{" "}
-        </Link>
-      </small>
+const Table: React.FC<TableProps> = ({ data }) => {
+  const replaceBookingLink = (content: string) => {
+    const bookingPhrase = "booking a session";
+    const parts = content.split(new RegExp(`(${bookingPhrase})`, "i"));
+
+    return parts.map((part, index) => {
+      if (part.toLowerCase() === bookingPhrase.toLowerCase()) {
+        return (
+          <Link key={index} href="/book-session" className="transition_border italic py-1 font-bold font-bricolage_grotesque">
+            {bookingPhrase}
+          </Link>
+        );
+      }
+      return part;
+    });
+  };
+
+  return (
+    <div className="bg-[#452569] text-white lg:px-12 md:px-6 px-4 py-12 flex flex-col gap-y-4">
+      <div className="w-full px-4 flex flex-col gap-2">
+        <h1 className="text-3xl font-bold font-bricolage_grotesque">
+          Your questions, answered
+        </h1>
+        <small>
+          Have another question?{" "}
+          <Link
+            href={`/contact-us`}
+            className="font-bold transition_border py-1 italic font-bricolage_grotesque"
+          >
+            Contact us{" "}
+          </Link>
+        </small>
+      </div>
+      <Accordion.Root
+        className="w-full rounded-md"
+        type="single"
+        defaultValue="item-1"
+        collapsible
+      >
+        {data.map((item) => (
+          <AccordionItem
+            key={item.id}
+            value={item.id}
+            className="bg-[#452569] text-white text-lg"
+          >
+            <AccordionTrigger className="font-bricolage_grotesque text-left">
+              <div className="max-w-[80%] leading-relaxed">{item.title}</div>
+            </AccordionTrigger>
+            <AccordionContent className="md:text-[20px] text-[15px]">
+              <div className="max-w-[80%] leading-relaxed">
+                {replaceBookingLink(item.content)}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion.Root>
     </div>
-    <Accordion.Root
-      className="w-full rounded-md"
-      type="single"
-      defaultValue="item-1"
-      collapsible
-    >
-      {data.map((item) => (
-        <AccordionItem
-          key={item.id}
-          value={item.id}
-          className="bg-[#452569] text-white text-lg"
-        >
-          <AccordionTrigger className="font-bricolage_grotesque text-left">
-            <div className="max-w-[80%] leading-relaxed">{item.title}</div>
-          </AccordionTrigger>
-          <AccordionContent className="md:text-[20px] text-[15px]">
-            <div className="max-w-[80%] leading-relaxed">{item.content}</div>
-          </AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion.Root>
-  </div>
-);
+  );
+};
 
 const AccordionItem = React.forwardRef<
   HTMLDivElement,

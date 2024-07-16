@@ -8,18 +8,23 @@ import whyUsData from "@/utils/data/why_us_data.json";
 import ClientImage from "@/components/web_pages/training/client_image";
 import Pricing from "@/components/reusables/pricing/pricing";
 import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
+import { usePayment } from "@/utils/context/payment";
 
 export default function Trainin_page() {
   const trainingItem = data[0];
   const whyUsItems = whyUsData.filter((item) => item.tag === "training");
+  const price = trainingItem.pricing.individuals.map((item) =>
+    Number(item.training_only?.price)
+  )[0];
 
   const pricingRef = useRef<HTMLDivElement | null>(null);
+
+  const { setPaymentInfo } = usePayment();
 
   useEffect(() => {
     if (window.location.hash === "#pricing" && pricingRef.current) {
       pricingRef.current.scrollIntoView({ behavior: "smooth" });
     }
-    console.log(window.location.hash);
   }, []);
 
   if (!trainingItem) {
@@ -66,6 +71,13 @@ export default function Trainin_page() {
           </Link>
 
           <Link
+            onClick={() => {
+              setPaymentInfo((prev) => ({
+                ...prev,
+                price: price,
+                training_id: trainingItem.id,
+              }));
+            }}
             href={`/training/${trainingItem.id}/class_schedule`}
             className="bg-[#FFFFFF] border border-[#DBE1E7] text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
           >
