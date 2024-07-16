@@ -166,6 +166,13 @@ export default function Trainin_page() {
               />
 
               <Link
+                onClick={() => {
+                  setPaymentInfo((prev) => ({
+                    ...prev,
+                    price: price,
+                    training_id: trainingItem.id,
+                  }));
+                }}
                 href={`/training/${trainingItem.id}/class_schedule`}
                 className="bg-[#FFFFFF] border border-[#DBE1E7] transition_button text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
               >

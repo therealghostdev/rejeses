@@ -58,7 +58,7 @@ export default function ImageSlider() {
   return (
     <section className="container-item" {...handlers}>
       <motion.div
-        className="wrapper bg-red-600"
+        className="wrapper"
         initial={false}
         animate={{
           x: `-${(100 / slidesToShow) * (currentIndex % slidesToShow)}%`,
@@ -69,7 +69,7 @@ export default function ImageSlider() {
         {getVisibleItems().map((item, index) => (
           <motion.div
             key={item.key}
-            className="item relative w-full h-full bg-red-600"
+            className="item relative w-full h-full"
             initial={{
               x: direction === 1 ? "100%" : "-100%",
             }}
@@ -77,7 +77,7 @@ export default function ImageSlider() {
             exit={{ x: direction === 1 ? "-100%" : "100%" }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <div className={`w-full h-full relative bg-red-600`}>
+            <div className={`w-full h-full relative`}>
               <Image
                 src={item.image}
                 alt={`slider-image-${index}`}
