@@ -10,7 +10,7 @@ export default function Testimonial(props: UniqueComponentsProps) {
           Don&apos;t just take our word for it . . .
         </h1>
         <p className="text-lg">
-          Nice words from some people that have tried us
+          Some nice words from people who have been trained by us
         </p>
       </div>
 
