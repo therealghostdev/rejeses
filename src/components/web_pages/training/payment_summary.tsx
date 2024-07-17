@@ -90,7 +90,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
           </div>
         </section>
 
-        <section className="w-full flex flex-col gap-4 lg:mt-24 mt-12">
+        {/* <section className="w-full flex flex-col gap-4 lg:mt-24 mt-12">
           <h1 className="lg:text-3xl text-2xl font-bold font-bricolage_grotesque">
             Curriculum
           </h1>
@@ -132,7 +132,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
 
         <div className="mt-20">
           <Pricing item={pricingItem.pricing} id={pricingItem.id} />
-        </div>
+        </div> */}
       </div>
     </section>
   );

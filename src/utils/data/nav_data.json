@@ -20,14 +20,14 @@
   ],
   "linkButtons": [
     {
-      "label": "Book Session",
-      "url": "/book-session",
-      "className": "text-[#89C13E] px-4 py-2 border border-[#DBE1E7] transition_button"
-    },
-    {
       "label": "Enroll Now",
       "url": "/training",
-      "className": "text-white px-4 py-2 transition_button4"
+      "className": "text-white px-4 py-2 transition_button"
+    },
+    {
+      "label": "Book Session",
+      "url": "/book-session",
+      "className": "text-[#89C13E] px-4 py-2 border border-[#DBE1E7] transition_button4"
     }
   ]
 }

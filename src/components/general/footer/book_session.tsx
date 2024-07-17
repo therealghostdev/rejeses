@@ -17,7 +17,7 @@ export default function Book_session() {
         </div>
 
         <div className="z-10 bg-[#45256940]">
-          <Button text="Book Session" bg="#89C13E" url="/enroll" transition_class="transition_button4" />
+          <Button text="Book Session" bg="#89C13E" url="/book-session" transition_class="transition_button4" />
         </div>
       </div>
     </section>

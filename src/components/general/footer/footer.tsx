@@ -42,12 +42,13 @@ const Footer: React.FC = () => {
     const pricingPattern = /pricing/; // Matches the word "pricing"
 
     if (
-      decodedPathname === "/" ||
       excludePaths.includes(decodedPathname) ||
       numberPattern.test(decodedPathname) ||
       pricingPattern.test(decodedPathname)
     ) {
       return [];
+    } else if (decodedPathname === "/") {
+      return TestimonialData;
     }
 
     const tag = decodedPathname.split("/")[1];
@@ -60,7 +61,7 @@ const Footer: React.FC = () => {
     const updateWidth = () => {
       const newWidth = window.innerWidth;
       setWidth(newWidth);
-      setIsMobile(newWidth <= 767);
+      setIsMobile(newWidth <= 1023);
     };
 
     window.addEventListener("resize", updateWidth);

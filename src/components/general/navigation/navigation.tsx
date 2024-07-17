@@ -7,6 +7,7 @@ import navData from "@/utils/data/nav_data.json";
 import { useEffect, useRef, useState, useMemo } from "react";
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { usePathname, useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Nav_desktop() {
   const { logo, links, linkButtons }: NavTypes = navData;
@@ -156,48 +157,56 @@ export default function Nav_desktop() {
             )}
           </button>
 
-          {openMobileNav && (
-            <div className="absolute md:top-20 top-12 left-0 w-full bg-white z-10 p-4 md:px-14 px-8">
-              <section className="flex flex-col space-y-4">
-                <ul className="flex flex-col space-y-4">
-                  {links.map((link, index) => (
-                    <li key={index} className="list-none">
-                      <Link
-                        onClick={handleMobileNavClick}
-                        href={link.url}
-                        className={`${
-                          isActive(link.url) ? "text-[#89C13E]" : ""
-                        }`}
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </section>
+          <AnimatePresence>
+            {openMobileNav && (
+              <motion.div
+                className="absolute md:top-20 top-12 left-0 w-full bg-white z-10 p-4 md:px-14 px-8"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <section className="flex flex-col space-y-4">
+                  <ul className="flex flex-col space-y-4">
+                    {links.map((link, index) => (
+                      <li key={index} className="list-none">
+                        <Link
+                          onClick={handleMobileNavClick}
+                          href={link.url}
+                          className={`${
+                            isActive(link.url) ? "text-[#89C13E]" : ""
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
 
-              <section className="flex space-x-4">
-                {linkButtons.map((button, index) => (
-                  <Link
-                    key={index}
-                    href={button.url}
-                    onClick={
-                      button.label === "Enroll Now"
-                        ? handleEnrollClick
-                        : undefined
-                    }
-                    className={`${button.className} lg:w-[140px] md:text-center`}
-                    style={{
-                      backgroundColor: index === 0 ? "#FFFFFF" : "#89C13E",
-                      borderRadius: ".3rem",
-                    }}
-                  >
-                    {button.label}
-                  </Link>
-                ))}
-              </section>
-            </div>
-          )}
+                <section className="flex flex-col space-y-4">
+                  {linkButtons.map((button, index) => (
+                    <Link
+                      key={index}
+                      href={button.url}
+                      onClick={
+                        button.label === "Enroll Now"
+                          ? handleEnrollClick
+                          : undefined
+                      }
+                      className={`${button.className} w-full text-center`}
+                      style={{
+                        backgroundColor: index === 1 ? "#FFFFFF" : "#89C13E",
+                        borderRadius: ".3rem",
+                      }}
+                    >
+                      {button.label}
+                    </Link>
+                  ))}
+                </section>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       )}
     </nav>

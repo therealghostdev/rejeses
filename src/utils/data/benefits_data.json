@@ -61,5 +61,12 @@
     "title": "Accountability",
     "comment": "Stay accountable to your goals with regular check-ins and guidance from your mentor. One of the key benefits of having a mentor is the accountability factor.",
     "tag": "mentorship"
+  },
+  {
+    "id": 10,
+    "pin": "/pin.svg",
+    "title": "Training and Development",
+    "comment": "We offer training programs and workshops to enhance the project management skills of internal teams. This investment in professional development can lead to you having a more capable and confident project management workforce.",
+    "tag": "consultation"
   }
 ]

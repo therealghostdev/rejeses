@@ -10,7 +10,7 @@ export default function Home() {
   const pathname = usePathname();
   const filteredWhyData =
     pathname === "/"
-      ? whyUsData.filter((item) => item.tag === "training")
+      ? whyUsData.filter((item) => item)
       : whyUsData.filter((item) => item.tag === pathname.slice(1));
 
   return (

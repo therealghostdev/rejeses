@@ -63,20 +63,20 @@ export default function Header() {
           <div className="w-full flex justify-center items-center my-4">
             <span className="mx-2 margin-sm-override">
               <Link
-                href="/book-session"
+                onClick={handleEnrollClick}
+                href="/training"
                 className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border transition_button border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
               >
-                Book Session
+                Enroll now
               </Link>
             </span>
 
             <span className="mx-2 bg-[#89C13E] py-3 rounded-[.3rem]">
               <Link
-                onClick={handleEnrollClick}
-                href="/training"
+                href="/book-session"
                 className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] font-bricolage_grotesque transition_button4"
               >
-                Enroll Now
+                Book Session
               </Link>
             </span>
           </div>
