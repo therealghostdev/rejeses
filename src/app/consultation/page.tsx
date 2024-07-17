@@ -78,9 +78,8 @@ export default function Page() {
               Pricing
             </h1>
             <p className="text-lg text-center">
-              Due to the uniqueness and complexity of each project we would
-              appreciate if you book session with us to discuss more of your
-              needs.
+              Due to the uniqueness and complexity of each project we suggest
+              you book a session with us to discuss more of your needs.
             </p>
 
             <div className="flex justify-center items-center w-full">
