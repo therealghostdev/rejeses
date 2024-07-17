@@ -54,9 +54,9 @@ export default function ClassSchedule(props: SchedulePropsData) {
           Class Schedule
         </h1>
         <p>
-          For students who are unable to join the live sessions due to
-          conflicting schedules, class recordings will be made available 3-5
-          hours after the class ends.
+          For those who miss the live sessions due to conflicing
+          schedules or other reasons, class recordings will 
+          be made available 3-5 hours after the class ends.
         </p>
       </div>
       <div ref={scheduleRef} className="w-full overflow-x-auto">
