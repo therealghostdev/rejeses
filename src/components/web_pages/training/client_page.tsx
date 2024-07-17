@@ -54,9 +54,9 @@ export default function Trainin_page() {
             NOTE:
           </h1>
           <p className="text-lg text-wrap lg:max-w-[80%]">
-            For students who are unable to join the live sessions due to
-            conflicting schedules, the recording of any live class you miss will
-            be sent to you 3-5 hours after the class ends.
+            For those who are unable to join the live sessions due to
+            conflicting schedules or other reasons, the recordings will 
+            be provided 3-5 hours after the class ends.
           </p>
           <p className="text-lg font-bold font-bricolage_grotesque">
             Start date: {trainingItem.start_date}
