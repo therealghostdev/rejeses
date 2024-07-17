@@ -18,7 +18,7 @@ interface SchedulePropsData {
 
 export default function ClassSchedule(props: SchedulePropsData) {
   const scheduleRef = useRef<HTMLDivElement>(null);
-  const { paymentInfo } = usePayment();
+  const { paymentInfo, setPaymentInfo } = usePayment();
 
   const downloadPdf = async () => {
     if (scheduleRef.current) {
@@ -47,6 +47,14 @@ export default function ClassSchedule(props: SchedulePropsData) {
     return paymentInfo.price || item?.training_only?.price;
   };
 
+  const BacktoSummary = () => {
+    setPaymentInfo((prev) => ({ ...prev, training_id: props.all.id }));
+  };
+
+  useEffect(() => {
+    BacktoSummary();
+  }, []);
+
   return (
     <div className="flex flex-col items-center px-6 md:max-w-[90%] gap-6 w-full my-4 mt-12">
       <div className="flex flex-col w-full gap-4">
@@ -54,9 +62,9 @@ export default function ClassSchedule(props: SchedulePropsData) {
           Class Schedule
         </h1>
         <p>
-          For those who miss the live sessions due to conflicing
-          schedules or other reasons, class recordings will 
-          be made available 3-5 hours after the class ends.
+          For those who miss the live sessions due to conflicing schedules or
+          other reasons, class recordings will be made available 3-5 hours after
+          the class ends.
         </p>
       </div>
       <div ref={scheduleRef} className="w-full overflow-x-auto">
@@ -108,7 +116,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
 
       <div className="flex flex-col sm:flex-row justify-center items-center py-6 gap-4 w-full font-medium font-bricolage_grotesque">
         <Link
-          href={`/training/${paymentInfo.training_id?.toString()}`}
+          href={`/training/${paymentInfo.training_id}`}
           className="bg-[#89C13E] text-white px-12 py-4 flex justify-center items-center rounded-md w-full sm:w-auto text-xs sm:text-sm"
         >
           Pay now &#36;{getPriceData()}

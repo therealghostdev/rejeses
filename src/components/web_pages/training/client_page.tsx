@@ -22,6 +22,14 @@ export default function Trainin_page() {
 
   const { setPaymentInfo } = usePayment();
 
+  const getPaymentData = () => {
+    setPaymentInfo((prev) => ({
+      ...prev,
+      price: price,
+      training_id: trainingItem.id,
+    }));
+  };
+
   useEffect(() => {
     if (window.location.hash === "#pricing" && pricingRef.current) {
       pricingRef.current.scrollIntoView({ behavior: "smooth" });
@@ -54,9 +62,9 @@ export default function Trainin_page() {
             NOTE:
           </h1>
           <p className="text-lg text-wrap lg:max-w-[80%]">
-            For those who miss the live sessions due to conflicting 
-            schedules or other reasons, the recordings will 
-            be made avilable 3-5 hours after the class ends.
+            For those who miss the live sessions due to conflicting schedules or
+            other reasons, the recordings will be made avilable 3-5 hours after
+            the class ends.
           </p>
           <p className="text-lg font-bold font-bricolage_grotesque">
             Start date: {trainingItem.start_date}
@@ -71,6 +79,7 @@ export default function Trainin_page() {
             Enroll Now
           </Link> */}
           <Button
+            click={getPaymentData}
             text="Enroll Now"
             url={`/training/${trainingItem.id}`}
             transition_class="transition_button4"
@@ -78,13 +87,7 @@ export default function Trainin_page() {
           />
 
           <Link
-            onClick={() => {
-              setPaymentInfo((prev) => ({
-                ...prev,
-                price: price,
-                training_id: trainingItem.id,
-              }));
-            }}
+            onClick={getPaymentData}
             href={`/training/${trainingItem.id}/class_schedule`}
             className="bg-[#FFFFFF] border border-[#DBE1E7] transition_button text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
           >
