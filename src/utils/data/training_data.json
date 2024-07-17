@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "title": "Project Management course",
-    "expanded_description": "Join our upcoming project management classes for beginners to learn how you can utilize project management to meet users and business needs",
+    "title": "Project Management Training",
+    "expanded_description": "Join our upcoming project management classes for to learn how you can utilize project management to meet users and business needs",
     "description": "For beginners who are looking to start a career in project management or for intermediate who are looking to sharpen their project management skills alike.",
     "start_date": "1st March, 2034",
     "image": "/man.svg",
@@ -17,33 +17,33 @@
     ],
     "requirements": {
       "software": "Software requirement:",
-      "how": "This course will be taught using:",
+      "how": "This course will be taught via videoconference using:",
       "tool": "Zoom"
     },
     "payment": {
-      "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
+      "order_summary": "This course is designed to equip project managers and entrepreneurs with profitable roadmaps and resources to start, scale and champion their project management careers. It will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it. You could enroll for weekday classes or weekend classes.",
       "includes": ["/trophy.svg", "Certificate of completion"],
       "total": 100,
       "curriculum": [
         {
           "week": "Week 1",
-          "topic": "Introduction To Product Management & The Predictive Approach (Project Management Plan)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "Introduction To Project Management; The Predictive Approach (Project Management Plan)",
+          "duration": "MON - FRI (17:00 - 19:00 UTC)"
         },
         {
           "week": "Week 2",
-          "topic": "The Predictive Approach (Project Management Plan, Excecution & Monitoring and Control)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "The Predictive Approach (Project Management Plan, Excecution, Monitoring and Control)",
+          "duration": "MON - FRI (17:00 - 19:00 UTC)"
         },
         {
           "week": "Week 3",
-          "topic": "The Predictive Approach (Project Closure & Monitoring and Control) & The Agile Approach (Introduction, Integration, Project Excecution)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "The Predictive Approach (Project Closure, Monitoring and Control); The Agile Approach (Introduction, Integration, Project Excecution)",
+          "duration": "MON - FRI (17:00 - 19:00 UTC)"
         },
         {
           "week": "Week 4",
-          "topic": "The Agile Approach (Project Execution & Product Release To Operations) & Next Steps",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "The Agile Approach (Project Execution, Product Release To Operations); Next Steps",
+          "duration": "MON - FRI (17:00 - 19:00 UTC)"
         }
       ]
     },
