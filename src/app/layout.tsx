@@ -5,6 +5,7 @@ import Navigation from "@/components/general/navigation/navigation";
 import Footer from "@/components/general/footer/footer";
 import localfont from "next/font/local";
 import { PaymentProvider } from "@/utils/context/payment";
+import Scroll_to_top from "@/components/general/bact_to_top/scroll_to_top";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,6 +44,7 @@ export default function RootLayout({
           <Navigation />
           {children}
           <Footer />
+          <Scroll_to_top />
         </PaymentProvider>
       </body>
     </html>
