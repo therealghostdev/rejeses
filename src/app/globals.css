@@ -147,7 +147,7 @@ body {
 
 
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 767px) {
   .sm_btn-container {
     flex-wrap: wrap;
   }

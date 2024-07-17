@@ -33,7 +33,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
           link_text1="Upcoming Cohorts"
           link_text2="Project Management for Beginners"
         />
-        <section className="w-full border-2 border-[#DBE1E7] gap-4 py-8 px-6 rounded-lg flex flex-col m-auto">
+        <section className="w-full border-2 border-[#DBE1E7] gap-4 py-8 md:px-6 px-2 rounded-lg flex flex-col m-auto">
           <div className="flex flex-col gap-4 border-b-2 border-b-[#DBE1E7] py-6">
             <h1 className="lg:text-3xl text-2xl font-bold font-bricolage_grotesque">
               Order Summary
@@ -62,7 +62,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
             </div>
           </div>
 
-          <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center items-center py-4 w-full sm_btn-container">
+          <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center items-center py-4 w-full sm_btn-container flex-wrap">
             {/* <Link
               onClick={enrollBtnClick}
               href={``}
@@ -108,7 +108,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
           ))}
 
           <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
-            <span className="bg-[#89C13E] rounded-md flex justify-center items-center">
+            <span className="bg-[#89C13E] rounded-md md:flex justify-center items-center inline-block md:w-auto w-full md:py-0 py-4 text-center">
               <Link
                 onClick={enrollBtnClick}
                 href={``}
