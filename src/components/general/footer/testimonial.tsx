@@ -3,11 +3,11 @@ import GeneralCard from "@/components/reusables/card";
 import { UniqueComponentsProps } from "@/utils/types/types";
 
 export default function Testimonial(props: UniqueComponentsProps) {
-  const [visibleItems, setVisibleItems] = useState(3);
+  const [visibleItems, setVisibleItems] = useState(6);
 
   const handleSeeMore = () => {
     if (visibleItems >= props.data.length) {
-      setVisibleItems(3);
+      setVisibleItems(6);
     } else {
       setVisibleItems((prev) => prev + 3);
     }
@@ -40,7 +40,7 @@ export default function Testimonial(props: UniqueComponentsProps) {
         ))}
       </div>
 
-      {props.data.length > 3 && (
+      {props.data.length > 6 && (
         <div className="flex justify-center w-full my-4">
           <div className="bg-[#89C13E] rounded-full inline-block">
             <button

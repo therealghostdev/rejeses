@@ -11,7 +11,7 @@ import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
 import { usePayment } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
 
-export default function Trainin_page() {
+export default function Training_page() {
   const trainingItem = data[0];
   const whyUsItems = whyUsData.filter((item) => item.tag === "training");
   const price = trainingItem.pricing.individuals.map((item) =>
@@ -46,6 +46,14 @@ export default function Trainin_page() {
     );
   }
 
+  const formatTopic = (topic: string) => {
+    return topic.split("&").map((part, index) => (
+      <li key={index} className="ml-4 list-disc">
+        {part.trim()}
+      </li>
+    ));
+  };
+
   return (
     <section className="w-full flex flex-col justify-center items-center">
       <section className="w-full px-8 flex flex-col gap-6 py-12  md:max-w-[98%] justify-center">
@@ -63,7 +71,7 @@ export default function Trainin_page() {
           </h1>
           <p className="text-lg text-wrap lg:max-w-[80%]">
             For those who miss the live sessions due to conflicting schedules or
-            other reasons, the recordings will be made avilable 3-5 hours after
+            other reasons, the recordings will be made available 3-5 hours after
             the class ends.
           </p>
           <p className="text-lg font-bold font-bricolage_grotesque">
@@ -72,12 +80,6 @@ export default function Trainin_page() {
         </div>
 
         <div className="flex md:gap-x-4 gap-x-2 lg:px-12 md:px-6 w-full sm_btn-container">
-          {/* <Link
-            href={`/training/${trainingItem.id}`}
-            className="bg-[#89C13E] text-white font-bricolage_grotesque md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
-          >
-            Enroll Now
-          </Link> */}
           <Button
             click={getPaymentData}
             text="Enroll Now"
@@ -144,8 +146,10 @@ export default function Trainin_page() {
               <h1 className="lg:text3xl text-2xl font-bold text-[#090909]">
                 {item.week}
               </h1>
-              <p className="text-lg">{item.topic}</p>
-              <small>{item.duration}</small>
+              <ul className="list-disc text-lg">{formatTopic(item.topic)}</ul>
+              <ul className="list-disc text-sm mt-4">
+                {formatTopic(item.duration)}
+              </ul>
             </div>
           ))}
 
@@ -155,12 +159,6 @@ export default function Trainin_page() {
             </p>
 
             <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
-              {/* <Link
-                href={`/training/${trainingItem.id}`}
-                className="bg-[#89C13E] text-white font-bricolage_grotesque md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
-              >
-                Enroll Now
-              </Link> */}
               <Button
                 text="Enroll Now"
                 url={`/training/${trainingItem.id}`}

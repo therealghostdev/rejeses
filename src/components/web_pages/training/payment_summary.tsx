@@ -5,7 +5,6 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { ArchiveIcon } from "@radix-ui/react-icons";
-import Pricing from "@/components/reusables/pricing/pricing";
 import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
 import { usePayment } from "@/utils/context/payment";
 import { TrainingOption1 } from "@/utils/types/types";
@@ -63,14 +62,6 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
           </div>
 
           <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center items-center py-4 w-full sm_btn-container flex-wrap">
-            {/* <Link
-              onClick={enrollBtnClick}
-              href={``}
-              className="bg-[#89C13E] text-white font-bricolage_grotesque md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
-            >
-              Enroll Now
-            </Link> */}
-
             <Button
               click={enrollBtnClick}
               text="Enroll Now"
@@ -89,50 +80,6 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
             </Link>
           </div>
         </section>
-
-        {/* <section className="w-full flex flex-col gap-4 lg:mt-24 mt-12">
-          <h1 className="lg:text-3xl text-2xl font-bold font-bricolage_grotesque">
-            Curriculum
-          </h1>
-          {pricingItem.payment.curriculum.map((item, index) => (
-            <div
-              key={index}
-              className="w-full border border-[#DBE1E7] p-4 rounded-md font-bricolage_grotesque text-[#5B5B5B]"
-            >
-              <h1 className="lg:text3xl text-2xl font-bold text-[#090909]">
-                {item.week}
-              </h1>
-              <p className="text-lg">{item.topic}</p>
-              <small>{item.duration}</small>
-            </div>
-          ))}
-
-          <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
-            <span className="bg-[#89C13E] rounded-md md:flex justify-center items-center inline-block md:w-auto w-full md:py-0 py-4 text-center">
-              <Link
-                onClick={enrollBtnClick}
-                href={``}
-                className="text-white font-bricolage_grotesque transition_button4 md:px-6 px-2 py-4 rounded-md text-nowrap text-ellipsis btn"
-              >
-                Enroll Now
-              </Link>
-            </span>
-
-            <Link
-              href={`/training/${pricingItem.id}/class_schedule`}
-              className="bg-[#FFFFFF] border border-[#89C13E] text-[#89C13E] transition_button font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
-            >
-              <span>
-                <ArchiveIcon />
-              </span>
-              View Class Schedule
-            </Link>
-          </div>
-        </section>
-
-        <div className="mt-20">
-          <Pricing item={pricingItem.pricing} id={pricingItem.id} />
-        </div> */}
       </div>
     </section>
   );

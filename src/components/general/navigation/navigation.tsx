@@ -131,9 +131,9 @@ export default function Nav_desktop() {
               <Link
                 key={index}
                 href={button.url}
-                onClick={
-                  button.label === "Enroll Now" ? handleEnrollClick : undefined
-                }
+                // onClick={
+                //   button.label === "Enroll Now" ? handleEnrollClick : undefined
+                // }
                 className={`${button.className} lg:w-[140px] md:text-center`}
                 style={{
                   backgroundColor: index === 0 ? "#FFFFFF" : "#89C13E",
@@ -189,11 +189,11 @@ export default function Nav_desktop() {
                     <Link
                       key={index}
                       href={button.url}
-                      onClick={
-                        button.label === "Enroll Now"
-                          ? handleEnrollClick
-                          : undefined
-                      }
+                      // onClick={
+                      //   button.label === "Enroll Now"
+                      //     ? handleEnrollClick
+                      //     : undefined
+                      // }
                       className={`${button.className} w-full text-center`}
                       style={{
                         backgroundColor: index === 1 ? "#FFFFFF" : "#89C13E",

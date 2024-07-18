@@ -63,7 +63,7 @@ export default function Header() {
           <div className="w-full flex justify-center items-center my-4">
             <span className="mx-2 margin-sm-override">
               <Link
-                onClick={handleEnrollClick}
+                // onClick={handleEnrollClick}
                 href="/training"
                 className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border transition_button border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
               >

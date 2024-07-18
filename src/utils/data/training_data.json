@@ -27,23 +27,23 @@
       "curriculum": [
         {
           "week": "Week 1",
-          "topic": "Introduction To Project Management; The Predictive Approach (Project Management Plan)",
-          "duration": "MON - FRI (17:00 - 19:00 UTC)"
+          "topic": "Introduction To Project Management & The Predictive Approach (Project Management Plan)",
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "Week 2",
           "topic": "The Predictive Approach (Project Management Plan, Excecution, Monitoring and Control)",
-          "duration": "MON - FRI (17:00 - 19:00 UTC)"
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "Week 3",
-          "topic": "The Predictive Approach (Project Closure, Monitoring and Control); The Agile Approach (Introduction, Integration, Project Excecution)",
-          "duration": "MON - FRI (17:00 - 19:00 UTC)"
+          "topic": "The Predictive Approach (Project Closure, Monitoring and Control) & The Agile Approach (Introduction, Integration, Project Excecution)",
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "Week 4",
-          "topic": "The Agile Approach (Project Execution, Product Release To Operations); Next Steps",
-          "duration": "MON - FRI (17:00 - 19:00 UTC)"
+          "topic": "The Agile Approach (Project Execution, Product Release To Operations) & Next Steps",
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         }
       ]
     },
@@ -182,22 +182,22 @@
         {
           "week": "week 1",
           "topic": "Introduction To Product Management & The Predictive Approach (Project Management Plan)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 2",
           "topic": "The Predictive Approach (Project Management Plan, Excecution & Monitoring and Control)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 3",
-          "topic": "The Predictive Approach (Project Closure & Monitoring and Control) & The Agile Approach (Introduction, Integration, Project Excecution)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "The Predictive Approach (Project Closure, Monitoring and Control) & The Agile Approach (Introduction, Integration, Project Excecution)",
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 4",
-          "topic": "The Agile Approach (Project Execution & Product Release To Operations) & Next Steps",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "The Agile Approach (Project Execution, Product Release To Operations) & Next Steps",
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         }
       ]
     },
@@ -336,22 +336,22 @@
         {
           "week": "week 1",
           "topic": "Introduction To Product Management & The Predictive Approach (Project Management Plan)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 2",
           "topic": "The Predictive Approach (Project Management Plan, Excecution & Monitoring and Control)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 3",
-          "topic": "The Predictive Approach (Project Closure & Monitoring and Control) & The Agile Approach (Introduction, Integration, Project Excecution)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "The Predictive Approach (Project Closure, Monitoring and Control) & The Agile Approach (Introduction, Integration, Project Excecution)",
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 4",
-          "topic": "The Agile Approach (Project Execution & Product Release To Operations) & Next Steps",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "The Agile Approach (Project Execution, Product Release To Operations) & Next Steps",
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         }
       ]
     },
@@ -490,22 +490,22 @@
         {
           "week": "week 1",
           "topic": "Introduction To Product Management & The Predictive Approach (Project Management Plan)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 2",
           "topic": "The Predictive Approach (Project Management Plan, Excecution & Monitoring and Control)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 3",
-          "topic": "The Predictive Approach (Project Closure & Monitoring and Control) & The Agile Approach (Introduction, Integration, Project Excecution)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "The Predictive Approach (Project Closure, Monitoring and Control) & The Agile Approach (Introduction, Integration, Project Excecution)",
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 4",
-          "topic": "The Agile Approach (Project Execution & Product Release To Operations) & Next Steps",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "The Agile Approach (Project Execution, Product Release To Operations) & Next Steps",
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         }
       ]
     },
@@ -644,22 +644,22 @@
         {
           "week": "week 1",
           "topic": "Introduction To Product Management & The Predictive Approach (Project Management Plan)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 2",
           "topic": "The Predictive Approach (Project Management Plan, Excecution & Monitoring and Control)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 3",
-          "topic": "The Predictive Approach (Project Closure & Monitoring and Control) & The Agile Approach (Introduction, Integration, Project Excecution)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "The Predictive Approach (Project Closure, Monitoring and Control) & The Agile Approach (Introduction, Integration, Project Excecution)",
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 4",
-          "topic": "The Agile Approach (Project Execution & Product Release To Operations) & Next Steps",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "The Agile Approach (Project Execution, Product Release To Operations) & Next Steps",
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         }
       ]
     },
@@ -798,22 +798,22 @@
         {
           "week": "week 1",
           "topic": "Introduction To Product Management & The Predictive Approach (Project Management Plan)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 2",
           "topic": "The Predictive Approach (Project Management Plan, Excecution & Monitoring and Control)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 3",
-          "topic": "The Predictive Approach (Project Closure & Monitoring and Control) & The Agile Approach (Introduction, Integration, Project Excecution)",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "The Predictive Approach (Project Closure, Monitoring and Control) & The Agile Approach (Introduction, Integration, Project Excecution)",
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
           "week": "week 4",
-          "topic": "The Agile Approach (Project Execution & Product Release To Operations) & Next Steps",
-          "duration": "MON - FRI (17:00 -19:00 UTC)"
+          "topic": "The Agile Approach (Project Execution, Product Release To Operations) & Next Steps",
+          "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 -19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         }
       ]
     },

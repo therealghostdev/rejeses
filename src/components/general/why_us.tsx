@@ -57,13 +57,13 @@ export default function Why_us(props: UniqueComponentsProps) {
     return "Why us";
   };
 
-  const [visibleItems, setVisibleItems] = useState(3);
+  const [visibleItems, setVisibleItems] = useState(6);
 
   const handleSeeMore = () => {
     if (visibleItems < filteredData.length) {
       setVisibleItems(visibleItems + 3);
     } else {
-      setVisibleItems(3);
+      setVisibleItems(6);
     }
   };
 
@@ -89,7 +89,7 @@ export default function Why_us(props: UniqueComponentsProps) {
         ))}
       </div>
 
-      {filteredData.length > 4 && (
+      {filteredData.length > 6 && (
         <div className="flex justify-center w-full">
           <div className="bg-[#89C13E] inline-block rounded-full">
             <button
