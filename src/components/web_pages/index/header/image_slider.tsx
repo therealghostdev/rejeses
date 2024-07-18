@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useSwipeable } from "react-swipeable";
 import data from "@/utils/data/slider_data.json";
 import Image from "next/image";
-import "./slider-style.css"
+import "./slider-style.css";
 
 export default function ImageSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -85,7 +85,7 @@ export default function ImageSlider() {
                 height={100}
                 className={`w-full h-full ${
                   loadingStates[index] ? "blur-2xl" : "blur-none"
-                } transition duration-1000 ease-in-out object-cover`}
+                } transition duration-1000 ease-in-out object-contain`}
                 placeholder="blur"
                 blurDataURL={item.pre}
                 onLoad={() => handleImageLoad(index)}

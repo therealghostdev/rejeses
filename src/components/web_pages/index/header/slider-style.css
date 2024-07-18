@@ -33,7 +33,7 @@
     /* grid-template-rows: 400px; */
     grid-auto-flow: column;
     grid-gap: 10px;
-    overflow: auto;
+    overflow: hidden;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     transform: translateX(0%) translateZ(0) !important;
@@ -42,4 +42,34 @@
 
 .item {
     scroll-snap-align: center;
+}
+
+@media screen and (max-width: 1023px) {
+    .wrapper {
+        max-height: 280px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .wrapper {
+        max-height: 350px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .wrapper {
+        max-height: 450px;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .wrapper {
+        max-height: 620px;
+    }
+}
+
+@media screen and (min-width: 2000px) {
+    .wrapper {
+        max-height: 750px;
+    }
 }
