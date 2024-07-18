@@ -40,7 +40,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="lg:px-12 md:px-3 lg:h-[680px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6 object-cover">
+        <div className="lg:px-12 md:px-3 lg:max-h-[900px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6 object-cover">
           <div
             className={`filter w-full h-full ${
               imageLoading ? "blur-2xl" : "blur-none"
@@ -59,7 +59,7 @@ export default function Page() {
               alt="image"
               layout="fill"
               objectFit="cover"
-              className={`w-full h-full object-contain object-top rounded-2xl ${
+              className={`w-full h-full object-contain rounded-2xl ${
                 imageLoading ? "blur-2xl" : "blur-none"
               }`}
               placeholder="blur"

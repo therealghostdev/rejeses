@@ -40,7 +40,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="lg:px-12 md:px-3 lg:h-[620px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6">
+        <div className="lg:px-12 md:px-3 lg:max-h-[900px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6">
           <div
             className={`filter w-full h-full ${
               imageLoading ? "blur-2xl" : "blur-none"
