@@ -68,16 +68,6 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
               bg="#89C13E"
               transition_class="transition_button4"
             />
-
-            <Link
-              href={`/training/${pricingItem.id}/class_schedule`}
-              className="bg-[#FFFFFF] border border-[#DBE1E7] transition_button text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
-            >
-              <span>
-                <ArchiveIcon />
-              </span>
-              View Class Schedule
-            </Link>
           </div>
         </section>
       </div>

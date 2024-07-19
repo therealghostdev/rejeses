@@ -74,9 +74,9 @@ export default function Training_page() {
             other reasons, the recordings will be made available 3-5 hours after
             the class ends.
           </p>
-          <p className="text-lg font-bold font-bricolage_grotesque">
+          {/* <p className="text-lg font-bold font-bricolage_grotesque">
             Start date: {trainingItem.start_date}
-          </p>
+          </p> */}
         </div>
 
         <div className="flex md:gap-x-4 gap-x-2 lg:px-12 md:px-6 w-full sm_btn-container">

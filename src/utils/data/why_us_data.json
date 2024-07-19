@@ -21,27 +21,6 @@
     "tag": "training"
   },
   {
-    "id": 4,
-    "pin": "/pin.svg",
-    "title": "Accountability",
-    "comment": "Stay accountable to your goals with regular check-ins and guidance from your mentor. One of the key benefits of having a mentor is the accountability factor.",
-    "tag": "mentorship"
-  },
-  {
-    "id": 5,
-    "pin": "/pin.svg",
-    "title": "Personal Development",
-    "comment": "With rejeses, you will develop new skills, perspectives, and confidence through our mentorship program, accelerating both your personal and professional growth.",
-    "tag": "mentorship"
-  },
-  {
-    "id": 6,
-    "pin": "/pin.svg",
-    "title": "Career Advancement",
-    "comment": "With rejeses, you will receive guidance from our mentors on career growth, strategies, advancement opportunities, and how to navigate challenges in your chosen industry.",
-    "tag": "mentorship"
-  },
-  {
     "id": 7,
     "pin": "/pin.svg",
     "title": "Students",
@@ -124,5 +103,47 @@
     "title": "Construction and Engineering Firms",
     "comment": "We help construction and engineering firms with meticulous project planning and execution, including scheduling, budgeting, risk management, and stakeholder coordination.",
     "tag": "consultation"
+  },
+  {
+    "id": 19,
+    "pin": "/pin.svg",
+    "title": "Expertise and Experience",
+    "comment": "We excel in project management, offering industry experts for seamless execution through efficient strategies and stakeholder engagement.",
+    "tag": "home_consultation"
+  },
+  {
+    "id": 20,
+    "pin": "/pin.svg",
+    "title": "Efficiency and Productivity",
+    "comment": "By implementing efficient project management practices, we help organizations streamline processes, reduce waste, and improve productivity. This leads to faster project delivery and cost savings.",
+    "tag": "home_consultation"
+  },
+  {
+    "id": 21,
+    "pin": "/pin.svg",
+    "title": "Change Management",
+    "comment": "Our consultancy aids clients in managing organizational changes by crafting change management plans, fostering effective stakeholder communication, and addressing resistance to change.",
+    "tag": "home_consultation"
+  },
+  {
+    "id": 22,
+    "pin": "/pin.svg",
+    "title": "Objective Perspective",
+    "comment": "As external consultants, we offer objectivity in project management, providing impartial assessments and solutions often overlooked by internal teams due to familiarity or organizational dynamics.",
+    "tag": "home_consultation"
+  },
+  {
+    "id": 23,
+    "pin": "/pin.svg",
+    "title": "Focus on Core Competencies",
+    "comment": "Many organizations have improved overall performance and competitiveness by outsourcing project management functions to us, allowing them to focus on core competencies and strategic initiatives.",
+    "tag": "home_consultation"
+  },
+  {
+    "id": 24,
+    "pin": "/pin.svg",
+    "title": "Training and Development",
+    "comment": "We offer training programs and workshops to enhance the project management skills of internal teams. This investment in professional development can lead to you having a more capable and confident project management workforce.",
+    "tag": "home_consultation"
   }
 ]

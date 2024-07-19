@@ -21,6 +21,9 @@ const Footer: React.FC = () => {
   );
 
   const filteredTableData = useMemo(() => {
+    const numberPattern = /\/(1[0-9]|20|[1-9])(?:\/|$)/;
+    const pricingPattern = /pricing/;
+
     if (
       decodedPathname === "/" ||
       decodedPathname === "/book-session" ||
@@ -28,12 +31,17 @@ const Footer: React.FC = () => {
       decodedPathname === "/contact-us"
     ) {
       return tableData.filter((item) => item.tag === "homepage");
+    } else if (
+      numberPattern.test(decodedPathname) ||
+      pricingPattern.test(decodedPathname)
+    ) {
+      return [];
+    } else {
+      const tag = decodedPathname.split("/")[1];
+      return tableData.filter(
+        (item) => item.tag.toLowerCase() === tag.toLowerCase()
+      );
     }
-
-    const tag = decodedPathname.split("/")[1];
-    return tableData.filter(
-      (item) => item.tag.toLowerCase() === tag.toLowerCase()
-    );
   }, [decodedPathname]);
 
   const filteredTestimonalData = useMemo(() => {

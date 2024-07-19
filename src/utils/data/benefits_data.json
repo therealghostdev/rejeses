@@ -65,6 +65,13 @@
   {
     "id": 10,
     "pin": "/pin.svg",
+    "title": "Career Advancement",
+    "comment": "With rejeses, you will receive guidance from our mentors on career growth, strategies, advancement opportunities, and how to navigate challenges in your chosen industry.",
+    "tag": "mentorship"
+  },
+  {
+    "id": 11,
+    "pin": "/pin.svg",
     "title": "Training and Development",
     "comment": "We offer training programs and workshops to enhance the project management skills of internal teams. This investment in professional development can lead to you having a more capable and confident project management workforce.",
     "tag": "consultation"

@@ -50,7 +50,7 @@ export default function Pricing({ item, id }: PricingProps) {
             }`}
             onClick={() => setIndividuals(false)}
           >
-            Group (Min 10)
+            Groups (Of 10s)
           </button>
         </div>
       )}

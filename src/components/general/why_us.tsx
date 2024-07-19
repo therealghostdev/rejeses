@@ -37,7 +37,7 @@ export default function Why_us(props: UniqueComponentsProps) {
 
   const getHeadingText = () => {
     if (decodedPathname === "/") {
-      return "Why us";
+      return "Why Us?";
     } else if (
       decodedPathname.startsWith("/training/") ||
       decodedPathname === "/training"
@@ -54,7 +54,7 @@ export default function Why_us(props: UniqueComponentsProps) {
     ) {
       return "Who is this for?";
     }
-    return "Why us";
+    return "Why Us?";
   };
 
   const [visibleItems, setVisibleItems] = useState(6);
