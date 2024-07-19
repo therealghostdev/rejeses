@@ -117,9 +117,11 @@ export default function Nav_desktop() {
                 >
                   <Link
                     href={link.url}
-                    className={`${isActive(link.url) ? "text-[#89C13E]" : ""}`}
+                    className={`hover:text-[#89C13E] transition_border1 py-1 ${
+                      isActive(link.url) ? "text-[#89C13E]" : ""
+                    }`}
                   >
-                    {link.label}
+                    {link.label.toUpperCase()}
                   </Link>
                 </li>
               ))}
@@ -134,13 +136,13 @@ export default function Nav_desktop() {
                 // onClick={
                 //   button.label === "Enroll Now" ? handleEnrollClick : undefined
                 // }
-                className={`${button.className} lg:w-[140px] md:text-center`}
+                className={`${button.className} lg:w-[150px] md:text-center`}
                 style={{
                   backgroundColor: index === 0 ? "#FFFFFF" : "#89C13E",
                   borderRadius: ".3rem",
                 }}
               >
-                {button.label}
+                {button.label.toUpperCase()}
               </Link>
             ))}
           </section>
@@ -173,11 +175,11 @@ export default function Nav_desktop() {
                         <Link
                           onClick={handleMobileNavClick}
                           href={link.url}
-                          className={`${
+                          className={`hover:text-[#89C13E] transition_border1 py-1 ${
                             isActive(link.url) ? "text-[#89C13E]" : ""
                           }`}
                         >
-                          {link.label}
+                          {link.label.toUpperCase()}
                         </Link>
                       </li>
                     ))}
@@ -200,7 +202,7 @@ export default function Nav_desktop() {
                         borderRadius: ".3rem",
                       }}
                     >
-                      {button.label}
+                      {button.label.toUpperCase()}
                     </Link>
                   ))}
                 </section>

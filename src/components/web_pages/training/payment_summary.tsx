@@ -25,7 +25,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
           link1={`/training/${pricingItem.id}`}
           link2="/training"
           link_text1="Upcoming Cohorts"
-          link_text2="Project Management for Beginners"
+          link_text2="Project Management Training"
         />
         <section className="w-full border-2 border-[#DBE1E7] gap-4 py-8 md:px-6 px-2 rounded-lg flex flex-col m-auto">
           <div className="flex flex-col gap-4 border-b-2 border-b-[#DBE1E7] py-6">
@@ -59,7 +59,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
           <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center items-center py-4 w-full sm_btn-container flex-wrap">
             <Button
               click={enrollBtnClick}
-              text="Enroll Now"
+              text="Continue"
               bg="#89C13E"
               transition_class="transition_button4"
             />

@@ -44,7 +44,7 @@ export default function MentorshipPaymentSummary() {
             <div className="md:max-w-[60%] w-full flex flex-col gap-8 justify-center items-center py-4">
               <Button
                 click={pay}
-                text="View Pricing"
+                text="Continue"
                 transition_class="transition_button4"
                 url=""
                 bg="#89C13E"

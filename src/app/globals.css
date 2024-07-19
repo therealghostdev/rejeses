@@ -42,12 +42,12 @@ body {
   overflow: auto;
 }
 
-.transition_border {
+.transition_border, .transition_border1 {
   text-align: center;
   position: relative;
 }
 
-.transition_border::after {
+.transition_border::after, .transition_border1::after {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -60,12 +60,16 @@ body {
   transition: opacity .8s, width .8s, left .8s;
 }
 
-.transition_border:hover::after {
+.transition_border1::after{
+  background: #89C13E;
+}
+
+.transition_border:hover::after, .transition_border1:hover::after {
   opacity: 1;
   width: 100%;
 }
 
-.transition_border:not(:hover)::after {
+.transition_border:not(:hover)::after, .transition_border1:not(:hover)::after {
   left: auto;
   right: 0;
   width: 0;

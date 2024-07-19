@@ -8,11 +8,11 @@ export default function Dynamic_nav(props: DynamicNavProps) {
 
   return (
     <nav className="flex font-bricolage_grotesque">
-      <Link href={props.link1} className="md:mx-0 mx-2 text-[#005A5A]">
+      <Link href={props.link1} className="mx-2 text-[#005A5A]">
         {props.link_text1}
       </Link>
-      <span className="md:mx-0 mx-2">/</span>
-      <Link href={props.link2} className="md:mx-0 mx-2">
+      <span className="mx-2">/</span>
+      <Link href={props.link2} className="mx-2">
         {props.link_text2}
       </Link>
     </nav>
