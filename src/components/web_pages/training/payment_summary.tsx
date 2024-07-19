@@ -1,10 +1,5 @@
-// src/app/training/[slug]/[slug1]/ClientPage.tsx
 "use client";
-
 import Image from "next/image";
-import React from "react";
-import Link from "next/link";
-import { ArchiveIcon } from "@radix-ui/react-icons";
 import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
 import { usePayment } from "@/utils/context/payment";
 import { TrainingOption1 } from "@/utils/types/types";

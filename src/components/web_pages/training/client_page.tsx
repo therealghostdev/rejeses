@@ -54,6 +54,39 @@ export default function Training_page() {
     ));
   };
 
+  const formatDuration = (duration: string) => {
+    const segments = duration.split("&").map((part) => part.trim());
+    const weekdays = segments.filter((seg) => seg.startsWith("MON"));
+    const weekends = segments.filter(
+      (seg) => seg.startsWith("SAT") || seg.startsWith("SUN")
+    );
+
+    return (
+      <>
+        {weekdays.length > 0 && (
+          <div>
+            <h2 className="font-bold text-lg mt-2">Weekdays only</h2>
+            <ul className="list-disc ml-4">
+              {weekdays.map((day, index) => (
+                <li key={index}>{day}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {weekends.length > 0 && (
+          <div>
+            <h2 className="font-bold text-lg mt-2">Weekends only</h2>
+            <ul className="list-disc ml-4">
+              {weekends.map((day, index) => (
+                <li key={index}>{day}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </>
+    );
+  };
+
   return (
     <section className="w-full flex flex-col justify-center items-center">
       <section className="w-full px-8 flex flex-col gap-6 py-12  md:max-w-[98%] justify-center">
@@ -74,9 +107,6 @@ export default function Training_page() {
             other reasons, the recordings will be made available 3-5 hours after
             the class ends.
           </p>
-          {/* <p className="text-lg font-bold font-bricolage_grotesque">
-            Start date: {trainingItem.start_date}
-          </p> */}
         </div>
 
         <div className="flex md:gap-x-4 gap-x-2 lg:px-12 md:px-6 w-full sm_btn-container">
@@ -147,12 +177,9 @@ export default function Training_page() {
                 {item.week}
               </h1>
               <ul className="list-disc text-lg">{formatTopic(item.topic)}</ul>
-              <ul className="list-disc text-sm mt-4">
-                {formatTopic(item.duration)}
-              </ul>
+              {formatDuration(item.duration)}
             </div>
           ))}
-
           <div className="w-full flex flex-col gap-4">
             <p className="text-lg font-bold font-bricolage_grotesque">
               Start date: {trainingItem.start_date}
