@@ -10,6 +10,7 @@ import Pricing from "@/components/reusables/pricing/pricing";
 import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
 import { usePayment } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
+import Certification from "@/components/reusables/certification";
 
 export default function Training_page() {
   const trainingItem = data[0];
@@ -161,6 +162,8 @@ export default function Training_page() {
         ))}
 
         <Why_us data={whyUsItems} />
+
+        <Certification />
 
         <UpcomingCohorts />
 

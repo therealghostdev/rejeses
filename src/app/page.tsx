@@ -1,6 +1,6 @@
 "use client";
 import Services from "@/components/web_pages/index/services";
-import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
+import Certification from "@/components/reusables/certification";
 import Why_us from "@/components/general/why_us";
 import { usePathname } from "next/navigation";
 import whyUsData from "@/utils/data/why_us_data.json";
@@ -20,6 +20,7 @@ export default function Home() {
       <section className="lg:px-6 px-6">
         <Why_us data={filteredWhyData} />
       </section>
+      <Certification />
     </main>
   );
 }
