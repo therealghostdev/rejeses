@@ -196,7 +196,7 @@ export default function Nav_desktop() {
                       // }
                       className={`${button.className} w-full text-center`}
                       style={{
-                        backgroundColor: index === 1 ? "#FFFFFF" : "#89C13E",
+                        backgroundColor: index === 0 ? "#FFFFFF" : "#89C13E",
                         borderRadius: ".3rem",
                       }}
                     >

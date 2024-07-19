@@ -50,7 +50,7 @@ export default function Header() {
     <header className="bg-[#F5F0FA] flex flex-col w-full gap-4 overflow-hidden">
       <div className="w-full flex flex-col justify-center items-center gap-3 my-8">
         <div className="md:w-3/4 w-full flex flex-col justify-center items-center gap-3 px-4">
-          <h1 className="lg:text-[60px] md:text-[28px] text-4xl text-center font-bold lg:leading-[80px] leading-tight font-bricolage_grotesque">
+          <h1 className="lg:text-[60px] md:text-[28px] text-5xl text-center font-bold lg:leading-[80px] leading-tight font-bricolage_grotesque">
             Learn and become excellent at project management
           </h1>
           <p className="text-lg text-center max-w-[90%] lg:leading-[36px] leading-[28px]">
