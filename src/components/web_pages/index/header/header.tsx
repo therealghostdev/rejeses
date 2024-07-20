@@ -87,7 +87,7 @@ export default function Header() {
 
       <div className="flex w-full flex-col justify-center items-center bg-[#FCFCFC] py-12 px-4 gap-6 mt-6">
         <p className="text-lg text-center font-bricolage_grotesque text-[#5B5B5B]">
-          Learn directly from people who worked at companies such as
+          Learn directly from people who worked at such companies as
         </p>
 
         <div className="lg:w-3/4 w-full flex md:justify-around justify-center items-center md:flex-nowrap flex-wrap gap-x-3">
