@@ -51,7 +51,7 @@ export default function Services() {
               Our 35-hour training program is excellently designed to help you
               master the skills needed to become a seasoned project manager and
               pass the prestigious Project Management Professional (PMP)
-              certification examination on your first try!
+              certification examination, and others, on your first try!
             </p>
 
             <span className="text-white">
@@ -136,10 +136,10 @@ export default function Services() {
 
           <div className="md:w-2/4 w-full py-8 flex flex-col justify-center gap-4">
             <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold font-bricolage_grotesque">
-              Consultation
+              Consulting
             </h1>
             <p className="lg:max-w-[95%] text-wrap lg:text-[24px] text-[16px]">
-              Our consultation services offer guidance to overcome project
+              Our consultancy services offer guidance to overcome project
               challenges, optimize processes, and achieve your specific goals.
               Schedule a consultation to discuss your project&apos;s unique
               needs.
