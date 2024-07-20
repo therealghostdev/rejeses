@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 interface ClientPageProps {
   pricingItem: {
-    id: string;
+    id: number;
     pricing: {
       group: Record<string, any>[];
       individuals: Record<string, any>[];
@@ -17,12 +17,6 @@ interface ClientPageProps {
       total: number;
       includes: string[];
     };
-  };
-}
-
-interface PricingOption {
-  [key: string]: {
-    payment_summary?: string;
   };
 }
 
