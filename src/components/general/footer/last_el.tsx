@@ -16,6 +16,22 @@ export default function Last_el() {
 
       <div className="lg:w-1/4 md:w-[40%] w-full flex md:justify-end justify-between items-center md:mb-0 mb-8">
         <Link
+          href="https://www.instagram.com/rejeses_pmc/"
+          target="_blank"
+          className="md:mx-4"
+        >
+          <Image src="/instagram.png" alt="linkedIn" width={30} height={50} />
+        </Link>
+
+        <Link
+          href="https://www.facebook.com/rejeses_pmc/"
+          target="_blank"
+          className="md:mx-4"
+        >
+          <Image src="/facebook.png" alt="linkedIn" width={30} height={50} />
+        </Link>
+
+        <Link
           href="https://www.linkedin.com/company/rejeses"
           target="_blank"
           className="md:mx-4"
@@ -24,7 +40,7 @@ export default function Last_el() {
         </Link>
 
         <Link
-          href="https://www.twitter.com/rejeses"
+          href="https://twitter.com/rejeses_pmc"
           target="_blank"
           className="md:mx-4"
         >
