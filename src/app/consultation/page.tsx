@@ -31,11 +31,11 @@ export default function Page() {
       <section className="w-full px-8 flex flex-col gap-6 py-12 md:max-w-[98%]">
         <div className="flex flex-col md:max-w-[90%] w-full gap-4 lg:px-12 md:px-6 md:mt-10">
           <h1 className="md:text-4xl text-2xl font-bold font-bricolage_grotesque">
-            Consulting Only
+            Consulting
           </h1>
           <p className="text-lg lg:max-w-[80%]">
-            Our customized consultation services are thoughtfully designed to
-            propel growth, address challenges, and achieve goals for companies
+            Our consultancy services are thoughtfully designed to propel
+            growth, address challenges, and achieve goals for companies
             of any size or industry.
           </p>
         </div>
