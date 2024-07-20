@@ -46,16 +46,27 @@ export default function Nav_desktop() {
   };
 
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setOpenMobileNav(false);
       }
     };
 
+    const handleClickInside = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === "BUTTON" || target.tagName === "A") {
+        setOpenMobileNav(false);
+      }
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    document.addEventListener("click", handleClickInside);
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+      document.removeEventListener("click", handleClickInside);
     };
   }, []);
 
@@ -68,12 +79,7 @@ export default function Nav_desktop() {
     );
   };
 
-  const handleMobileNavClick = () => {
-    setOpenMobileNav(false);
-  };
-
   const router = useRouter();
-
   const handleEnrollClick = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
@@ -168,12 +174,12 @@ export default function Nav_desktop() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <section className="flex flex-col space-y-4">
+                <section className="flex flex-col space-y-4 mb-4">
                   <ul className="flex flex-col space-y-4">
                     {links.map((link, index) => (
                       <li key={index} className="list-none">
                         <Link
-                          onClick={handleMobileNavClick}
+                          onClick={handleHamburgerClick}
                           href={link.url}
                           className={`hover:text-[#89C13E] transition_border1 py-1 ${
                             isActive(link.url) ? "text-[#89C13E]" : ""
@@ -196,7 +202,7 @@ export default function Nav_desktop() {
                       //     ? handleEnrollClick
                       //     : undefined
                       // }
-                      className={`${button.className} w-full text-center`}
+                      className={`${button.className} w-full text-center my-2`}
                       style={{
                         backgroundColor: index === 0 ? "#FFFFFF" : "#89C13E",
                         borderRadius: ".3rem",

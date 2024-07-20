@@ -75,5 +75,19 @@
     "title": "Training and Development",
     "comment": "We offer training programs and workshops to enhance the project management skills of internal teams. This investment in professional development can lead to you having a more capable and confident project management workforce.",
     "tag": "consultation"
+  },
+  {
+    "id": 12,
+    "pin": "/pin.svg",
+    "title": "Expert Insight",
+    "comment": "You'll get ccess to experienced mentors, allowing you to gain insights from their experiences and expertise, which can be invaluable for avoiding common pitfalls and making informed decisions.",
+    "tag": "mentorship"
+  },
+  {
+    "id": 13,
+    "pin": "/pin.svg",
+    "title": "Networking Opportunities",
+    "comment": "Our mentors have extensive networks and can introduce you to valuable contacts in your field, enhancing your professional connections.",
+    "tag": "mentorship"
   }
 ]
