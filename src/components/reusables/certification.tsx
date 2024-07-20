@@ -10,7 +10,7 @@ export default function Certification() {
         <p className="lg:max-w-[80%]">
           Our training course equips you to take and pass the following
           professional exams, and be certified by the Project Management
-          Institute (PMI)
+          Institute (PMI):
         </p>
 
         <div className="w-full flex md:flex-row flex-col my-8">
@@ -49,7 +49,7 @@ export default function Certification() {
               className="w-full"
             />
             <p className="font-bold font-bricolage_grotesque my-1">
-              Agile Certified Practitioner (ACP)
+              PMI - Agile Certified Practitioner (PMI-ACP)
             </p>
           </div>
         </div>
