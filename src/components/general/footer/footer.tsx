@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
       {filteredTableData.length === 0 ? null : (
         <Table data={filteredTableData} />
       )}
-      {pathname === "/" && !isMobile && <BookSession />}
+      {pathname === "/" && <BookSession />}
       <LastEl />
     </footer>
   );

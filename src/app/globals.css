@@ -165,4 +165,8 @@ body {
   .margin-sm-override {
     margin: 0;
   }
+
+  .bg-img {
+    background: url("/book.jpg") center/cover;
+  }
 }

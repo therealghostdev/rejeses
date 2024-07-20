@@ -1,25 +1,79 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import { PlusIcon, MinusIcon } from "@radix-ui/react-icons";
 import { TableProps } from "@/utils/types/types";
 import Link from "next/link";
 
 const Table: React.FC<TableProps> = ({ data }) => {
-  const replaceBookingLink = (content: string) => {
+  const [width, setWidth] = useState<number>(window.innerWidth);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      const newWidth = window.innerWidth;
+      setWidth(newWidth);
+      setIsMobile(newWidth <= 1023);
+    };
+
+    window.addEventListener("resize", updateWidth);
+
+    // Initial check
+    updateWidth();
+
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    };
+  }, []);
+
+  const replaceBookingLink = (content: string): ReactNode[] => {
     const bookingPhrase = "booking a session";
     const parts = content.split(new RegExp(`(${bookingPhrase})`, "i"));
 
     return parts.map((part, index) => {
       if (part.toLowerCase() === bookingPhrase.toLowerCase()) {
         return (
-          <Link key={index} href="/book-session" className="transition_border italic py-1 font-bold font-bricolage_grotesque">
+          <Link
+            key={index}
+            href="/book-session"
+            className="transition_border italic py-1 font-bold font-bricolage_grotesque"
+          >
             {bookingPhrase}
           </Link>
         );
       }
       return part;
     });
+  };
+
+  const replaceBookingLink2 = (content: string): ReactNode[] => {
+    const buttonPhrase = "clicking on the button below";
+    const parts = content.split(new RegExp(`(${buttonPhrase})`, "i"));
+
+    return parts.map((part, index) => {
+      if (part.toLowerCase() === buttonPhrase.toLowerCase()) {
+        return (
+          <Link
+            key={index}
+            href="/book-session"
+            className="transition_border italic py-1 font-bold font-bricolage_grotesque"
+          >
+            book a session
+          </Link>
+        );
+      }
+      return part;
+    });
+  };
+
+  const renderContent = (content: string): ReactNode => {
+    if (isMobile) {
+      const mobileContent = replaceBookingLink2(content);
+      return mobileContent.map((part, index) =>
+        typeof part === "string" ? replaceBookingLink(part) : part
+      );
+    }
+    return replaceBookingLink(content);
   };
 
   return (
@@ -55,7 +109,7 @@ const Table: React.FC<TableProps> = ({ data }) => {
             </AccordionTrigger>
             <AccordionContent className="md:text-[20px] text-[15px]">
               <div className="max-w-[80%] leading-relaxed">
-                {replaceBookingLink(item.content)}
+                {renderContent(item.content)}
               </div>
             </AccordionContent>
           </AccordionItem>

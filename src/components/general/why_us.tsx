@@ -13,13 +13,17 @@ export default function Why_us(props: UniqueComponentsProps) {
   );
 
   const filteredData = useMemo(() => {
+    const data = props.data.filter(
+      (item) => !(decodedPathname === "/" && item.id >= 7 && item.id <= 18)
+    );
+
     if (
       decodedPathname === "/" ||
       decodedPathname === "/training" ||
       decodedPathname === "/mentorship" ||
       decodedPathname === "/consultation"
     ) {
-      return props.data;
+      return data;
     }
 
     const dynamicTag = decodedPathname.startsWith("/training/")
@@ -30,9 +34,7 @@ export default function Why_us(props: UniqueComponentsProps) {
       ? "consultation"
       : "";
 
-    return dynamicTag
-      ? props.data.filter((item) => item.tag === dynamicTag)
-      : [];
+    return dynamicTag ? data.filter((item) => item.tag === dynamicTag) : [];
   }, [decodedPathname, props.data]);
 
   const getHeadingText = () => {
