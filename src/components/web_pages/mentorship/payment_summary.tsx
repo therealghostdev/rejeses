@@ -50,9 +50,9 @@ export default function MentorshipPaymentSummary() {
                 bg="#89C13E"
               />
               <p className="text-center">
-                By paying for this plan, you agree that you will show up for
-                your mentorship session on set date and on days when you
-                don&apos;t show up, would not be revisited.
+                Kindly note that by paying for this plan, you agree that you will 
+                show up for your mentorship sessions on set dates, and days 
+                that you don&apos;t show up would not be revisited.
               </p>
             </div>
           </div>
