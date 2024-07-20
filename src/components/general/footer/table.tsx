@@ -6,7 +6,9 @@ import { TableProps } from "@/utils/types/types";
 import Link from "next/link";
 
 const Table: React.FC<TableProps> = ({ data }) => {
-  const [width, setWidth] = useState<number>(window.innerWidth);
+  const [width, setWidth] = useState<number>(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
