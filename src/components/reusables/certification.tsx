@@ -7,7 +7,7 @@ export default function Certification() {
         <h1 className="lg:text-[48px] md:text-3xl text-2xl font-bold my-8 font-bricolage_grotesque">
           Get prepped for your professional exams
         </h1>
-        <p className="lg:max-w-[80%]">
+        <p className="lg:max-w-[80%] lg:text-[24px] text-wrap text-[16px]">
           Our training course equips you to take and pass the following
           professional exams, and be certified by the Project Management
           Institute (PMI)

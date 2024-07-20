@@ -30,10 +30,10 @@ export default function Page() {
     <section className="w-full flex flex-col justify-center items-center">
       <section className="w-full px-8 flex flex-col gap-6 py-12 md:max-w-[98%]">
         <div className="flex flex-col md:max-w-[90%] w-full gap-4 lg:px-12 md:px-6 md:mt-10">
-          <h1 className="md:text-4xl text-2xl font-bold font-bricolage_grotesque">
+          <h1 className="md:text-5xl text-3xl font-bold font-bricolage_grotesque">
             Consulting
           </h1>
-          <p className="text-lg lg:max-w-[80%]">
+          <p className="lg:max-w-[80%] lg:text-[24px] text-wrap text-[16px]">
             Our customized consultation services are thoughtfully designed to
             propel growth, address challenges, and achieve goals for companies
             of any size or industry.
@@ -73,11 +73,11 @@ export default function Page() {
         <Benefits data={filteredBenefits} />
         <Why_us data={filteredWhyData} />
         <div className="my-12">
-          <div className="flex flex-col gap-6">
-            <h1 className="lg:text-4xl text-2xl font-bold text-center font-bricolage_grotesque">
+          <div className="flex flex-col gap-6 justify-center items-center">
+            <h1 className="lg:text-5xl text-3xl font-bold text-center font-bricolage_grotesque">
               Pricing
             </h1>
-            <p className="text-lg text-center">
+            <p className="text-center lg:text-[24px] text-wrap text-[16px] lg:max-w-[80%]">
               Due to the uniqueness and complexity of each project we suggest
               you book a session with us to discuss more of your needs.
             </p>

@@ -92,18 +92,18 @@ export default function Training_page() {
     <section className="w-full flex flex-col justify-center items-center">
       <section className="w-full px-8 flex flex-col gap-6 py-12  md:max-w-[98%] justify-center">
         <div className="flex flex-col w-full gap-4 lg:px-12 md:px-6 md:mt-10">
-          <h1 className="md:text-4xl text-2xl font-bold font-bricolage_grotesque">
+          <h1 className="md:text-5xl text-3xl font-bold font-bricolage_grotesque">
             {trainingItem.title}
           </h1>
-          <p className="text-lg lg:max-w-[80%]">
+          <p className="lg:max-w-[80%] lg:text-[24px] text-wrap text-[16px]">
             {trainingItem.expanded_description}
           </p>
         </div>
         <div className="w-full flex flex-col gap-2 lg:px-12 md:px-6">
-          <h1 className="text-2xl text-[#89C13E] font-bricolage_grotesque">
+          <h1 className="text-3xl text-[#89C13E] font-bricolage_grotesque">
             NOTE:
           </h1>
-          <p className="text-lg text-wrap lg:max-w-[80%]">
+          <p className="text-wrap lg:max-w-[80%] lg:text-[24px] text-[16px]">
             For those who miss the live sessions due to conflicting schedules or
             other reasons, the recordings will be made available 3-5 hours after
             the class ends.

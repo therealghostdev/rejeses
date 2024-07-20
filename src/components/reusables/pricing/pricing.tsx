@@ -24,8 +24,8 @@ export default function Pricing({ item, id }: PricingProps) {
   return (
     <section className="w-full flex flex-col gap-4 lg:px-6">
       <div className="flex flex-col gap-4">
-        <h1 className="lg:text-4xl text-2xl font-bold text-center font-bricolage_grotesque">Pricing</h1>
-        <p className="text-lg text-center">
+        <h1 className="lg:text-5xl text-3xl font-bold text-center font-bricolage_grotesque">Pricing</h1>
+        <p className="text-center lg:text-[24px] text-wrap text-[16px]">
           We believe in keeping a simple and transparent pricing model.
         </p>
       </div>

@@ -19,7 +19,7 @@ export default function Testimonial(props: UniqueComponentsProps) {
         <h1 className="md:text-4xl text-2xl font-bold font-bricolage_grotesque">
           Don&apos;t just take our word for it . . .
         </h1>
-        <p className="text-lg">
+        <p className="lg:text-[24px] text-wrap text-[16px]">
          Listen to some who have tried us out . . .
         </p>
       </div>

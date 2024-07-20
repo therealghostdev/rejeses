@@ -29,10 +29,10 @@ export default function Page() {
     <section className="w-full flex flex-col justify-center items-center">
       <section className="w-full px-8 flex flex-col gap-6 py-12 md:max-w-[98%]">
         <div className="flex flex-col w-full gap-4 lg:px-12 md:px-6 md:mt-10">
-          <h1 className="md:text-4xl text-2xl font-bold font-bricolage_grotesque">
+          <h1 className="md:text-5xl text-3xl font-bold font-bricolage_grotesque">
             Personalized Mentoring
           </h1>
-          <p className="text-lg text-wrap lg:max-w-[80%]">
+          <p className="text-wrap lg:max-w-[80%] lg:text-[24px] text-[16px]">
             Our personalized mentoring program is thoughtfully designed to
             accelerate growth, overcome challenges, and achieve goals for
             individuals at any stage or in any field. It offers rich and
