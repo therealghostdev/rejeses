@@ -15,19 +15,23 @@ import Certification from "@/components/reusables/certification";
 export default function Training_page() {
   const trainingItem = data[0];
   const whyUsItems = whyUsData.filter((item) => item.tag === "training");
-  const price = trainingItem.pricing.individuals.map((item) =>
-    Number(item.training_only?.price)
-  )[0];
-
   const pricingRef = useRef<HTMLDivElement | null>(null);
-
   const { setPaymentInfo } = usePayment();
 
+  // Get the price for the individuals' training option
+  const individualPrice = trainingItem.pricing.individuals
+    .map((item) => Number(item.training_only?.price))
+    .filter((price) => !isNaN(price))[0];
+
+  // Update payment information
   const getPaymentData = () => {
     setPaymentInfo((prev) => ({
       ...prev,
-      price: price,
+      price: individualPrice,
       training_id: trainingItem.id,
+      training_option:
+        "You are subscribing to rejeses consult 4-week training plan.",
+      is_group: false,
     }));
   };
 
@@ -112,7 +116,9 @@ export default function Training_page() {
 
         <div className="flex md:gap-x-4 gap-x-2 lg:px-12 md:px-6 w-full sm_btn-container">
           <Button
-            click={getPaymentData}
+            click={() => {
+              getPaymentData();
+            }}
             text="Enroll Now"
             url={`/training/${trainingItem.id}`}
             transition_class="transition_button4"
@@ -190,6 +196,10 @@ export default function Training_page() {
 
             <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
               <Button
+                click={() => {
+                  getPaymentData();
+                  // window.location.href = `/training/${trainingItem.id}`;
+                }}
                 text="Enroll Now"
                 url={`/training/${trainingItem.id}`}
                 transition_class="transition_button4"
@@ -197,13 +207,7 @@ export default function Training_page() {
               />
 
               <Link
-                onClick={() => {
-                  setPaymentInfo((prev) => ({
-                    ...prev,
-                    price: price,
-                    training_id: trainingItem.id,
-                  }));
-                }}
+                onClick={getPaymentData}
                 href={`/training/${trainingItem.id}/class_schedule`}
                 className="bg-[#FFFFFF] border border-[#DBE1E7] transition_button text-[#89C13E] font-bricolage_grotesque md:px-8 px-2 py-4 flex gap-x-4 btn text-nowrap text-ellipsis items-center justify-center rounded-md"
               >

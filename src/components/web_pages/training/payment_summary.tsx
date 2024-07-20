@@ -2,15 +2,48 @@
 import Image from "next/image";
 import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
 import { usePayment } from "@/utils/context/payment";
-import { TrainingOption1 } from "@/utils/types/types";
 import Button from "@/components/reusables/button";
+import { useEffect, useState } from "react";
 
 interface ClientPageProps {
-  pricingItem: TrainingOption1;
+  pricingItem: {
+    id: string;
+    pricing: {
+      group: Record<string, any>[];
+      individuals: Record<string, any>[];
+    };
+    payment: {
+      order_summary: string;
+      total: number;
+      includes: string[];
+    };
+  };
+}
+
+interface PricingOption {
+  [key: string]: {
+    payment_summary?: string;
+  };
 }
 
 export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   const { paymentInfo, setPaymentInfo } = usePayment();
+  const [formattedSummary, setFormattedSummary] = useState<string>("");
+
+  // Function to format the payment summary
+  const formatPaymentSummary = () => {
+    const { training_option } = paymentInfo;
+
+    if (!training_option || training_option === "") {
+      return pricingItem.payment.order_summary;
+    }
+
+    return training_option;
+  };
+
+  useEffect(() => {
+    setFormattedSummary(formatPaymentSummary());
+  }, [paymentInfo, pricingItem]);
 
   const enrollBtnClick = () => {
     if (paymentInfo.price && paymentInfo.price === 0) {
@@ -32,7 +65,14 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
             <h1 className="lg:text-3xl text-2xl font-bold font-bricolage_grotesque">
               Order Summary
             </h1>
-            <p>{pricingItem.payment.order_summary}</p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html:
+                  formattedSummary ||
+                  pricingItem.payment.order_summary ||
+                  `You are subscribing to rejeses consult 4-week training plan.`,
+              }}
+            ></p>
             <div className="w-full flex flex-col gap-4">
               <p className="text-[#89C13E]">Includes</p>
               <p className="flex gap-x-3 items-center">
@@ -47,7 +87,6 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
                 {pricingItem.payment.includes[1]}
               </p>
             </div>
-
             <div className="flex justify-between w-full font-bricolage_grotesque">
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
@@ -55,7 +94,6 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
               </span>
             </div>
           </div>
-
           <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center items-center py-4 w-full sm_btn-container flex-wrap">
             <Button
               click={enrollBtnClick}

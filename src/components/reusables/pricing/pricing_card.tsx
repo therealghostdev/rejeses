@@ -14,7 +14,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
   const pathname = usePathname();
   const { setPaymentInfo } = usePayment();
 
-  const registerBtnClick = (item: number) => {
+  const registerBtnClick = (item: number, option: string) => {
     const currentPath = decodeURIComponent(pathname).split("/")[1];
     if (currentPath === "training") {
       const routePath = decodeURIComponent(pathname).split("/")[2];
@@ -23,11 +23,16 @@ export default function PriceCard({ data, id }: PriceCardProps) {
         ...prev,
         price: item,
         training_id: Number(id),
+        training_option: option,
       }));
       const goTo = `/training/${id}`;
       directTo.push(goTo);
     } else if (currentPath === "mentorship") {
-      setPaymentInfo((prev) => ({ ...prev, price: item }));
+      setPaymentInfo((prev) => ({
+        ...prev,
+        price: item,
+        training_option: option,
+      }));
       const goTo = `/${currentPath}/pricing`;
       directTo.push(goTo);
     } else if (currentPath === "consultation") {
@@ -84,7 +89,14 @@ export default function PriceCard({ data, id }: PriceCardProps) {
 
           <div className="bottom-6 md:absolute left-0 w-full px-4">
             <button
-              onClick={() => registerBtnClick(training_only.price)}
+              onClick={() =>
+                registerBtnClick(
+                  training_only.price,
+                  decodeURIComponent(pathname).split("/")[1] === "training"
+                    ? `You are subscribing to rejeses consult 4-week training plan.`
+                    : "You are subscribing to rejeses consult 6-month mentoring plan."
+                )
+              }
               // href={training_only.register_link}
               className="bg-[#89C13E] text-white w-full inline-block p-4 text-center rounded-md font-bricolage_grotesque"
             >
@@ -130,7 +142,12 @@ export default function PriceCard({ data, id }: PriceCardProps) {
 
           <div className="bottom-6 md:absolute left-0 w-full px-4">
             <button
-              onClick={() => registerBtnClick(training_with_mentorship.price)}
+              onClick={() =>
+                registerBtnClick(
+                  training_with_mentorship.price,
+                  `You are subscribing to rejeses consult 4-week training plus 6-month mentoring plan.`
+                )
+              }
               // href={training_with_mentorship.register_link}
               className="bg-[#89C13E] text-white w-full font-bricolage_grotesque inline-block p-4 text-center rounded-md"
             >

@@ -1,38 +1,25 @@
-"use client";
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import { PaymentInfo } from "@/utils/types/types";
+"use client"
+import React, { createContext, useState, useContext } from 'react';
 
-const defaultPaymentInfo: PaymentInfo = {
-  training_name: "Default Training",
-  price: 0,
-  duration: "N/A",
-  name: "Default User",
-  training_id: null,
-};
+interface PaymentInfo {
+  price: number;
+  training_id: number | null;
+  training_option?: string;
+  is_group?: boolean;
+}
 
-// payment context type
-interface PaymentContextType {
+const PaymentContext = createContext<{
   paymentInfo: PaymentInfo;
   setPaymentInfo: React.Dispatch<React.SetStateAction<PaymentInfo>>;
-}
+}>({
+  paymentInfo: { price: 0, training_id: null },
+  setPaymentInfo: () => {}
+});
 
-const PaymentContext = createContext<PaymentContextType | undefined>(undefined);
+export const usePayment = () => useContext(PaymentContext);
 
-export const usePayment = (): PaymentContextType => {
-  const context = useContext(PaymentContext);
-  if (!context) {
-    throw new Error("usePayment must be used within a PaymentProvider");
-  }
-  return context;
-};
-
-interface PaymentProviderProps {
-  children: ReactNode;
-}
-
-export const PaymentProvider = ({ children }: PaymentProviderProps) => {
-  const [paymentInfo, setPaymentInfo] =
-    useState<PaymentInfo>(defaultPaymentInfo);
+export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({ price: 0, training_id: null });
 
   return (
     <PaymentContext.Provider value={{ paymentInfo, setPaymentInfo }}>

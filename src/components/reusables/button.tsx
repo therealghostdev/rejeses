@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { ButtonProps } from "@/utils/types/types";
+import { useRouter } from "next/navigation";
 
 const Button: React.FC<ButtonProps> = ({
   url,
@@ -11,9 +12,10 @@ const Button: React.FC<ButtonProps> = ({
   transition_class,
   click,
 }) => {
+  const router = useRouter();
   const handleClick = () => {
     if (url) {
-      window.open(url, "_self");
+      router.push(url);
     }
 
     if (click) {

@@ -5,7 +5,6 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { usePayment } from "@/utils/context/payment";
-import { Item } from "@radix-ui/react-accordion";
 
 export default function Card(props: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
@@ -14,9 +13,16 @@ export default function Card(props: CardProps) {
 
   useEffect(() => {
     const price = props.price?.individuals.map(
-      (Item) => Item.training_only?.price
+      (item) => item.training_only?.price
     );
-    setPaymentInfo((prev) => ({ ...prev, price: Number(price) }));
+    setPaymentInfo((prev) => ({
+      ...prev,
+      price: Number(price),
+      training_id: props.id2,
+      training_option:
+        "You are subscribing to rejeses consult 4-week training plan.",
+      is_group: false,
+    }));
   }, [props.price?.individuals]);
 
   return (

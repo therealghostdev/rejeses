@@ -26,10 +26,8 @@ export default function MentorshipPaymentSummary() {
               Order Summary
             </h1>
             <p className="text-wrap lg:max-w-[80%]">
-              You are subscribing to rejeses Consult one year personalized
-              mentorship plan. You will be charged &#x24;
-              {paymentInfo.price || 300} for the first year and subsequently
-              $200.00 per month or $2,200.00 per year.
+              {paymentInfo.training_option ||
+                "You are subscribing to rejeses Consulting plan"}
             </p>
 
             <div className="flex justify-between w-full font-bricolage_grotesque">

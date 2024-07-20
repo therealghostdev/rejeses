@@ -21,7 +21,7 @@
       "tool": "Zoom"
     },
     "payment": {
-      "order_summary": "This course is designed to equip project managers and entrepreneurs with profitable roadmaps and resources to start, scale and champion their project management careers. It will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it. You could enroll for weekday classes or weekend classes.",
+      "order_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
       "includes": ["/trophy.svg", "Certificate of completion"],
       "total": 100,
       "curriculum": [
@@ -55,6 +55,7 @@
             "price": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained only",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
             "extra_details": [
               "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
@@ -70,6 +71,7 @@
             "price": 400,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained and mentored",
+            "payment_summary": "You are subscribing to rejeses consult 4-week training plus 6-months mentorship plan.",
             "extra_details": [
               "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
@@ -93,6 +95,7 @@
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained only",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
             "extra_details": [
               "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
@@ -109,6 +112,7 @@
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained and mentored",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-months mentorship plan.",
             "extra_details": [
               "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
@@ -175,7 +179,7 @@
       "tool": "Zoom"
     },
     "payment": {
-      "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
+      "order_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
       "includes": ["/trophy.svg", "Certificate on completion"],
       "total": 100,
       "curriculum": [
@@ -209,6 +213,7 @@
             "price": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -224,6 +229,7 @@
             "price": 500,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-month mentorship plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -247,6 +253,7 @@
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -263,6 +270,7 @@
             "amount_saved": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-months mentorship plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -329,7 +337,7 @@
       "tool": "Zoom"
     },
     "payment": {
-      "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
+      "order_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
       "includes": ["/trophy.svg", "Certificate on completion"],
       "total": 100,
       "curriculum": [
@@ -363,6 +371,7 @@
             "price": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -378,6 +387,7 @@
             "price": 500,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-months mentorship plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -401,6 +411,7 @@
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -417,6 +428,7 @@
             "amount_saved": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
+            "payment_summary": "You are subscribing to rejeses consult 4-week training plus 6-months mentorship plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -483,7 +495,7 @@
       "tool": "Zoom"
     },
     "payment": {
-      "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
+      "order_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
       "includes": ["/trophy.svg", "Certificate on completion"],
       "total": 100,
       "curriculum": [
@@ -517,6 +529,7 @@
             "price": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -532,6 +545,7 @@
             "price": 500,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-months mentorship plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -555,6 +569,7 @@
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -571,6 +586,7 @@
             "amount_saved": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
+            "payment_summary": "You are subscribing to rejeses consult 4-week training plus 6-months mentorship plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -637,7 +653,7 @@
       "tool": "Zoom"
     },
     "payment": {
-      "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
+      "order_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
       "includes": ["/trophy.svg", "Certificate on completion"],
       "total": 100,
       "curriculum": [
@@ -671,6 +687,7 @@
             "price": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -686,6 +703,7 @@
             "price": 500,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
+            "payment_summary": "You are subscribing to rejeses consult 4-week training plus 6-months mentorship plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -709,6 +727,7 @@
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -725,6 +744,7 @@
             "amount_saved": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-months mentorship plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -791,7 +811,7 @@
       "tool": "Zoom"
     },
     "payment": {
-      "order_summary": "The project management beginners course is designed to equip project managers and entrepreneurs likewise with profitable roadmaps and resources to start, scale and champion their project management careers. This course will be taught via online live classes and recordings will be provided 3-5 hours after the class for those who missed it.",
+      "order_summary": "",
       "includes": ["/trophy.svg", "Certificate on completion"],
       "total": 100,
       "curriculum": [
@@ -825,6 +845,7 @@
             "price": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -840,6 +861,7 @@
             "price": 500,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-months mentorship plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -863,6 +885,7 @@
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
@@ -879,6 +902,7 @@
             "amount_saved": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
+            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-months mentorship plan.",
             "extra_details": [
               "Full PMP/PMI-ACP training",
               "Exam practice questions",
