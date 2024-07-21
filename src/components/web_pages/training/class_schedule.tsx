@@ -22,20 +22,40 @@ export default function ClassSchedule(props: SchedulePropsData) {
 
   const downloadPdf = async () => {
     if (scheduleRef.current) {
-      const canvas = await html2canvas(scheduleRef.current);
+      // Store the original overflow style
+      const originalOverflow = scheduleRef.current.style.overflow;
+      const originalWidth = scheduleRef.current.style.width;
+  
+      // Set overflow to visible to capture the entire content
+      scheduleRef.current.style.overflow = 'visible';
+      scheduleRef.current.style.width = 'fit-content';
+  
+      const canvas = await html2canvas(scheduleRef.current, {
+        scale: window.devicePixelRatio || 1,
+        useCORS: true,
+        logging: true,
+        scrollX: -window.scrollX,
+        scrollY: -window.scrollY,
+        windowWidth: document.documentElement.scrollWidth, // Set to full content width
+        windowHeight: document.documentElement.scrollHeight // Set to full content height
+      });
+  
+      // Restore the original overflow style
+      scheduleRef.current.style.overflow = originalOverflow;
+      scheduleRef.current.style.width = originalWidth;
+  
       const imgData = canvas.toDataURL("image/png");
-
+  
       const pdf = new jsPDF("landscape", "pt", "a4");
-
       const imgProps = pdf.getImageProperties(imgData);
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
+  
       pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
       pdf.save(`Rejeses (${props.all.title}) training schedule`);
     }
   };
-
+  
   const isClassScheduled = (day: string, time: string): boolean => {
     return props.data.some((s) => s.day === day && s.time === time);
   };

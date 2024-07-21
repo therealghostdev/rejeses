@@ -53,7 +53,7 @@ export default function Header() {
           <h1 className="lg:text-[60px] md:text-6xl text-5xl text-center font-bold lg:leading-[80px] leading-tight font-bricolage_grotesque">
             Learn and become excellent at project management
           </h1>
-          <p className="text-lg text-center max-w-[90%] lg:leading-[36px] leading-[28px]">
+          <p className="lg:text-xl text-2xl text-center max-w-[90%] lg:leading-[36px] leading-[28px]">
             Everything from learning about project management to one-on-one
             mentoring and even consultation,{" "}
             <span className="font-bold italic">rejeses</span> is here to help
