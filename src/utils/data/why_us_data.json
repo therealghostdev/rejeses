@@ -177,26 +177,19 @@
   {
     "id": 29,
     "pin": "/pin.svg",
-    "title": "Networking Opportunities",
-    "comment": "Our mentors have extensive networks and can introduce you to valuable contacts in your field, enhancing your professional connections.",
-    "tag": "home_mentorship"
-  },
-  {
-    "id": 30,
-    "pin": "/pin.svg",
     "title": "Personal Development",
     "comment": "With rejeses, you will develop new skills, perspectives, and confidence through our mentorship program, accelerating both your personal and professional growth.",
     "tag": " home_mentorship"
   },
   {
-    "id": 31,
+    "id": 30,
     "pin": "/pin.svg",
     "title": "Accountability",
     "comment": "Stay accountable to your goals with regular check-ins and guidance from your mentor. One of the key benefits of having a mentor is the accountability factor.",
     "tag": "home_mentorship"
   },
   {
-    "id": 32,
+    "id": 31,
     "pin": "/pin.svg",
     "title": "Career Advancement",
     "comment": "With rejeses, you will receive guidance from our mentors on career growth, strategies, advancement opportunities, and how to navigate challenges in your chosen industry.",
