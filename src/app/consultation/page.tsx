@@ -34,7 +34,7 @@ export default function Page() {
             Consulting
           </h1>
           <p className="lg:max-w-[80%] lg:text-[24px] text-wrap text-[16px]">
-            Our customized consultation services are thoughtfully designed to
+            Our top-notch consultancy services are thoughtfully designed to
             propel growth, address challenges, and achieve goals for companies
             of any size or industry.
           </p>
@@ -78,7 +78,7 @@ export default function Page() {
               Pricing
             </h1>
             <p className="text-center lg:text-[24px] text-wrap text-[16px] lg:max-w-[80%]">
-              Due to the uniqueness and complexity of each project we suggest
+              Due to the uniqueness and complexity of each project, we suggest that
               you book a session with us to discuss more of your needs.
             </p>
 
