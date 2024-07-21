@@ -63,7 +63,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
         </h1>
         <p className="lg:text-[24px] text-wrap text-[16px]">
           For those who miss the live sessions due to conflicing schedules or
-          other reasons, class recordings will be made available 3-5 hours after
+          other reasons, class recordings will be made available 1-2 hours after
           the class ends.
         </p>
       </div>
