@@ -30,7 +30,7 @@ export default function MentorshipPaymentSummary() {
               dangerouslySetInnerHTML={{
                 __html:
                   paymentInfo.training_option ||
-                  `You are subscribing to rejeses Consulting 6-months mentoring plan. You will be charged &#x24;300 for this.`,
+                  `You are subscribing to rejeses consult 6-month mentoring plan. You will be charged &#x24;300 for this.`,
               }}
             />
 
