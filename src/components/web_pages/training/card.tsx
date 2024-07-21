@@ -12,15 +12,16 @@ export default function Card(props: CardProps) {
   const { setPaymentInfo } = usePayment();
 
   useEffect(() => {
-    const price = props.price?.individuals.map(
+    const priceArray = props.price?.individuals.map(
       (item) => item.training_only?.price
     );
+    const price = priceArray ? priceArray[0] : 0;
+
     setPaymentInfo((prev) => ({
       ...prev,
       price: Number(price),
       training_id: props.id2,
-      training_option:
-        "You are subscribing to rejeses consult 4-week training plan.",
+      training_option: `You are subscribing to rejeses consult 4-weeks training plan. You will be charged &#x24;${price} for this.`,
       is_group: false,
     }));
   }, [props.price?.individuals]);

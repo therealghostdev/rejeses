@@ -25,10 +25,14 @@ export default function MentorshipPaymentSummary() {
             <h1 className="lg:text-3xl text-2xl font-bold font-bricolage_grotesque">
               Order Summary
             </h1>
-            <p className="text-wrap lg:max-w-[80%]">
-              {paymentInfo.training_option ||
-                "You are subscribing to rejeses Consulting plan"}
-            </p>
+            <p
+              className="text-wrap lg:max-w-[80%]"
+              dangerouslySetInnerHTML={{
+                __html:
+                  paymentInfo.training_option ||
+                  `You are subscribing to rejeses Consulting 6-months mentoring plan. You will be charged &#x24;300 for this.`,
+              }}
+            />
 
             <div className="flex justify-between w-full font-bricolage_grotesque">
               <span className="text-2xl font-bold">Total:</span>
@@ -48,8 +52,8 @@ export default function MentorshipPaymentSummary() {
                 bg="#89C13E"
               />
               <p className="text-center">
-                Kindly note that by paying for this plan, you agree that you will 
-                show up for your mentorship sessions on set dates, and days 
+                Kindly note that by paying for this plan, you agree that you
+                will show up for your mentorship sessions on set dates, and days
                 that you don&apos;t show up would not be revisited.
               </p>
             </div>

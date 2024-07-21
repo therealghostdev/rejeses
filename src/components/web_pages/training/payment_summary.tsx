@@ -23,13 +23,14 @@ interface ClientPageProps {
 export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   const { paymentInfo, setPaymentInfo } = usePayment();
   const [formattedSummary, setFormattedSummary] = useState<string>("");
+  const [generalPrice, setGeneralPrice] = useState<number>(0);
 
   // Function to format the payment summary
   const formatPaymentSummary = () => {
     const { training_option } = paymentInfo;
 
     if (!training_option || training_option === "") {
-      return pricingItem.payment.order_summary;
+      return `You are subscribing to rejeses consult 4-week training plan. You will be charged &#x24;${pricingItem.payment.total} for this.`;
     }
 
     return training_option;
@@ -38,6 +39,15 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   useEffect(() => {
     setFormattedSummary(formatPaymentSummary());
   }, [paymentInfo, pricingItem]);
+
+  useEffect(() => {
+    const priceArray = pricingItem.pricing.individuals.map(
+      (item) => item.price
+    );
+    const price = priceArray.length > 0 ? priceArray[0] : 0;
+
+    setGeneralPrice(price);
+  }, []);
 
   const enrollBtnClick = () => {
     if (paymentInfo.price && paymentInfo.price === 0) {
@@ -63,8 +73,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
               dangerouslySetInnerHTML={{
                 __html:
                   formattedSummary ||
-                  pricingItem.payment.order_summary ||
-                  `You are subscribing to rejeses consult 4-week training plan.`,
+                  `You are subscribing to rejeses consult 4-week training plan. You will be charged &#x24;${pricingItem.payment.total} for this.`,
               }}
             ></p>
             <div className="w-full flex flex-col gap-4">

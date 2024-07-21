@@ -60,7 +60,7 @@ const Table: React.FC<TableProps> = ({ data }) => {
             href="/book-session"
             className="transition_border italic py-1 font-bold font-bricolage_grotesque"
           >
-            book a session
+            booking a session
           </Link>
         );
       }

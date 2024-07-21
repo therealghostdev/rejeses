@@ -93,8 +93,8 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                 registerBtnClick(
                   training_only.price,
                   decodeURIComponent(pathname).split("/")[1] === "training"
-                    ? `You are subscribing to rejeses consult 4-week training plan.`
-                    : "You are subscribing to rejeses consult 6-month mentoring plan."
+                    ? `You are subscribing to rejeses consult 4-weeks training plan. You will be charged  &#x24;${training_only.price} for this.`
+                    : `You are subscribing to rejeses consult 6-months mentoring plan. You will be charged  &#x24;${training_only.price} for this.`
                 )
               }
               // href={training_only.register_link}
@@ -145,7 +145,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
               onClick={() =>
                 registerBtnClick(
                   training_with_mentorship.price,
-                  `You are subscribing to rejeses consult 4-week training plus 6-month mentoring plan.`
+                  `You are subscribing to rejeses consult 4-weeks training plus 6-months mentoring plan. You will be charged  &#x24;${training_with_mentorship.price} for this.`
                 )
               }
               // href={training_with_mentorship.register_link}

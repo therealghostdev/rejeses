@@ -29,8 +29,7 @@ export default function Training_page() {
       ...prev,
       price: individualPrice,
       training_id: trainingItem.id,
-      training_option:
-        "You are subscribing to rejeses consult 4-week training plan.",
+      training_option: `You are subscribing to rejeses consult 4-week training plan. You will be charged &#x24;${individualPrice} for this.`,
       is_group: false,
     }));
   };
