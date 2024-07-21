@@ -25,15 +25,19 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   const [formattedSummary, setFormattedSummary] = useState<string>("");
   const [generalPrice, setGeneralPrice] = useState<number>(0);
 
+  const formatTrainingOption = (text: string) => {
+    return text.replace(/rejeses consult/gi, "<b><i>rejeses consult</i></b>");
+  };
+
   // Function to format the payment summary
   const formatPaymentSummary = () => {
     const { training_option } = paymentInfo;
 
     if (!training_option || training_option === "") {
-      return `You are subscribing to rejeses consult 4-week training plan. You will be charged &#x24;${pricingItem.payment.total} for this.`;
+      return `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged &#x24;${pricingItem.payment.total} for this.`;
     }
 
-    return training_option;
+    return formatTrainingOption(training_option);
   };
 
   useEffect(() => {
@@ -73,7 +77,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
               dangerouslySetInnerHTML={{
                 __html:
                   formattedSummary ||
-                  `You are subscribing to rejeses consult 4-week training plan. You will be charged &#x24;${pricingItem.payment.total} for this.`,
+                  `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged &#x24;${pricingItem.payment.total} for this.`,
               }}
             ></p>
             <div className="w-full flex flex-col gap-4">

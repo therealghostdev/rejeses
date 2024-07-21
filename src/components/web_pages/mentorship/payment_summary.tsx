@@ -7,6 +7,14 @@ import Button from "@/components/reusables/button";
 export default function MentorshipPaymentSummary() {
   const { paymentInfo } = usePayment();
 
+  const formatTrainingOption = (text: string) => {
+    return text.replace(/rejeses consult/gi, "<b><i>rejeses consult</i></b>");
+  };
+
+  const trainingOption = paymentInfo.training_option
+    ? formatTrainingOption(paymentInfo.training_option)
+    : `You are subscribing to <b><i>rejeses consult</i></b> 6-month mentoring plan. You will be charged &#x24;300 for this.`;
+
   const pay = () => {
     // console.log(paymentInfo);
   };
@@ -27,11 +35,7 @@ export default function MentorshipPaymentSummary() {
             </h1>
             <p
               className="text-wrap lg:max-w-[80%]"
-              dangerouslySetInnerHTML={{
-                __html:
-                  paymentInfo.training_option ||
-                  `You are subscribing to rejeses consult 6-month mentoring plan. You will be charged &#x24;300 for this.`,
-              }}
+              dangerouslySetInnerHTML={{ __html: trainingOption }}
             />
 
             <div className="flex justify-between w-full font-bricolage_grotesque">
