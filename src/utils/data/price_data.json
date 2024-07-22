@@ -46,7 +46,7 @@
       "group": [
         {
           "training_only": {
-            "name": "Mentorship only",
+            "name": "Mentoring only",
             "price": 280,
             "amount_saved": 20,
             "payment_type": "Single Payment",
@@ -70,7 +70,7 @@
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained and mentored",
-            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-month mentorship plan.",
+            "payment_summary": "You are subscribing to rejeses consult 4-week training plus 6-month mentorship plan.",
             "extra_details": [
               "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
@@ -114,7 +114,7 @@
             "price": 400,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained and mentored",
-            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-month mentorship plan.",
+            "payment_summary": "You are subscribing to rejeses consult 4-week training plus 6-month mentorship plan.",
             "extra_details": [
               "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
@@ -155,7 +155,7 @@
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained and mentored",
-            "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-month mentorship plan.",
+            "payment_summary": "You are subscribing to rejeses consult 4-week training plus 6-month mentorship plan.",
             "extra_details": [
               "Full CAPM/PMP/PMI-ACP training",
               "Exam practice questions",
