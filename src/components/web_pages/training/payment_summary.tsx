@@ -81,7 +81,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
               }}
             ></p>
             <div className="w-full flex flex-col gap-4">
-              <p className="text-[#89C13E]">Includes</p>
+              <p className="text-[#89C13E]">Includes:</p>
               <p className="flex gap-x-3 items-center">
                 <span>
                   <Image
