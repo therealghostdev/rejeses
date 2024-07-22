@@ -44,7 +44,7 @@ export default function Why_us(props: UniqueComponentsProps) {
       decodedPathname.startsWith("/training/") ||
       decodedPathname === "/training"
     ) {
-      return "Why you should join this training?";
+      return "Why you should join this training";
     } else if (
       decodedPathname.startsWith("/mentorship/") ||
       decodedPathname === "/mentorship"
