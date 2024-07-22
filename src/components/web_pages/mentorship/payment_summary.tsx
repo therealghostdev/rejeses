@@ -25,7 +25,7 @@ export default function MentorshipPaymentSummary() {
         <Dynamic_nav
           link1={`/mentorship/pricing`}
           link2="/mentorship"
-          link_text1="Personalised Mentoring"
+          link_text1="Personalized Mentoring"
           link_text2="One-on-One Mentoring"
         />
         <section className="w-full border-2 border-[#DBE1E7] gap-4 lg:px-12 py-8 px-6 rounded-lg flex flex-col m-auto">
