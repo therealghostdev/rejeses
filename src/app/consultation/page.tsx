@@ -34,9 +34,7 @@ export default function Page() {
             Consulting
           </h1>
           <p className="lg:max-w-[80%] lg:text-[24px] text-wrap text-[16px]">
-            Our top-notch consultancy services are thoughtfully designed to
-            propel growth, address challenges, and achieve goals for companies
-            of any size or industry.
+            Our top-notch consultancy services appeal to organizations of all sizes and across various sectors that seek to improve project outcomes, enhance efficiency, mitigate risks, and achieve strategic objectives through effective project management.
           </p>
         </div>
 
