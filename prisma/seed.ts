@@ -6,6 +6,7 @@ async function main() {
   const upsertOrder = await prisma.order.upsert({
     where: {
       email: "test@mail.io",
+      id: 1,
     },
     update: {},
     create: {
@@ -46,6 +47,7 @@ async function main() {
   const updatedOrder = await prisma.order.update({
     where: {
       email: "test@mail.io",
+      id: 1,
     },
     data: {
       transaction: { connect: { id: upsertTransaction.id } },

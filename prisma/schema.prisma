@@ -14,7 +14,7 @@ model Order {
   lastName String
   courseType String
   startDate String
-  email String @unique
+  email String
   amount Int
   status String
   transaction Transaction? @relation("transaction")
