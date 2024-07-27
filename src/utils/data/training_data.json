@@ -27,7 +27,7 @@
       "curriculum": [
         {
           "week": "Week 1",
-          "topic": "Introduction To Project Management & The Predictive Approach (Project Management Plan)",
+          "topic": "Introduction to Project Management & The Predictive Approach (Project Management Plan)",
           "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 - 19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         },
         {
@@ -42,7 +42,7 @@
         },
         {
           "week": "Week 4",
-          "topic": "The Agile Approach (Project Execution, Product Release To Operations) & Next Steps",
+          "topic": "The Agile Approach (Project Execution, Product Release to Operations) & Next Steps",
           "duration": "MON - FRI (17:00 - 19:00 UTC) & SAT (14:00 - 19:00 UTC) & SUN (14:00 - 18:00 UTC)"
         }
       ]
