@@ -181,9 +181,9 @@ export interface OrderType {
 }
 
 export enum StatusType {
-  Pending = "Pending",
-  Completed = "Completed",
-  Failed = "Failed",
+  pending = "pending",
+  completed = "completed",
+  failed = "failed",
 }
 
 // !-----------------------------------------End of DB & Server Types -------------------------------------------------!

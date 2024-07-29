@@ -37,7 +37,7 @@ model Transaction {
 }
 
 enum OrderStatus {
-  Pending
-  Completed
-  Failed
+  pending
+  completed
+  failed
 }
