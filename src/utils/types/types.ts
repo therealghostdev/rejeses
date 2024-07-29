@@ -168,3 +168,22 @@ export interface PaymentInfo {
   name: string;
   training_id: number | string | null;
 }
+
+// !--------------------------------------------DB & Server Types -----------------------------------------------------!
+export interface OrderType {
+  firstName: string;
+  lastName: string;
+  courseType: string;
+  startDate: string;
+  email: string;
+  amount: number;
+  status: "pending" | "completed" | "failed";
+}
+
+export enum StatusType {
+  Pending = "Pending",
+  Completed = "Completed",
+  Failed = "Failed",
+}
+
+// !-----------------------------------------End of DB & Server Types -------------------------------------------------!
