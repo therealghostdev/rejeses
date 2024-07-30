@@ -5,7 +5,7 @@ import {
   getOrderByStatus,
   createOrder,
 } from "../../services/repository/order/order";
-import { StatusType } from "@/utils/types/types";
+import { StatusType, OrderType } from "@/utils/types/types";
 
 export async function GET(req: Request) {
   try {
@@ -65,6 +65,16 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   try {
+    let requestBody;
+    try {
+      requestBody = await req.json();
+    } catch (error) {
+      return Response.json(
+        { message: "Invalid JSON in request body" },
+        { status: 400 }
+      );
+    }
+
     const {
       firstName,
       lastName,
@@ -73,7 +83,7 @@ export async function POST(req: Request) {
       email,
       amount,
       status,
-    } = await req.json();
+    } = requestBody;
 
     const requiredFields = {
       firstName,
@@ -115,5 +125,78 @@ export async function POST(req: Request) {
   } catch (err) {
     console.log(err);
     return Response.json({ message: "Error creating order" }, { status: 500 });
+  }
+}
+
+export async function PUT(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+
+    const id = searchParams.get("id");
+
+    if (!id)
+      return Response.json(
+        { message: "Order id is required!" },
+        { status: 400 }
+      );
+
+    let requestBody;
+    try {
+      requestBody = await req.json();
+    } catch (error) {
+      return Response.json(
+        { message: "Invalid JSON in request body" },
+        { status: 400 }
+      );
+    }
+
+    const {
+      firstName,
+      lastName,
+      courseType,
+      startDate,
+      email,
+      amount,
+      status,
+    } = requestBody;
+
+    const validFields: Partial<OrderType> = {};
+    const refinedStatus = status?.toLowerCase() as StatusType;
+
+    if (firstName !== undefined) validFields.firstName = firstName;
+    if (lastName !== undefined) validFields.lastName = lastName;
+    if (courseType !== undefined) validFields.courseType = courseType;
+    if (startDate !== undefined) validFields.startDate = startDate;
+    if (email !== undefined) validFields.email = email;
+    if (amount !== undefined) validFields.amount = amount;
+    if (status !== undefined) validFields.status = refinedStatus;
+
+    const containsEmptyString = Object.values(validFields).some(
+      (item) => item === ""
+    );
+
+    if (Object.keys(validFields).length === 0)
+      return Response.json(
+        { message: "No valid fields were provided" },
+        { status: 400 }
+      );
+
+    if (containsEmptyString)
+      return Response.json({ message: "invalid field value" }, { status: 400 });
+
+    if (status && !Object.values(StatusType).includes(status as StatusType))
+      return Response.json(
+        { message: "Invalid status value" },
+        { status: 400 }
+      );
+
+    await updateOrder(Number(id), validFields);
+    return Response.json({
+      message: "Order update successful",
+      status: 200,
+    });
+  } catch (err) {
+    console.log(err);
+    return Response.json({ message: "Error updating order" }, { status: 500 });
   }
 }
