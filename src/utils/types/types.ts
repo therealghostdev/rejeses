@@ -186,4 +186,15 @@ export enum StatusType {
   failed = "failed",
 }
 
+export interface TransactionType {
+  txid: string;
+  orderRef?: number;
+  pid: string;
+  reference: string;
+  status: StatusType;
+  accessCode: string;
+  currency: string;
+  fee: number;
+}
+
 // !-----------------------------------------End of DB & Server Types -------------------------------------------------!
