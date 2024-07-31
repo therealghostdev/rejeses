@@ -17,7 +17,8 @@
     ],
     "requirements": {
       "software": "Training Medium:",
-      "how": "This course will be delivered as a virtual training program."
+      "how": "This course will be delivered as a virtual training program.",
+      "tool": "Zoom"
     },
     "payment": {
       "order_summary": "You are subscribing to rejeses consult 4-week training plan.",
