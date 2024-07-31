@@ -161,7 +161,7 @@ export default function Training_page() {
                 {trainingItem.requirements.software}
               </h1>
               <p>{trainingItem.requirements.how}</p>
-              <li>{trainingItem.requirements.tool}</li>
+              {/* <li>{trainingItem.requirements.tool}</li> */}
             </div>
           </div>
         ))}
