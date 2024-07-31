@@ -5,7 +5,11 @@ import {
   updateTransaction,
 } from "@/app/services/repository/transactions/transactions";
 import { StatusType, TransactionType } from "@/utils/types/types";
-import { getOrdeById } from "@/app/services/repository/order/order";
+import {
+  getOrderById,
+  getOrderTransactions,
+  updateOrder,
+} from "@/app/services/repository/order/order";
 import { Transaction } from "@prisma/client";
 
 export async function GET(req: Request) {
@@ -128,7 +132,17 @@ export async function POST(req: Request) {
         { status: 400 }
       );
 
-    const order = await getOrdeById(orderRef);
+    const order = await getOrderById(orderRef);
+
+    const transaction = await getOrderTransactions(orderRef);
+
+    if (transaction.length > 0)
+      return Response.json(
+        {
+          message: "Transaction for this order already exists",
+        },
+        { status: 409 }
+      );
 
     if (!order)
       return Response.json(
@@ -149,7 +163,11 @@ export async function PUT(req: Request) {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
 
-    if (!id) return Response.json({ message: "Transaction id is required" });
+    if (!id)
+      return Response.json(
+        { message: "Transaction id is required" },
+        { status: 400 }
+      );
 
     let body;
     try {
@@ -212,6 +230,8 @@ export async function PUT(req: Request) {
       );
 
     await updateTransaction(Number(id), validFields);
+
+    status && (await updateOrder(Number(transaction.orderRef), { status }));
     return Response.json({ message: "Successful" }, { status: 200 });
   } catch (err) {
     console.log(err);

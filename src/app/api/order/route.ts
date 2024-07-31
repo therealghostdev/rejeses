@@ -1,5 +1,5 @@
 import {
-  getOrdeById,
+  getOrderById,
   updateOrder,
   getOrderByStatus,
   createOrder,
@@ -25,7 +25,7 @@ export async function GET(req: Request) {
       );
 
     if (id) {
-      const order = await getOrdeById(Number(id));
+      const order = await getOrderById(Number(id));
 
       if (!order)
         return Response.json({ message: "Order not found" }, { status: 404 });

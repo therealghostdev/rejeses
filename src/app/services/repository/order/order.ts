@@ -2,7 +2,7 @@ import { prisma } from "../../../lib/prisma";
 import { StatusType, OrderType } from "@/utils/types/types";
 import { Order } from "@prisma/client";
 
-const getOrdeById = async (query: number) => {
+const getOrderById = async (query: number) => {
   try {
     return await prisma.order.findFirst({ where: { id: query } });
   } catch (err) {
@@ -36,7 +36,7 @@ const updateOrder = async (
   data: Partial<Omit<Order, "id" | "createdAt" | "updatedAt">>
 ): Promise<Order> => {
   try {
-    const found = await getOrdeById(query);
+    const found = await getOrderById(query);
     if (!found) {
       throw new Error("Order not found");
     }
@@ -50,4 +50,24 @@ const updateOrder = async (
   }
 };
 
-export { getOrdeById, getOrderByStatus, createOrder, updateOrder };
+const getOrderTransactions = async (query: number) => {
+  try {
+    const transactions = await prisma.transaction.findMany({
+      where: {
+        orderRef: query,
+      },
+    });
+    return transactions;
+  } catch (err) {
+    console.log("Error getting transactions");
+    throw err;
+  }
+};
+
+export {
+  getOrderById,
+  getOrderByStatus,
+  createOrder,
+  updateOrder,
+  getOrderTransactions,
+};
