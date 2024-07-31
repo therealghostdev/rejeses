@@ -10,6 +10,3 @@ services:
       POSTGRES_DB: rejeses
     ports:
       - "15432:5432"
-
-volumes:
-  pgdata:
