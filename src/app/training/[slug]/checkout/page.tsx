@@ -1,5 +1,14 @@
-import Checkout from "@/components/reusables/checkout";
+// import Checkout from "@/components/reusables/checkout";
 import data from "@/utils/data/training_data.json";
+import dynamic from "next/dynamic";
+
+const DynamicCheckout = dynamic(
+  () => import("@/components/reusables/checkout"),
+  {
+    ssr: false,
+    loading: () => <p>Loading...</p>,
+  }
+);
 
 export async function generateStaticParams() {
   return data.map((item) => ({
@@ -22,5 +31,5 @@ export default function Page({ params }: { params: { slug: string } }) {
     );
   }
 
-  return <Checkout pricingItem={pricingItem} />;
+  return <DynamicCheckout pricingItem={pricingItem} />;
 }
