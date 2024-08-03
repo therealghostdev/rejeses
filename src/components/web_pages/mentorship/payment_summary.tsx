@@ -3,9 +3,10 @@ import React from "react";
 import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
 import { usePayment } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
+import { useRouter } from "next/navigation";
 
 export default function MentorshipPaymentSummary() {
-  const { paymentInfo } = usePayment();
+  const { paymentInfo, setPaymentInfo } = usePayment();
 
   const formatTrainingOption = (text: string) => {
     return text.replace(/rejeses consult/gi, "<b><i>rejeses consult</i></b>");
@@ -15,8 +16,36 @@ export default function MentorshipPaymentSummary() {
     ? formatTrainingOption(paymentInfo.training_option)
     : `You are subscribing to <b><i>rejeses consult</i></b> 6-month mentoring plan. You will be charged &#x24;300 for this.`;
 
+  const router = useRouter();
+
   const pay = () => {
-    // console.log(paymentInfo);
+    const date = new Date();
+    date.setDate(date.getDate() + 7); // in a week
+    const day = date.getDate();
+    const month = date.toLocaleString("default", { month: "long" });
+    const year = date.getFullYear();
+
+    // Get the appropriate ordinal suffix for the day
+    let ordinalSuffix;
+    if (day > 3 && day < 21) {
+      ordinalSuffix = "th";
+    } else {
+      const lastDigit = day % 10;
+      if (lastDigit === 1) {
+        ordinalSuffix = "st";
+      } else if (lastDigit === 2) {
+        ordinalSuffix = "nd";
+      } else if (lastDigit === 3) {
+        ordinalSuffix = "rd";
+      } else {
+        ordinalSuffix = "th";
+      }
+    }
+
+    const formattedDate = `${day}${ordinalSuffix} ${month}, ${year}`;
+    console.log(paymentInfo);
+    setPaymentInfo((prev) => ({ ...prev, start_date: formattedDate }));
+    router.push("pricing/checkout");
   };
 
   return (

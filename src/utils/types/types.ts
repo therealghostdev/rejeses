@@ -162,7 +162,7 @@ export interface TrainingOption1 {
 }
 
 export interface ClientPageProps {
-  pricingItem: {
+  pricingItem?: {
     id: number;
     pricing: {
       group: Record<string, any>[];
@@ -190,6 +190,14 @@ export interface PaymentInfo {
   start_date: string;
   training_option?: string;
   is_group?: boolean;
+}
+
+export interface OrderResponse {
+  data: string;
+}
+
+export interface TransactionResponseType {
+  data: { authorization_url: string; access_code: string; reference: string };
 }
 
 // !--------------------------------------------DB & Server Types -----------------------------------------------------!

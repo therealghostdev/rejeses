@@ -1,19 +1,15 @@
 "use client";
 import { ClientPageProps } from "@/utils/types/types";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { FormDataTYpe } from "@/utils/types/types";
+import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from "react";
+import {
+  FormDataTYpe,
+  OrderResponse,
+  TransactionResponseType,
+} from "@/utils/types/types";
 import { usePayment } from "@/utils/context/payment";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import PaystackPop from "@paystack/inline-js";
-
-interface OrderResponse {
-  data: string;
-}
-
-interface TransactionResponseType {
-  data: { authorization_url: string; access_code: string; reference: string };
-}
 
 export default function Checkout({ pricingItem }: ClientPageProps) {
   const [generapPrice, setGeneralPrice] = useState<number>(0);
@@ -22,6 +18,12 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     useState<TransactionResponseType>({
       data: { authorization_url: "", access_code: "", reference: "" },
     });
+
+  const pathname = usePathname();
+  const decodedPathname = useMemo(
+    () => decodeURIComponent(pathname),
+    [pathname]
+  );
 
   const [formData, setFormData] = useState<FormDataTYpe>({
     firstName: "",
@@ -149,18 +151,26 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   }, [transactionResponse]);
 
   useEffect(() => {
-    if (paymentInfo.start_date === "" || paymentInfo.training_type === "") {
-      router.push("/training");
+    if (decodedPathname.split("/")[1] === "training") {
+      if (paymentInfo.start_date === "" || paymentInfo.training_type === "") {
+        router.push("/training");
+      }
+    } else {
+      if (paymentInfo.start_date === "" || paymentInfo.training_type === "") {
+        router.push("/mentorship");
+      }
     }
   }, [paymentInfo]);
 
   useEffect(() => {
-    const priceArray = pricingItem.pricing.individuals.map(
-      (item) => item.price
-    );
-    const price = priceArray.length > 0 ? priceArray[0] : 0;
+    if (pricingItem) {
+      const priceArray = pricingItem.pricing.individuals.map(
+        (item) => item.price
+      );
+      const price = priceArray.length > 0 ? priceArray[0] : 0;
 
-    setGeneralPrice(price);
+      setGeneralPrice(price);
+    }
   }, []);
 
   return (

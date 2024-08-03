@@ -1,4 +1,4 @@
-import Checkout from "@/components/web_pages/training/checkout";
+import Checkout from "@/components/reusables/checkout";
 import data from "@/utils/data/training_data.json";
 
 export async function generateStaticParams() {
