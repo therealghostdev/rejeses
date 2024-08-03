@@ -30,13 +30,27 @@ const createTransaction = async (data: TransactionType) => {
 };
 
 const updateTransaction = async (
-  query: number,
+  query: number | string,
   data: Partial<Omit<Transaction, "id" | "createdAt" | "updatedAt">>
 ): Promise<Transaction> => {
   try {
-    const found = await prisma.transaction.findFirst({ where: { id: query } });
-    if (!found) throw new Error("Transaction not found");
-    return await prisma.transaction.update({ where: { id: query }, data });
+    if (typeof query === "number") {
+      const found = await prisma.transaction.findFirst({
+        where: { id: query },
+      });
+      if (!found) throw new Error("Transaction not found");
+      return await prisma.transaction.update({ where: { id: query }, data });
+    } else {
+      const found = await prisma.transaction.findFirst({
+        where: { reference: query },
+      });
+
+      if (!found) throw new Error("Transaction was not found");
+      return await prisma.transaction.update({
+        where: { id: found.id },
+        data,
+      });
+    }
   } catch (err) {
     console.log(err);
     throw err;

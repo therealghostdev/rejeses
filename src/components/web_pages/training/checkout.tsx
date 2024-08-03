@@ -53,7 +53,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       };
 
       const response = await axios.post<OrderResponse>(
-        "http://localhost:3000/api/order",
+        "/api/order",
         JSON.stringify(orderBodyParam)
       );
 
@@ -80,7 +80,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       };
 
       const transactionResponse = await axios.post(
-        "http://localhost:3000/api/transaction",
+        "/api/transaction",
         JSON.stringify(transactionBodyParam)
       );
 

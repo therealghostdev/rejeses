@@ -27,7 +27,7 @@ model Transaction {
   orderRef   Int?        @unique
   orderID    Order?      @relation(fields: [orderRef], references: [id], name: "transaction")
   pid        String
-  reference  String
+  reference  String      @unique
   status     OrderStatus
   accessCode String
   currency   String

@@ -163,7 +163,6 @@ export async function POST(req: Request) {
       email: order.email,
       amount: order.amount * 100,
       currency,
-      // callback_url: "http://localhost:3000/",
     };
 
     const response = await axios.post(
