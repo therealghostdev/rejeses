@@ -116,10 +116,32 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
   const continueTransaction = async () => {
     try {
-      popup.resumeTransaction(transactionResponse.data.access_code);
+      if (
+        transactionResponse.data.access_code !== "" &&
+        transactionResponse.data.authorization_url !== "" &&
+        transactionResponse.data.reference !== ""
+      ) {
+        popup.resumeTransaction(transactionResponse.data.access_code);
+
+        clearValues();
+      }
     } catch (err) {
       console.error("Something went wrong", err);
     }
+  };
+
+  const clearValues = () => {
+    setFormData((prev) => ({
+      ...prev,
+      firstName: "",
+      lastName: "",
+      email: "",
+    }));
+
+    setTransactionResponse((prev) => ({
+      ...prev,
+      data: { access_code: "", authorization_url: "", reference: "" },
+    }));
   };
 
   useEffect(() => {
