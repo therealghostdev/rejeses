@@ -24,6 +24,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
         price: item,
         training_id: Number(id),
         training_option: option,
+        training_type: "Project Management Training",
       }));
       const goTo = `/training/${id}`;
       directTo.push(goTo);
@@ -32,6 +33,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
         ...prev,
         price: item,
         training_option: option,
+        training_type: "Project Management Mentoring",
       }));
       const goTo = `/${currentPath}/pricing`;
       directTo.push(goTo);

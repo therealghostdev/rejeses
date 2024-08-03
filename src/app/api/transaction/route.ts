@@ -10,7 +10,8 @@ import {
   getOrderTransactions,
   updateOrder,
 } from "@/app/services/repository/order/order";
-import { Transaction } from "@prisma/client";
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 export async function GET(req: Request) {
   try {
@@ -92,18 +93,17 @@ export async function POST(req: Request) {
       );
     }
 
-    const { txid, ref, pid, reference, status, accessCode, currency, _fee } =
-      body;
+    const { ref, pid, currency, _fee } = body;
 
     const orderRef = Number(ref);
     const fee = Number(_fee);
     const requiredFields = {
-      txid,
+      txid: `TXID--${uuidv4()}`,
       orderRef,
       pid,
-      reference,
-      status,
-      accessCode,
+      reference: "incoming",
+      status: "pending" as StatusType,
+      accessCode: "incoming",
       currency,
       fee,
     };
@@ -126,13 +126,21 @@ export async function POST(req: Request) {
         { status: 400 }
       );
 
-    if (!Object.values(StatusType).includes(status as StatusType))
+    if (
+      !Object.values(StatusType).includes(requiredFields.status as StatusType)
+    )
       return Response.json(
         { message: "Invalid status value" },
         { status: 400 }
       );
 
     const order = await getOrderById(orderRef);
+
+    if (!order)
+      return Response.json(
+        { message: "Order for this transaction not found" },
+        { status: 404 }
+      );
 
     const transaction = await getOrderTransactions(orderRef);
 
@@ -144,14 +152,40 @@ export async function POST(req: Request) {
         { status: 409 }
       );
 
-    if (!order)
-      return Response.json(
-        { message: "Order for this transaction not found" },
-        { status: 404 }
-      );
+    const paystack_req_config = {
+      headers: {
+        Authorization: `Bearer ${process.env.PAYSTACK_SECRET}`,
+        "Content-Type": "application/json",
+      },
+    };
 
-    await createTransaction(requiredFields);
-    return Response.json({ message: "Success" }, { status: 200 });
+    const paystack_trans_data = {
+      email: order.email,
+      amount: order.amount * 100,
+      currency,
+    };
+
+    const response = await axios.post(
+      "https://api.paystack.co/transaction/initialize",
+      paystack_trans_data,
+      paystack_req_config
+    );
+
+    if (response.status) {
+      requiredFields.reference = response.data?.data?.reference;
+      requiredFields.accessCode = response.data?.data?.access_code;
+      await createTransaction(requiredFields);
+      return Response.json({
+        data: response.data,
+        message: "Success",
+        status: 200,
+      });
+    } else {
+      return Response.json(
+        { message: "Failed to obtain reference from Paystack" },
+        { status: 500 }
+      );
+    }
   } catch (err) {
     console.log(err);
     Response.json({ message: "Error creating transaction" }, { status: 500 });

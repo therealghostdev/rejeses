@@ -8,6 +8,7 @@ import Link from "next/link";
 import { DownloadIcon } from "@radix-ui/react-icons";
 import { Class, ScheduleData, TrainingOption1 } from "@/utils/types/types";
 import { usePayment } from "@/utils/context/payment";
+import { Item } from "@radix-ui/react-accordion";
 
 const { days, times } = data as ScheduleData;
 
@@ -25,11 +26,11 @@ export default function ClassSchedule(props: SchedulePropsData) {
       // Store the original overflow style
       const originalOverflow = scheduleRef.current.style.overflow;
       const originalWidth = scheduleRef.current.style.width;
-  
+
       // Set overflow to visible to capture the entire content
-      scheduleRef.current.style.overflow = 'visible';
-      scheduleRef.current.style.width = 'fit-content';
-  
+      scheduleRef.current.style.overflow = "visible";
+      scheduleRef.current.style.width = "fit-content";
+
       const canvas = await html2canvas(scheduleRef.current, {
         scale: window.devicePixelRatio || 1,
         useCORS: true,
@@ -37,25 +38,25 @@ export default function ClassSchedule(props: SchedulePropsData) {
         scrollX: -window.scrollX,
         scrollY: -window.scrollY,
         windowWidth: document.documentElement.scrollWidth, // Set to full content width
-        windowHeight: document.documentElement.scrollHeight // Set to full content height
+        windowHeight: document.documentElement.scrollHeight, // Set to full content height
       });
-  
+
       // Restore the original overflow style
       scheduleRef.current.style.overflow = originalOverflow;
       scheduleRef.current.style.width = originalWidth;
-  
+
       const imgData = canvas.toDataURL("image/png");
-  
+
       const pdf = new jsPDF("landscape", "pt", "a4");
       const imgProps = pdf.getImageProperties(imgData);
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-  
+
       pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
       pdf.save(`Rejeses (${props.all.title}) training schedule`);
     }
   };
-  
+
   const isClassScheduled = (day: string, time: string): boolean => {
     return props.data.some((s) => s.day === day && s.time === time);
   };
@@ -68,7 +69,12 @@ export default function ClassSchedule(props: SchedulePropsData) {
   };
 
   const BacktoSummary = () => {
-    setPaymentInfo((prev) => ({ ...prev, training_id: props.all.id }));
+    setPaymentInfo((prev) => ({
+      ...prev,
+      training_id: props.all.id,
+      training_type: "Project Management Training",
+      start_date: props.all.start_date,
+    }));
   };
 
   useEffect(() => {

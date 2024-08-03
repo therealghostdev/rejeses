@@ -160,13 +160,36 @@ export interface TrainingOption1 {
   pricing: PricingData;
   class_schedule: ClassSchedule[];
 }
+
+export interface ClientPageProps {
+  pricingItem: {
+    id: number;
+    pricing: {
+      group: Record<string, any>[];
+      individuals: Record<string, any>[];
+    };
+    payment: {
+      order_summary: string;
+      total: number;
+      includes: string[];
+    };
+  };
+}
+
+export interface FormDataTYpe {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
 // !-------------------------------------------- end for class schedule --------------------------------------!
 export interface PaymentInfo {
-  training_name: string;
   price: number;
-  duration: string;
-  name: string;
-  training_id: number | string | null;
+  training_id: number | null;
+  training_type: string;
+  start_date: string;
+  training_option?: string;
+  is_group?: boolean;
 }
 
 // !--------------------------------------------DB & Server Types -----------------------------------------------------!
@@ -177,7 +200,7 @@ export interface OrderType {
   startDate: string;
   email: string;
   amount: number;
-  status: "pending" | "completed" | "failed";
+  status: StatusType;
 }
 
 export enum StatusType {

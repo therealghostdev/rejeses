@@ -4,21 +4,7 @@ import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
 import { usePayment } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
 import { useEffect, useState } from "react";
-
-interface ClientPageProps {
-  pricingItem: {
-    id: number;
-    pricing: {
-      group: Record<string, any>[];
-      individuals: Record<string, any>[];
-    };
-    payment: {
-      order_summary: string;
-      total: number;
-      includes: string[];
-    };
-  };
-}
+import { ClientPageProps } from "@/utils/types/types";
 
 export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   const { paymentInfo, setPaymentInfo } = usePayment();
@@ -103,6 +89,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
           </div>
           <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center items-center py-4 w-full sm_btn-container flex-wrap">
             <Button
+              url={`${paymentInfo.training_id}/checkout`}
               click={enrollBtnClick}
               text="Continue"
               bg="#89C13E"

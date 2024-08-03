@@ -91,7 +91,7 @@ export async function POST(req: Request) {
       startDate,
       email,
       amount,
-      status,
+      status: "pending" as StatusType,
     };
 
     if (
@@ -105,22 +105,15 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!Object.values(StatusType).includes(status as StatusType))
+    if (!Object.values(StatusType).includes(requiredFields.status as StatusType))
+      
       return Response.json(
         { message: "Invalid status value" },
         { status: 400 }
       );
 
-    await createOrder({
-      firstName,
-      lastName,
-      courseType,
-      startDate,
-      email,
-      amount,
-      status: status as StatusType,
-    });
-    return Response.json({ message: "Success", status: 200 });
+    const order = await createOrder(requiredFields);
+    return Response.json({ data: order.id, message: "Success", status: 200 });
   } catch (err) {
     console.log(err);
     return Response.json({ message: "Error creating order" }, { status: 500 });

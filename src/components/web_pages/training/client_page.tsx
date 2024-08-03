@@ -35,6 +35,12 @@ export default function Training_page() {
   };
 
   useEffect(() => {
+    setPaymentInfo((prev) => ({
+      ...prev,
+      start_date: trainingItem.start_date,
+      training_type: "Project Management Training",
+    }));
+
     if (window.location.hash === "#pricing" && pricingRef.current) {
       pricingRef.current.scrollIntoView({ behavior: "smooth" });
     }
