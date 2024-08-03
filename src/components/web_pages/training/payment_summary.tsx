@@ -20,7 +20,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
     const { training_option } = paymentInfo;
 
     if (!training_option || training_option === "") {
-      return `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged &#x24;${pricingItem.payment.total} for this.`;
+      return `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged &#x24;${pricingItem?.payment.total} for this.`;
     }
 
     return formatTrainingOption(training_option);
@@ -31,17 +31,24 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   }, [paymentInfo, pricingItem]);
 
   useEffect(() => {
-    const priceArray = pricingItem.pricing.individuals.map(
-      (item) => item.price
-    );
-    const price = priceArray.length > 0 ? priceArray[0] : 0;
+    if (pricingItem) {
+      const priceArray = pricingItem.pricing.individuals.map(
+        (item) => item.price
+      );
+      const price = priceArray.length > 0 ? priceArray[0] : 0;
 
-    setGeneralPrice(price);
+      setGeneralPrice(price);
+    }
   }, []);
 
   const enrollBtnClick = () => {
-    if (paymentInfo.price && paymentInfo.price === 0) {
-      setPaymentInfo((prev) => ({ ...prev, price: pricingItem.payment.total }));
+    if (pricingItem) {
+      if (paymentInfo.price && paymentInfo.price === 0) {
+        setPaymentInfo((prev) => ({
+          ...prev,
+          price: pricingItem.payment.total,
+        }));
+      }
     }
   };
 
@@ -49,7 +56,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
     <section className="w-full px-8 flex flex-col gap-12 py-12 justify-center items-center">
       <div className="md:max-w-[98%] w-full py-12 gap-6 md:px-8 flex flex-col gap-y-6 justify-center">
         <Dynamic_nav
-          link1={`/training/${pricingItem.id}`}
+          link1={`/training/${pricingItem?.id}`}
           link2="/training"
           link_text1="Upcoming Cohorts"
           link_text2="Project Management Training"
@@ -63,7 +70,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
               dangerouslySetInnerHTML={{
                 __html:
                   formattedSummary ||
-                  `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged &#x24;${pricingItem.payment.total} for this.`,
+                  `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged &#x24;${pricingItem?.payment.total} for this.`,
               }}
             ></p>
             <div className="w-full flex flex-col gap-4">
@@ -71,19 +78,19 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
               <p className="flex gap-x-3 items-center">
                 <span>
                   <Image
-                    src={pricingItem.payment.includes[0]}
+                    src={pricingItem?.payment.includes[0] || ""}
                     alt="image"
                     width={20}
                     height={100}
                   />
                 </span>
-                {pricingItem.payment.includes[1]}
+                {pricingItem?.payment.includes[1]}
               </p>
             </div>
             <div className="flex justify-between w-full font-bricolage_grotesque">
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
-                &#x24;{paymentInfo.price || pricingItem.payment.total}
+                &#x24;{paymentInfo.price || pricingItem?.payment.total}
               </span>
             </div>
           </div>
