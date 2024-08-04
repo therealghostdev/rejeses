@@ -215,6 +215,7 @@ export enum StatusType {
   pending = "pending",
   completed = "completed",
   failed = "failed",
+  canceled = "canceled",
 }
 
 export interface TransactionType {

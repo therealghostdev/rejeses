@@ -40,7 +40,7 @@ export async function POST(req: Request) {
 
     const payment_id = id.toString();
 
-    if (eventType === "charge.success") {
+    if (eventType === "charge.success" || eventType === "transfer.success") {
       const transaction = await updateTransaction(reference, {
         status: StatusType.completed,
         pid: payment_id,
@@ -54,7 +54,11 @@ export async function POST(req: Request) {
         { message: "Transaction completed" },
         { status: 200 }
       );
-    } else if (eventType === "charge.failed") {
+    } else if (
+      eventType === "charge.failed" ||
+      eventType === "transfer.failed" ||
+      eventType === "transfer.reversed"
+    ) {
       const transaction = await updateTransaction(reference, {
         status: StatusType.failed,
         pid: payment_id,
