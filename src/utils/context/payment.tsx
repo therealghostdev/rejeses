@@ -1,8 +1,7 @@
 "use client";
 import React, { createContext, useState, useContext } from "react";
 import { PaymentInfo } from "../types/types";
-
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const PaymentContext = createContext<{
   paymentInfo: PaymentInfo;
@@ -19,6 +18,8 @@ const PaymentContext = createContext<{
 
 export const usePayment = () => useContext(PaymentContext);
 
+const queryClient = new QueryClient();
+
 export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -30,8 +31,10 @@ export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({
   });
 
   return (
-    <PaymentContext.Provider value={{ paymentInfo, setPaymentInfo }}>
-      {children}
-    </PaymentContext.Provider>
+    <QueryClientProvider client={queryClient}>
+      <PaymentContext.Provider value={{ paymentInfo, setPaymentInfo }}>
+        {children}
+      </PaymentContext.Provider>
+    </QueryClientProvider>
   );
 };

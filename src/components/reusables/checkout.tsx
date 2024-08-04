@@ -10,6 +10,8 @@ import { usePayment } from "@/utils/context/payment";
 import axios from "axios";
 import { useRouter, usePathname } from "next/navigation";
 import PaystackPop from "@paystack/inline-js";
+import { useMutation } from "@tanstack/react-query";
+import Loading from "@/app/feed/loading";
 
 export default function Checkout({ pricingItem }: ClientPageProps) {
   const [generapPrice, setGeneralPrice] = useState<number>(0);
@@ -94,6 +96,13 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     }
   };
 
+  const mutation = useMutation({
+    mutationFn: createTransaction,
+    onError: (error) => {
+      console.error("Something went wrong!", error);
+    },
+  });
+
   const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
   const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -103,13 +112,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         formData.firstName !== "" &&
         emailRegex.test(formData.email)
       ) {
-        const response = await createTransaction(formData);
-
-        if (response) {
-          return response.data;
-        } else {
-          console.log("error creating transaction");
-        }
+        mutation.mutate(formData);
       }
     } catch (err) {
       console.error("Something went wrong!", err);
@@ -214,9 +217,14 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         <div className="w-full flex justify-center items-center">
           <button
             type="submit"
-            className="bg-[#89C13E] py-3 px-4 text-white rounded-md"
+            className="bg-[#89C13E] py-3 px-4 text-white rounded-md flex justify-center items-center"
           >
             Submit
+            {mutation.isPending && (
+              <span className=" mx-2 flex justify-center items-center h-full">
+                <Loading />
+              </span>
+            )}
           </button>
         </div>
       </form>

@@ -1,12 +1,17 @@
 // import Checkout from "@/components/reusables/checkout";
 import data from "@/utils/data/training_data.json";
 import dynamic from "next/dynamic";
+import Loading from "@/app/feed/loading";
 
 const DynamicCheckout = dynamic(
   () => import("@/components/reusables/checkout"),
   {
     ssr: false,
-    loading: () => <p>Loading...</p>,
+    loading: () => (
+      <section className="flex justify-center items-center w-full h-screen">
+        <Loading />
+      </section>
+    ),
   }
 );
 
