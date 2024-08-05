@@ -314,7 +314,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       {isPolling && <Loading />}
 
       {!isPolling && transactionStatus === "completed" && (
-        <Transaction_success data={dataValue} />
+        <Transaction_success data={dataValue.data} />
       )}
 
       {!isPolling && transactionStatus === "failed" && <Transaction_failed />}
