@@ -67,6 +67,7 @@ export interface UniqueComponentsProps {
 export interface TrainingOption {
   name: string;
   price: number;
+  price2: number;
   payment_type: string;
   payment_description: string;
   extra_details: string[];
@@ -132,6 +133,7 @@ export interface Payment {
   order_summary: string;
   includes: string[];
   total: number;
+  total2: number;
   curriculum: Curriculum[];
 }
 
@@ -171,6 +173,7 @@ export interface ClientPageProps {
     payment: {
       order_summary: string;
       total: number;
+      total2?: number;
       includes: string[];
     };
   };
@@ -201,20 +204,19 @@ export interface TransactionResponseType {
 }
 
 export interface TransactionDataType {
-  data: {
-    id: number;
-    txid: string;
-    orderRef?: number;
-    pid: string;
-    reference: string;
-    status: string;
-    accessCode?: string;
-    currency: string;
-    fee?: number;
-    createdAt?: string;
-    updatedAt?: string;
-  };
+  id: number;
+  txid: string;
+  orderRef?: number;
+  pid: string;
+  reference: string;
+  status: string;
+  accessCode?: string;
+  currency: string;
+  fee?: number;
+  createdAt?: string;
+  updatedAt?: string;
 }
+
 
 // !--------------------------------------------DB & Server Types -----------------------------------------------------!
 export interface OrderType {

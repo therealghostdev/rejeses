@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
-import { usePayment } from "@/utils/context/payment";
+import { usePayment, useNavigation } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
 import { useEffect, useState } from "react";
 import { ClientPageProps } from "@/utils/types/types";
@@ -10,17 +10,32 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   const { paymentInfo, setPaymentInfo } = usePayment();
   const [formattedSummary, setFormattedSummary] = useState<string>("");
   const [generalPrice, setGeneralPrice] = useState<number>(0);
+  const { isNigeria } = useNavigation();
 
   const formatTrainingOption = (text: string) => {
     return text.replace(/rejeses consult/gi, "<b><i>rejeses consult</i></b>");
   };
+
+  function formatPrice(price: number | undefined): string | undefined {
+    if (price && price >= 1000) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else {
+      if (price) {
+        return price.toString();
+      }
+    }
+  }
 
   // Function to format the payment summary
   const formatPaymentSummary = () => {
     const { training_option } = paymentInfo;
 
     if (!training_option || training_option === "") {
-      return `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged &#x24;${pricingItem?.payment.total} for this.`;
+      return `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged ${
+        isNigeria ? "NGN" : "$"
+      } ${
+        isNigeria ? pricingItem?.payment.total2 : pricingItem?.payment.total
+      } for this.`;
     }
 
     return formatTrainingOption(training_option);
@@ -52,6 +67,9 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
     }
   };
 
+  console.log(pricingItem?.payment.total2);
+  
+
   return (
     <section className="w-full px-8 flex flex-col gap-12 py-12 justify-center items-center">
       <div className="md:max-w-[98%] w-full py-12 gap-6 md:px-8 flex flex-col gap-y-6 justify-center">
@@ -70,7 +88,13 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
               dangerouslySetInnerHTML={{
                 __html:
                   formattedSummary ||
-                  `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged &#x24;${pricingItem?.payment.total} for this.`,
+                  `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged ${
+                    isNigeria ? "NGN" : "$"
+                  } ${
+                    isNigeria
+                      ? pricingItem?.payment.total2
+                      : pricingItem?.payment.total
+                  } for this.`,
               }}
             ></p>
             <div className="w-full flex flex-col gap-4">
@@ -90,7 +114,9 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
             <div className="flex justify-between w-full font-bricolage_grotesque">
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
-                &#x24;{paymentInfo.price || pricingItem?.payment.total}
+                {isNigeria ? <span className="mr-2">NGN</span> : "$"}
+                {formatPrice(paymentInfo.price) ||
+                  formatPrice(pricingItem?.payment.total)}
               </span>
             </div>
           </div>

@@ -7,6 +7,7 @@
           "training_only": {
             "name": "Mentoring only",
             "price": 300,
+            "price2": 50000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who only wish to be mentored",
             "payment_summary": "You are subscribing to rejeses consult 6-month mentorship plan.",
@@ -25,6 +26,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentoring",
             "price": 400,
+            "price2": 60000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained and mentored",
             "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-month mentorship plan.",
@@ -48,6 +50,7 @@
           "training_only": {
             "name": "Mentorship only",
             "price": 280,
+            "price2": 45000,
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who only wish to be mentored",
@@ -67,6 +70,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentoring",
             "price": 380,
+            "price2": 48000,
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained and mentored",
@@ -96,6 +100,7 @@
           "training_only": {
             "name": "Training only",
             "price": 100,
+            "price2": 30000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who only wish to be trained",
             "payment_summary": "You are subscribing to rejeses consult 6-month mentorship plan.",
@@ -112,6 +117,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentoring",
             "price": 400,
+            "price2": 30000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained and mentored",
             "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-month mentorship plan.",
@@ -135,6 +141,7 @@
           "training_only": {
             "name": "Training only",
             "price": 100,
+            "price2": 30000,
             "amount_saved": 50,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who only wish to be trained",
@@ -152,6 +159,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentoring",
             "price": 380,
+            "price2": 48000,
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained and mentored",
@@ -181,6 +189,7 @@
           "training_only": {
             "name": "Starter",
             "price": 26,
+            "price2": 0,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be mentored alone",
             "extra_details": [
@@ -196,6 +205,7 @@
           "training_with_mentorship": {
             "name": "Pro",
             "price": 16,
+            "price2": 0,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be mentored in groups",
             "extra_details": [

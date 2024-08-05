@@ -8,7 +8,7 @@ import whyUsData from "@/utils/data/why_us_data.json";
 import ClientImage from "@/components/web_pages/training/client_image";
 import Pricing from "@/components/reusables/pricing/pricing";
 import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
-import { usePayment } from "@/utils/context/payment";
+import { usePayment, useNavigation } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
 import Certification from "@/components/reusables/certification";
 
@@ -18,9 +18,15 @@ export default function Training_page() {
   const pricingRef = useRef<HTMLDivElement | null>(null);
   const { setPaymentInfo } = usePayment();
 
+  const { isNigeria } = useNavigation();
+
   // Get the price for the individuals' training option
   const individualPrice = trainingItem.pricing.individuals
-    .map((item) => Number(item.training_only?.price))
+    .map((item) =>
+      isNigeria
+        ? Number(item.training_only?.price2)
+        : Number(item.training_only?.price)
+    )
     .filter((price) => !isNaN(price))[0];
 
   // Update payment information

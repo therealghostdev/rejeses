@@ -6,7 +6,7 @@ import {
   OrderResponse,
   TransactionResponseType,
 } from "@/utils/types/types";
-import { usePayment } from "@/utils/context/payment";
+import { usePayment, useNavigation } from "@/utils/context/payment";
 import axios from "axios";
 import { useRouter, usePathname } from "next/navigation";
 import PaystackPop from "@paystack/inline-js";
@@ -32,20 +32,20 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   const [transactionStatus, setTransactionStatus] = useState<string>("");
   const [transactionReference, setTransactionReference] = useState<string>("");
   const [dataValue, setDataValue] = useState<TransactionDataType>({
-    data: {
-      id: 0,
-      txid: "",
-      orderRef: 0,
-      pid: "",
-      reference: "",
-      status: "",
-      accessCode: "",
-      currency: "",
-      fee: 0,
-      updatedAt: "",
-      createdAt: "",
-    },
+    id: 0,
+    txid: "",
+    orderRef: 0,
+    pid: "",
+    reference: "",
+    status: "",
+    accessCode: "",
+    currency: "",
+    fee: 0,
+    updatedAt: "",
+    createdAt: "",
   });
+
+  const { isNigeria } = useNavigation();
 
   const pathname = usePathname();
   const decodedPathname = useMemo(
@@ -189,11 +189,13 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     const pollTransactionStatus = async () => {
       try {
         const response = await axios.get(
-          `/api/get_status?reference=${transactionReference}`
+          `/api/get_status?reference=${transactionResponse.data.reference}`
         );
         const { status, data } = response.data;
 
         if (status === 200 && data.status === "completed") {
+          console.log(data);
+
           setDataValue(data);
           setIsPolling(false);
           setTransactionStatus("completed");
@@ -243,8 +245,6 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       ...prev,
       data: { access_code: "", authorization_url: "", reference: "" },
     }));
-
-    console.log(transactionStatus);
 
     if (pricingItem) {
       const priceArray = pricingItem.pricing.individuals.map(
@@ -314,7 +314,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       {isPolling && <Loading />}
 
       {!isPolling && transactionStatus === "completed" && (
-        <Transaction_success data={dataValue.data} />
+        <Transaction_success data={dataValue} />
       )}
 
       {!isPolling && transactionStatus === "failed" && <Transaction_failed />}

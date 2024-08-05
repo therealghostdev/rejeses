@@ -188,7 +188,7 @@ export async function POST(req: Request) {
     }
   } catch (err) {
     console.log(err);
-    Response.json({ message: "Error creating transaction" }, { status: 500 });
+    return Response.json({ message: "Error creating transaction" }, { status: 500 });
   }
 }
 

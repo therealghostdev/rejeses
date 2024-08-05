@@ -1,22 +1,36 @@
 "use client";
 import React from "react";
 import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
-import { usePayment } from "@/utils/context/payment";
+import { usePayment, useNavigation } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
 import { useRouter } from "next/navigation";
 
 export default function MentorshipPaymentSummary() {
   const { paymentInfo, setPaymentInfo } = usePayment();
+  const { isNigeria } = useNavigation();
 
   const formatTrainingOption = (text: string) => {
     return text.replace(/rejeses consult/gi, "<b><i>rejeses consult</i></b>");
   };
 
+  function formatPrice(price: number): string {
+    if (price >= 1000) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else {
+      return price.toString();
+    }
+  }
+
   const trainingOption = paymentInfo.training_option
     ? formatTrainingOption(paymentInfo.training_option)
-    : `You are subscribing to <b><i>rejeses consult</i></b> 6-month mentoring plan. You will be charged &#x24;300 for this.`;
+    : `You are subscribing to <b><i>rejeses consult</i></b> 6-month mentoring plan. You will be charged ${
+        isNigeria ? "NGN 50,000" : "$300"
+      } for this.`;
 
   const router = useRouter();
+
+  console.log(paymentInfo.training_option);
+  
 
   const pay = () => {
     const date = new Date();
@@ -43,7 +57,6 @@ export default function MentorshipPaymentSummary() {
     }
 
     const formattedDate = `${day}${ordinalSuffix} ${month}, ${year}`;
-    console.log(paymentInfo);
     setPaymentInfo((prev) => ({ ...prev, start_date: formattedDate }));
     router.push("pricing/checkout");
   };
@@ -70,7 +83,13 @@ export default function MentorshipPaymentSummary() {
             <div className="flex justify-between w-full font-bricolage_grotesque">
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
-                &#x24;{paymentInfo.price || 300}
+                {isNigeria ? <span className="mr-2">NGN</span> : "$"}
+                {(paymentInfo.price !== 0 && formatPrice(paymentInfo.price)) ||
+                isNigeria ? (
+                  <span>{paymentInfo.price !== 0 && formatPrice(paymentInfo.price) || "50,000"}</span>
+                ) : (
+                  <span>300</span>
+                )}
               </span>
             </div>
           </div>

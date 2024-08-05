@@ -4,7 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 type TransactionSuccessProps = Partial<
-  Omit<TransactionDataType["data"], "accessCode" | "fee" | "createdAt">
+  Omit<TransactionDataType, "accessCode" | "fee" | "createdAt">
 >;
 
 export default function Transaction_success({
@@ -41,6 +41,8 @@ export default function Transaction_success({
 
     return `${day}${ordinalSuffix} ${month}, ${year}`;
   };
+
+  console.log(data);
 
   const pathname = usePathname();
   const router = useRouter();

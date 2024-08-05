@@ -1,7 +1,12 @@
 "use client";
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import { PaymentInfo } from "../types/types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+interface NavigationContextType {
+  isNigeria: boolean;
+  setIsNigeria: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 const PaymentContext = createContext<{
   paymentInfo: PaymentInfo;
@@ -15,6 +20,14 @@ const PaymentContext = createContext<{
   },
   setPaymentInfo: () => {},
 });
+
+// Create the navigation context
+const NavigationContext = createContext<NavigationContextType>({
+  isNigeria: false,
+  setIsNigeria: () => {},
+});
+
+export const useNavigation = () => useContext(NavigationContext);
 
 export const usePayment = () => useContext(PaymentContext);
 
@@ -30,11 +43,30 @@ export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({
     start_date: "",
   });
 
+  const [isNigeria, setIsNigeria] = useState(false);
+
+  useEffect(() => {
+    const checkLocation = async () => {
+      try {
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+        setIsNigeria(data.country_code === "NG");
+      } catch (error) {
+        console.error("Error checking location:", error);
+        setIsNigeria(false);
+      }
+    };
+
+    checkLocation();
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
-      <PaymentContext.Provider value={{ paymentInfo, setPaymentInfo }}>
-        {children}
-      </PaymentContext.Provider>
+      <NavigationContext.Provider value={{ isNigeria, setIsNigeria }}>
+        <PaymentContext.Provider value={{ paymentInfo, setPaymentInfo }}>
+          {children}
+        </PaymentContext.Provider>
+      </NavigationContext.Provider>
     </QueryClientProvider>
   );
 };
