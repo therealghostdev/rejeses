@@ -57,9 +57,19 @@ const updateTransaction = async (
   }
 };
 
+const getTransactionByReference = async (query: string) => {
+  try {
+    return await prisma.transaction.findFirst({ where: { reference: query } });
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
 export {
   getTransactionById,
   getTransactionByStatus,
   createTransaction,
   updateTransaction,
+  getTransactionByReference,
 };

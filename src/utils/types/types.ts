@@ -200,6 +200,22 @@ export interface TransactionResponseType {
   data: { authorization_url: string; access_code: string; reference: string };
 }
 
+export interface TransactionDataType {
+  data: {
+    id: number;
+    txid: string;
+    orderRef?: number;
+    pid: string;
+    reference: string;
+    status: string;
+    accessCode?: string;
+    currency: string;
+    fee?: number;
+    createdAt?: string;
+    updatedAt?: string;
+  };
+}
+
 // !--------------------------------------------DB & Server Types -----------------------------------------------------!
 export interface OrderType {
   firstName: string;

@@ -12,14 +12,40 @@ import { useRouter, usePathname } from "next/navigation";
 import PaystackPop from "@paystack/inline-js";
 import { useMutation } from "@tanstack/react-query";
 import Loading from "@/app/feed/loading";
+import { TransactionDataType } from "@/utils/types/types";
+import Transaction_success from "./checkout_components/transaction_success";
+import Transaction_failed from "./checkout_components/transaction_failed";
 
 export default function Checkout({ pricingItem }: ClientPageProps) {
-  const [generapPrice, setGeneralPrice] = useState<number>(0);
+  const [generalPrice, setGeneralPrice] = useState<number>(0);
   const { paymentInfo } = usePayment();
   const [transactionResponse, setTransactionResponse] =
     useState<TransactionResponseType>({
       data: { authorization_url: "", access_code: "", reference: "" },
     });
+
+  const POLLING_INTERVAL = 5000;
+  const MAX_POLLING_ATTEMPTS = 60;
+
+  const [isPolling, setIsPolling] = useState<boolean>(false);
+  const [pollingAttempts, setPollingAttempts] = useState<number>(0);
+  const [transactionStatus, setTransactionStatus] = useState<string>("");
+  const [transactionReference, setTransactionReference] = useState<string>("");
+  const [dataValue, setDataValue] = useState<TransactionDataType>({
+    data: {
+      id: 0,
+      txid: "",
+      orderRef: 0,
+      pid: "",
+      reference: "",
+      status: "",
+      accessCode: "",
+      currency: "",
+      fee: 0,
+      updatedAt: "",
+      createdAt: "",
+    },
+  });
 
   const pathname = usePathname();
   const decodedPathname = useMemo(
@@ -33,7 +59,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     email: "",
   });
 
-  const popup = new PaystackPop();
+  const popup = useMemo(() => new PaystackPop(), []);
 
   const router = useRouter();
 
@@ -101,6 +127,11 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     onError: (error) => {
       console.error("Something went wrong!", error);
     },
+
+    onSuccess: (data) => {
+      setTransactionResponse(data.data);
+      setIsPolling(true);
+    },
   });
 
   const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
@@ -142,16 +173,56 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       lastName: "",
       email: "",
     }));
-
-    setTransactionResponse((prev) => ({
-      ...prev,
-      data: { access_code: "", authorization_url: "", reference: "" },
-    }));
   };
 
   useEffect(() => {
-    continueTransaction();
+    if (transactionResponse.data.reference !== "") {
+      continueTransaction();
+    }
   }, [transactionResponse]);
+
+  useEffect(() => {
+    if (!isPolling) return;
+
+    setTransactionReference(transactionResponse.data.reference);
+
+    const pollTransactionStatus = async () => {
+      try {
+        const response = await axios.get(
+          `/api/get_status?reference=${transactionReference}`
+        );
+        const { status, data } = response.data;
+
+        if (status === 200 && data.status === "completed") {
+          setDataValue(data);
+          setIsPolling(false);
+          setTransactionStatus("completed");
+        } else if (status === 200 && data.status === "failed") {
+          setIsPolling(false);
+          setTransactionStatus("failed");
+        } else {
+          setPollingAttempts((prev) => prev + 1);
+          if (pollingAttempts >= MAX_POLLING_ATTEMPTS) {
+            setIsPolling(false);
+            alert(
+              "Transaction status check timed out. Please contact support."
+            );
+          }
+        }
+      } catch (error) {
+        console.error("Error polling transaction status", error);
+        setPollingAttempts((prev) => prev + 1);
+        if (pollingAttempts >= MAX_POLLING_ATTEMPTS) {
+          setIsPolling(false);
+          alert("Error checking transaction status. Please contact support.");
+        }
+      }
+    };
+
+    const intervalId = setInterval(pollTransactionStatus, POLLING_INTERVAL);
+
+    return () => clearInterval(intervalId);
+  }, [isPolling, transactionResponse.data.reference, pollingAttempts]);
 
   useEffect(() => {
     if (decodedPathname.split("/")[1] === "training") {
@@ -166,6 +237,15 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   }, [paymentInfo]);
 
   useEffect(() => {
+    setTransactionStatus("");
+
+    setTransactionResponse((prev) => ({
+      ...prev,
+      data: { access_code: "", authorization_url: "", reference: "" },
+    }));
+
+    console.log(transactionStatus);
+
     if (pricingItem) {
       const priceArray = pricingItem.pricing.individuals.map(
         (item) => item.price
@@ -178,56 +258,66 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
   return (
     <section className="flex justify-center items-center w-full h-screen">
-      <form
-        onSubmit={handleFormSubmit}
-        action=""
-        className="lg:w-3/4 w-full flex justify-center items-center flex-col gap-4 h-full"
-      >
-        <div>
-          <label htmlFor=""></label>
-          <input
-            type="text"
-            placeholder="firstname"
-            onChange={handleChange}
-            name="firstName"
-            value={formData.firstName}
-          />
-        </div>
-        <div>
-          <label htmlFor=""></label>
-          <input
-            type="text"
-            placeholder="lastname"
-            onChange={handleChange}
-            name="lastName"
-            value={formData.lastName}
-          />
-        </div>
-        <div>
-          <label htmlFor=""></label>
-          <input
-            type="text"
-            placeholder="email"
-            onChange={handleChange}
-            name="email"
-            value={formData.email}
-          />
-        </div>
+      {!isPolling && transactionStatus === "" && (
+        <form
+          onSubmit={handleFormSubmit}
+          action=""
+          className="lg:w-3/4 w-full flex justify-center items-center flex-col gap-4 h-full"
+        >
+          <div>
+            <label htmlFor=""></label>
+            <input
+              type="text"
+              placeholder="firstname"
+              onChange={handleChange}
+              name="firstName"
+              value={formData.firstName}
+            />
+          </div>
+          <div>
+            <label htmlFor=""></label>
+            <input
+              type="text"
+              placeholder="lastname"
+              onChange={handleChange}
+              name="lastName"
+              value={formData.lastName}
+            />
+          </div>
+          <div>
+            <label htmlFor=""></label>
+            <input
+              type="text"
+              placeholder="email"
+              onChange={handleChange}
+              name="email"
+              value={formData.email}
+            />
+          </div>
 
-        <div className="w-full flex justify-center items-center">
-          <button
-            type="submit"
-            className="bg-[#89C13E] py-3 px-4 text-white rounded-md flex justify-center items-center"
-          >
-            Submit
-            {mutation.isPending && (
-              <span className=" mx-2 flex justify-center items-center h-full">
-                <Loading />
-              </span>
-            )}
-          </button>
-        </div>
-      </form>
+          <div className="w-full flex justify-center items-center">
+            <button
+              type="submit"
+              className="bg-[#89C13E] py-3 px-4 text-white rounded-md flex justify-center items-center"
+            >
+              Submit
+              {mutation.isPending && (
+                <span className=" mx-2 flex justify-center items-center h-full">
+                  <Loading />
+                </span>
+              )}
+            </button>
+          </div>
+        </form>
+      )}
+
+      {isPolling && <Loading />}
+
+      {!isPolling && transactionStatus === "completed" && (
+        <Transaction_success data={dataValue} />
+      )}
+
+      {!isPolling && transactionStatus === "failed" && <Transaction_failed />}
     </section>
   );
 }
