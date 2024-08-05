@@ -183,6 +183,7 @@ export interface FormDataTYpe {
   firstName: string;
   lastName: string;
   email: string;
+  currency: string;
 }
 
 // !-------------------------------------------- end for class schedule --------------------------------------!
@@ -217,7 +218,6 @@ export interface TransactionDataType {
   updatedAt?: string;
 }
 
-
 // !--------------------------------------------DB & Server Types -----------------------------------------------------!
 export interface OrderType {
   firstName: string;
@@ -236,6 +236,11 @@ export enum StatusType {
   canceled = "canceled",
 }
 
+export enum CurrencyType {
+  naira = "naira",
+  dollar = "dollar",
+}
+
 export interface TransactionType {
   txid: string;
   orderRef?: number;
@@ -243,7 +248,7 @@ export interface TransactionType {
   reference: string;
   status: StatusType;
   accessCode: string;
-  currency: string;
+  currency: CurrencyType
   fee: number;
 }
 

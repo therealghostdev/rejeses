@@ -42,8 +42,6 @@ export default function Transaction_success({
     return `${day}${ordinalSuffix} ${month}, ${year}`;
   };
 
-  console.log(data);
-
   const pathname = usePathname();
   const router = useRouter();
 
@@ -104,7 +102,7 @@ export default function Transaction_success({
         <li className="list-none flex justify-between items-center">
           CURRENCY:
           <span className="mx-4 inline-flex w-2/4 justify-end">
-            {data?.currency === "NGN" ? "NAIRA" : "DOLLAR"}
+            {data?.currency === "naira" ? "NAIRA" : "DOLLAR"}
           </span>
         </li>
       </div>

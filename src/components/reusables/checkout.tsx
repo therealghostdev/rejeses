@@ -57,13 +57,16 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     firstName: "",
     lastName: "",
     email: "",
+    currency: isNigeria ? "NGN" : "USD",
   });
 
   const popup = useMemo(() => new PaystackPop(), []);
 
   const router = useRouter();
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
 
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -80,6 +83,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         startDate: paymentInfo.start_date,
         email: formData.email,
         amount: paymentInfo.price !== 0 ? paymentInfo.price : 100,
+        currency: formData.currency,
       };
 
       const response = await axios.post<OrderResponse>(
@@ -105,7 +109,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       const transactionBodyParam = {
         ref: Number(order.data),
         pid: "incoming",
-        currency: "NGN",
+        currency: formData.currency,
         _fee: Number(0),
       };
 
@@ -172,6 +176,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       firstName: "",
       lastName: "",
       email: "",
+      currency: "",
     }));
   };
 
@@ -265,8 +270,9 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
           className="lg:w-3/4 w-full flex justify-center items-center flex-col gap-4 h-full"
         >
           <div>
-            <label htmlFor=""></label>
+            <label htmlFor="firstName" hidden></label>
             <input
+              id="firstName"
               type="text"
               placeholder="firstname"
               onChange={handleChange}
@@ -275,8 +281,9 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
             />
           </div>
           <div>
-            <label htmlFor=""></label>
+            <label htmlFor="lastName" hidden></label>
             <input
+              id="lastName"
               type="text"
               placeholder="lastname"
               onChange={handleChange}
@@ -285,14 +292,28 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
             />
           </div>
           <div>
-            <label htmlFor=""></label>
+            <label htmlFor="mail" hidden></label>
             <input
+              id="mail"
               type="text"
               placeholder="email"
               onChange={handleChange}
               name="email"
               value={formData.email}
             />
+          </div>
+
+          <div>
+            <label htmlFor="Currency" hidden></label>
+            <select
+              id="Currency"
+              onChange={handleChange}
+              name="currency"
+              value={formData.currency}
+            >
+              <option value="NGN">NGN</option>
+              <option value="USD">USD</option>
+            </select>
           </div>
 
           <div className="w-full flex justify-center items-center">

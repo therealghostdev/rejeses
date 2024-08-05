@@ -35,7 +35,7 @@ async function main() {
       reference: "sample_reference",
       status: "completed",
       accessCode: "sample_accessCode",
-      currency: "Naira",
+      currency: "naira",
       fee: 100,
       createdAt: new Date(),
       updatedAt: new Date(),

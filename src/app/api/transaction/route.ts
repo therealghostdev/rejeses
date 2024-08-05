@@ -4,7 +4,7 @@ import {
   createTransaction,
   updateTransaction,
 } from "@/app/services/repository/transactions/transactions";
-import { StatusType, TransactionType } from "@/utils/types/types";
+import { StatusType, TransactionType, CurrencyType } from "@/utils/types/types";
 import {
   getOrderById,
   getOrderTransactions,
@@ -94,6 +94,7 @@ export async function POST(req: Request) {
     }
 
     const { ref, pid, currency, _fee } = body;
+    console.log(currency);
 
     const orderRef = Number(ref);
     const fee = Number(_fee);
@@ -104,7 +105,7 @@ export async function POST(req: Request) {
       reference: "incoming",
       status: "pending" as StatusType,
       accessCode: "incoming",
-      currency,
+      currency: currency === "NGN" ? CurrencyType.naira : CurrencyType.dollar,
       fee,
     };
 
@@ -134,6 +135,13 @@ export async function POST(req: Request) {
         { status: 400 }
       );
 
+    if (
+      !Object.values(CurrencyType).includes(
+        requiredFields.currency as CurrencyType
+      )
+    )
+      return Response.json({ message: "Invalid currency" }, { status: 400 });
+
     const order = await getOrderById(orderRef);
 
     if (!order)
@@ -162,7 +170,12 @@ export async function POST(req: Request) {
     const paystack_trans_data = {
       email: order.email,
       amount: order.amount * 100,
-      currency,
+      currency:
+        currency === "NGN" || currency === "naira"
+          ? "NGN"
+          : currency === "USD" || currency === "dollar"
+          ? "USD"
+          : "",
     };
 
     const response = await axios.post(
@@ -188,7 +201,10 @@ export async function POST(req: Request) {
     }
   } catch (err) {
     console.log(err);
-    return Response.json({ message: "Error creating transaction" }, { status: 500 });
+    return Response.json(
+      { message: "Error creating transaction" },
+      { status: 500 }
+    );
   }
 }
 
@@ -254,6 +270,12 @@ export async function PUT(req: Request) {
         { message: "Invalid status value" },
         { status: 400 }
       );
+
+    if (
+      currency &&
+      !Object.values(CurrencyType).includes(currency as CurrencyType)
+    )
+      return Response.json({ message: "Invalid currency" }, { status: 400 });
 
     const transaction = await getTransactionById(Number(id));
 
