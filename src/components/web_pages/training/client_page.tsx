@@ -20,6 +20,14 @@ export default function Training_page() {
 
   const { isNigeria } = useNavigation();
 
+  function formatPrice(price: number | undefined): string {
+    if (price && price >= 1000) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else {
+      return price?.toString() || "";
+    }
+  }
+
   // Get the price for the individuals' training option
   const individualPrice = trainingItem.pricing.individuals
     .map((item) =>
@@ -35,7 +43,9 @@ export default function Training_page() {
       ...prev,
       price: individualPrice,
       training_id: trainingItem.id,
-      training_option: `You are subscribing to rejeses consult 4-week training plan. You will be charged &#x24;${individualPrice} for this.`,
+      training_option: `You are subscribing to rejeses consult 4-week training plan. You will be charged ${
+        isNigeria ? "NGN " : "$"
+      }${formatPrice(individualPrice)} for this.`,
       is_group: false,
     }));
   };

@@ -66,6 +66,16 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     currency: isNigeria ? "NGN" : "USD",
   });
 
+  function formatPrice(price: number | undefined): string | undefined {
+    if (price && price >= 1000) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else {
+      if (price) {
+        return price.toString();
+      }
+    }
+  }
+
   const popup = useMemo(() => new PaystackPop(), []);
 
   const router = useRouter();
@@ -400,8 +410,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
               <div className="flex justify-center items-center">
                 <h1 className="font-bold">
                   {formData.currency === "NGN"
-                    ? `NGN ${paymentInfo.price}`
-                    : `USD ${paymentInfo.price}`}
+                    ? `NGN ${formatPrice(paymentInfo.price)}`
+                    : `USD ${formatPrice(paymentInfo.price)}`}
                 </h1>
               </div>
             </div>
@@ -410,8 +420,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
               <h1 className="font-bold">Subtotal</h1>
               <h1 className="font-bold">
                 {formData.currency === "NGN"
-                  ? `NGN ${paymentInfo.price}`
-                  : `USD ${paymentInfo.price}`}
+                  ? `NGN ${formatPrice(paymentInfo.price)}`
+                  : `USD ${formatPrice(paymentInfo.price)}`}
               </h1>
             </div>
 
@@ -419,8 +429,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
               <h1 className="font-bold">TOTAL</h1>
               <h1 className="text-[#89C13E] font-bold">
                 {formData.currency === "NGN"
-                  ? `NGN ${paymentInfo.price}`
-                  : `USD ${paymentInfo.price}`}
+                  ? `NGN ${formatPrice(paymentInfo.price)}`
+                  : `USD ${formatPrice(paymentInfo.price)}`}
               </h1>
             </div>
 

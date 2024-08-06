@@ -16,25 +16,26 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
     return text.replace(/rejeses consult/gi, "<b><i>rejeses consult</i></b>");
   };
 
-  function formatPrice(price: number | undefined): string | undefined {
+  function formatPrice(price: number | undefined): string {
     if (price && price >= 1000) {
       return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     } else {
-      if (price) {
-        return price.toString();
-      }
+      return price?.toString() || "";
     }
   }
 
-  // Function to format the payment summary
   const formatPaymentSummary = () => {
+    if (!pricingItem) return "";
     const { training_option } = paymentInfo;
+    
 
     if (!training_option || training_option === "") {
       return `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged ${
         isNigeria ? "NGN" : "$"
       } ${
-        isNigeria ? pricingItem?.payment.total2 : pricingItem?.payment.total
+        isNigeria
+          ? formatPrice(pricingItem?.payment.total2)
+          : formatPrice(pricingItem?.payment.total)
       } for this.`;
     }
 
@@ -43,7 +44,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
 
   useEffect(() => {
     setFormattedSummary(formatPaymentSummary());
-  }, [paymentInfo, pricingItem]);
+  }, [paymentInfo, pricingItem, isNigeria]);
 
   useEffect(() => {
     if (pricingItem) {
@@ -54,11 +55,11 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
 
       setGeneralPrice(price);
     }
-  }, []);
+  }, [pricingItem]);
 
   const enrollBtnClick = () => {
     if (pricingItem) {
-      if (paymentInfo.price && paymentInfo.price === 0) {
+      if (paymentInfo.price === 0) {
         setPaymentInfo((prev) => ({
           ...prev,
           price: pricingItem.payment.total,
@@ -66,9 +67,6 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
       }
     }
   };
-
-  console.log(pricingItem?.payment.total2);
-  
 
   return (
     <section className="w-full px-8 flex flex-col gap-12 py-12 justify-center items-center">
@@ -86,15 +84,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
             </h1>
             <p
               dangerouslySetInnerHTML={{
-                __html:
-                  formattedSummary ||
-                  `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged ${
-                    isNigeria ? "NGN" : "$"
-                  } ${
-                    isNigeria
-                      ? pricingItem?.payment.total2
-                      : pricingItem?.payment.total
-                  } for this.`,
+                __html: formattedSummary,
               }}
             ></p>
             <div className="w-full flex flex-col gap-4">
@@ -114,9 +104,12 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
             <div className="flex justify-between w-full font-bricolage_grotesque">
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
-                {isNigeria ? <span className="mr-2">NGN</span> : "$"}
-                {formatPrice(paymentInfo.price) ||
-                  formatPrice(pricingItem?.payment.total)}
+                {isNigeria ? "NGN" : "$"}
+                {formatPrice(
+                  isNigeria
+                    ? pricingItem?.payment.total2
+                    : pricingItem?.payment.total
+                )}
               </span>
             </div>
           </div>
