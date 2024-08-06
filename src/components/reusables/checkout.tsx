@@ -16,6 +16,7 @@ import { TransactionDataType } from "@/utils/types/types";
 import Transaction_success from "./checkout_components/transaction_success";
 import Transaction_failed from "./checkout_components/transaction_failed";
 import Image from "next/image";
+import Transaction_error from "./checkout_components/transaction_error";
 
 export default function Checkout({ pricingItem }: ClientPageProps) {
   const [generalPrice, setGeneralPrice] = useState<number>(0);
@@ -47,6 +48,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   });
 
   const [modal, setModal] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const { isNigeria } = useNavigation();
 
@@ -80,10 +82,6 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     setTransactionStatus("");
   };
 
-  useEffect(() => {
-    console.log(modal);
-  }, [modal]);
-
   const createOrder = async (
     formData: FormDataTYpe
   ): Promise<OrderResponse | null> => {
@@ -106,6 +104,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       return response.data;
     } catch (err) {
       console.error("Something went wrong creating order", err);
+      setModal(true);
+      setErrorMessage("Something went wrong creating your order 😓");
       return null;
     }
   };
@@ -225,17 +225,23 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
           setPollingAttempts((prev) => prev + 1);
           if (pollingAttempts >= MAX_POLLING_ATTEMPTS) {
             setIsPolling(false);
-            alert(
+            setModal(true);
+            setErrorMessage(
               "Transaction status check timed out. Please contact support."
             );
           }
         }
       } catch (error) {
         console.error("Error polling transaction status", error);
+        setModal(true);
+        setErrorMessage("Error getting transaction status");
         setPollingAttempts((prev) => prev + 1);
         if (pollingAttempts >= MAX_POLLING_ATTEMPTS) {
           setIsPolling(false);
-          alert("Error checking transaction status. Please contact support.");
+          setModal(true);
+          setErrorMessage(
+            "Error checking transaction status. Please contact support."
+          );
         }
       }
     };
@@ -260,6 +266,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   useEffect(() => {
     setTransactionStatus("");
 
+    setErrorMessage("");
+
     setTransactionResponse((prev) => ({
       ...prev,
       data: { access_code: "", authorization_url: "", reference: "" },
@@ -278,7 +286,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   return (
     <section className="flex justify-center items-center w-full min-h-screen px-8 py-12">
       {(transactionStatus === "completed" ||
-        transactionStatus === "failed") && (
+        transactionStatus === "failed" ||
+        errorMessage !== "") && (
         <div className="overlay fixed inset-0 bg-black bg-opacity-50 z-10"></div>
       )}
 
@@ -434,9 +443,15 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         <Transaction_success data={dataValue} close={closeModal} />
       )}
 
-      {!isPolling && transactionStatus === "failed" && !modal && (
+      {!isPolling && transactionStatus === "failed" && modal && (
         <Transaction_failed close={closeModal} />
       )}
+
+      {!isPolling &&
+        transactionStatus !== "failed" &&
+        transactionStatus !== "completed" &&
+        errorMessage !== "" &&
+        modal && <Transaction_error close={closeModal} error={errorMessage} />}
     </section>
   );
 }

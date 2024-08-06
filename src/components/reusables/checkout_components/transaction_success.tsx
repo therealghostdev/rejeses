@@ -1,9 +1,8 @@
 "use client";
 import { TransactionDataType } from "@/utils/types/types";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Image from "next/image";
-import { Cross1Icon } from "@radix-ui/react-icons";
 
 type TransactionSuccessProps = Partial<
   Omit<TransactionDataType, "accessCode" | "fee" | "createdAt">
@@ -46,28 +45,17 @@ export default function Transaction_success({
     return `${day}${ordinalSuffix} ${month}, ${year}`;
   };
 
-  const pathname = usePathname();
   const router = useRouter();
 
   const [path, setPath] = useState<string>("");
-
-  const decodedPathname = useMemo(() => decodeURIComponent(pathname), []);
 
   const formattedUpdatedAt = data?.updatedAt
     ? formatDateWithOrdinal(data.updatedAt)
     : "N/A";
 
   const returnBtnClick = () => {
-    if (decodedPathname.split("/")[1] === "training") {
-      router.push("/training");
-    } else {
-      router.push("/mentorship");
-    }
+    router.push("/");
   };
-
-  useEffect(() => {
-    setPath(decodedPathname.split("/")[1]);
-  }, []);
 
   return (
     <div className="lg:w-[45%] w-[95%] bg-white md:w-3/4 h-screen fixed gap-y-10 right-0 top-0 z-20 shadow-md shadow-[#0000000D] px-4 py-12 flex flex-col overflow-auto">
@@ -159,7 +147,7 @@ export default function Transaction_success({
           className="bg-[#89C13E] py-4 px-2 w-full my-4 text-white rounded-md font-bold"
           onClick={returnBtnClick}
         >
-          Back to {path === "mentorship" ? "mentoring" : path}
+          Back Back Home
         </button>
       </div>
     </div>
