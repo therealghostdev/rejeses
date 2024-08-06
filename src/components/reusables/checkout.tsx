@@ -80,6 +80,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   const closeModal = () => {
     setModal(!modal);
     setTransactionStatus("");
+    setErrorMessage("");
   };
 
   const createOrder = async (
@@ -134,6 +135,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       return transactionResponse.data;
     } catch (err) {
       console.error("Something went wrong creating transaction", err);
+      setModal(true);
+      setErrorMessage("Something went wrong processing order 😓");
       throw err;
     }
   };
