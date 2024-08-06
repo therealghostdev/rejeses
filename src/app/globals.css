@@ -60,7 +60,7 @@ body {
   transition: opacity .8s, width .8s, left .8s;
 }
 
-.transition_border1::after{
+.transition_border1::after {
   background: #89C13E;
 }
 
@@ -133,6 +133,14 @@ body {
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease-in;
+}
+
+.overlay {
+  width: 100vw;
+  background-color: #09090940;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
 }
 
 @keyframes breathing {

@@ -46,6 +46,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     createdAt: "",
   });
 
+  const [modal, setModal] = useState<boolean>(false);
+
   const { isNigeria } = useNavigation();
 
   const pathname = usePathname();
@@ -72,6 +74,15 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  const closeModal = () => {
+    setModal(!modal);
+    setTransactionStatus("");
+  };
+
+  useEffect(() => {
+    console.log(modal);
+  }, [modal]);
 
   const createOrder = async (
     formData: FormDataTYpe
@@ -205,9 +216,11 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
           setDataValue(data);
           setIsPolling(false);
           setTransactionStatus("completed");
+          setModal(true);
         } else if (status === 200 && data.status === "failed") {
           setIsPolling(false);
           setTransactionStatus("failed");
+          setModal(true);
         } else {
           setPollingAttempts((prev) => prev + 1);
           if (pollingAttempts >= MAX_POLLING_ATTEMPTS) {
@@ -232,17 +245,17 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     return () => clearInterval(intervalId);
   }, [isPolling, transactionResponse.data.reference, pollingAttempts]);
 
-  // useEffect(() => {
-  //   if (decodedPathname.split("/")[1] === "training") {
-  //     if (paymentInfo.start_date === "" || paymentInfo.training_type === "") {
-  //       router.push("/training");
-  //     }
-  //   } else {
-  //     if (paymentInfo.start_date === "" || paymentInfo.training_type === "") {
-  //       router.push("/mentorship");
-  //     }
-  //   }
-  // }, [paymentInfo]);
+  useEffect(() => {
+    if (decodedPathname.split("/")[1] === "training") {
+      if (paymentInfo.start_date === "" || paymentInfo.training_type === "") {
+        router.push("/training");
+      }
+    } else {
+      if (paymentInfo.start_date === "" || paymentInfo.training_type === "") {
+        router.push("/mentorship");
+      }
+    }
+  }, [paymentInfo]);
 
   useEffect(() => {
     setTransactionStatus("");
@@ -264,7 +277,12 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
   return (
     <section className="flex justify-center items-center w-full min-h-screen px-8 py-12">
-      {!isPolling && transactionStatus === "" && (
+      {(transactionStatus === "completed" ||
+        transactionStatus === "failed") && (
+        <div className="overlay fixed inset-0 bg-black bg-opacity-50 z-10"></div>
+      )}
+
+      {!isPolling && (
         <div className="w-full h-full flex gap-x-4 lg:flex-row flex-col-reverse md:px-8">
           <div className="lg:w-2/4 w-full flex py-6 px-4 items-center flex-col gap-4 lg:h-full lg:my-auto my-4">
             <div className="w-full flex flex-col gap-y-6">
@@ -323,8 +341,12 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                   value={formData.currency}
                   className="lg:w-3/4 w-[98%] py-3 px-8 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#666666]"
                 >
-                  <option value="NGN" className="text-lg py-5">NGN</option>
-                  <option value="USD" className="text-lg py-5">USD</option>
+                  <option value="NGN" className="text-lg py-5">
+                    NGN
+                  </option>
+                  <option value="USD" className="text-lg py-5">
+                    USD
+                  </option>
                 </select>
               </div>
             </form>
@@ -408,11 +430,13 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
       {isPolling && <Loading />}
 
-      {!isPolling && transactionStatus === "completed" && (
-        <Transaction_success data={dataValue} />
+      {!isPolling && transactionStatus === "completed" && modal && (
+        <Transaction_success data={dataValue} close={closeModal} />
       )}
 
-      {!isPolling && transactionStatus === "failed" && <Transaction_failed />}
+      {!isPolling && transactionStatus === "failed" && !modal && (
+        <Transaction_failed close={closeModal} />
+      )}
     </section>
   );
 }
