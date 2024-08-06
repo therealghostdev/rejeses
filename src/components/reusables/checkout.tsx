@@ -15,6 +15,7 @@ import Loading from "@/app/feed/loading";
 import { TransactionDataType } from "@/utils/types/types";
 import Transaction_success from "./checkout_components/transaction_success";
 import Transaction_failed from "./checkout_components/transaction_failed";
+import Image from "next/image";
 
 export default function Checkout({ pricingItem }: ClientPageProps) {
   const [generalPrice, setGeneralPrice] = useState<number>(0);
@@ -139,7 +140,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   });
 
   const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
-  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
       if (
@@ -231,17 +232,17 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     return () => clearInterval(intervalId);
   }, [isPolling, transactionResponse.data.reference, pollingAttempts]);
 
-  useEffect(() => {
-    if (decodedPathname.split("/")[1] === "training") {
-      if (paymentInfo.start_date === "" || paymentInfo.training_type === "") {
-        router.push("/training");
-      }
-    } else {
-      if (paymentInfo.start_date === "" || paymentInfo.training_type === "") {
-        router.push("/mentorship");
-      }
-    }
-  }, [paymentInfo]);
+  // useEffect(() => {
+  //   if (decodedPathname.split("/")[1] === "training") {
+  //     if (paymentInfo.start_date === "" || paymentInfo.training_type === "") {
+  //       router.push("/training");
+  //     }
+  //   } else {
+  //     if (paymentInfo.start_date === "" || paymentInfo.training_type === "") {
+  //       router.push("/mentorship");
+  //     }
+  //   }
+  // }, [paymentInfo]);
 
   useEffect(() => {
     setTransactionStatus("");
@@ -262,74 +263,147 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   }, []);
 
   return (
-    <section className="flex justify-center items-center w-full h-screen">
+    <section className="flex justify-center items-center w-full min-h-screen px-8 py-12">
       {!isPolling && transactionStatus === "" && (
-        <form
-          onSubmit={handleFormSubmit}
-          action=""
-          className="lg:w-3/4 w-full flex justify-center items-center flex-col gap-4 h-full"
-        >
-          <div>
-            <label htmlFor="firstName" hidden></label>
-            <input
-              id="firstName"
-              type="text"
-              placeholder="firstname"
-              onChange={handleChange}
-              name="firstName"
-              value={formData.firstName}
-            />
-          </div>
-          <div>
-            <label htmlFor="lastName" hidden></label>
-            <input
-              id="lastName"
-              type="text"
-              placeholder="lastname"
-              onChange={handleChange}
-              name="lastName"
-              value={formData.lastName}
-            />
-          </div>
-          <div>
-            <label htmlFor="mail" hidden></label>
-            <input
-              id="mail"
-              type="text"
-              placeholder="email"
-              onChange={handleChange}
-              name="email"
-              value={formData.email}
-            />
+        <div className="w-full h-full flex gap-x-4 lg:flex-row flex-col-reverse md:px-8">
+          <div className="lg:w-2/4 w-full flex py-6 px-4 items-center flex-col gap-4 lg:h-full lg:my-auto my-4">
+            <div className="w-full flex flex-col gap-y-6">
+              <h1 className="font-bold lg:text-5xl text-3xl">Checkout</h1>
+
+              <p className="lg:text-3xl text-2xl">
+                Personal Information & Billing
+              </p>
+            </div>
+            <form className="w-full flex flex-col justify-center items-center">
+              <div className="w-full py-4 flex items-center">
+                <label htmlFor="firstName" hidden></label>
+                <input
+                  id="firstName"
+                  type="text"
+                  placeholder="First Name"
+                  onChange={handleChange}
+                  name="firstName"
+                  value={formData.firstName}
+                  className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#666666]"
+                />
+              </div>
+
+              <div className="w-full py-4 flex items-center">
+                <label htmlFor="lastName" hidden></label>
+                <input
+                  id="lastName"
+                  type="text"
+                  placeholder="last Name"
+                  onChange={handleChange}
+                  name="lastName"
+                  value={formData.lastName}
+                  className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#666666]"
+                />
+              </div>
+
+              <div className="w-full py-4 flex items-center">
+                <label htmlFor="mail" hidden></label>
+                <input
+                  id="mail"
+                  type="text"
+                  placeholder="Email Address"
+                  onChange={handleChange}
+                  name="email"
+                  value={formData.email}
+                  className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#666666]"
+                />
+              </div>
+
+              <div className="w-full py-4 flex items-center">
+                <label htmlFor="Currency" hidden></label>
+                <select
+                  id="Currency"
+                  onChange={handleChange}
+                  name="currency"
+                  value={formData.currency}
+                  className="lg:w-3/4 w-[98%] py-3 px-8 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#666666]"
+                >
+                  <option value="NGN" className="text-lg py-5">NGN</option>
+                  <option value="USD" className="text-lg py-5">USD</option>
+                </select>
+              </div>
+            </form>
           </div>
 
-          <div>
-            <label htmlFor="Currency" hidden></label>
-            <select
-              id="Currency"
-              onChange={handleChange}
-              name="currency"
-              value={formData.currency}
-            >
-              <option value="NGN">NGN</option>
-              <option value="USD">USD</option>
-            </select>
-          </div>
+          <div className="lg:w-2/4 w-full lg:h-full flex flex-col justify-center gap-5 md:px-4 py-4">
+            <div className="flex justify-start">
+              <h1 className="font-bold text-left text-2xl">Your Order</h1>
+            </div>
 
-          <div className="w-full flex justify-center items-center">
-            <button
-              type="submit"
-              className="bg-[#89C13E] py-3 px-4 text-white rounded-md flex justify-center items-center"
-            >
-              Submit
-              {mutation.isPending && (
-                <span className=" mx-2 flex justify-center items-center h-full">
-                  <Loading />
-                </span>
-              )}
-            </button>
+            <div className="w-full flex justify-between text-lg py-4 border-b border-dashed border-b-[#DBE1E7]">
+              <h1>Product</h1>
+              <h1>Subtotal</h1>
+            </div>
+
+            <div className="w-full flex justify-between py-4 border-b border-dashed border-b-[#DBE1E7]">
+              <div className="max-w-3/4 flex lg:h-auto md:h-20">
+                <div className="w-3/4 flex md:flex-row flex-col justify-center">
+                  <div className="flex justify-center items-center h-full w-48 border border-[#FFFAF5]  bg-[#FFE0C2] rounded-md mx-2">
+                    <Image
+                      src="/trophy.svg"
+                      width={60}
+                      height={30}
+                      alt="certification"
+                      className=""
+                    />
+                  </div>
+                  <div className="mx-2 flex justify-center flex-col lg:my-auto md:mt-0 mt-2">
+                    <h1 className="font-bold lg:text-wrap md:text-ellipsis md:text-nowrap lg:my-2 md:mb-0 mb-2">
+                      Project Management for beginners
+                    </h1>
+                    <p className="lg:text-wrap text-nowrap text-ellipsis">
+                      Certificate on completion
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center items-center">
+                <h1 className="font-bold">
+                  {formData.currency === "NGN"
+                    ? `NGN ${paymentInfo.price}`
+                    : `USD ${paymentInfo.price}`}
+                </h1>
+              </div>
+            </div>
+
+            <div className="w-full flex justify-between items-center py-4 border-b border-dashed border-b-[#DBE1E7]">
+              <h1 className="font-bold">Subtotal</h1>
+              <h1 className="font-bold">
+                {formData.currency === "NGN"
+                  ? `NGN ${paymentInfo.price}`
+                  : `USD ${paymentInfo.price}`}
+              </h1>
+            </div>
+
+            <div className="w-full flex justify-between items-center py-4 border-b border-b-[#DBE1E7]">
+              <h1 className="font-bold">TOTAL</h1>
+              <h1 className="text-[#89C13E] font-bold">
+                {formData.currency === "NGN"
+                  ? `NGN ${paymentInfo.price}`
+                  : `USD ${paymentInfo.price}`}
+              </h1>
+            </div>
+
+            <div className="w-full flex justify-center items-center">
+              <button
+                onClick={handleFormSubmit}
+                className="bg-[#89C13E] py-6 px-4 text-white rounded-md flex justify-center items-center w-full"
+              >
+                Complete Checkout
+                {mutation.isPending && (
+                  <span className=" mx-2 flex justify-center items-center h-full">
+                    <Loading />
+                  </span>
+                )}
+              </button>
+            </div>
           </div>
-        </form>
+        </div>
       )}
 
       {isPolling && <Loading />}
