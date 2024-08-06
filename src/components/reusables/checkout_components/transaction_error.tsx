@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Transaction_error({
   close,
@@ -9,7 +10,13 @@ export default function Transaction_error({
   error: string;
 }) {
   return (
-    <div className="lg:w-[45%] w-[95%] bg-white md:w-3/4 h-screen fixed gap-y-10 right-0 top-0 z-20 shadow-md shadow-[#0000000D] px-4 py-12 flex flex-col overflow-auto">
+    <motion.div
+      initial={{ x: "100vw" }}
+      animate={{ x: 0 }}
+      exit={{ x: "100vw" }}
+      transition={{ duration: 0.5 }}
+      className="lg:w-[45%] w-[95%] bg-white md:w-3/4 h-screen fixed gap-y-10 right-0 top-0 z-20 shadow-md shadow-[#0000000D] px-4 py-12 flex flex-col overflow-auto"
+    >
       <button
         onClick={close}
         aria-label="close"
@@ -31,6 +38,6 @@ export default function Transaction_error({
           <small className="text-[#666666] text-center">{error}</small>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

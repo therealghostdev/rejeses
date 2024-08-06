@@ -17,6 +17,7 @@ import Transaction_success from "./checkout_components/transaction_success";
 import Transaction_failed from "./checkout_components/transaction_failed";
 import Image from "next/image";
 import Transaction_error from "./checkout_components/transaction_error";
+import { AnimatePresence } from "framer-motion";
 
 export default function Checkout({ pricingItem }: ClientPageProps) {
   const [generalPrice, setGeneralPrice] = useState<number>(0);
@@ -442,19 +443,27 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
       {isPolling && <Loading />}
 
-      {!isPolling && transactionStatus === "completed" && modal && (
-        <Transaction_success data={dataValue} close={closeModal} />
-      )}
+      <AnimatePresence>
+        {!isPolling && transactionStatus === "completed" && modal && (
+          <Transaction_success data={dataValue} close={closeModal} />
+        )}
+      </AnimatePresence>
 
-      {!isPolling && transactionStatus === "failed" && modal && (
-        <Transaction_failed close={closeModal} />
-      )}
+      <AnimatePresence>
+        {!isPolling && transactionStatus === "failed" && modal && (
+          <Transaction_failed close={closeModal} />
+        )}
+      </AnimatePresence>
 
-      {!isPolling &&
-        transactionStatus !== "failed" &&
-        transactionStatus !== "completed" &&
-        errorMessage !== "" &&
-        modal && <Transaction_error close={closeModal} error={errorMessage} />}
+      <AnimatePresence>
+        {!isPolling &&
+          transactionStatus !== "failed" &&
+          transactionStatus !== "completed" &&
+          errorMessage !== "" &&
+          modal && (
+            <Transaction_error close={closeModal} error={errorMessage} />
+          )}
+      </AnimatePresence>
     </section>
   );
 }
