@@ -28,8 +28,6 @@ export default function MentorshipPaymentSummary() {
       } for this.`;
 
   const router = useRouter();
-
-  console.log(paymentInfo.training_option);
   
 
   const pay = () => {
@@ -61,6 +59,16 @@ export default function MentorshipPaymentSummary() {
     router.push("pricing/checkout");
   };
 
+  const renderPrice = () => {
+    if (paymentInfo.price === 0) {
+      return isNigeria
+        ? formatPrice(50000)
+        : formatPrice(300);
+    } else {
+      return formatPrice(paymentInfo.price2);
+    }
+  };
+
   return (
     <section className="w-full px-8 flex flex-col gap-12 py-12 justify-center items-center">
       <div className="md:max-w-[98%] w-full py-12 gap-6 md:px-8 flex flex-col gap-y-6 justify-center">
@@ -84,12 +92,7 @@ export default function MentorshipPaymentSummary() {
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
                 {isNigeria ? <span className="mr-2">NGN</span> : "$"}
-                {(paymentInfo.price !== 0 && formatPrice(paymentInfo.price)) ||
-                isNigeria ? (
-                  <span>{paymentInfo.price !== 0 && formatPrice(paymentInfo.price) || "50,000"}</span>
-                ) : (
-                  <span>300</span>
-                )}
+                {renderPrice()}
               </span>
             </div>
           </div>

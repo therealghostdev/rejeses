@@ -16,7 +16,7 @@ export default function Training_page() {
   const trainingItem = data[0];
   const whyUsItems = whyUsData.filter((item) => item.tag === "training");
   const pricingRef = useRef<HTMLDivElement | null>(null);
-  const { setPaymentInfo } = usePayment();
+  const { setPaymentInfo, paymentInfo } = usePayment();
 
   const { isNigeria } = useNavigation();
 
@@ -32,6 +32,14 @@ export default function Training_page() {
   const individualPrice = trainingItem.pricing.individuals
     .map((item) =>
       isNigeria
+        ? Number(item.training_only?.price)
+        : Number(item.training_only?.price2)
+    )
+    .filter((price) => !isNaN(price))[0];
+
+  const individualPrice2 = trainingItem.pricing.individuals
+    .map((item) =>
+      isNigeria
         ? Number(item.training_only?.price2)
         : Number(item.training_only?.price)
     )
@@ -42,13 +50,15 @@ export default function Training_page() {
     setPaymentInfo((prev) => ({
       ...prev,
       price: individualPrice,
+      price2: individualPrice2,
       training_id: trainingItem.id,
       training_option: `You are subscribing to rejeses consult 4-week training plan. You will be charged ${
         isNigeria ? "NGN " : "$"
-      }${formatPrice(individualPrice)} for this.`,
+      }${formatPrice(individualPrice2)} for this.`,
       is_group: false,
     }));
   };
+  
 
   useEffect(() => {
     setPaymentInfo((prev) => ({

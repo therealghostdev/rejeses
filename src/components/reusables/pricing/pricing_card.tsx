@@ -14,9 +14,9 @@ export default function PriceCard({ data, id }: PriceCardProps) {
   const { isNigeria } = useNavigation();
 
   const pathname = usePathname();
-  const { setPaymentInfo } = usePayment();
+  const { setPaymentInfo, paymentInfo } = usePayment();
 
-  const registerBtnClick = (item: number, option: string) => {
+  const registerBtnClick = (item: number, option: string, item2: number) => {
     const currentPath = decodeURIComponent(pathname).split("/")[1];
     if (currentPath === "training") {
       const routePath = decodeURIComponent(pathname).split("/")[2];
@@ -24,6 +24,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
       setPaymentInfo((prev) => ({
         ...prev,
         price: item,
+        price2: item2,
         training_id: Number(id),
         training_option: option,
         training_type: "Project Management Training",
@@ -34,6 +35,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
       setPaymentInfo((prev) => ({
         ...prev,
         price: item,
+        price2: item2,
         training_option: option,
         training_type: "Project Management Mentoring",
       }));
@@ -62,6 +64,10 @@ export default function PriceCard({ data, id }: PriceCardProps) {
     const includesAny = val.some((substring) => pathname.includes(substring));
     if (!includesAny) resetPriceInfo();
   }, []);
+
+  console.log(paymentInfo, "at pricing");
+  console.log(training_only);
+  
 
   return (
     <>
@@ -110,12 +116,14 @@ export default function PriceCard({ data, id }: PriceCardProps) {
             <button
               onClick={() =>
                 registerBtnClick(
-                  isNigeria ? training_only.price2 : training_only.price,
+                  isNigeria ? training_only.price : training_only.price2,
                   decodeURIComponent(pathname).split("/")[1] === "training"
                     ? `You are subscribing to rejeses consult 4-week training plan. You will be charged  ${
                         isNigeria ? "NGN " : "$"
                       }${
-                        isNigeria ? formatPrice(training_only.price2) : formatPrice(training_only.price)
+                        isNigeria
+                          ? formatPrice(training_only.price2)
+                          : formatPrice(training_only.price)
                       } for this.`
                     : `You are subscribing to rejeses consult 6-month mentoring plan. You will be charged ${
                         isNigeria ? "NGN " : "$"
@@ -123,7 +131,8 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                         isNigeria
                           ? formatPrice(training_only.price2)
                           : formatPrice(training_only.price)
-                      } for this.`
+                      } for this.`,
+                  isNigeria ? training_only.price2 : training_only.price
                 )
               }
               // href={training_only.register_link}
@@ -181,15 +190,18 @@ export default function PriceCard({ data, id }: PriceCardProps) {
               onClick={() =>
                 registerBtnClick(
                   isNigeria
-                    ? training_with_mentorship.price2
-                    : training_with_mentorship.price,
+                    ? training_with_mentorship.price
+                    : training_with_mentorship.price2,
                   `You are subscribing to rejeses consult 4-week training plus 6-month mentoring plan. You will be charged ${
                     isNigeria ? "NGN " : "$"
                   }${
                     isNigeria
                       ? formatPrice(training_with_mentorship.price2)
                       : formatPrice(training_with_mentorship.price)
-                  } for this.`
+                  } for this.`,
+                  isNigeria
+                    ? training_with_mentorship.price2
+                    : training_with_mentorship.price
                 )
               }
               // href={training_with_mentorship.register_link}

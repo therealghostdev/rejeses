@@ -104,7 +104,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         courseType: paymentInfo.training_type,
         startDate: paymentInfo.start_date,
         email: formData.email,
-        amount: paymentInfo.price !== 0 ? paymentInfo.price : 100,
+        amount: getPrice(),
         currency: formData.currency,
       };
 
@@ -297,6 +297,24 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     }
   }, []);
 
+  function getPrice(): number {
+    let price;
+    if (isNigeria && formData.currency === "NGN") {
+      price = paymentInfo.price2;
+    } else if (isNigeria && formData.currency === "USD") {
+      price = paymentInfo.price;
+    } else if (!isNigeria && formData.currency === "NGN") {
+      price = paymentInfo.price;
+    } else if (!isNigeria && formData.currency === "USD") {
+      price = paymentInfo.price2;
+      console.log("this ran");
+      
+    } else {
+      price = 0;
+    }
+    return price;
+  }
+
   return (
     <section className="flex justify-center items-center w-full min-h-screen px-8 py-12">
       {(transactionStatus === "completed" ||
@@ -409,9 +427,12 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
               </div>
               <div className="flex justify-center items-center">
                 <h1 className="font-bold">
-                  {formData.currency === "NGN"
-                    ? `NGN ${formatPrice(paymentInfo.price)}`
-                    : `USD ${formatPrice(paymentInfo.price)}`}
+                  {(isNigeria || !isNigeria) && formData.currency === "NGN"
+                    ? "NGN "
+                    : (isNigeria || !isNigeria) && formData.currency === "USD"
+                    ? "$"
+                    : ""}
+                  {formatPrice(getPrice())}
                 </h1>
               </div>
             </div>
@@ -419,18 +440,24 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
             <div className="w-full flex justify-between items-center py-4 border-b border-dashed border-b-[#DBE1E7]">
               <h1 className="font-bold">Subtotal</h1>
               <h1 className="font-bold">
-                {formData.currency === "NGN"
-                  ? `NGN ${formatPrice(paymentInfo.price)}`
-                  : `USD ${formatPrice(paymentInfo.price)}`}
+                {(isNigeria || !isNigeria) && formData.currency === "NGN"
+                  ? "NGN "
+                  : (isNigeria || !isNigeria) && formData.currency === "USD"
+                  ? "$"
+                  : ""}
+                {formatPrice(getPrice())}
               </h1>
             </div>
 
             <div className="w-full flex justify-between items-center py-4 border-b border-b-[#DBE1E7]">
               <h1 className="font-bold">TOTAL</h1>
               <h1 className="text-[#89C13E] font-bold">
-                {formData.currency === "NGN"
-                  ? `NGN ${formatPrice(paymentInfo.price)}`
-                  : `USD ${formatPrice(paymentInfo.price)}`}
+                {(isNigeria || !isNigeria) && formData.currency === "NGN"
+                  ? "NGN "
+                  : (isNigeria || !isNigeria) && formData.currency === "USD"
+                  ? "$"
+                  : ""}
+                {formatPrice(getPrice())}
               </h1>
             </div>
 

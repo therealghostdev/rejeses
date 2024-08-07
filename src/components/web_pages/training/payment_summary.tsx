@@ -7,9 +7,8 @@ import { useEffect, useState } from "react";
 import { ClientPageProps } from "@/utils/types/types";
 
 export default function TrainingPayment({ pricingItem }: ClientPageProps) {
-  const { paymentInfo, setPaymentInfo } = usePayment();
+  const { paymentInfo } = usePayment();
   const [formattedSummary, setFormattedSummary] = useState<string>("");
-  const [generalPrice, setGeneralPrice] = useState<number>(0);
   const { isNigeria } = useNavigation();
 
   const formatTrainingOption = (text: string) => {
@@ -27,12 +26,11 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   const formatPaymentSummary = () => {
     if (!pricingItem) return "";
     const { training_option } = paymentInfo;
-    
 
     if (!training_option || training_option === "") {
       return `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged ${
-        isNigeria ? "NGN" : "$"
-      } ${
+        isNigeria ? "NGN " : "$"
+      }${
         isNigeria
           ? formatPrice(pricingItem?.payment.total2)
           : formatPrice(pricingItem?.payment.total)
@@ -42,31 +40,19 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
     return formatTrainingOption(training_option);
   };
 
+  const renderPrice = () => {
+    if (paymentInfo.price === 0) {
+      return isNigeria
+        ? formatPrice(pricingItem?.payment.total2)
+        : formatPrice(pricingItem?.payment.total);
+    } else {
+      return formatPrice(paymentInfo.price2);
+    }
+  };
+
   useEffect(() => {
     setFormattedSummary(formatPaymentSummary());
   }, [paymentInfo, pricingItem, isNigeria]);
-
-  useEffect(() => {
-    if (pricingItem) {
-      const priceArray = pricingItem.pricing.individuals.map(
-        (item) => item.price
-      );
-      const price = priceArray.length > 0 ? priceArray[0] : 0;
-
-      setGeneralPrice(price);
-    }
-  }, [pricingItem]);
-
-  const enrollBtnClick = () => {
-    if (pricingItem) {
-      if (paymentInfo.price === 0) {
-        setPaymentInfo((prev) => ({
-          ...prev,
-          price: pricingItem.payment.total,
-        }));
-      }
-    }
-  };
 
   return (
     <section className="w-full px-8 flex flex-col gap-12 py-12 justify-center items-center">
@@ -105,18 +91,13 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
                 {isNigeria ? "NGN" : "$"}
-                {formatPrice(
-                  isNigeria
-                    ? pricingItem?.payment.total2
-                    : pricingItem?.payment.total
-                )}
+                {renderPrice()}
               </span>
             </div>
           </div>
           <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center items-center py-4 w-full sm_btn-container flex-wrap">
             <Button
               url={`${paymentInfo.training_id}/checkout`}
-              click={enrollBtnClick}
               text="Continue"
               bg="#89C13E"
               transition_class="transition_button4"

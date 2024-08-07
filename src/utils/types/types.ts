@@ -189,6 +189,7 @@ export interface FormDataTYpe {
 // !-------------------------------------------- end for class schedule --------------------------------------!
 export interface PaymentInfo {
   price: number;
+  price2: number;
   training_id: number | null;
   training_type: string;
   start_date: string;
@@ -248,7 +249,7 @@ export interface TransactionType {
   reference: string;
   status: StatusType;
   accessCode: string;
-  currency: CurrencyType
+  currency: CurrencyType;
   fee: number;
 }
 

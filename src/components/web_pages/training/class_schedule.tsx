@@ -8,7 +8,7 @@ import Link from "next/link";
 import { DownloadIcon } from "@radix-ui/react-icons";
 import { Class, ScheduleData, TrainingOption1 } from "@/utils/types/types";
 import { usePayment } from "@/utils/context/payment";
-import { Item } from "@radix-ui/react-accordion";
+import { useNavigation } from "@/utils/context/payment";
 
 const { days, times } = data as ScheduleData;
 
@@ -20,6 +20,7 @@ interface SchedulePropsData {
 export default function ClassSchedule(props: SchedulePropsData) {
   const scheduleRef = useRef<HTMLDivElement>(null);
   const { paymentInfo, setPaymentInfo } = usePayment();
+  const { isNigeria } = useNavigation();
 
   const downloadPdf = async () => {
     if (scheduleRef.current) {
@@ -61,25 +62,51 @@ export default function ClassSchedule(props: SchedulePropsData) {
     return props.data.some((s) => s.day === day && s.time === time);
   };
 
-  const getPriceData = () => {
-    const item = props.all.pricing.individuals.find(
-      (item) => item.training_only?.price
-    );
-    return paymentInfo.price || item?.training_only?.price;
-  };
+  function formatPrice(price: number | undefined): string | undefined {
+    if (price && price >= 1000) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else {
+      if (price) {
+        return price.toString();
+      }
+    }
+  }
 
+  const individualPrice = props.all.pricing.individuals
+    .map((item) =>
+      isNigeria
+        ? Number(item.training_only?.price)
+        : Number(item.training_only?.price2)
+    )
+    .filter((price) => !isNaN(price))[0];
+
+  const individualPrice2 = props.all.pricing.individuals
+    .map((item) =>
+      isNigeria
+        ? Number(item.training_only?.price2)
+        : Number(item.training_only?.price)
+    )
+    .filter((price) => !isNaN(price))[0];
+
+  // Update payment information
   const BacktoSummary = () => {
     setPaymentInfo((prev) => ({
       ...prev,
+      price: individualPrice,
+      price2: individualPrice2,
       training_id: props.all.id,
       training_type: "Project Management Training",
       start_date: props.all.start_date,
+      training_option: `You are subscribing to rejeses consult 4-week training plan. You will be charged ${
+        isNigeria ? "NGN " : "$"
+      }${formatPrice(individualPrice2)} for this.`,
+      is_group: false,
     }));
   };
 
   useEffect(() => {
     BacktoSummary();
-  }, []);
+  }, [isNigeria]);
 
   return (
     <div className="flex flex-col items-center px-6 md:max-w-[90%] gap-6 w-full my-4 mt-12">
@@ -145,7 +172,8 @@ export default function ClassSchedule(props: SchedulePropsData) {
           href={`/training/${paymentInfo.training_id}`}
           className="bg-[#89C13E] text-white px-12 py-4 flex justify-center items-center rounded-md w-full sm:w-auto text-xs sm:text-sm"
         >
-          Pay now &#36;{getPriceData()}
+          Pay now {isNigeria ? "NGN " : "$"}
+          {formatPrice(individualPrice2) || 0}
         </Link>
         <button
           onClick={downloadPdf}

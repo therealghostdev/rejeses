@@ -14,6 +14,7 @@ const PaymentContext = createContext<{
 }>({
   paymentInfo: {
     price: 0,
+    price2: 0,
     training_id: null,
     training_type: "",
     start_date: "",
@@ -38,6 +39,7 @@ export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({
     price: 0,
+    price2: 0,
     training_id: null,
     training_type: "",
     start_date: "",
