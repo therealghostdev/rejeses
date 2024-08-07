@@ -64,9 +64,6 @@ export default function PriceCard({ data, id }: PriceCardProps) {
     const includesAny = val.some((substring) => pathname.includes(substring));
     if (!includesAny) resetPriceInfo();
   }, []);
-
-  console.log(paymentInfo, "at pricing");
-  console.log(training_only);
   
 
   return (

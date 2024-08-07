@@ -219,6 +219,19 @@ export interface TransactionDataType {
   updatedAt?: string;
 }
 
+export interface OrderDataType {
+  id: number;
+  firstName: string;
+  lastName: string;
+  courseType: string;
+  startDate: string;
+  email: string;
+  amount: number;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 // !--------------------------------------------DB & Server Types -----------------------------------------------------!
 export interface OrderType {
   firstName: string;

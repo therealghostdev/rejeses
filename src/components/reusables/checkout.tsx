@@ -12,7 +12,7 @@ import { useRouter, usePathname } from "next/navigation";
 import PaystackPop from "@paystack/inline-js";
 import { useMutation } from "@tanstack/react-query";
 import Loading from "@/app/feed/loading";
-import { TransactionDataType } from "@/utils/types/types";
+import { TransactionDataType, OrderDataType } from "@/utils/types/types";
 import Transaction_success from "./checkout_components/transaction_success";
 import Transaction_failed from "./checkout_components/transaction_failed";
 import Image from "next/image";
@@ -46,6 +46,19 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     fee: 0,
     updatedAt: "",
     createdAt: "",
+  });
+
+  const [orderValue, setOrderValue] = useState<OrderDataType>({
+    id: 0,
+    firstName: "",
+    lastName: "",
+    courseType: "",
+    startDate: "",
+    email: "",
+    amount: 0,
+    status: "",
+    createdAt: "",
+    updatedAt: "",
   });
 
   const [modal, setModal] = useState<boolean>(false);
@@ -222,12 +235,11 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         const response = await axios.get(
           `/api/get_status?reference=${transactionResponse.data.reference}`
         );
-        const { status, data } = response.data;
+        const { status, data, order } = response.data;
 
         if (status === 200 && data.status === "completed") {
-          console.log(data);
-
           setDataValue(data);
+          setOrderValue(order);
           setIsPolling(false);
           setTransactionStatus("completed");
           setModal(true);
@@ -307,8 +319,6 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       price = paymentInfo.price;
     } else if (!isNigeria && formData.currency === "USD") {
       price = paymentInfo.price2;
-      console.log("this ran");
-      
     } else {
       price = 0;
     }
@@ -482,7 +492,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
       <AnimatePresence>
         {!isPolling && transactionStatus === "completed" && modal && (
-          <Transaction_success data={dataValue} close={closeModal} />
+          <Transaction_success data={dataValue} close={closeModal} order={orderValue} />
         )}
       </AnimatePresence>
 

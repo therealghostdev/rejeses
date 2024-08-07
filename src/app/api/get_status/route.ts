@@ -1,4 +1,5 @@
 import { getTransactionByReference } from "@/app/services/repository/transactions/transactions";
+import { getOrderById } from "@/app/services/repository/order/order";
 
 export async function GET(req: Request) {
   try {
@@ -20,7 +21,15 @@ export async function GET(req: Request) {
         { status: 404 }
       );
 
-    return Response.json({ data, message: "Successful", status: 200 });
+    const order = await getOrderById(Number(data.orderRef));
+
+    if (!order)
+      return Response.json(
+        { message: "Order for this transaction not found" },
+        { status: 404 }
+      );
+
+    return Response.json({ data, order, message: "Successful", status: 200 });
   } catch (err) {
     console.log("Error getting transaction status", err);
     return Response.json(

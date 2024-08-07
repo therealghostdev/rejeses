@@ -1,5 +1,5 @@
 "use client";
-import { TransactionDataType } from "@/utils/types/types";
+import { TransactionDataType, OrderDataType } from "@/utils/types/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
@@ -9,19 +9,30 @@ type TransactionSuccessProps = Partial<
   Omit<TransactionDataType, "accessCode" | "fee" | "createdAt">
 >;
 
+type TransactionOrder = Partial<
+  Omit<OrderDataType, "createdAt" | "updatedAt" | "id" | "startDate" | "email">
+>;
+
 export default function Transaction_success({
   data,
+  order,
   close,
 }: {
   data: TransactionSuccessProps;
+  order: TransactionOrder;
   close: () => void;
 }) {
   const formatDateWithOrdinal = (dateString: string | undefined): string => {
     if (!dateString) return "";
+
     const date = new Date(dateString);
     const day = date.getDate();
-    const month = date.toLocaleString("default", { month: "long" });
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
     const year = date.getFullYear();
+    const hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+    const ampm = hours >= 12 ? "PM" : "AM";
+    const formattedHours = hours % 12 || 12; // Convert 24-hour to 12-hour format
 
     let ordinalSuffix;
     if (day > 3 && day < 21) {
@@ -43,8 +54,18 @@ export default function Transaction_success({
       }
     }
 
-    return `${day}${ordinalSuffix} ${month}, ${year}`;
+    return `${day}/${month}/${year} - ${formattedHours}:${minutes} ${ampm}`;
   };
+
+  function formatPrice(price: number | undefined): string | undefined {
+    if (price && price >= 1000) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else {
+      if (price) {
+        return price.toString();
+      }
+    }
+  }
 
   const router = useRouter();
 
@@ -67,7 +88,10 @@ export default function Transaction_success({
       className="lg:w-[45%] w-[95%] bg-white md:w-3/4 h-screen fixed gap-y-10 right-0 top-0 z-20 shadow-md shadow-[#0000000D] px-4 py-12 flex flex-col overflow-auto"
     >
       <button
-        onClick={close}
+        onClick={() => {
+          close();
+          setTimeout(() => router.push("/"), 500);
+        }}
         aria-label="close"
         className="w-8 h-8 rounded-full border border-[#DBE1E7] absolute right-10 top-8 text-[#090909] flex justify-center items-center"
       >
@@ -89,6 +113,16 @@ export default function Transaction_success({
                 TXID:
                 <span className="mx-4 inline-flex w-2/4 justify-end">
                   {data?.txid || "N/A"}
+                </span>
+              </li>
+            </div>
+
+            <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
+              <li className="list-none flex justify-between items-center">
+                NAME:
+                <span className="mx-4 inline-flex w-2/4 justify-end">
+                  {`${order?.firstName?.toLocaleUpperCase()} ${order.lastName?.toUpperCase()}` ||
+                    "N/A"}
                 </span>
               </li>
             </div>
@@ -124,9 +158,27 @@ export default function Transaction_success({
 
             <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
               <li className="list-none flex justify-between items-center">
+                TRAINING:
+                <span className="mx-4 inline-flex w-2/4 justify-end">
+                  {order?.courseType || "N/A"}
+                </span>
+              </li>
+            </div>
+
+            <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
+              <li className="list-none flex justify-between items-center">
                 DATE:
                 <span className="mx-4 inline-flex w-2/4 justify-end">
                   {formattedUpdatedAt}
+                </span>
+              </li>
+            </div>
+
+            <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
+              <li className="list-none flex justify-between items-center">
+                AMOUNT:
+                <span className="mx-4 inline-flex w-2/4 justify-end">
+                  {formatPrice(order?.amount) || "N/A"}
                 </span>
               </li>
             </div>
