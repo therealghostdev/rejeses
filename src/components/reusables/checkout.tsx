@@ -178,7 +178,9 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   });
 
   const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
-  const handleFormSubmit = async (e: FormEvent<HTMLButtonElement>) => {
+  const handleFormSubmit = async (
+    e: FormEvent<HTMLButtonElement> | KeyboardEvent
+  ) => {
     e.preventDefault();
     try {
       if (
@@ -325,8 +327,18 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     return price;
   }
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter") {
+      handleFormSubmit(e);
+    }
+  };
+
   return (
-    <section className="flex justify-center items-center w-full min-h-screen px-8 py-12">
+    <section
+      className="flex justify-center items-center w-full min-h-screen px-8 py-12"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+    >
       {(transactionStatus === "completed" ||
         transactionStatus === "failed" ||
         errorMessage !== "") && (
@@ -492,7 +504,11 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
       <AnimatePresence>
         {!isPolling && transactionStatus === "completed" && modal && (
-          <Transaction_success data={dataValue} close={closeModal} order={orderValue} />
+          <Transaction_success
+            data={dataValue}
+            close={closeModal}
+            order={orderValue}
+          />
         )}
       </AnimatePresence>
 
