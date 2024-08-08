@@ -1,6 +1,14 @@
 "use client";
 import { ClientPageProps } from "@/utils/types/types";
-import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useMemo,
+  useState,
+  KeyboardEvent as ReactKeyboardEvent,
+  useCallback,
+} from "react";
 import {
   FormDataTYpe,
   OrderResponse,
@@ -63,6 +71,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
   const [modal, setModal] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
+
+  const [price, setPrice] = useState<number>(0);
 
   const { isNigeria } = useNavigation();
 
@@ -179,7 +189,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
   const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
   const handleFormSubmit = async (
-    e: FormEvent<HTMLButtonElement> | KeyboardEvent
+    e: FormEvent<HTMLButtonElement> | ReactKeyboardEvent
   ) => {
     e.preventDefault();
     try {
@@ -311,7 +321,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     }
   }, []);
 
-  function getPrice(): number {
+  const getPrice = useCallback((): number => {
     let price;
     if (isNigeria && formData.currency === "NGN") {
       price = paymentInfo.price2;
@@ -325,9 +335,13 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       price = 0;
     }
     return price;
-  }
+  }, [isNigeria, formData.currency, paymentInfo.price, paymentInfo.price2]);
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+  useEffect(() => {
+    setPrice(getPrice());
+  }, [getPrice]);
+
+  const handleKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Enter") {
       handleFormSubmit(e);
     }
@@ -454,7 +468,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                     : (isNigeria || !isNigeria) && formData.currency === "USD"
                     ? "$"
                     : ""}
-                  {formatPrice(getPrice())}
+                  {formatPrice(price)}
                 </h1>
               </div>
             </div>
@@ -467,7 +481,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                   : (isNigeria || !isNigeria) && formData.currency === "USD"
                   ? "$"
                   : ""}
-                {formatPrice(getPrice())}
+                {formatPrice(price)}
               </h1>
             </div>
 
@@ -479,7 +493,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                   : (isNigeria || !isNigeria) && formData.currency === "USD"
                   ? "$"
                   : ""}
-                {formatPrice(getPrice())}
+                {formatPrice(price)}
               </h1>
             </div>
 

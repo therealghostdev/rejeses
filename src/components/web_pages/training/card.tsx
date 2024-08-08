@@ -2,7 +2,7 @@
 import { CardProps } from "@/utils/types/types";
 import Link from "next/link";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { usePayment, useNavigation } from "@/utils/context/payment";
 
@@ -22,13 +22,12 @@ export default function Card(props: CardProps) {
     }
   }
 
-  useEffect(() => {
+  const updatePrice = useCallback(() => {
     const priceArray = props.price?.individuals
       .map((item) =>
         isNigeria ? item.training_only?.price : item.training_only?.price2
       )
       .filter((price) => price && !isNaN(price))[0];
-    // const price = priceArray ? priceArray[0] : 0;
 
     const priceArray2 = props.price?.individuals
       .map((item) =>
@@ -47,12 +46,27 @@ export default function Card(props: CardProps) {
       }${formatPrice(priceArray2)} for this.`,
       is_group: false,
     }));
-  }, [props.price?.individuals]);
+  }, [
+    props.price?.individuals,
+    isNigeria,
+    props.id2,
+    props.date,
+    setPaymentInfo,
+  ]);
+
+  useEffect(() => {
+    updatePrice();
+  }, [updatePrice]);
+
+  const handleCardClick = () => {
+    updatePrice();
+    goTo.push(`/training/${props.id2}`);
+  };
 
   return (
     <div
-      onClick={() => goTo.push(`/training/${props.id2}`)}
-      className="rounded-md px-6 py-4 w-full flex flex-col gap-6"
+      onClick={handleCardClick}
+      className="rounded-md px-6 py-4 w-full flex flex-col gap-6 cursor-pointer"
       key={props.id}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -71,6 +85,10 @@ export default function Card(props: CardProps) {
         <Link
           className="bg-transparent flex items-center py-2 px-2 text-[#89C13E] font-semibold font-bricolage_grotesque transition-all duration-300"
           href={`/training/${props.id2}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            updatePrice();
+          }}
         >
           REGISTER
           <span
