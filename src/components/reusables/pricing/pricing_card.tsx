@@ -135,7 +135,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
               // href={training_only.register_link}
               className="bg-[#89C13E] text-white w-full inline-block p-4 text-center rounded-md font-bricolage_grotesque"
             >
-              Register
+              Enroll Now
             </button>
           </div>
         </div>
@@ -204,7 +204,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
               // href={training_with_mentorship.register_link}
               className="bg-[#89C13E] text-white w-full font-bricolage_grotesque inline-block p-4 text-center rounded-md"
             >
-              Register
+              Enroll Now
             </button>
           </div>
         </div>

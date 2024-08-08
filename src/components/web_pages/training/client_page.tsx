@@ -145,7 +145,7 @@ export default function Training_page() {
           </p>
         </div>
 
-        <div className="flex md:gap-x-4 gap-x-2 lg:px-12 md:px-6 w-full sm_btn-container">
+        {/* <div className="flex md:gap-x-4 gap-x-2 lg:px-12 md:px-6 w-full sm_btn-container">
           <Button
             click={() => {
               getPaymentData();
@@ -166,7 +166,7 @@ export default function Training_page() {
             </span>
             View Class Schedule
           </Link>
-        </div>
+        </div> */}
 
         {trainingItem.image && trainingItem.image !== "" && (
           <div className="lg:px-12 md:px-3 lg:h-[700px] h-[50vw] lg:w-[100%] my-4">
@@ -226,7 +226,7 @@ export default function Training_page() {
             </p>
 
             <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
-              <Button
+              {/* <Button
                 click={() => {
                   getPaymentData();
                   // window.location.href = `/training/${trainingItem.id}`;
@@ -235,7 +235,7 @@ export default function Training_page() {
                 url={`/training/${trainingItem.id}`}
                 transition_class="transition_button4"
                 bg="#89C13E"
-              />
+              /> */}
 
               <Link
                 onClick={getPaymentData}

@@ -74,6 +74,10 @@ export default function Nav_desktop() {
     const cleanLinkUrl = linkUrl.replace(/\/$/, "");
     const cleanPathname = decodedPathname.replace(/\/$/, "");
 
+    if (cleanLinkUrl === "") {
+      return cleanPathname === "";
+    }
+
     return (
       cleanPathname === cleanLinkUrl || cleanPathname.startsWith(cleanLinkUrl)
     );
@@ -114,7 +118,7 @@ export default function Nav_desktop() {
 
       {!isMobile && (
         <>
-          <section className="flex lg:ml-12 lg:mr-12 items-center">
+          <section className="flex lg:ml-12 lg:mr-12 justify-between items-center">
             <ul className="flex lg:space-x-10 space-x-4">
               {links.map((link, index) => (
                 <li
@@ -134,7 +138,7 @@ export default function Nav_desktop() {
             </ul>
           </section>
 
-          <section className="flex space-x-4">
+          {/* <section className="flex space-x-4"> // could bring this back
             {linkButtons.map((button, index) => (
               <Link
                 key={index}
@@ -151,7 +155,7 @@ export default function Nav_desktop() {
                 {button.label.toUpperCase()}
               </Link>
             ))}
-          </section>
+          </section> */}
         </>
       )}
 
@@ -192,7 +196,7 @@ export default function Nav_desktop() {
                   </ul>
                 </section>
 
-                <section className="flex flex-col space-y-4">
+                {/* <section className="flex flex-col space-y-4"> // could bring this back
                   {linkButtons.map((button, index) => (
                     <Link
                       key={index}
@@ -211,7 +215,7 @@ export default function Nav_desktop() {
                       {button.label.toUpperCase()}
                     </Link>
                   ))}
-                </section>
+                </section> */}
               </motion.div>
             )}
           </AnimatePresence>
