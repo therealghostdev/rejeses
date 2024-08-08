@@ -67,6 +67,7 @@ export interface UniqueComponentsProps {
 export interface TrainingOption {
   name: string;
   price: number;
+  price2: number;
   payment_type: string;
   payment_description: string;
   extra_details: string[];
@@ -132,6 +133,7 @@ export interface Payment {
   order_summary: string;
   includes: string[];
   total: number;
+  total2: number;
   curriculum: Curriculum[];
 }
 
@@ -160,11 +162,108 @@ export interface TrainingOption1 {
   pricing: PricingData;
   class_schedule: ClassSchedule[];
 }
+
+export interface ClientPageProps {
+  pricingItem?: {
+    id: number;
+    pricing: {
+      group: Record<string, any>[];
+      individuals: Record<string, any>[];
+    };
+    payment: {
+      order_summary: string;
+      total: number;
+      total2?: number;
+      includes: string[];
+    };
+  };
+}
+
+export interface FormDataTYpe {
+  firstName: string;
+  lastName: string;
+  email: string;
+  currency: string;
+}
+
 // !-------------------------------------------- end for class schedule --------------------------------------!
 export interface PaymentInfo {
-  training_name: string;
   price: number;
-  duration: string;
-  name: string;
-  training_id: number | string | null;
+  price2: number;
+  training_id: number | null;
+  training_type: string;
+  start_date: string;
+  training_option?: string;
+  is_group?: boolean;
 }
+
+export interface OrderResponse {
+  data: string;
+}
+
+export interface TransactionResponseType {
+  data: { authorization_url: string; access_code: string; reference: string };
+}
+
+export interface TransactionDataType {
+  id: number;
+  txid: string;
+  orderRef?: number;
+  pid: string;
+  reference: string;
+  status: string;
+  accessCode?: string;
+  currency: string;
+  fee?: number;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface OrderDataType {
+  id: number;
+  firstName: string;
+  lastName: string;
+  courseType: string;
+  startDate: string;
+  email: string;
+  amount: number;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// !--------------------------------------------DB & Server Types -----------------------------------------------------!
+export interface OrderType {
+  firstName: string;
+  lastName: string;
+  courseType: string;
+  startDate: string;
+  email: string;
+  amount: number;
+  status: StatusType;
+}
+
+export enum StatusType {
+  pending = "pending",
+  completed = "completed",
+  failed = "failed",
+  canceled = "canceled",
+}
+
+export enum CurrencyType {
+  naira = "naira",
+  dollar = "dollar",
+}
+
+export interface TransactionType {
+  txid: string;
+  orderRef?: number;
+  pid: string;
+  reference: string;
+  status: StatusType;
+  accessCode: string;
+  currency: CurrencyType;
+  fee: number;
+}
+
+// !-----------------------------------------End of DB & Server Types -------------------------------------------------!

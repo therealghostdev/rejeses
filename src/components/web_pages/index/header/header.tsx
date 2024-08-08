@@ -60,7 +60,7 @@ export default function Header() {
             you learn and master project management.
           </p>
 
-          <div className="w-full flex justify-center items-center my-4">
+          {/* <div className="w-full flex justify-center items-center my-4"> // could bring this back
             <span className="mx-2 margin-sm-override">
               <Link
                 // onClick={handleEnrollClick}
@@ -79,7 +79,7 @@ export default function Header() {
                 Book Session
               </Link>
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
 

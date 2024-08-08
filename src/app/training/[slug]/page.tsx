@@ -4,13 +4,13 @@ import ClientPage from "@/components/web_pages/training/payment_summary";
 
 export async function generateStaticParams() {
   return data.map((item) => ({
-    slug1: item.id.toString(),
+    slug: item.id.toString(),
   }));
 }
 
-export default function Page({ params }: { params: { slug1: string } }) {
+export default function Page({ params }: { params: { slug: string } }) {
   const pricingItem = data.find(
-    (item) => item.id.toString() === params.slug1.toString()
+    (item) => item.id.toString() === params.slug.toString()
   );
 
   if (!pricingItem) {
