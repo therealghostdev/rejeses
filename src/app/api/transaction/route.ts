@@ -94,7 +94,6 @@ export async function POST(req: Request) {
     }
 
     const { ref, pid, currency, _fee } = body;
-    console.log(currency);
 
     const orderRef = Number(ref);
     const fee = Number(_fee);
@@ -183,6 +182,8 @@ export async function POST(req: Request) {
       paystack_trans_data,
       paystack_req_config
     );
+
+    response ? console.log("response", response) : console.log("no response"); //doesn't run on USD meaning response is false for usd transfers
 
     if (response.status) {
       requiredFields.reference = response.data?.data?.reference;

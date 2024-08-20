@@ -18,7 +18,10 @@ export default function Transaction_failed({ close }: { close: () => void }) {
       className="lg:w-[45%] w-[95%] bg-white md:w-3/4 h-screen fixed gap-y-10 right-0 top-0 z-20 shadow-md shadow-[#0000000D] px-4 py-12 flex flex-col overflow-auto"
     >
       <button
-        onClick={close}
+        onClick={() => {
+          close();
+          setTimeout(() => router.push("/"), 500);
+        }}
         aria-label="close"
         className="w-8 h-8 rounded-full border border-[#DBE1E7] absolute right-10 top-8 text-[#090909] flex justify-center items-center"
       >

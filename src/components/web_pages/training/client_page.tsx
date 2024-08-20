@@ -140,7 +140,7 @@ export default function Training_page() {
           </h1>
           <p className="text-wrap lg:max-w-[80%] lg:text-[24px] text-[16px]">
             For those who miss the live sessions due to conflicting schedules or
-            other reasons, the recordings will be made available 1-2 hours after
+            other reasons, the recordings will be made available 30 minutes after
             the class ends.
           </p>
         </div>
