@@ -8,7 +8,7 @@ import whyUsData from "@/utils/data/why_us_data.json";
 import ClientImage from "@/components/web_pages/training/client_image";
 import Pricing from "@/components/reusables/pricing/pricing";
 import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
-import { usePayment } from "@/utils/context/payment";
+import { usePayment, useNavigation } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
 import Certification from "@/components/reusables/certification";
 
@@ -16,11 +16,33 @@ export default function Training_page() {
   const trainingItem = data[0];
   const whyUsItems = whyUsData.filter((item) => item.tag === "training");
   const pricingRef = useRef<HTMLDivElement | null>(null);
-  const { setPaymentInfo } = usePayment();
+  const { setPaymentInfo, paymentInfo } = usePayment();
+
+  const { isNigeria } = useNavigation();
+
+  function formatPrice(price: number | undefined): string {
+    if (price && price >= 1000) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else {
+      return price?.toString() || "";
+    }
+  }
 
   // Get the price for the individuals' training option
   const individualPrice = trainingItem.pricing.individuals
-    .map((item) => Number(item.training_only?.price))
+    .map((item) =>
+      isNigeria
+        ? Number(item.training_only?.price)
+        : Number(item.training_only?.price2)
+    )
+    .filter((price) => !isNaN(price))[0];
+
+  const individualPrice2 = trainingItem.pricing.individuals
+    .map((item) =>
+      isNigeria
+        ? Number(item.training_only?.price2)
+        : Number(item.training_only?.price)
+    )
     .filter((price) => !isNaN(price))[0];
 
   // Update payment information
@@ -28,13 +50,23 @@ export default function Training_page() {
     setPaymentInfo((prev) => ({
       ...prev,
       price: individualPrice,
+      price2: individualPrice2,
       training_id: trainingItem.id,
-      training_option: `You are subscribing to rejeses consult 4-week training plan. You will be charged &#x24;${individualPrice} for this.`,
+      training_option: `You are subscribing to rejeses consult 4-week training plan. You will be charged ${
+        isNigeria ? "NGN " : "$"
+      }${formatPrice(individualPrice2)} for this.`,
       is_group: false,
     }));
   };
+  
 
   useEffect(() => {
+    setPaymentInfo((prev) => ({
+      ...prev,
+      start_date: trainingItem.start_date,
+      training_type: "Project Management Training",
+    }));
+
     if (window.location.hash === "#pricing" && pricingRef.current) {
       pricingRef.current.scrollIntoView({ behavior: "smooth" });
     }
@@ -108,12 +140,12 @@ export default function Training_page() {
           </h1>
           <p className="text-wrap lg:max-w-[80%] lg:text-[24px] text-[16px]">
             For those who miss the live sessions due to conflicting schedules or
-            other reasons, the recordings will be made available 1-2 hours after
+            other reasons, the recordings will be made available 30 minutes after
             the class ends.
           </p>
         </div>
 
-        <div className="flex md:gap-x-4 gap-x-2 lg:px-12 md:px-6 w-full sm_btn-container">
+        {/* <div className="flex md:gap-x-4 gap-x-2 lg:px-12 md:px-6 w-full sm_btn-container">
           <Button
             click={() => {
               getPaymentData();
@@ -134,7 +166,7 @@ export default function Training_page() {
             </span>
             View Class Schedule
           </Link>
-        </div>
+        </div> */}
 
         {trainingItem.image && trainingItem.image !== "" && (
           <div className="lg:px-12 md:px-3 lg:h-[700px] h-[50vw] lg:w-[100%] my-4">
@@ -194,7 +226,7 @@ export default function Training_page() {
             </p>
 
             <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
-              <Button
+              {/* <Button
                 click={() => {
                   getPaymentData();
                   // window.location.href = `/training/${trainingItem.id}`;
@@ -203,7 +235,7 @@ export default function Training_page() {
                 url={`/training/${trainingItem.id}`}
                 transition_class="transition_button4"
                 bg="#89C13E"
-              />
+              /> */}
 
               <Link
                 onClick={getPaymentData}

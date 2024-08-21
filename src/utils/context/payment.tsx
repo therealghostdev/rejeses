@@ -1,29 +1,74 @@
-"use client"
-import React, { createContext, useState, useContext } from 'react';
+"use client";
+import React, { createContext, useState, useContext, useEffect } from "react";
+import { PaymentInfo } from "../types/types";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-interface PaymentInfo {
-  price: number;
-  training_id: number | null;
-  training_option?: string;
-  is_group?: boolean;
+interface NavigationContextType {
+  isNigeria: boolean;
+  setIsNigeria: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const PaymentContext = createContext<{
   paymentInfo: PaymentInfo;
   setPaymentInfo: React.Dispatch<React.SetStateAction<PaymentInfo>>;
 }>({
-  paymentInfo: { price: 0, training_id: null },
-  setPaymentInfo: () => {}
+  paymentInfo: {
+    price: 0,
+    price2: 0,
+    training_id: null,
+    training_type: "",
+    start_date: "",
+  },
+  setPaymentInfo: () => {},
 });
+
+// Create the navigation context
+const NavigationContext = createContext<NavigationContextType>({
+  isNigeria: false,
+  setIsNigeria: () => {},
+});
+
+export const useNavigation = () => useContext(NavigationContext);
 
 export const usePayment = () => useContext(PaymentContext);
 
-export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({ price: 0, training_id: null });
+const queryClient = new QueryClient();
+
+export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [paymentInfo, setPaymentInfo] = useState<PaymentInfo>({
+    price: 0,
+    price2: 0,
+    training_id: null,
+    training_type: "",
+    start_date: "",
+  });
+
+  const [isNigeria, setIsNigeria] = useState(false);
+
+  useEffect(() => {
+    const checkLocation = async () => {
+      try {
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+        setIsNigeria(data.country_code === "NG");
+      } catch (error) {
+        console.error("Error checking location:", error);
+        setIsNigeria(false);
+      }
+    };
+
+    checkLocation();
+  }, []);
 
   return (
-    <PaymentContext.Provider value={{ paymentInfo, setPaymentInfo }}>
-      {children}
-    </PaymentContext.Provider>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContext.Provider value={{ isNigeria, setIsNigeria }}>
+        <PaymentContext.Provider value={{ paymentInfo, setPaymentInfo }}>
+          {children}
+        </PaymentContext.Provider>
+      </NavigationContext.Provider>
+    </QueryClientProvider>
   );
 };

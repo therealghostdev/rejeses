@@ -24,6 +24,7 @@
       "order_summary": "You are subscribing to rejeses consult 4-week training plan.",
       "includes": ["/trophy.svg", "Certificate of completion"],
       "total": 100,
+      "total2": 30000,
       "curriculum": [
         {
           "week": "Week 1",
@@ -53,6 +54,7 @@
           "training_only": {
             "name": "Training only",
             "price": 100,
+            "price2": 30000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained only",
             "payment_summary": "You are subscribing to rejeses consult 4-week training plan.",
@@ -69,6 +71,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentoring",
             "price": 400,
+            "price2": 35000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained and mentored",
             "payment_summary": "You are subscribing to rejeses consult 4-week training plus 6-month mentorship plan.",
@@ -92,6 +95,7 @@
           "training_only": {
             "name": "Training only",
             "price": 80,
+            "price2": 25000,
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained only",
@@ -109,6 +113,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentoring",
             "price": 380,
+            "price2": 38000,
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wish to be trained and mentored",
@@ -182,6 +187,7 @@
       "order_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
       "includes": ["/trophy.svg", "Certificate on completion"],
       "total": 100,
+      "total2": 35000,
       "curriculum": [
         {
           "week": "week 1",
@@ -211,6 +217,7 @@
           "training_only": {
             "name": "Training only",
             "price": 100,
+            "price2": 35000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
@@ -227,6 +234,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentorship",
             "price": 500,
+            "price2": 40000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-month mentorship plan.",
@@ -250,6 +258,7 @@
           "training_only": {
             "name": "Training only",
             "price": 80,
+            "price2": 25000,
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
@@ -267,6 +276,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentorship",
             "price": 400,
+            "price2": 38000,
             "amount_saved": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
@@ -340,6 +350,7 @@
       "order_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
       "includes": ["/trophy.svg", "Certificate on completion"],
       "total": 100,
+      "total2": 30000,
       "curriculum": [
         {
           "week": "week 1",
@@ -369,6 +380,7 @@
           "training_only": {
             "name": "Training only",
             "price": 100,
+            "price2": 35000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
@@ -385,6 +397,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentorship",
             "price": 500,
+            "price2": 40000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-months mentorship plan.",
@@ -408,6 +421,7 @@
           "training_only": {
             "name": "Training only",
             "price": 80,
+            "price2": 25000,
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
@@ -425,6 +439,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentorship",
             "price": 400,
+            "price2": 38000,
             "amount_saved": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
@@ -498,6 +513,7 @@
       "order_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
       "includes": ["/trophy.svg", "Certificate on completion"],
       "total": 100,
+      "total2": 30000,
       "curriculum": [
         {
           "week": "week 1",
@@ -527,6 +543,7 @@
           "training_only": {
             "name": "Training only",
             "price": 100,
+            "price2": 30000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
@@ -543,6 +560,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentorship",
             "price": 500,
+            "price2": 40000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-months mentorship plan.",
@@ -566,6 +584,7 @@
           "training_only": {
             "name": "Training only",
             "price": 80,
+            "price2": 25000,
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
@@ -583,6 +602,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentorship",
             "price": 400,
+            "price2": 35000,
             "amount_saved": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
@@ -656,6 +676,7 @@
       "order_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
       "includes": ["/trophy.svg", "Certificate on completion"],
       "total": 100,
+      "total2": 30000,
       "curriculum": [
         {
           "week": "week 1",
@@ -685,6 +706,7 @@
           "training_only": {
             "name": "Training only",
             "price": 100,
+            "price2": 30000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
@@ -701,6 +723,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentorship",
             "price": 500,
+            "price2": 40000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "payment_summary": "You are subscribing to rejeses consult 4-week training plus 6-months mentorship plan.",
@@ -724,6 +747,7 @@
           "training_only": {
             "name": "Training only",
             "price": 80,
+            "price2": 25000,
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
@@ -741,6 +765,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentorship",
             "price": 400,
+            "price2": 30000,
             "amount_saved": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
@@ -814,6 +839,7 @@
       "order_summary": "",
       "includes": ["/trophy.svg", "Certificate on completion"],
       "total": 100,
+      "total2": 30000,
       "curriculum": [
         {
           "week": "week 1",
@@ -843,6 +869,7 @@
           "training_only": {
             "name": "Training only",
             "price": 100,
+            "price2": 30000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
             "payment_summary": "You are subscribing to rejeses consult 4-weeks training plan.",
@@ -859,6 +886,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentorship",
             "price": 500,
+            "price2": 40000,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",
             "payment_summary": "You are subscribing to rejeses consult 4-weeks training plus 6-months mentorship plan.",
@@ -882,6 +910,7 @@
           "training_only": {
             "name": "Training only",
             "price": 80,
+            "price2": 25000,
             "amount_saved": 20,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained only",
@@ -899,6 +928,7 @@
           "training_with_mentorship": {
             "name": "Training & Mentorship",
             "price": 400,
+            "price2": 30000,
             "amount_saved": 100,
             "payment_type": "Single Payment",
             "payment_description": "For individuals who wants to be trained and mentored",

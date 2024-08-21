@@ -2,7 +2,7 @@
 import { CheckIcon } from "@radix-ui/react-icons";
 import button from "next/link";
 import { PriceCardProps } from "@/utils/types/types";
-import { usePayment } from "@/utils/context/payment";
+import { usePayment, useNavigation } from "@/utils/context/payment";
 import { usePathname, useRouter, redirect } from "next/navigation";
 import { useEffect } from "react";
 
@@ -11,10 +11,12 @@ export default function PriceCard({ data, id }: PriceCardProps) {
 
   const directTo = useRouter();
 
-  const pathname = usePathname();
-  const { setPaymentInfo } = usePayment();
+  const { isNigeria } = useNavigation();
 
-  const registerBtnClick = (item: number, option: string) => {
+  const pathname = usePathname();
+  const { setPaymentInfo, paymentInfo } = usePayment();
+
+  const registerBtnClick = (item: number, option: string, item2: number) => {
     const currentPath = decodeURIComponent(pathname).split("/")[1];
     if (currentPath === "training") {
       const routePath = decodeURIComponent(pathname).split("/")[2];
@@ -22,8 +24,10 @@ export default function PriceCard({ data, id }: PriceCardProps) {
       setPaymentInfo((prev) => ({
         ...prev,
         price: item,
+        price2: item2,
         training_id: Number(id),
         training_option: option,
+        training_type: "Project Management Training",
       }));
       const goTo = `/training/${id}`;
       directTo.push(goTo);
@@ -31,7 +35,9 @@ export default function PriceCard({ data, id }: PriceCardProps) {
       setPaymentInfo((prev) => ({
         ...prev,
         price: item,
+        price2: item2,
         training_option: option,
+        training_type: "Project Management Mentoring",
       }));
       const goTo = `/${currentPath}/pricing`;
       directTo.push(goTo);
@@ -45,11 +51,20 @@ export default function PriceCard({ data, id }: PriceCardProps) {
     setPaymentInfo((prev) => ({ ...prev, price: 0, training_id: null }));
   };
 
+  function formatPrice(price: number): string {
+    if (price >= 1000) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else {
+      return price.toString();
+    }
+  }
+
   useEffect(() => {
     const val = ["Project", "pricing", "training"];
     const includesAny = val.some((substring) => pathname.includes(substring));
     if (!includesAny) resetPriceInfo();
   }, []);
+  
 
   return (
     <>
@@ -60,7 +75,14 @@ export default function PriceCard({ data, id }: PriceCardProps) {
               {training_only.name}
             </h2>
             <p className="text-2xl font-bold font-bricolage_grotesque text-[#000000]">
-              ${training_only.price}
+              {isNigeria ? (
+                <span className="mr-2">NGN</span>
+              ) : (
+                <span className="mr-2">$</span>
+              )}
+              {isNigeria
+                ? formatPrice(training_only.price2)
+                : formatPrice(training_only.price)}
             </p>
             <div className="w-full mt-5 flex flex-col gap-2 my-2">
               <h1 className="text-lg font-bold text-[#090909]">
@@ -91,16 +113,29 @@ export default function PriceCard({ data, id }: PriceCardProps) {
             <button
               onClick={() =>
                 registerBtnClick(
-                  training_only.price,
+                  isNigeria ? training_only.price : training_only.price2,
                   decodeURIComponent(pathname).split("/")[1] === "training"
-                    ? `You are subscribing to rejeses consult 4-week training plan. You will be charged  &#x24;${training_only.price} for this.`
-                    : `You are subscribing to rejeses consult 6-month mentoring plan. You will be charged  &#x24;${training_only.price} for this.`
+                    ? `You are subscribing to rejeses consult 4-week training plan. You will be charged  ${
+                        isNigeria ? "NGN " : "$"
+                      }${
+                        isNigeria
+                          ? formatPrice(training_only.price2)
+                          : formatPrice(training_only.price)
+                      } for this.`
+                    : `You are subscribing to rejeses consult 6-month mentoring plan. You will be charged ${
+                        isNigeria ? "NGN " : "$"
+                      }${
+                        isNigeria
+                          ? formatPrice(training_only.price2)
+                          : formatPrice(training_only.price)
+                      } for this.`,
+                  isNigeria ? training_only.price2 : training_only.price
                 )
               }
               // href={training_only.register_link}
               className="bg-[#89C13E] text-white w-full inline-block p-4 text-center rounded-md font-bricolage_grotesque"
             >
-              Register
+              Enroll Now
             </button>
           </div>
         </div>
@@ -113,7 +148,14 @@ export default function PriceCard({ data, id }: PriceCardProps) {
               {training_with_mentorship.name}
             </h2>
             <p className="text-2xl font-bold font-bricolage_grotesque text-[#000000]">
-              ${training_with_mentorship.price}
+              {isNigeria ? (
+                <span className="mr-2">NGN</span>
+              ) : (
+                <span className="mr-2">$</span>
+              )}
+              {isNigeria
+                ? formatPrice(training_with_mentorship.price2)
+                : formatPrice(training_with_mentorship.price)}
             </p>
             <div className="w-full mt-5 flex flex-col gap-2 my-2">
               <h1 className="text-lg font-bold">
@@ -144,14 +186,25 @@ export default function PriceCard({ data, id }: PriceCardProps) {
             <button
               onClick={() =>
                 registerBtnClick(
-                  training_with_mentorship.price,
-                  `You are subscribing to rejeses consult 4-week training plus 6-month mentoring plan. You will be charged  &#x24;${training_with_mentorship.price} for this.`
+                  isNigeria
+                    ? training_with_mentorship.price
+                    : training_with_mentorship.price2,
+                  `You are subscribing to rejeses consult 4-week training plus 6-month mentoring plan. You will be charged ${
+                    isNigeria ? "NGN " : "$"
+                  }${
+                    isNigeria
+                      ? formatPrice(training_with_mentorship.price2)
+                      : formatPrice(training_with_mentorship.price)
+                  } for this.`,
+                  isNigeria
+                    ? training_with_mentorship.price2
+                    : training_with_mentorship.price
                 )
               }
               // href={training_with_mentorship.register_link}
               className="bg-[#89C13E] text-white w-full font-bricolage_grotesque inline-block p-4 text-center rounded-md"
             >
-              Register
+              Enroll Now
             </button>
           </div>
         </div>

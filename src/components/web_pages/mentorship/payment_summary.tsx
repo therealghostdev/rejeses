@@ -1,22 +1,72 @@
 "use client";
 import React from "react";
 import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
-import { usePayment } from "@/utils/context/payment";
+import { usePayment, useNavigation } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
+import { useRouter } from "next/navigation";
 
 export default function MentorshipPaymentSummary() {
-  const { paymentInfo } = usePayment();
+  const { paymentInfo, setPaymentInfo } = usePayment();
+  const { isNigeria } = useNavigation();
 
   const formatTrainingOption = (text: string) => {
     return text.replace(/rejeses consult/gi, "<b><i>rejeses consult</i></b>");
   };
 
+  function formatPrice(price: number): string {
+    if (price >= 1000) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else {
+      return price.toString();
+    }
+  }
+
   const trainingOption = paymentInfo.training_option
     ? formatTrainingOption(paymentInfo.training_option)
-    : `You are subscribing to <b><i>rejeses consult</i></b> 6-month mentoring plan. You will be charged &#x24;300 for this.`;
+    : `You are subscribing to <b><i>rejeses consult</i></b> 6-month mentoring plan. You will be charged ${
+        isNigeria ? "NGN 50,000" : "$300"
+      } for this.`;
+
+  const router = useRouter();
+  
 
   const pay = () => {
-    // console.log(paymentInfo);
+    const date = new Date();
+    date.setDate(date.getDate() + 7); // in a week
+    const day = date.getDate();
+    const month = date.toLocaleString("default", { month: "long" });
+    const year = date.getFullYear();
+
+    // Get the appropriate ordinal suffix for the day
+    let ordinalSuffix;
+    if (day > 3 && day < 21) {
+      ordinalSuffix = "th";
+    } else {
+      const lastDigit = day % 10;
+      if (lastDigit === 1) {
+        ordinalSuffix = "st";
+      } else if (lastDigit === 2) {
+        ordinalSuffix = "nd";
+      } else if (lastDigit === 3) {
+        ordinalSuffix = "rd";
+      } else {
+        ordinalSuffix = "th";
+      }
+    }
+
+    const formattedDate = `${day}${ordinalSuffix} ${month}, ${year}`;
+    setPaymentInfo((prev) => ({ ...prev, start_date: formattedDate }));
+    router.push("pricing/checkout");
+  };
+
+  const renderPrice = () => {
+    if (paymentInfo.price === 0) {
+      return isNigeria
+        ? formatPrice(50000)
+        : formatPrice(300);
+    } else {
+      return formatPrice(paymentInfo.price2);
+    }
   };
 
   return (
@@ -41,7 +91,8 @@ export default function MentorshipPaymentSummary() {
             <div className="flex justify-between w-full font-bricolage_grotesque">
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
-                &#x24;{paymentInfo.price || 300}
+                {isNigeria ? <span className="mr-2">NGN</span> : "$"}
+                {renderPrice()}
               </span>
             </div>
           </div>

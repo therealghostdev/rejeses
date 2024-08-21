@@ -1,69 +1,64 @@
 "use client";
 import Image from "next/image";
 import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
-import { usePayment } from "@/utils/context/payment";
+import { usePayment, useNavigation } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
 import { useEffect, useState } from "react";
-
-interface ClientPageProps {
-  pricingItem: {
-    id: number;
-    pricing: {
-      group: Record<string, any>[];
-      individuals: Record<string, any>[];
-    };
-    payment: {
-      order_summary: string;
-      total: number;
-      includes: string[];
-    };
-  };
-}
+import { ClientPageProps } from "@/utils/types/types";
 
 export default function TrainingPayment({ pricingItem }: ClientPageProps) {
-  const { paymentInfo, setPaymentInfo } = usePayment();
+  const { paymentInfo } = usePayment();
   const [formattedSummary, setFormattedSummary] = useState<string>("");
-  const [generalPrice, setGeneralPrice] = useState<number>(0);
+  const { isNigeria } = useNavigation();
 
   const formatTrainingOption = (text: string) => {
     return text.replace(/rejeses consult/gi, "<b><i>rejeses consult</i></b>");
   };
 
-  // Function to format the payment summary
+  function formatPrice(price: number | undefined): string {
+    if (price && price >= 1000) {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else {
+      return price?.toString() || "";
+    }
+  }
+
   const formatPaymentSummary = () => {
+    if (!pricingItem) return "";
     const { training_option } = paymentInfo;
 
     if (!training_option || training_option === "") {
-      return `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged &#x24;${pricingItem.payment.total} for this.`;
+      return `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged ${
+        isNigeria ? "NGN " : "$"
+      }${
+        isNigeria
+          ? formatPrice(pricingItem?.payment.total2)
+          : formatPrice(pricingItem?.payment.total)
+      } for this.`;
     }
 
     return formatTrainingOption(training_option);
   };
 
-  useEffect(() => {
-    setFormattedSummary(formatPaymentSummary());
-  }, [paymentInfo, pricingItem]);
-
-  useEffect(() => {
-    const priceArray = pricingItem.pricing.individuals.map(
-      (item) => item.price
-    );
-    const price = priceArray.length > 0 ? priceArray[0] : 0;
-
-    setGeneralPrice(price);
-  }, []);
-
-  const enrollBtnClick = () => {
-    if (paymentInfo.price && paymentInfo.price === 0) {
-      setPaymentInfo((prev) => ({ ...prev, price: pricingItem.payment.total }));
+  const renderPrice = () => {
+    if (paymentInfo.price === 0) {
+      return isNigeria
+        ? formatPrice(pricingItem?.payment.total2)
+        : formatPrice(pricingItem?.payment.total);
+    } else {
+      return formatPrice(paymentInfo.price2);
     }
   };
+
+  useEffect(() => {
+    setFormattedSummary(formatPaymentSummary());
+  }, [paymentInfo, pricingItem, isNigeria]);
 
   return (
     <section className="w-full px-8 flex flex-col gap-12 py-12 justify-center items-center">
       <div className="md:max-w-[98%] w-full py-12 gap-6 md:px-8 flex flex-col gap-y-6 justify-center">
         <Dynamic_nav
-          link1={`/training/${pricingItem.id}`}
+          link1={`/training/${pricingItem?.id}`}
           link2="/training"
           link_text1="Upcoming Cohorts"
           link_text2="Project Management Training"
@@ -75,9 +70,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
             </h1>
             <p
               dangerouslySetInnerHTML={{
-                __html:
-                  formattedSummary ||
-                  `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged &#x24;${pricingItem.payment.total} for this.`,
+                __html: formattedSummary,
               }}
             ></p>
             <div className="w-full flex flex-col gap-4">
@@ -85,25 +78,26 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
               <p className="flex gap-x-3 items-center">
                 <span>
                   <Image
-                    src={pricingItem.payment.includes[0]}
+                    src={pricingItem?.payment.includes[0] || ""}
                     alt="image"
                     width={20}
                     height={100}
                   />
                 </span>
-                {pricingItem.payment.includes[1]}
+                {pricingItem?.payment.includes[1]}
               </p>
             </div>
             <div className="flex justify-between w-full font-bricolage_grotesque">
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
-                &#x24;{paymentInfo.price || pricingItem.payment.total}
+                {isNigeria ? "NGN" : "$"}
+                {renderPrice()}
               </span>
             </div>
           </div>
           <div className="flex md:gap-x-4 gap-x-2 md:px-6 justify-center items-center py-4 w-full sm_btn-container flex-wrap">
             <Button
-              click={enrollBtnClick}
+              url={`${paymentInfo.training_id}/checkout`}
               text="Continue"
               bg="#89C13E"
               transition_class="transition_button4"
