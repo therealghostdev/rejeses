@@ -18,6 +18,13 @@ Learn and become excellent at project management.
 
 **FOR BACKEND DEV ENVIRONMENT SETUP**:
 
+- Create a .env file in project root directory and add the following keys:
+
+`
+PAYSTACK_SECRET=samplesecret (request test key from project owner or create get yours from paystack)
+DATABASE_URL=postgresql://rejeses:1234@localhost:5432/rejeses?schema=public
+`
+
 *Ensure development server is down if running and you have docker installed*
 
 **THEN RUN**:
@@ -29,7 +36,8 @@ Learn and become excellent at project management.
 
 - npx prisma db seed #(if this command runs successfully without errors, start the development server again as described earlier)  
 ```
-If you experience any issue setting up any of the dev environment, please contact the project maintainer/owner
+
+If you experience any issue setting up any of the dev environments, please contact the project maintainer/owner
 
 
 ***GRACIAS🪄***
