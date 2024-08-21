@@ -4,7 +4,7 @@ Learn and become excellent at project management.
 
 ## Getting started with the development server
 
-RUN:
+**RUN**:
 ```bash
 - git clone https://github.com/therealghostdev/rejeses.git
 
@@ -16,11 +16,11 @@ RUN:
 - npm run dev / yarn dev #(To start development server)
 ```
 
-For backend dev environment setup:
+**FOR BACKEND DEV ENVIRONMENT SETUP**:
 
-Ensure development server is down if running and you have docker installed
+*Ensure development server is down if running and you have docker installed*
 
-then run:
+**THEN RUN**:
 
 ```bash
 - docker-compose up -d
@@ -30,4 +30,6 @@ then run:
 - npx prisma db seed #(if this command runs successfully without errors, start the development server again as described earlier)  
 ```
 If you experience any issue setting up any of the dev environment, please contact the project maintainer/owner
-GRACIAS🪄
+
+
+***GRACIAS🪄***
