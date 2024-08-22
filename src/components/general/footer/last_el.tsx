@@ -8,7 +8,7 @@ export default function Last_el() {
         <p className="text-2xl lg:mx-2">&copy;</p>
 
         <p className="text-lg lg:mx-2">
-          2023 <span className="font-bold italic">rejeses</span>.
+          2024 <span className="font-bold italic">rejeses</span>.
         </p>
 
         <p className="text-lg lg:mx-2">All rights reserved</p>
