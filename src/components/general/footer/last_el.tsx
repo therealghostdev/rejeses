@@ -8,10 +8,10 @@ export default function Last_el() {
         <p className="text-2xl lg:mx-2">&copy;</p>
 
         <p className="text-lg lg:mx-2">
-          2024 <span className="font-bold italic">rejeses</span>.
+          2024 <span className="font-bold italic">rejeses consult</span>.
         </p>
 
-        <p className="text-lg lg:mx-2">All rights reserved</p>
+        <p className="text-lg lg:mx-2">All rights reserved.</p>
       </div>
 
       <div className="lg:w-1/4 md:w-[40%] w-full flex md:justify-end justify-between items-center md:mb-0 mb-8">
