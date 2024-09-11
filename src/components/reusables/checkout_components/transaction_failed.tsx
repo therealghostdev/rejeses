@@ -39,9 +39,9 @@ export default function Transaction_failed({ close }: { close: () => void }) {
           </p>
 
           <small className="text-[#666666] text-center">
-            Transaction failed. Sorry we are unable to carry out this
-            transaction as this given time. Check your network connections or
-            contact your bank.
+            Transaction failed. Sorry, we are unable to carry out this
+            transaction at this time. Kindly check your network connection and try again, or
+            contact your bank. Thank you 
           </small>
         </div>
       </div>
