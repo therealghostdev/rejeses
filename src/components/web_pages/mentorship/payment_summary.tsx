@@ -23,7 +23,7 @@ export default function MentorshipPaymentSummary() {
 
   const trainingOption = paymentInfo.training_option
     ? formatTrainingOption(paymentInfo.training_option)
-    : `You are subscribing to <b><i>rejeses consult</i></b> 6-month mentoring plan. You will be charged ${
+    : `You are subscribing to <b><i>rejeses consult</i></b> 3-month mentoring plan. You will be charged ${
         isNigeria ? "NGN 50,000" : "$300"
       } for this.`;
 
