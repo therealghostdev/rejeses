@@ -388,7 +388,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                 <input
                   id="lastName"
                   type="text"
-                  placeholder="last Name"
+                  placeholder="Last Name"
                   onChange={handleChange}
                   name="lastName"
                   value={formData.lastName}
@@ -453,7 +453,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                   </div>
                   <div className="mx-2 flex justify-center flex-col lg:my-auto md:mt-0 mt-2">
                     <h1 className="font-bold lg:text-wrap md:text-ellipsis md:text-nowrap lg:my-2 md:mb-0 mb-2">
-                      Project Management for beginners
+                      Project Management Training
                     </h1>
                     <p className="lg:text-wrap text-nowrap text-ellipsis">
                       Certificate on completion
