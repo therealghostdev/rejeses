@@ -456,7 +456,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                       Project Management Training
                     </h1>
                     <p className="lg:text-wrap text-nowrap text-ellipsis">
-                      Certificate on completion
+                      Certificate of completion
                     </p>
                   </div>
                 </div>
