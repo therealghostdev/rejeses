@@ -49,7 +49,7 @@ export default function Header() {
   return (
     <header className="bg-[#F5F0FA] flex flex-col w-full gap-4 overflow-hidden">
       <div className="w-full flex flex-col justify-center items-center gap-3 my-8">
-        <div className="md:w-3/4 w-full flex flex-col justify-center items-center gap-3 px-4">
+        <div className="md:w-3/4 w-full flex flex-col justify-center items-center gap-3 px-4 py-8 mt-8 mb-8">
           <h1 className="lg:text-[60px] md:text-6xl text-5xl text-center font-bold lg:leading-[80px] leading-tight font-bricolage_grotesque">
             Learn and become excellent at project management
           </h1>
