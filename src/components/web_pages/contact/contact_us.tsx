@@ -40,17 +40,17 @@ export default function ContactUs() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="mx-auto max-w-lg lg:mx-0">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-bricolage_grotesque">
                 Get in touch
               </h2>
               <p className="mt-4 text-lg text-gray-500">
                 We&apos;d love to hear from you! Whether you have a question
-                about our courses, need a career advice, or you want to
-                make an enquiry, we&apos;re here for you.
+                about our courses, need a career advice, or you want to make an
+                enquiry, we&apos;re here for you.
               </p>
               {isSubmitted ? (
                 <motion.div
-                  className="mt-8 p-4 rounded-lg lg:text-3xl text-gray-500 text-2xl font-bold text-center"
+                  className="mt-8 p-4 rounded-lg lg:text-3xl text-gray-500 text-2xl font-bold text-center font-bricolage_grotesque italic"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3 }}
