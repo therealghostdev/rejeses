@@ -44,7 +44,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
             1. Introduction
           </h2>
-          <p className="mb-4">
+          <p className="mb-4 text-[#5B5B5B] text-xl">
             Welcome to our Privacy Policy. This page explains how we
             collect, use, and protect your personal information.
           </p>
@@ -54,7 +54,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
             2. Information We Collect
           </h2>
-          <ul className="list-disc pl-5 space-y-2">
+          <ul className="list-disc pl-5 space-y-2 text-[#5B5B5B] text-xl">
             <li>Personal information (e.g., name, email address)</li>
             <li>Usage data (e.g., how you interact with our service)</li>
             <li>Device information (e.g., IP address, browser type)</li>
@@ -65,7 +65,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
             3. How We Use Your Information
           </h2>
-          <p className="mb-4">
+          <p className="mb-4 text-[#5B5B5B] text-xl">
             We use your information to provide and improve our services,
             communicate with you, and comply with legal obligations.
           </p>
@@ -75,7 +75,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
             4. Data Security
           </h2>
-          <p className="mb-4">
+          <p className="mb-4 text-[#5B5B5B] text-xl">
             We implement appropriate technical and organizational measures to
             protect your personal information.
           </p>
@@ -85,7 +85,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
             5. Your Rights
           </h2>
-          <p className="mb-4">
+          <p className="mb-4 text-[#5B5B5B] text-xl">
             You have the right to access, correct, or delete your personal
             information. Contact us to exercise these rights.
           </p>
@@ -95,7 +95,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
             6. Changes to This Policy
           </h2>
-          <p className="mb-4">
+          <p className="mb-4 text-[#5B5B5B] text-xl">
             We may update this policy from time to time. We will notify you of
             any significant changes.
           </p>
@@ -105,7 +105,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
             7. Contact Us
           </h2>
-          <p className="mb-4">
+          <p className="mb-4 text-[#5B5B5B] text-xl">
             If you have any questions about this Privacy Policy, please contact
             us at
             <span className="ml-2">
@@ -123,7 +123,7 @@ export default function PrivacyPolicy() {
           variants={childVariants}
           className="mt-12 p-4 bg-[#89C13E] bg-opacity-10 rounded-lg"
         >
-          <p className="text-sm text-center text-[#89C13E]">
+          <p className="text-lg text-center text-[#89C13E]">
             Last updated: 11/30/2024
           </p>
         </motion.div>

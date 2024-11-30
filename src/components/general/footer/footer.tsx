@@ -7,6 +7,7 @@ import tableData from "@/utils/data/table_data.json";
 import { usePathname } from "next/navigation";
 import Testimonial from "./testimonial";
 import TestimonialData from "@/utils/data/testimonial_data.json";
+import TermsOfUse from "./terms_of_use";
 
 const Footer: React.FC = () => {
   const pathname = usePathname();
@@ -92,6 +93,7 @@ const Footer: React.FC = () => {
       )}
       {pathname === "/" && <BookSession />}
       <LastEl />
+      <TermsOfUse />
     </footer>
   );
 };
