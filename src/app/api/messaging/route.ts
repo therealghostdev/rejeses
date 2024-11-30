@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { createEmailTemplate } from "@/utils/reusables/functions";
 
 export async function POST(req: Request) {
   try {
@@ -25,13 +26,13 @@ export async function POST(req: Request) {
       to: process.env.EMAIL_USER,
       subject: `New Message from ${name}`,
       text: message,
-      html: `<p><strong>Name:</strong> ${name}</p>
-               <p><strong>Email:</strong> ${email}</p>
-               <p><strong>Message:</strong></p>
-               <p>${message}</p>`,
+      html: createEmailTemplate(name, email, message),
     });
 
-    Response.json({ message: "Message sent successfully!" }, { status: 200 });
+    return Response.json(
+      { message: "Message sent successfully!" },
+      { status: 200 }
+    );
   } catch (err) {
     console.log(err);
     return Response.json({ message: "Error sending message" }, { status: 500 });
