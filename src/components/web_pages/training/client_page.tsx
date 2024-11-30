@@ -58,7 +58,6 @@ export default function Training_page() {
       is_group: false,
     }));
   };
-  
 
   useEffect(() => {
     setPaymentInfo((prev) => ({
@@ -134,7 +133,7 @@ export default function Training_page() {
             {trainingItem.expanded_description}
           </p>
         </div>
-        <div className="w-full flex flex-col gap-2 lg:px-12 md:px-6">
+        {/* <div className="w-full flex flex-col gap-2 lg:px-12 md:px-6">
           <h1 className="text-3xl text-[#89C13E] font-bricolage_grotesque">
             NOTE:
           </h1>
@@ -143,7 +142,7 @@ export default function Training_page() {
             other reasons, the recordings will be made available 30 minutes after
             the class ends.
           </p>
-        </div>
+        </div> */}
 
         {/* <div className="flex md:gap-x-4 gap-x-2 lg:px-12 md:px-6 w-full sm_btn-container">
           <Button
@@ -204,7 +203,7 @@ export default function Training_page() {
 
         <UpcomingCohorts />
 
-        <section className="w-full flex flex-col gap-4 lg:px-12 md:px-6 md:mt-8 md:mb-12">
+        {/* <section className="w-full flex flex-col gap-4 lg:px-12 md:px-6 md:mt-8 md:mb-12">
           <h1 className="lg:text-4xl text-2xl font-bold font-bricolage_grotesque">
             Curriculum
           </h1>
@@ -226,17 +225,6 @@ export default function Training_page() {
             </p>
 
             <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
-              {/* <Button
-                click={() => {
-                  getPaymentData();
-                  // window.location.href = `/training/${trainingItem.id}`;
-                }}
-                text="Enroll Now"
-                url={`/training/${trainingItem.id}`}
-                transition_class="transition_button4"
-                bg="#89C13E"
-              /> */}
-
               <Link
                 onClick={getPaymentData}
                 href={`/training/${trainingItem.id}/class_schedule`}
@@ -249,7 +237,7 @@ export default function Training_page() {
               </Link>
             </div>
           </div>
-        </section>
+        </section> */}
         <section className="my-12" ref={pricingRef} id="pricing">
           <Pricing item={trainingItem.pricing} id={trainingItem.id} />
         </section>

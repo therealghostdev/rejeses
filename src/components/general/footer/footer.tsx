@@ -27,8 +27,8 @@ const Footer: React.FC = () => {
     if (
       decodedPathname === "/" ||
       decodedPathname === "/book-session" ||
-      decodedPathname === "/enroll" ||
-      decodedPathname === "/contact-us"
+      decodedPathname === "/enroll"
+      // decodedPathname === "/contact-us"
     ) {
       return tableData.filter((item) => item.tag === "homepage");
     } else if (
