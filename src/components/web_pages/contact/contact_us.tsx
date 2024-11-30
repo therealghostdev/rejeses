@@ -74,6 +74,11 @@ export default function ContactUs() {
     setIsButtonDisabled(!validate());
   }, [formValues, validate]);
 
+  const onSuccessAction = () => {
+    setFormValues((prev) => ({ ...prev, email: "", name: "", message: "" }));
+    setIsSubmitted(true);
+  };
+
   const notify = () =>
     toast.error("Failed to send message", {
       autoClose: 3000,
@@ -83,13 +88,12 @@ export default function ContactUs() {
 
   const sendMessage = async () => {
     const response = await axios.post("/api/messaging", { ...formValues });
-    console.log(response);
     return response;
   };
 
   const { mutate, isPending, isSuccess } = useMutation({
     mutationFn: () => sendMessage(),
-    onSuccess: () => setIsSubmitted(true),
+    onSuccess: () => onSuccessAction(),
     onError: () => notify(),
   });
 
