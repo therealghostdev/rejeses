@@ -1,22 +1,98 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import {
+  contact_us_values,
+  ContactUsErrors,
+  TouchedFields,
+} from "@/utils/types/types";
 
 export default function ContactUs() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formValues, setFormValues] = useState<contact_us_values>({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState<ContactUsErrors>({});
+  const [touchedFields, setTouchedFields] = useState<TouchedFields>({
+    name: false,
+    email: false,
+    message: false,
+  });
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
+
+  const emailRegex = useMemo(
+    () => /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/,
+    []
+  );
+
+  const validate = useCallback(() => {
+    const validationErrors: ContactUsErrors = {};
+
+    if (!formValues.name.trim()) {
+      validationErrors.name = "Name is required.";
+    }
+    if (!formValues.email.trim()) {
+      validationErrors.email = "Email is required.";
+    } else if (!emailRegex.test(formValues.email)) {
+      validationErrors.email = "Invalid email address.";
+    }
+    if (!formValues.message.trim()) {
+      validationErrors.message = "Message is required.";
+    }
+
+    setErrors(validationErrors);
+    return Object.keys(validationErrors).length === 0;
+  }, [formValues, emailRegex]);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormValues((prev) => ({ ...prev, [name]: value }));
+
+    // Mark field as touched
+    setTouchedFields((prev) => ({ ...prev, [name]: true }));
+  };
+
+  const handleBlur = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name } = e.target;
+    setTouchedFields((prev) => ({ ...prev, [name]: true }));
+  };
+
+  useEffect(() => {
+    validate();
+    setIsButtonDisabled(!validate());
+  }, [formValues, validate]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    setIsSubmitted(true);
+    // Mark all fields as touched on submit
+    setTouchedFields({
+      name: true,
+      email: true,
+      message: true,
+    });
+
+    if (validate()) {
+      setIsSubmitted(true);
+    }
+  };
+
+  const router = useRouter();
+  const route_back = () => {
+    router.back();
   };
 
   return (
     <div>
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
-          {/* Left Column - Image */}
           <motion.div
             className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:min-h-full"
             initial={{ opacity: 0, x: -50 }}
@@ -32,7 +108,6 @@ export default function ContactUs() {
             />
           </motion.div>
 
-          {/* Right Column - Form */}
           <motion.div
             className="lg:pl-8"
             initial={{ opacity: 0, y: 50 }}
@@ -40,12 +115,12 @@ export default function ContactUs() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="mx-auto max-w-lg lg:mx-0">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-bricolage_grotesque">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl italic font-bricolage_grotesque">
                 Get in touch
               </h2>
               <p className="mt-4 text-lg text-gray-500">
                 We&apos;d love to hear from you! Whether you have a question
-                about our courses, need a career advice, or you want to make an
+                about our courses, need career advice, or want to make an
                 enquiry, we&apos;re here for you.
               </p>
               {isSubmitted ? (
@@ -64,6 +139,7 @@ export default function ContactUs() {
                       focus:outline-none focus:ring-2 focus:ring-[#89C13E] focus:ring-offset-2 sm:text-sm transition ease-in-out duration-500"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={route_back}
                     >
                       Go Back
                     </motion.button>
@@ -82,10 +158,17 @@ export default function ContactUs() {
                       type="text"
                       id="name"
                       name="name"
-                      required
+                      value={formValues.name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       className="mt-1 block w-full rounded-md py-3 px-2 border-gray-300 shadow-sm border-none outline-none 
     focus:ring-2 focus:ring-[#89C13E] transition ease-in-out duration-500"
                     />
+                    {touchedFields.name && errors.name && (
+                      <p className="text-[#89C13E] text-sm mt-1">
+                        {errors.name}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label
@@ -98,10 +181,17 @@ export default function ContactUs() {
                       type="email"
                       id="email"
                       name="email"
-                      required
+                      value={formValues.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       className="mt-1 block w-full rounded-md py-3 px-2 border-gray-300 shadow-sm border-none outline-none 
     focus:ring-2 focus:ring-[#89C13E] transition ease-in-out duration-500"
                     />
+                    {touchedFields.email && errors.email && (
+                      <p className="text-[#89C13E] text-sm mt-1">
+                        {errors.email}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label
@@ -114,14 +204,22 @@ export default function ContactUs() {
                       id="message"
                       name="message"
                       rows={4}
-                      required
+                      value={formValues.message}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       className="mt-1 block w-full rounded-md py-3 px-2 border-gray-300 shadow-sm border-none outline-none 
     focus:ring-2 focus:ring-[#89C13E] transition ease-in-out duration-500"
                     ></textarea>
+                    {touchedFields.message && errors.message && (
+                      <p className="text-[#89C13E] text-sm mt-1">
+                        {errors.message}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <motion.button
                       type="submit"
+                      disabled={isButtonDisabled}
                       className="inline-flex w-full bg-[#89C13E] justify-center rounded-md border 
                       border-transparent bg-primary-green px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-[#89C13E]/90 
                       focus:outline-none focus:ring-2 focus:ring-[#89C13E] focus:ring-offset-2 sm:text-sm transition ease-in-out duration-500"
