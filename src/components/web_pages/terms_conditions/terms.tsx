@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 export default function TermsAndConditions() {
@@ -68,7 +68,7 @@ export default function TermsAndConditions() {
         </motion.h1>
 
         {sections.map((section, index) => (
-          <motion.div key={index} variants={itemVariants} className="mb-6">
+          <motion.div key={index} variants={itemVariants} className="mb-6 my-12">
             <motion.h2
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -77,7 +77,7 @@ export default function TermsAndConditions() {
                   activeSection === section.title ? null : section.title
                 )
               }
-              className="text-2xl font-semibold text-[#89C13E] font-bricolage_grotesque cursor-pointer mb-2 flex justify-between items-center"
+              className="text-2xl font-semibold text-[#89C13E] py-4 font-bricolage_grotesque cursor-pointer mb-2 flex justify-between items-center"
             >
               {section.title}
               <motion.span
@@ -88,20 +88,19 @@ export default function TermsAndConditions() {
                 ▼
               </motion.span>
             </motion.h2>
-            <motion.div
-              initial="collapsed"
-              animate={
-                activeSection === section.title ? "expanded" : "collapsed"
-              }
-              variants={{
-                expanded: { opacity: 1, height: "auto", marginTop: "1rem" },
-                collapsed: { opacity: 0, height: 0, marginTop: "0" },
-              }}
-              transition={{ duration: 0.3 }}
-              className="bg-gray-50 p-4 rounded-lg"
-            >
-              <p className="text-[#5B5B5B] text-xl">{section.content}</p>
-            </motion.div>
+            <AnimatePresence>
+              {activeSection === section.title && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto", marginTop: "1rem" }}
+                  exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-gray-50 p-4 rounded-lg"
+                >
+                  <p className="text-[#5B5B5B] text-xl">{section.content}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         ))}
 
@@ -112,7 +111,7 @@ export default function TermsAndConditions() {
           <p className="text-lg text-[#5B5B5B]">
             By using this website, you agree to these terms and conditions.
           </p>
-          <p className="text-[#89C13E] mt-2">
+          <p className="text-[#89C13E] text-lg mt-2">
             Last updated: {new Date().toLocaleDateString()}
           </p>
         </motion.div>
