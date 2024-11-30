@@ -8,6 +8,10 @@ import {
   ContactUsErrors,
   TouchedFields,
 } from "@/utils/types/types";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { toast } from "react-toastify";
+import Loading from "@/app/feed/loading";
 
 export default function ContactUs() {
   const [formValues, setFormValues] = useState<contact_us_values>({
@@ -70,6 +74,25 @@ export default function ContactUs() {
     setIsButtonDisabled(!validate());
   }, [formValues, validate]);
 
+  const notify = () =>
+    toast.error("Failed to send message", {
+      autoClose: 3000,
+      hideProgressBar: true,
+      theme: "colored",
+    });
+
+  const sendMessage = async () => {
+    const response = await axios.post("/api/messaging", { ...formValues });
+    console.log(response);
+    return response;
+  };
+
+  const { mutate, isPending, isSuccess } = useMutation({
+    mutationFn: () => sendMessage(),
+    onSuccess: () => setIsSubmitted(true),
+    onError: () => notify(),
+  });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Mark all fields as touched on submit
@@ -80,7 +103,7 @@ export default function ContactUs() {
     });
 
     if (validate()) {
-      setIsSubmitted(true);
+      mutate();
     }
   };
 
@@ -123,7 +146,7 @@ export default function ContactUs() {
                 about our courses, need career advice, or want to make an
                 enquiry, we&apos;re here for you.
               </p>
-              {isSubmitted ? (
+              {isSubmitted && isSuccess ? (
                 <motion.div
                   className="mt-8 p-4 rounded-lg lg:text-3xl text-gray-500 text-2xl font-bold text-center font-bricolage_grotesque italic"
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -220,13 +243,18 @@ export default function ContactUs() {
                     <motion.button
                       type="submit"
                       disabled={isButtonDisabled}
-                      className="inline-flex w-full bg-[#89C13E] justify-center rounded-md border 
+                      className="inline-flex w-full bg-[#89C13E] justify-center items-center rounded-md border 
                       border-transparent bg-primary-green px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-[#89C13E]/90 
                       focus:outline-none focus:ring-2 focus:ring-[#89C13E] focus:ring-offset-2 sm:text-sm transition ease-in-out duration-500"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       Send Message
+                      {isPending && (
+                        <span className="mx-6">
+                          <Loading />
+                        </span>
+                      )}
                     </motion.button>
                   </div>
                 </form>
