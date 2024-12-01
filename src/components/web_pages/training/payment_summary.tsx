@@ -28,7 +28,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
     const { training_option } = paymentInfo;
 
     if (!training_option || training_option === "") {
-      return `You are subscribing to <b><i>rejeses consult</i></b> 4-week training plan. You will be charged ${
+      return `You are subscribing to <b><i>rejeses consult</i></b> 35 hour training plan. You will be charged ${
         isNigeria ? "NGN " : "$"
       }${
         isNigeria

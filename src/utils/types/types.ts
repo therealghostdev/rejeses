@@ -179,6 +179,24 @@ export interface ClientPageProps {
   };
 }
 
+export interface contact_us_values {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export type ContactUsErrors = {
+  name?: string;
+  email?: string;
+  message?: string;
+};
+
+export type TouchedFields = {
+  name: boolean;
+  email: boolean;
+  message: boolean;
+};
+
 export interface FormDataTYpe {
   firstName: string;
   lastName: string;

@@ -6,6 +6,8 @@ import Footer from "@/components/general/footer/footer";
 import localfont from "next/font/local";
 import { PaymentProvider } from "@/utils/context/payment";
 import Scroll_to_top from "@/components/general/bact_to_top/scroll_to_top";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,7 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" id="el">
+      <ToastContainer />
       <body className={`${inter.className} ${bricolage_grotesque.variable}`}>
         <PaymentProvider>
           <Navigation />

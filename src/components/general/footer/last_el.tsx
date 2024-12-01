@@ -14,7 +14,7 @@ export default function Last_el() {
         <p className="text-lg lg:mx-2">All rights reserved.</p>
       </div>
 
-      <div className="lg:w-1/4 md:w-[40%] w-full flex md:justify-end justify-between items-center md:mb-0 mb-8">
+      <div className="lg:w-1/4 md:w-[40%] w-full flex md:justify-end justify-between items-center md:mb-0 mb-12">
         <Link
           href="https://www.instagram.com/rejeses_pmc/"
           target="_blank"

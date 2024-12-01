@@ -412,6 +412,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
               <div className="w-full py-4 flex items-center">
                 <label htmlFor="Currency" hidden></label>
                 <select
+                  title="currency value"
                   id="Currency"
                   onChange={handleChange}
                   name="currency"
