@@ -65,7 +65,7 @@ const BookSessionPage = () => {
   const schedule_link = process.env.NEXT_PUBLIC_SCHEDULE_LINK || "";
 
   return (
-    <section className=" flex flex-col px-4">
+    <section className=" flex flex-col px-4 my-6">
       <div className="flex flex-col lg:justify-center lg:items-center w-full">
         <motion.header
           className="bg-[#89C13E] text-white py-6 lg:w-3/4 font-bricolage_grotesque italic lg:text-4xl"
