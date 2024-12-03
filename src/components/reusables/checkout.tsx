@@ -26,6 +26,7 @@ import Transaction_failed from "./checkout_components/transaction_failed";
 import Image from "next/image";
 import Transaction_error from "./checkout_components/transaction_error";
 import { AnimatePresence } from "framer-motion";
+import { toast } from "react-toastify";
 
 export default function Checkout({ pricingItem }: ClientPageProps) {
   const [generalPrice, setGeneralPrice] = useState<number>(0);
@@ -187,6 +188,14 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     },
   });
 
+  const notify = (message: string) =>
+    toast.error(message, {
+      autoClose: 3000,
+      hideProgressBar: true,
+      theme: "colored",
+      toastId: "1",
+    });
+
   const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
   const handleFormSubmit = async (
     e: FormEvent<HTMLButtonElement> | ReactKeyboardEvent
@@ -199,6 +208,10 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         emailRegex.test(formData.email)
       ) {
         mutation.mutate(formData);
+      } else if (!emailRegex.test(formData.email)) {
+        notify("please input a valid mail");
+      } else {
+        notify("Please fill in your details");
       }
     } catch (err) {
       console.error("Something went wrong!", err);
@@ -363,9 +376,11 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         <div className="w-full h-full flex gap-x-4 lg:flex-row flex-col-reverse md:px-8">
           <div className="lg:w-2/4 w-full flex py-6 px-4 items-center flex-col gap-4 lg:h-full lg:my-auto my-4">
             <div className="w-full flex flex-col gap-y-6">
-              <h1 className="font-bold lg:text-5xl text-3xl">Checkout</h1>
+              <h1 className="font-bold lg:text-5xl text-3xl font-bricolage_grotesque italic">
+                Checkout
+              </h1>
 
-              <p className="lg:text-3xl text-2xl">
+              <p className="lg:text-3xl text-2xl font-bricolage_grotesque italic">
                 Personal Information & Billing
               </p>
             </div>
@@ -432,10 +447,12 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
           <div className="lg:w-2/4 w-full lg:h-full flex flex-col justify-center gap-5 md:px-4 py-4">
             <div className="flex justify-start">
-              <h1 className="font-bold text-left text-2xl">Your Order</h1>
+              <h1 className="font-bold text-left text-2xl font-bricolage_grotesque italic">
+                Your Order
+              </h1>
             </div>
 
-            <div className="w-full flex justify-between text-lg py-4 border-b border-dashed border-b-[#DBE1E7]">
+            <div className="w-full font-bricolage_grotesque italic flex justify-between text-lg py-4 border-b border-dashed border-b-[#DBE1E7]">
               <h1>Product</h1>
               <h1>Subtotal</h1>
             </div>
@@ -453,10 +470,10 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                     />
                   </div>
                   <div className="mx-2 flex justify-center flex-col lg:my-auto md:mt-0 mt-2">
-                    <h1 className="font-bold lg:text-wrap md:text-ellipsis md:text-nowrap lg:my-2 md:mb-0 mb-2">
+                    <h1 className="font-bold font-bricolage_grotesque lg:text-wrap md:text-ellipsis md:text-nowrap lg:my-2 md:mb-0 mb-2">
                       Project Management Training
                     </h1>
-                    <p className="lg:text-wrap text-nowrap text-ellipsis">
+                    <p className="lg:text-wrap text-nowrap text-ellipsis bricolage_text">
                       Certificate of completion
                     </p>
                   </div>
@@ -475,8 +492,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
             </div>
 
             <div className="w-full flex justify-between items-center py-4 border-b border-dashed border-b-[#DBE1E7]">
-              <h1 className="font-bold">Subtotal</h1>
-              <h1 className="font-bold">
+              <h1 className="font-bold font-bricolage_grotesque">Subtotal</h1>
+              <h1 className="font-bold font-bricolage_grotesque">
                 {(isNigeria || !isNigeria) && formData.currency === "NGN"
                   ? "NGN "
                   : (isNigeria || !isNigeria) && formData.currency === "USD"
@@ -487,8 +504,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
             </div>
 
             <div className="w-full flex justify-between items-center py-4 border-b border-b-[#DBE1E7]">
-              <h1 className="font-bold">TOTAL</h1>
-              <h1 className="text-[#89C13E] font-bold">
+              <h1 className="font-bold font-bricolage_grotesque">TOTAL</h1>
+              <h1 className="text-[#89C13E] font-bold font-bricolage_grotesque">
                 {(isNigeria || !isNigeria) && formData.currency === "NGN"
                   ? "NGN "
                   : (isNigeria || !isNigeria) && formData.currency === "USD"

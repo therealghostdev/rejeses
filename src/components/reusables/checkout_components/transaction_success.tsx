@@ -102,12 +102,12 @@ export default function Transaction_success({
         <div className="w-full flex flex-col py-16">
           <div className="w-full flex flex-col justify-center items-center">
             <Image src="/success.svg" width={80} height={80} alt="Success" />
-            <h1 className="font-bold lg:text-4xl text-2xl text-center my-4 lg:mb-12">
+            <h1 className="font-bold lg:text-4xl text-2xl text-center my-4 lg:mb-12 font-bricolage_grotesque">
               Transaction Successful
             </h1>
           </div>
 
-          <div className="w-full border border-[#DBE1E7] px-4 py-2 rounded-md">
+          <div className="w-full border border-[#DBE1E7] px-4 py-2 rounded-md font-bricolage_grotesque italic">
             <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
               <li className="list-none flex justify-between items-center">
                 TXID:
