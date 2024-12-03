@@ -7,6 +7,7 @@ export default function TermsOfUse() {
         <Link href="/termsandconditions" className="text-lg transition_border">
           Terms of Use
         </Link>
+        <span className="border-r-2 border-[#535353] h-6 mx-4"></span>
         <Link href="/privacy-policy" className="text-lg transition_border">
           Privacy Policy
         </Link>

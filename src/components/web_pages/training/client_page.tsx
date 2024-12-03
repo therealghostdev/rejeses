@@ -203,8 +203,8 @@ export default function Training_page() {
 
         <UpcomingCohorts />
 
-        {/* <section className="w-full flex flex-col gap-4 lg:px-12 md:px-6 md:mt-8 md:mb-12">
-          <h1 className="lg:text-4xl text-2xl font-bold font-bricolage_grotesque">
+        <section className="w-full flex flex-col gap-4 lg:px-12 md:px-6 md:mt-8 md:mb-12">
+          {/* <h1 className="lg:text-4xl text-2xl font-bold font-bricolage_grotesque">
             Curriculum
           </h1>
           {trainingItem.payment.curriculum.map((item, index) => (
@@ -218,11 +218,11 @@ export default function Training_page() {
               <ul className="list-disc text-lg">{formatTopic(item.topic)}</ul>
               {formatDuration(item.duration)}
             </div>
-          ))}
+          ))} */}
           <div className="w-full flex flex-col gap-4">
-            <p className="text-lg font-bold font-bricolage_grotesque">
+            {/* <p className="text-lg font-bold font-bricolage_grotesque">
               Start date: {trainingItem.start_date}
-            </p>
+            </p> */}
 
             <div className="flex md:gap-x-4 gap-x-2 w-full sm_btn-container">
               <Link
@@ -237,7 +237,7 @@ export default function Training_page() {
               </Link>
             </div>
           </div>
-        </section> */}
+        </section>
         <section className="my-12" ref={pricingRef} id="pricing">
           <Pricing item={trainingItem.pricing} id={trainingItem.id} />
         </section>

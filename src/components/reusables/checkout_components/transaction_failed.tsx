@@ -34,11 +34,11 @@ export default function Transaction_failed({ close }: { close: () => void }) {
         </div>
 
         <div className="w-full flex flex-col gap-3 justify-center items-center">
-          <p className="font-bold md:text-3xl text-2xl text-center">
+          <p className="font-bold md:text-3xl text-2xl text-center font-bricolage_grotesque italic">
             Transaction Failed
           </p>
 
-          <small className="text-[#666666] text-center">
+          <small className="text-[#666666] text-center bricolage_text">
             Transaction failed. Sorry, we are unable to carry out this
             transaction at this time. Kindly check your network connection and try again, or
             contact your bank. Thank you 

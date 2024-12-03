@@ -93,11 +93,11 @@ export default function PriceCard({ data, id }: PriceCardProps) {
 
             <div className="w-full border border-[#DBE1E7] my-6"></div>
 
-            {training_only.amount_saved && (
+            {/* {training_only.amount_saved && (
               <div className="absolute right-2 lg:top-6 top-16 bg-[#EFFBF2] text-[#2EAE4E] rounded-3xl w-24 text-center p-2">
                 <p>Save &#36;{training_only?.amount_saved}</p>
               </div>
-            )}
+            )} */}
 
             {training_only.extra_details.map((detail, index) => (
               <p key={index} className="flex gap-x-4 items-center">
@@ -115,7 +115,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                 registerBtnClick(
                   isNigeria ? training_only.price : training_only.price2,
                   decodeURIComponent(pathname).split("/")[1] === "training"
-                    ? `You are subscribing to rejeses consult 35 hour training plan. You will be charged  ${
+                    ? `You are subscribing to rejeses consult 35-hour training plan. You will be charged  ${
                         isNigeria ? "NGN " : "$"
                       }${
                         isNigeria
@@ -166,11 +166,11 @@ export default function PriceCard({ data, id }: PriceCardProps) {
 
             <div className="w-full border border-[#DBE1E7] my-6"></div>
 
-            {training_with_mentorship.amount_saved && (
+            {/* {training_with_mentorship.amount_saved && (
               <div className="absolute right-2 lg:top-6 top-16 bg-[#EFFBF2] text-[#2EAE4E] rounded-3xl w-24 text-center p-2">
                 <p>Save &#36;{training_with_mentorship?.amount_saved}</p>
               </div>
-            )}
+            )} */}
 
             {training_with_mentorship.extra_details.map((detail, index) => (
               <p key={index} className="flex gap-x-4 items-center">
@@ -189,7 +189,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                   isNigeria
                     ? training_with_mentorship.price
                     : training_with_mentorship.price2,
-                  `You are subscribing to rejeses consult 35 hour training plus 3-month mentoring plan. You will be charged ${
+                  `You are subscribing to rejeses consult 35-hour training plus 3-month mentoring plan. You will be charged ${
                     isNigeria ? "NGN " : "$"
                   }${
                     isNigeria
