@@ -120,7 +120,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
             <strong className="font-bricolage_grotesque">
               Weekday Classes
             </strong>
-            : Run from{" "}
+            : These run from{" "}
             <strong className="font-bricolage_grotesque">
               Monday to Friday, 09:00 to 16:00 (UTC)
             </strong>
@@ -131,7 +131,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
             <strong className="font-bricolage_grotesque">
               Weekend Classes
             </strong>
-            : Run for{" "}
+            : These run for{" "}
             <strong className="font-bricolage_grotesque">
               two weekends only
             </strong>
