@@ -133,7 +133,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
             </strong>
             : These run for{" "}
             <strong className="font-bricolage_grotesque">
-              two weekends only:
+              two weekends only
             </strong>
             :
             <ul className="list-disc list-inside pl-4">
