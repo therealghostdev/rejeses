@@ -107,7 +107,7 @@ export default function Transaction_success({
             </h1>
           </div>
 
-          <div className="w-full border border-[#DBE1E7] px-4 py-2 rounded-md font-bricolage_grotesque italic">
+          <div className="w-full border border-[#DBE1E7] px-4 py-2 rounded-md font-bricolage_grotesque">
             <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
               <li className="list-none flex justify-between items-center">
                 TXID:

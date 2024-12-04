@@ -142,7 +142,7 @@ export default function ContactUs() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="mx-auto max-w-lg lg:mx-0">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl italic font-bricolage_grotesque">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-bricolage_grotesque">
                 Get in touch
               </h2>
               <p className="mt-4 text-lg text-gray-500">

@@ -62,7 +62,7 @@ export default function TermsAndConditions() {
       >
         <motion.h1
           variants={itemVariants}
-          className="text-4xl md:text-5xl font-bold text-[#89C13E] mb-8 text-center font-bricolage_grotesque italic"
+          className="text-4xl md:text-5xl font-bold text-[#89C13E] mb-8 text-center font-bricolage_grotesque"
         >
           Terms and Conditions
         </motion.h1>

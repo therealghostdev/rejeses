@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
         </motion.h1>
 
         <motion.section variants={childVariants} className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
+          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] font-bricolage_grotesque">
             1. Introduction
           </h2>
           <p className="mb-4 text-[#5B5B5B] text-xl">
@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
         </motion.section>
 
         <motion.section variants={childVariants} className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
+          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] font-bricolage_grotesque">
             2. Information We Collect
           </h2>
           <ul className="list-disc pl-5 space-y-2 text-[#5B5B5B] text-xl">
@@ -62,7 +62,7 @@ export default function PrivacyPolicy() {
         </motion.section>
 
         <motion.section variants={childVariants} className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
+          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] font-bricolage_grotesque">
             3. How We Use Your Information
           </h2>
           <p className="mb-4 text-[#5B5B5B] text-xl">
@@ -72,7 +72,7 @@ export default function PrivacyPolicy() {
         </motion.section>
 
         <motion.section variants={childVariants} className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
+          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] font-bricolage_grotesque">
             4. Data Security
           </h2>
           <p className="mb-4 text-[#5B5B5B] text-xl">
@@ -82,7 +82,7 @@ export default function PrivacyPolicy() {
         </motion.section>
 
         <motion.section variants={childVariants} className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
+          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] font-bricolage_grotesque">
             5. Your Rights
           </h2>
           <p className="mb-4 text-[#5B5B5B] text-xl">
@@ -92,7 +92,7 @@ export default function PrivacyPolicy() {
         </motion.section>
 
         <motion.section variants={childVariants} className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
+          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] font-bricolage_grotesque">
             6. Changes to This Policy
           </h2>
           <p className="mb-4 text-[#5B5B5B] text-xl">
@@ -102,7 +102,7 @@ export default function PrivacyPolicy() {
         </motion.section>
 
         <motion.section variants={childVariants} className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] italic font-bricolage_grotesque">
+          <h2 className="text-2xl font-semibold mb-4 text-[#89C13E] font-bricolage_grotesque">
             7. Contact Us
           </h2>
           <p className="mb-4 text-[#5B5B5B] text-xl">

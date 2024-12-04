@@ -34,7 +34,7 @@ export default function Transaction_failed({ close }: { close: () => void }) {
         </div>
 
         <div className="w-full flex flex-col gap-3 justify-center items-center">
-          <p className="font-bold md:text-3xl text-2xl text-center font-bricolage_grotesque italic">
+          <p className="font-bold md:text-3xl text-2xl text-center font-bricolage_grotesque">
             Transaction Failed
           </p>
 

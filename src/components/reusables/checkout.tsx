@@ -376,11 +376,11 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         <div className="w-full h-full flex gap-x-4 lg:flex-row flex-col-reverse md:px-8">
           <div className="lg:w-2/4 w-full flex py-6 px-4 items-center flex-col gap-4 lg:h-full lg:my-auto my-4">
             <div className="w-full flex flex-col gap-y-6">
-              <h1 className="font-bold lg:text-5xl text-3xl font-bricolage_grotesque italic">
+              <h1 className="font-bold lg:text-5xl text-3xl font-bricolage_grotesque">
                 Checkout
               </h1>
 
-              <p className="lg:text-3xl text-2xl font-bricolage_grotesque italic">
+              <p className="lg:text-3xl text-2xl font-bricolage_grotesque">
                 Personal Information & Billing
               </p>
             </div>
@@ -447,12 +447,12 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
           <div className="lg:w-2/4 w-full lg:h-full flex flex-col justify-center gap-5 md:px-4 py-4">
             <div className="flex justify-start">
-              <h1 className="font-bold text-left text-2xl font-bricolage_grotesque italic">
+              <h1 className="font-bold text-left text-2xl font-bricolage_grotesque">
                 Your Order
               </h1>
             </div>
 
-            <div className="w-full font-bricolage_grotesque italic flex justify-between text-lg py-4 border-b border-dashed border-b-[#DBE1E7]">
+            <div className="w-full font-bricolage_grotesque flex justify-between text-lg py-4 border-b border-dashed border-b-[#DBE1E7]">
               <h1>Product</h1>
               <h1>Subtotal</h1>
             </div>

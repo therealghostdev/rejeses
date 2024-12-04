@@ -114,11 +114,48 @@ export default function ClassSchedule(props: SchedulePropsData) {
         <h1 className="lg:text-5xl text-3xl font-bold font-bricolage_grotesque">
           Class Schedule
         </h1>
-        <p className="lg:text-[24px] text-wrap text-[16px]">
-          For those who miss the live sessions due to conflicing schedules or
-          other reasons, class recordings will be made available 30 minutes after
-          the class ends.
-        </p>
+        <div className="lg:text-[22px] text-[16px] space-y-4 leading-relaxed">
+          <p>please note the following schedule:</p>
+          <p>
+            <strong className="font-bricolage_grotesque">
+              Weekday Classes
+            </strong>
+            : Run from{" "}
+            <strong className="font-bricolage_grotesque">
+              Monday to Friday
+            </strong>
+            ,
+            <strong className="font-bricolage_grotesque">
+              09:00 AM to 4:00 PM
+            </strong>
+            , and the course is completed in
+            <strong className="font-bricolage_grotesque"> one week</strong>.
+          </p>
+          <p>
+            <strong className="font-bricolage_grotesque">
+              Weekend Classes
+            </strong>
+            : Run for{" "}
+            <strong className="font-bricolage_grotesque">
+              two weekends only
+            </strong>
+            :
+            <ul className="list-disc list-inside pl-4">
+              <li>
+                <strong className="font-bricolage_grotesque">Saturdays</strong>:{" "}
+                <strong className="font-bricolage_grotesque">
+                  8:00 AM to 5:00 PM
+                </strong>
+              </li>
+              <li>
+                <strong className="font-bricolage_grotesque">Sundays</strong>:{" "}
+                <strong className="font-bricolage_grotesque">
+                  12:00 PM to 8:00 PM
+                </strong>
+              </li>
+            </ul>
+          </p>
+        </div>
       </div>
       <div ref={scheduleRef} className="w-full overflow-x-auto">
         <table className="min-w-full border-collapse font-bricolage_grotesque">
