@@ -126,7 +126,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
             </strong>
             , 
             <strong className="font-bricolage_grotesque">
-              09:00 to 16:00 (UTC)
+               09:00 to 16:00 (UTC)
             </strong>
             , and the course is completed in
             <strong className="font-bricolage_grotesque"> one week</strong>.
@@ -142,13 +142,13 @@ export default function ClassSchedule(props: SchedulePropsData) {
             :
             <ul className="list-disc list-inside pl-4">
               <li>
-                <strong className="font-bricolage_grotesque">Saturday</strong>:{" "}
+                <strong className="font-bricolage_grotesque">Saturdays</strong>:{" "}
                 <strong className="font-bricolage_grotesque">
                   8:00 to 17:00 (UTC)
                 </strong>
               </li>
               <li>
-                <strong className="font-bricolage_grotesque">Sunday</strong>:{" "}
+                <strong className="font-bricolage_grotesque">Sundays</strong>:{" "}
                 <strong className="font-bricolage_grotesque">
                   12:00 to 20:00 (UTC)
                 </strong>
