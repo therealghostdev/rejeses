@@ -122,11 +122,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
             </strong>
             : Run from{" "}
             <strong className="font-bricolage_grotesque">
-              Monday to Friday
-            </strong>
-            , 
-            <strong className="font-bricolage_grotesque">
-               09:00 to 16:00 (UTC)
+              Monday to Friday, 09:00 to 16:00 (UTC)
             </strong>
             , and the course is completed in
             <strong className="font-bricolage_grotesque"> one week</strong>.
