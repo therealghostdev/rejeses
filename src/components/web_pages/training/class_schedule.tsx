@@ -140,7 +140,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
               <li>
                 <strong className="font-bricolage_grotesque">Saturdays</strong>:{" "}
                 <strong className="font-bricolage_grotesque">
-                  8:00 to 17:00 (UTC)
+                  08:00 to 17:00 (UTC)
                 </strong>
               </li>
               <li>
