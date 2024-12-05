@@ -4,13 +4,15 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { formatDate } from "@/utils/reusables/functions";
+import Link from "next/link";
 
 type TransactionSuccessProps = Partial<
   Omit<TransactionDataType, "accessCode" | "fee" | "createdAt">
 >;
 
 type TransactionOrder = Partial<
-  Omit<OrderDataType, "createdAt" | "updatedAt" | "id" | "startDate" | "email">
+  Omit<OrderDataType, "createdAt" | "updatedAt" | "id" | "email">
 >;
 
 export default function Transaction_success({
@@ -22,40 +24,40 @@ export default function Transaction_success({
   order: TransactionOrder;
   close: () => void;
 }) {
-  const formatDateWithOrdinal = (dateString: string | undefined): string => {
-    if (!dateString) return "";
+  // const formatDateWithOrdinal = (dateString: string | undefined): string => {
+  //   if (!dateString) return "";
 
-    const date = new Date(dateString);
-    const day = date.getDate();
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const year = date.getFullYear();
-    const hours = date.getHours();
-    const minutes = date.getMinutes().toString().padStart(2, "0");
-    const ampm = hours >= 12 ? "PM" : "AM";
-    const formattedHours = hours % 12 || 12; // Convert 24-hour to 12-hour format
+  //   const date = new Date(dateString);
+  //   const day = date.getDate();
+  //   const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  //   const year = date.getFullYear();
+  //   const hours = date.getHours();
+  //   const minutes = date.getMinutes().toString().padStart(2, "0");
+  //   const ampm = hours >= 12 ? "PM" : "AM";
+  //   const formattedHours = hours % 12 || 12; // Convert 24-hour to 12-hour format
 
-    let ordinalSuffix;
-    if (day > 3 && day < 21) {
-      ordinalSuffix = "th";
-    } else {
-      switch (day % 10) {
-        case 1:
-          ordinalSuffix = "st";
-          break;
-        case 2:
-          ordinalSuffix = "nd";
-          break;
-        case 3:
-          ordinalSuffix = "rd";
-          break;
-        default:
-          ordinalSuffix = "th";
-          break;
-      }
-    }
+  //   let ordinalSuffix;
+  //   if (day > 3 && day < 21) {
+  //     ordinalSuffix = "th";
+  //   } else {
+  //     switch (day % 10) {
+  //       case 1:
+  //         ordinalSuffix = "st";
+  //         break;
+  //       case 2:
+  //         ordinalSuffix = "nd";
+  //         break;
+  //       case 3:
+  //         ordinalSuffix = "rd";
+  //         break;
+  //       default:
+  //         ordinalSuffix = "th";
+  //         break;
+  //     }
+  //   }
 
-    return `${day}/${month}/${year} - ${formattedHours}:${minutes} ${ampm}`;
-  };
+  //   return `${day}/${month}/${year} - ${formattedHours}:${minutes} ${ampm}`;
+  // };
 
   function formatPrice(price: number | undefined): string | undefined {
     if (price && price >= 1000) {
@@ -71,9 +73,9 @@ export default function Transaction_success({
 
   const [path, setPath] = useState<string>("");
 
-  const formattedUpdatedAt = data?.updatedAt
-    ? formatDateWithOrdinal(data.updatedAt)
-    : "N/A";
+  // const formattedUpdatedAt = data?.updatedAt
+  //   ? formatDateWithOrdinal(data.updatedAt)
+  //   : "N/A";
 
   const returnBtnClick = () => {
     router.push("/");
@@ -169,7 +171,23 @@ export default function Transaction_success({
               <li className="list-none flex justify-between items-center">
                 DATE:
                 <span className="mx-4 inline-flex w-2/4 justify-end">
-                  {formattedUpdatedAt}
+                  {data.updatedAt
+                    ? new Date(data.updatedAt).toLocaleString("en-GB")
+                    : "N/A"}
+                </span>
+              </li>
+            </div>
+
+            <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
+              <li className="list-none flex justify-between items-center">
+                Start Date:
+                <span className="mx-4 inline-flex w-2/4 justify-end">
+                  {order.courseType &&
+                  order.courseType.includes("Mentoring") ? (
+                    "Rejeses will contact you"
+                  ) : (
+                    order.startDate || "N/A"
+                  )}
                 </span>
               </li>
             </div>

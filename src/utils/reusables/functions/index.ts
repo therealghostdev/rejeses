@@ -96,23 +96,43 @@ export function createCourseEmailTemplate(
               <p style="margin-bottom: 15px; font-size: 15px;">
                 Thank you for registering for the <strong>${courseType}</strong> course. Below are your registration details:
               </p>
+
+              ${
+                courseType.includes("Mentoring")
+                  ? `<p style="margin-bottom: 15px; font-size: 15px;">
+                      You have registered for the mentoring program. As a result, you will be contacted soon regarding the course commencement date.
+                    </p>`
+                  : ""
+              }
+              
               
               <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Type:</div>
               <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${courseType}</div>
               
               <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Start Date:</div>
-              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${startDate}</div>
+              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${
+                courseType.includes("Mentoring")
+                  ? "Rejeses will contact you"
+                  : startDate
+              }</div>
               
               <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Amount Paid:</div>
               <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${
                 currency === "naira" ? "NGN" : "$"
-              }${formatPrice(amount)}</div>
+              } ${formatPrice(amount)}</div>
               
               <div style="background-color: #f9f9f9; border-left: 4px solid #89c13e; padding: 15px; margin-top: 20px; font-size: 15px;">
-                <p style="margin: 0;">
-                  If you have any questions, feel free to contact us. We look forward to seeing you on <strong>${startDate}</strong>.
-                </p>
-              </div>
+            ${
+              !courseType.includes("Mentoring")
+                ? `<p style="margin: 0;">
+                    If you have any questions, feel free to contact us. We look forward to seeing you on <strong>${startDate}</strong>.
+                  </p>`
+                : `<p style="margin: 0;">
+                    If you have any questions, feel free to contact us. We look forward to seeing you in class.
+                  </p>`
+            }
+</div>
+
             </div>
           </div>
         </body>

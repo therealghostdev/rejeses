@@ -91,13 +91,17 @@ export async function POST(req: Request) {
             <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Type:</div>
             <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${courseType}</div>
 
-            <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Start Date:</div>
-            <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${startDate}</div>
+            ${
+              !courseType.includes("Mentoring")
+                ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Start Date:</div>
+                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${startDate}</div>`
+                : ""
+            }
 
             <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Amount Paid:</div>
             <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${
               currency === "naira" ? "NGN" : "$"
-            }${formatPrice(amount)}</div>
+            } ${formatPrice(amount)}</div>
 
             <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Customer Email:</div>
             <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${email}</div>
