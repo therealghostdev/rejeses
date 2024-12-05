@@ -1,26 +1,9 @@
 import React from "react";
 import data from "@/utils/data/training_data.json";
 import Card from "./card";
+import { getNextMondayDates } from "@/utils/reusables/functions";
 
 export default function UpcomingCohorts() {
-  const getNextMondayDates = (count: number) => {
-    const dates = [];
-    const today = new Date();
-    // Calculate the closest Monday
-    const dayOfWeek = today.getDay();
-    const daysUntilMonday = (dayOfWeek === 0 ? 1 : 8) - dayOfWeek; // Sunday to Monday or the next Monday
-    let currentMonday = new Date(today);
-    currentMonday.setDate(today.getDate() + daysUntilMonday);
-
-    // Generate dates for each card
-    for (let i = 0; i < count; i++) {
-      dates.push(new Date(currentMonday));
-      currentMonday.setDate(currentMonday.getDate() + 7); // Move to the next Monday
-    }
-
-    return dates;
-  };
-
   const mondayDates = getNextMondayDates(data.length);
 
   return (

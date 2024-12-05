@@ -4,6 +4,7 @@ import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
 import { usePayment, useNavigation } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
 import { useRouter } from "next/navigation";
+import { formatDate } from "@/utils/reusables/functions";
 
 export default function MentorshipPaymentSummary() {
   const { paymentInfo, setPaymentInfo } = usePayment();
@@ -28,42 +29,19 @@ export default function MentorshipPaymentSummary() {
       } for this.`;
 
   const router = useRouter();
-  
 
   const pay = () => {
     const date = new Date();
-    date.setDate(date.getDate() + 7); // in a week
-    const day = date.getDate();
-    const month = date.toLocaleString("default", { month: "long" });
-    const year = date.getFullYear();
-
-    // Get the appropriate ordinal suffix for the day
-    let ordinalSuffix;
-    if (day > 3 && day < 21) {
-      ordinalSuffix = "th";
-    } else {
-      const lastDigit = day % 10;
-      if (lastDigit === 1) {
-        ordinalSuffix = "st";
-      } else if (lastDigit === 2) {
-        ordinalSuffix = "nd";
-      } else if (lastDigit === 3) {
-        ordinalSuffix = "rd";
-      } else {
-        ordinalSuffix = "th";
-      }
-    }
-
-    const formattedDate = `${day}${ordinalSuffix} ${month}, ${year}`;
-    setPaymentInfo((prev) => ({ ...prev, start_date: formattedDate }));
+    const pushedDate = date.setDate(date.getDate() + 7); // in a week
+    const covertPushedDate = new Date(pushedDate);
+    const courseDate = formatDate(covertPushedDate);
+    setPaymentInfo((prev) => ({ ...prev, start_date: courseDate }));
     router.push("pricing/checkout");
   };
 
   const renderPrice = () => {
     if (paymentInfo.price === 0) {
-      return isNigeria
-        ? formatPrice(50000)
-        : formatPrice(300);
+      return isNigeria ? formatPrice(50000) : formatPrice(300);
     } else {
       return formatPrice(paymentInfo.price2);
     }

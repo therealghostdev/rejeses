@@ -11,6 +11,7 @@ import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
 import { usePayment, useNavigation } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
 import Certification from "@/components/reusables/certification";
+import { getNextMondayDates, formatDate } from "@/utils/reusables/functions";
 
 export default function Training_page() {
   const trainingItem = data[0];
@@ -19,6 +20,9 @@ export default function Training_page() {
   const { setPaymentInfo, paymentInfo } = usePayment();
 
   const { isNigeria } = useNavigation();
+
+  const startDates = getNextMondayDates(data.length);
+  const courseDate = formatDate(startDates[0]);
 
   function formatPrice(price: number | undefined): string {
     if (price && price >= 1000) {
@@ -62,7 +66,7 @@ export default function Training_page() {
   useEffect(() => {
     setPaymentInfo((prev) => ({
       ...prev,
-      start_date: trainingItem.start_date,
+      start_date: courseDate,
       training_type: "Project Management Training",
     }));
 

@@ -131,6 +131,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         amount: getPrice(),
         currency: formData.currency,
       };
+      console.log(orderBodyParam);
 
       const response = await axios.post<OrderResponse>(
         "/api/order",
@@ -262,11 +263,31 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         );
         const { status, data, order } = response.data;
 
+        const bodyValues = {
+          firstName: order.firstName,
+          lastName: order.lastName,
+          courseType: order.courseType,
+          startDate: order.startDate,
+          email: order.email,
+          amount: order.amount,
+          currency: data.currency,
+        };
+
         if (status === 200 && data.status === "completed") {
           setDataValue(data);
           setOrderValue(order);
           setIsPolling(false);
           setTransactionStatus("completed");
+          const response = await axios.post(
+            "/api/messaging/notify_owner",
+            bodyValues,
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          console.log(response);
           setModal(true);
         } else if (status === 200 && data.status === "failed") {
           setIsPolling(false);

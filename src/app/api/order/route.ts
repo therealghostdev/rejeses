@@ -105,8 +105,9 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!Object.values(StatusType).includes(requiredFields.status as StatusType))
-      
+    if (
+      !Object.values(StatusType).includes(requiredFields.status as StatusType)
+    )
       return Response.json(
         { message: "Invalid status value" },
         { status: 400 }

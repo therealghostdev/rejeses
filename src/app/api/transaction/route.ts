@@ -175,6 +175,14 @@ export async function POST(req: Request) {
           : currency === "USD" || currency === "dollar"
           ? "USD"
           : "",
+      metadata: {
+        custom_fields: [
+          {
+            first_name: order.firstName,
+            last_name: order.lastName,
+          },
+        ],
+      },
     };
 
     const response = await axios.post(

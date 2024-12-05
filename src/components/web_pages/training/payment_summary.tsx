@@ -5,6 +5,7 @@ import { usePayment, useNavigation } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
 import { useEffect, useState } from "react";
 import { ClientPageProps } from "@/utils/types/types";
+import { formatPrice } from "@/utils/reusables/functions";
 
 export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   const { paymentInfo } = usePayment();
@@ -14,14 +15,6 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   const formatTrainingOption = (text: string) => {
     return text.replace(/rejeses consult/gi, "<b><i>rejeses consult</i></b>");
   };
-
-  function formatPrice(price: number | undefined): string {
-    if (price && price >= 1000) {
-      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    } else {
-      return price?.toString() || "";
-    }
-  }
 
   const formatPaymentSummary = () => {
     if (!pricingItem) return "";

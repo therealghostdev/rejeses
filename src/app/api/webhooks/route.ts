@@ -2,6 +2,8 @@ import crypto from "crypto";
 import { StatusType } from "@/utils/types/types";
 import { updateTransaction } from "@/app/services/repository/transactions/transactions";
 import { updateOrder } from "@/app/services/repository/order/order";
+import nodemailer from "nodemailer";
+import { formatPrice } from "@/utils/reusables/functions";
 
 export async function POST(req: Request) {
   try {
@@ -36,9 +38,70 @@ export async function POST(req: Request) {
     }
 
     const eventType = body.event;
-    const { id, reference, fees } = body.data;
+    const {
+      id,
+      reference,
+      fees,
+      paid_at,
+      amount,
+      currency,
+      metadata: { custom_fields },
+      customer: { email },
+    } = body.data;
+
+    const retrievedFirstName = custom_fields.map(
+      (item: any) => item.first_name
+    );
+    const retrievedLastName = custom_fields.map((item: any) => item.last_name);
+
+    const firstName = retrievedFirstName[0] || "";
+    const lastName = retrievedLastName[0] || "";
 
     const payment_id = id.toString();
+
+    const appOwnerEmailConfirmationContent = `
+<html>
+  <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f4f4f4;">
+    <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 30px;">
+      <div style="background-color: #89c13e; color: white; text-align: center; padding: 15px; border-radius: 8px 8px 0 0; font-size: 20px;">
+        <h1 style="margin: 0;">New Course Payment Confirmation Notice</h1>
+      </div>
+      <div style="margin-top: 18px;">
+        <p style="margin-bottom: 15px; font-size: 15px;">
+          A customer has accessed the payment portal and their payment was successful Below are the details:
+        </p>
+
+        <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Transaction ID:</div>
+        <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${id}</div>
+
+        <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Reference:</div>
+        <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${reference}</div>
+
+        <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Name:</div>
+        <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${firstName} ${lastName}</div>
+
+        <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Email:</div>
+        <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${email}</div>
+
+        <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Amount Paid:</div>
+        <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${
+          currency === "NGN" ? "NGN" : "$"
+        } ${formatPrice(amount / 100)}</div>
+
+        <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Payment Date:</div>
+        <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${new Date(
+          paid_at
+        ).toLocaleString("en-GB")}</div>
+
+        <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Payment Fees:</div>
+        <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${currency} ${(
+      fees / 100
+    ).toFixed(2)}</div>
+      </div>
+    </div>
+  </body>
+</html>
+`;
 
     if (eventType === "charge.success" || eventType === "transfer.success") {
       const transaction = await updateTransaction(reference, {
@@ -50,6 +113,22 @@ export async function POST(req: Request) {
       await updateOrder(Number(transaction.orderRef), {
         status: StatusType.completed,
       });
+
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS,
+        },
+      });
+
+      transporter.sendMail({
+        from: `Rejeses consult ${process.env.EMAIL_USER}`,
+        to: process.env.EMAIL_USER,
+        subject: `Payment notification`,
+        html: appOwnerEmailConfirmationContent,
+      });
+
       return Response.json(
         { message: "Transaction completed" },
         { status: 200 }
