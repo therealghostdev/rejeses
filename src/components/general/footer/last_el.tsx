@@ -24,7 +24,7 @@ export default function Last_el() {
         </Link>
 
         <Link
-          href="https://www.facebook.com/rejeses_pmc/"
+          href="https://www.facebook.com/rejeses/"
           target="_blank"
           className="md:mx-4"
         >
