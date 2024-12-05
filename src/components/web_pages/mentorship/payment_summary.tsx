@@ -25,7 +25,7 @@ export default function MentorshipPaymentSummary() {
   const trainingOption = paymentInfo.training_option
     ? formatTrainingOption(paymentInfo.training_option)
     : `You are subscribing to <b><i>rejeses consult</i></b> 3-month mentoring plan. You will be charged ${
-        isNigeria ? "NGN 50,000" : "$300"
+        isNigeria ? "NGN 450,000" : "$300"
       } for this.`;
 
   const router = useRouter();
@@ -41,7 +41,7 @@ export default function MentorshipPaymentSummary() {
 
   const renderPrice = () => {
     if (paymentInfo.price === 0) {
-      return isNigeria ? formatPrice(50000) : formatPrice(300);
+      return isNigeria ? formatPrice(450000) : formatPrice(300);
     } else {
       return formatPrice(paymentInfo.price2);
     }

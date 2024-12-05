@@ -88,7 +88,7 @@ const Table: React.FC<TableProps> = ({ data }) => {
           Have another question?{" "}
           <Link
             href={`/contact-us`}
-            className="font-bold transition_border py-1 italic font-bricolage_grotesque"
+            className="font-bold transition_border py-1 font-bricolage_grotesque"
           >
             Contact us{" "}
           </Link>

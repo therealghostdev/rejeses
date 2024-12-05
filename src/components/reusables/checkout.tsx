@@ -278,7 +278,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
           setOrderValue(order);
           setIsPolling(false);
           setTransactionStatus("completed");
-          const response = await axios.post(
+          setModal(true);
+          await axios.post(
             "/api/messaging/notify_owner",
             bodyValues,
             {
@@ -287,8 +288,6 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
               },
             }
           );
-          console.log(response);
-          setModal(true);
         } else if (status === 200 && data.status === "failed") {
           setIsPolling(false);
           setTransactionStatus("failed");
