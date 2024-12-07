@@ -6,7 +6,7 @@ import { NavTypes } from "@/utils/types/types";
 import navData from "@/utils/data/nav_data.json";
 import { useEffect, useRef, useState, useMemo } from "react";
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Nav_desktop() {
@@ -16,6 +16,7 @@ export default function Nav_desktop() {
   );
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [openMobileNav, setOpenMobileNav] = useState<boolean>(false);
+  const [isNavFixed, setIsNavFixed] = useState<boolean>(false);
   const navRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
 
@@ -31,13 +32,24 @@ export default function Nav_desktop() {
       setIsMobile(newWidth <= 1023);
     };
 
-    window.addEventListener("resize", updateWidth);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const twentyPercentThreshold = viewportHeight * 0.2;
 
-    // Initial check
+      setIsNavFixed(scrollPosition >= twentyPercentThreshold);
+    };
+
+    window.addEventListener("resize", updateWidth);
+    window.addEventListener("scroll", handleScroll);
+
+    // Initial checks
     updateWidth();
+    handleScroll();
 
     return () => {
       window.removeEventListener("resize", updateWidth);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -83,144 +95,102 @@ export default function Nav_desktop() {
     );
   };
 
-  const router = useRouter();
-  const handleEnrollClick = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
-    e.preventDefault();
-
-    if (pathname === "/training") {
-      const pricingSection = document.getElementById("pricing");
-      if (pricingSection) {
-        pricingSection.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      router.push("/training#pricing");
-    }
-  };
-
   return (
     <nav
-      className="flex w-full justify-between items-center px-4 bg-white py-2 font-bricolage_grotesque lg:px-16 md:px-8 md:py-5"
+      className={`
+        w-full justify-between items-center px-4 bg-white/70 
+        font-bricolage_grotesque lg:px-16 md:px-8 md:py-5 py-2
+        transition-all duration-300 ease-in-out z-50
+        ${isNavFixed ? 'fixed top-0 left-0 backdrop-blur-md shadow-md' : ''}
+      `}
       ref={navRef}
+      style={{
+        ...(isNavFixed ? {
+          WebkitBackdropFilter: 'blur(5px)',
+          backdropFilter: 'blur(5px)',
+          backgroundColor: 'rgba(255, 255, 255, 0.7)'
+        } : {})
+      }}
     >
-      <section>
-        <Link href={`/`}>
-          <Image
-            src={logo}
-            alt="logo"
-            width={100}
-            height={50}
-            className="md:h-16 h-12"
-          />
-        </Link>
-      </section>
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <section>
+          <Link href={`/`}>
+            <Image
+              src={logo}
+              alt="logo"
+              width={100}
+              height={50}
+              className="md:h-16 h-12"
+            />
+          </Link>
+        </section>
 
-      {!isMobile && (
-        <>
-          <section className="flex lg:ml-12 lg:mr-12 justify-between items-center">
-            <ul className="flex lg:space-x-10 space-x-4">
-              {links.map((link, index) => (
-                <li
-                  key={index}
-                  className="list-none text-nowrap text-ellipsis font-bold"
-                >
-                  <Link
-                    href={link.url}
-                    className={`hover:text-[#89C13E] transition_border1 py-1 ${
-                      isActive(link.url) ? "text-[#89C13E]" : ""
-                    }`}
+        {!isMobile && (
+          <>
+            <section className="flex lg:ml-12 lg:mr-12 justify-between items-center">
+              <ul className="flex lg:space-x-10 space-x-4">
+                {links.map((link, index) => (
+                  <li
+                    key={index}
+                    className="list-none text-nowrap text-ellipsis font-bold"
                   >
-                    {link.label.toUpperCase()}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          {/* <section className="flex space-x-4"> // could bring this back
-            {linkButtons.map((button, index) => (
-              <Link
-                key={index}
-                href={button.url}
-                // onClick={
-                //   button.label === "Enroll Now" ? handleEnrollClick : undefined
-                // }
-                className={`${button.className} lg:w-[150px] md:text-center`}
-                style={{
-                  backgroundColor: index === 0 ? "#FFFFFF" : "#89C13E",
-                  borderRadius: ".3rem",
-                }}
-              >
-                {button.label.toUpperCase()}
-              </Link>
-            ))}
-          </section> */}
-        </>
-      )}
-
-      {isMobile && (
-        <div>
-          <button onClick={handleHamburgerClick} className="focus:outline-none">
-            {!openMobileNav ? (
-              <HamburgerMenuIcon width="30px" height="30px" color="#090909" />
-            ) : (
-              <Cross1Icon width="30px" height="30px" color="#090909" />
-            )}
-          </button>
-
-          <AnimatePresence>
-            {openMobileNav && (
-              <motion.div
-                className="absolute md:top-20 top-12 left-0 w-full bg-white z-10 p-4 md:px-14 px-8"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <section className="flex flex-col space-y-4 mb-4">
-                  <ul className="flex flex-col space-y-4">
-                    {links.map((link, index) => (
-                      <li key={index} className="list-none">
-                        <Link
-                          onClick={handleHamburgerClick}
-                          href={link.url}
-                          className={`hover:text-[#89C13E] transition_border1 py-1 ${
-                            isActive(link.url) ? "text-[#89C13E]" : ""
-                          }`}
-                        >
-                          {link.label.toUpperCase()}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-
-                {/* <section className="flex flex-col space-y-4"> // could bring this back
-                  {linkButtons.map((button, index) => (
                     <Link
-                      key={index}
-                      href={button.url}
-                      // onClick={
-                      //   button.label === "Enroll Now"
-                      //     ? handleEnrollClick
-                      //     : undefined
-                      // }
-                      className={`${button.className} w-full text-center my-2`}
-                      style={{
-                        backgroundColor: index === 0 ? "#FFFFFF" : "#89C13E",
-                        borderRadius: ".3rem",
-                      }}
+                      href={link.url}
+                      className={`hover:text-[#89C13E] transition_border1 py-1 ${
+                        isActive(link.url) ? "text-[#89C13E]" : ""
+                      }`}
                     >
-                      {button.label.toUpperCase()}
+                      {link.label.toUpperCase()}
                     </Link>
-                  ))}
-                </section> */}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </>
+        )}
+
+        {isMobile && (
+          <div>
+            <button onClick={handleHamburgerClick} className="focus:outline-none">
+              {!openMobileNav ? (
+                <HamburgerMenuIcon width="30px" height="30px" color="#090909" />
+              ) : (
+                <Cross1Icon width="30px" height="30px" color="#090909" />
+              )}
+            </button>
+
+            <AnimatePresence>
+              {openMobileNav && (
+                <motion.div
+                  className="absolute md:top-20 top-12 left-0 w-full bg-white z-10 p-4 md:px-14 px-8"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <section className="flex flex-col space-y-4 mb-4">
+                    <ul className="flex flex-col space-y-4">
+                      {links.map((link, index) => (
+                        <li key={index} className="list-none">
+                          <Link
+                            onClick={handleHamburgerClick}
+                            href={link.url}
+                            className={`hover:text-[#89C13E] transition_border1 py-1 ${
+                              isActive(link.url) ? "text-[#89C13E]" : ""
+                            }`}
+                          >
+                            {link.label.toUpperCase()}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        )}
+      </div>
     </nav>
   );
 }
