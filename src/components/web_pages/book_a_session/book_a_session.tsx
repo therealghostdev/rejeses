@@ -95,34 +95,41 @@ const BookSessionPage = () => {
             looking for career advice, business coaching, or personal
             development, we&apos;re here to support you.
           </p>
-          <ul className="list-disc list-inside space-y-2 text-[#535353]">
+          <ul className="space-y-2 text-[#535353]">
             <motion.li
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: 0.4 }}
+              className="flex items-start"
             >
-              One-on-one personalized attention
+              <span className="mr-2">⭐</span> One-on-one personalized attention
             </motion.li>
             <motion.li
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: 0.5 }}
+              className="flex items-start"
             >
-              Tailored advice for your specific situation
+              <span className="mr-2">⭐</span> Tailored advice for your specific
+              situation
             </motion.li>
             <motion.li
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: 0.6 }}
+              className="flex items-start"
             >
-              Actionable strategies you can implement immediately
+              <span className="mr-2">⭐</span> Actionable strategies you can
+              implement immediately
             </motion.li>
             <motion.li
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: 0.7 }}
+              className="flex items-start"
             >
-              Follow-up support to ensure your success
+              <span className="mr-2">⭐</span> Follow-up support to ensure your
+              success
             </motion.li>
           </ul>
         </motion.div>
@@ -150,7 +157,8 @@ const BookSessionPage = () => {
                 transition={{ delay: 0.3 }}
                 className="text-white mb-6"
               >
-                Choose a convenient time and let&apos;s make magic happen!
+                Find the perfect time, and let&apos;s talk about unlocking your
+                success in project management!
               </motion.p>
 
               <div className="space-y-4 text-white">

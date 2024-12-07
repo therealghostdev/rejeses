@@ -180,14 +180,11 @@ export default function Transaction_success({
 
             <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
               <li className="list-none flex justify-between items-center">
-                Start Date:
+                START DATE:
                 <span className="mx-4 inline-flex w-2/4 justify-end">
-                  {order.courseType &&
-                  order.courseType.includes("Mentoring") ? (
-                    "Rejeses will contact you"
-                  ) : (
-                    order.startDate || "N/A"
-                  )}
+                  {order.courseType && order.courseType.includes("Mentoring")
+                    ? "Rejeses will contact you"
+                    : order.startDate || "N/A"}
                 </span>
               </li>
             </div>
@@ -224,7 +221,7 @@ export default function Transaction_success({
           className="bg-[#89C13E] py-4 px-2 w-full my-4 text-white rounded-md font-bold"
           onClick={returnBtnClick}
         >
-          Back Back Home
+          Back Home
         </button>
       </div>
     </motion.div>

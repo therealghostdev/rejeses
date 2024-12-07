@@ -188,7 +188,7 @@ export default function ContactUs() {
                       value={formValues.name}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className="mt-1 block w-full rounded-md py-3 px-2 border-gray-300 shadow-sm border-none outline-none 
+                      className="mt-1 block w-full rounded-md py-3 px-2 border-gray-300 shadow-md border-none outline-none 
     focus:ring-2 focus:ring-[#89C13E] transition ease-in-out duration-500"
                     />
                     {touchedFields.name && errors.name && (
@@ -211,7 +211,7 @@ export default function ContactUs() {
                       value={formValues.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className="mt-1 block w-full rounded-md py-3 px-2 border-gray-300 shadow-sm border-none outline-none 
+                      className="mt-1 block w-full rounded-md py-3 px-2 border-gray-300 shadow-md border-none outline-none 
     focus:ring-2 focus:ring-[#89C13E] transition ease-in-out duration-500"
                     />
                     {touchedFields.email && errors.email && (
@@ -234,7 +234,7 @@ export default function ContactUs() {
                       value={formValues.message}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      className="mt-1 block w-full rounded-md py-3 px-2 border-gray-300 shadow-sm border-none outline-none 
+                      className="mt-1 block w-full rounded-md py-3 px-2 border-gray-300 shadow-md border-none outline-none 
     focus:ring-2 focus:ring-[#89C13E] transition ease-in-out duration-500"
                     ></textarea>
                     {touchedFields.message && errors.message && (
