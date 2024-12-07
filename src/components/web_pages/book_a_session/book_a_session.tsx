@@ -150,7 +150,7 @@ const BookSessionPage = () => {
                 transition={{ delay: 0.3 }}
                 className="text-white mb-6"
               >
-                Choose a convenient time and let&apos;s make magic happen!
+                Chosse a time that&apos;s convenient for you, and let&apos;s create something amazing together!
               </motion.p>
 
               <div className="space-y-4 text-white">
