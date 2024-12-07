@@ -2,10 +2,6 @@
   "logo": "/logo.svg",
   "links": [
     {
-      "label": "Home",
-      "url": "/"
-    },
-    {
       "label": "Training",
       "url": "/training"
     },
