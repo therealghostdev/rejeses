@@ -46,10 +46,12 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
       const price2 = paymentInfo.price2;
       const adjustedPrice = paymentInfo.is_group ? price * 5 : price;
       const adjustedPrice2 = paymentInfo.is_group ? price2 * 5 : price2;
+      console.log(adjustedPrice2, adjustedPrice);
+      
 
       return isNigeria
-        ? formatPrice(adjustedPrice2)
-        : formatPrice(adjustedPrice);
+        ? formatPrice(adjustedPrice)
+        : formatPrice(adjustedPrice2);
     }
   };
 

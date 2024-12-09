@@ -33,7 +33,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
         training_type:
           trainingTypeValue === "Training only"
             ? "Project Management Training"
-            : "Project Management Training And Mentoring",
+            : "Project Management Training & Mentoring",
       }));
       const goTo = `/training/${id}`;
       directTo.push(goTo);
@@ -46,7 +46,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
         training_type:
           trainingTypeValue === "Training only"
             ? "Project Management Mentoring"
-            : "Project Management Training And Mentoring",
+            : "Project Management Training & Mentoring",
       }));
       const goTo = `/${currentPath}/pricing`;
       directTo.push(goTo);
@@ -134,11 +134,6 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                   ? training_only.price2
                   : training_only.price;
 
-                const adjustedPrice2 = paymentInfo.is_group
-                  ? (isNigeria ? training_only.price : training_only.price2) * 5
-                  : isNigeria
-                  ? training_only.price
-                  : training_only.price2;
                 registerBtnClick(
                   training_only.name,
                   isNigeria ? training_only.price : training_only.price2,
@@ -148,7 +143,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                       }${
                         isNigeria
                           ? formatPrice(adjustedPrice)
-                          : formatPrice(adjustedPrice2)
+                          : formatPrice(adjustedPrice)
                       } for this.`
                     : `You are subscribing to <b>rejeses</b> 3-month mentoring plan. You will be charged ${
                         isNigeria ? "NGN " : "$"
@@ -221,13 +216,6 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                   ? training_with_mentorship.price2
                   : training_with_mentorship.price;
 
-                const adjustedPrice2 = paymentInfo.is_group
-                  ? (isNigeria
-                      ? training_with_mentorship.price
-                      : training_with_mentorship.price2) * 5
-                  : isNigeria
-                  ? training_with_mentorship.price
-                  : training_with_mentorship.price2;
                 registerBtnClick(
                   training_with_mentorship.name,
                   isNigeria
@@ -238,7 +226,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                   }${
                     isNigeria
                       ? formatPrice(adjustedPrice)
-                      : formatPrice(adjustedPrice2)
+                      : formatPrice(adjustedPrice)
                   } for this.`,
                   isNigeria
                     ? training_with_mentorship.price2
