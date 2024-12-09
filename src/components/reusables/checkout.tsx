@@ -131,7 +131,6 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         amount: getPrice(),
         currency: formData.currency,
       };
-      console.log(orderBodyParam);
 
       const response = await axios.post<OrderResponse>(
         "/api/order",
@@ -353,13 +352,17 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   const getPrice = useCallback((): number => {
     let price;
     if (isNigeria && formData.currency === "NGN") {
-      price = paymentInfo.is_group ? paymentInfo.price2 * 5 : paymentInfo.price2;
+      price = paymentInfo.is_group
+        ? paymentInfo.price2 * 5
+        : paymentInfo.price2;
     } else if (isNigeria && formData.currency === "USD") {
       price = paymentInfo.is_group ? paymentInfo.price * 5 : paymentInfo.price;
     } else if (!isNigeria && formData.currency === "NGN") {
       price = paymentInfo.is_group ? paymentInfo.price * 5 : paymentInfo.price;
     } else if (!isNigeria && formData.currency === "USD") {
-      price = paymentInfo.is_group ? paymentInfo.price2 * 5 : paymentInfo.price2;
+      price = paymentInfo.is_group
+        ? paymentInfo.price2 * 5
+        : paymentInfo.price2;
     } else {
       price = 0;
     }
