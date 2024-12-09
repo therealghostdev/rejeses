@@ -474,17 +474,29 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
             <div className="w-full font-bricolage_grotesque flex justify-between text-lg py-4 border-b border-dashed border-b-[#DBE1E7]">
               <h1>Product</h1>
-              <h1>Amount</h1>
+              <h1>Subtotal</h1>
             </div>
 
             <div className="w-full flex justify-between py-4 border-b border-dashed border-b-[#DBE1E7]">
               <div className="max-w-3/4 flex lg:h-auto md:h-20">
                 <div className="w-3/4 flex md:flex-row flex-col justify-center">
+                  <div className="flex justify-center items-center h-full w-48 border border-[#FFFAF5]  bg-[#FFE0C2] rounded-md mx-2">
+                    <Image
+                      src="/trophy.svg"
+                      width={60}
+                      height={30}
+                      alt="certification"
+                      className=""
+                    />
+                  </div>
                   <div className="mx-2 flex justify-center flex-col lg:my-auto md:mt-0 mt-2">
                     <h1 className="font-bold font-bricolage_grotesque lg:text-wrap md:text-ellipsis md:text-nowrap lg:my-2 md:mb-0 mb-2">
                       Project Management Training
                     </h1>
-                   </div>
+                    <p className="lg:text-wrap text-nowrap text-ellipsis bricolage_text">
+                      Certificate of completion
+                    </p>
+                  </div>
                 </div>
               </div>
               <div className="flex justify-center items-center">
