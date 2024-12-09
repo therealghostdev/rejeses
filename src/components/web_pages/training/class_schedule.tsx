@@ -97,7 +97,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
       training_id: props.all.id,
       training_type: "Project Management Training",
       start_date: props.all.start_date,
-      training_option: `You are subscribing to rejeses consult 35-hour training plan. You will be charged ${
+      training_option: `You are subscribing to <b>rejeses</b> 35-hour training plan. You will be charged ${
         isNigeria ? "NGN " : "$"
       }${formatPrice(individualPrice2)} for this.`,
       is_group: false,
