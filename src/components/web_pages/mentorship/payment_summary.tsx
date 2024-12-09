@@ -44,7 +44,9 @@ export default function MentorshipPaymentSummary() {
     if (paymentInfo.price === 0) {
       return isNigeria ? formatPrice(450000) : formatPrice(300);
     } else {
-      return formatPrice(paymentInfo.price2);
+      return isNigeria
+        ? formatPrice(paymentInfo.price2)
+        : formatPrice(paymentInfo.price);
     }
   };
 
