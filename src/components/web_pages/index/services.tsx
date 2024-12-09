@@ -47,7 +47,7 @@ export default function Services() {
             <h1 className="lg:text-[36px] md:text-3xl text-2xl font-bold font-bricolage_grotesque">
               Training
             </h1>
-            <p className="lg:text-[24px] lg:max-w-[95%] text-wrap text-[16px]">
+            <p className="lg:text-[24px] lg:max-w-[95%] text-wrap text-[16px] font-bricolage_grotesque">
               Our 35-hour training program is excellently designed to help you
               master the skills needed to become a seasoned project manager and
               pass the prestigious Project Management Professional (PMP)
