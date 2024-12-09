@@ -10,7 +10,7 @@ export default function TermsAndConditions() {
     {
       title: "Introduction",
       content:
-        "Welcome to our website. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use.",
+        "Welcome to our website. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions of use:",
     },
     {
       title: "Use of Website",
