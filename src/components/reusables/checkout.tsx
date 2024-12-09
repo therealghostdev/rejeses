@@ -279,15 +279,11 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
           setIsPolling(false);
           setTransactionStatus("completed");
           setModal(true);
-          await axios.post(
-            "/api/messaging/notify_owner",
-            bodyValues,
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
+          await axios.post("/api/messaging/notify_owner", bodyValues, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
         } else if (status === 200 && data.status === "failed") {
           setIsPolling(false);
           setTransactionStatus("failed");
@@ -357,13 +353,13 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   const getPrice = useCallback((): number => {
     let price;
     if (isNigeria && formData.currency === "NGN") {
-      price = paymentInfo.price2;
+      price = paymentInfo.is_group ? paymentInfo.price2 * 5 : paymentInfo.price2;
     } else if (isNigeria && formData.currency === "USD") {
-      price = paymentInfo.price;
+      price = paymentInfo.is_group ? paymentInfo.price * 5 : paymentInfo.price;
     } else if (!isNigeria && formData.currency === "NGN") {
-      price = paymentInfo.price;
+      price = paymentInfo.is_group ? paymentInfo.price * 5 : paymentInfo.price;
     } else if (!isNigeria && formData.currency === "USD") {
-      price = paymentInfo.price2;
+      price = paymentInfo.is_group ? paymentInfo.price2 * 5 : paymentInfo.price2;
     } else {
       price = 0;
     }
@@ -491,7 +487,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                   </div>
                   <div className="mx-2 flex justify-center flex-col lg:my-auto md:mt-0 mt-2">
                     <h1 className="font-bold font-bricolage_grotesque lg:text-wrap md:text-ellipsis md:text-nowrap lg:my-2 md:mb-0 mb-2">
-                      Project Management Training
+                      {paymentInfo.training_type ||
+                        "Project Management Training"}
                     </h1>
                     <p className="lg:text-wrap text-nowrap text-ellipsis bricolage_text">
                       Certificate of completion

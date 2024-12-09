@@ -4,7 +4,7 @@ import button from "next/link";
 import { PriceCardProps } from "@/utils/types/types";
 import { usePayment, useNavigation } from "@/utils/context/payment";
 import { usePathname, useRouter, redirect } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function PriceCard({ data, id }: PriceCardProps) {
   const { training_only, training_with_mentorship } = data;
@@ -16,18 +16,24 @@ export default function PriceCard({ data, id }: PriceCardProps) {
   const pathname = usePathname();
   const { setPaymentInfo, paymentInfo } = usePayment();
 
-  const registerBtnClick = (item: number, option: string, item2: number) => {
+  const registerBtnClick = (
+    trainingTypeValue: string,
+    item: number,
+    option: string,
+    item2: number
+  ) => {
     const currentPath = decodeURIComponent(pathname).split("/")[1];
     if (currentPath === "training") {
-      const routePath = decodeURIComponent(pathname).split("/")[2];
-
       setPaymentInfo((prev) => ({
         ...prev,
         price: item,
         price2: item2,
         training_id: Number(id),
         training_option: option,
-        training_type: "Project Management Training",
+        training_type:
+          trainingTypeValue === "Training only"
+            ? "Project Management Training"
+            : "Project Management Training And Mentoring",
       }));
       const goTo = `/training/${id}`;
       directTo.push(goTo);
@@ -37,7 +43,10 @@ export default function PriceCard({ data, id }: PriceCardProps) {
         price: item,
         price2: item2,
         training_option: option,
-        training_type: "Project Management Mentoring",
+        training_type:
+          trainingTypeValue === "Training only"
+            ? "Project Management Mentoring"
+            : "Project Management Training And Mentoring",
       }));
       const goTo = `/${currentPath}/pricing`;
       directTo.push(goTo);
@@ -48,7 +57,15 @@ export default function PriceCard({ data, id }: PriceCardProps) {
   };
 
   const resetPriceInfo = () => {
-    setPaymentInfo((prev) => ({ ...prev, price: 0, training_id: null }));
+    setPaymentInfo((prev) => ({
+      ...prev,
+      price: 0,
+      price2: 0,
+      training_id: null,
+      is_group: false,
+      training_type: "",
+      start_date: "",
+    }));
   };
 
   function formatPrice(price: number): string {
@@ -64,7 +81,6 @@ export default function PriceCard({ data, id }: PriceCardProps) {
     const includesAny = val.some((substring) => pathname.includes(substring));
     if (!includesAny) resetPriceInfo();
   }, []);
-  
 
   return (
     <>
@@ -111,16 +127,28 @@ export default function PriceCard({ data, id }: PriceCardProps) {
 
           <div className="bottom-6 md:absolute left-0 w-full px-4">
             <button
-              onClick={() =>
+              onClick={() => {
+                const adjustedPrice = paymentInfo.is_group
+                  ? (isNigeria ? training_only.price2 : training_only.price) * 5
+                  : isNigeria
+                  ? training_only.price2
+                  : training_only.price;
+
+                const adjustedPrice2 = paymentInfo.is_group
+                  ? (isNigeria ? training_only.price : training_only.price2) * 5
+                  : isNigeria
+                  ? training_only.price
+                  : training_only.price2;
                 registerBtnClick(
+                  training_only.name,
                   isNigeria ? training_only.price : training_only.price2,
                   decodeURIComponent(pathname).split("/")[1] === "training"
                     ? `You are subscribing to rejeses consult 35-hour training plan. You will be charged  ${
                         isNigeria ? "NGN " : "$"
                       }${
                         isNigeria
-                          ? formatPrice(training_only.price2)
-                          : formatPrice(training_only.price)
+                          ? formatPrice(adjustedPrice)
+                          : formatPrice(adjustedPrice2)
                       } for this.`
                     : `You are subscribing to rejeses consult 3-month mentoring plan. You will be charged ${
                         isNigeria ? "NGN " : "$"
@@ -130,8 +158,8 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                           : formatPrice(training_only.price)
                       } for this.`,
                   isNigeria ? training_only.price2 : training_only.price
-                )
-              }
+                );
+              }}
               // href={training_only.register_link}
               className="bg-[#89C13E] text-white w-full inline-block p-4 text-center rounded-md font-bricolage_grotesque"
             >
@@ -184,8 +212,24 @@ export default function PriceCard({ data, id }: PriceCardProps) {
 
           <div className="bottom-6 md:absolute left-0 w-full px-4">
             <button
-              onClick={() =>
+              onClick={() => {
+                const adjustedPrice = paymentInfo.is_group
+                  ? (isNigeria
+                      ? training_with_mentorship.price2
+                      : training_with_mentorship.price) * 5
+                  : isNigeria
+                  ? training_with_mentorship.price2
+                  : training_with_mentorship.price;
+
+                const adjustedPrice2 = paymentInfo.is_group
+                  ? (isNigeria
+                      ? training_with_mentorship.price
+                      : training_with_mentorship.price2) * 5
+                  : isNigeria
+                  ? training_with_mentorship.price
+                  : training_with_mentorship.price2;
                 registerBtnClick(
+                  training_with_mentorship.name,
                   isNigeria
                     ? training_with_mentorship.price
                     : training_with_mentorship.price2,
@@ -193,14 +237,14 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                     isNigeria ? "NGN " : "$"
                   }${
                     isNigeria
-                      ? formatPrice(training_with_mentorship.price2)
-                      : formatPrice(training_with_mentorship.price)
+                      ? formatPrice(adjustedPrice)
+                      : formatPrice(adjustedPrice2)
                   } for this.`,
                   isNigeria
                     ? training_with_mentorship.price2
                     : training_with_mentorship.price
-                )
-              }
+                );
+              }}
               // href={training_with_mentorship.register_link}
               className="bg-[#89C13E] text-white w-full font-bricolage_grotesque inline-block p-4 text-center rounded-md"
             >

@@ -18,6 +18,7 @@ const PaymentContext = createContext<{
     training_id: null,
     training_type: "",
     start_date: "",
+    is_group: false,
   },
   setPaymentInfo: () => {},
 });
@@ -43,6 +44,7 @@ export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({
     training_id: null,
     training_type: "",
     start_date: "",
+    is_group: false
   });
 
   const [isNigeria, setIsNigeria] = useState(false);

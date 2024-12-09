@@ -6,14 +6,17 @@ import Button from "@/components/reusables/button";
 import { useEffect, useState } from "react";
 import { ClientPageProps } from "@/utils/types/types";
 import { formatPrice } from "@/utils/reusables/functions";
+import { useRouter } from "next/navigation";
 
 export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   const { paymentInfo } = usePayment();
   const [formattedSummary, setFormattedSummary] = useState<string>("");
   const { isNigeria } = useNavigation();
 
+  const router = useRouter();
+
   const formatTrainingOption = (text: string) => {
-    return text.replace(/rejeses consult/gi, "<b><i>rejeses consult</i></b>");
+    return text.replace(/rejeses consult/gi, "<b>rejeses consult</b>");
   };
 
   const formatPaymentSummary = () => {
@@ -21,7 +24,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
     const { training_option } = paymentInfo;
 
     if (!training_option || training_option === "") {
-      return `You are subscribing to <b><i>rejeses consult</i></b> 35 hour training plan. You will be charged ${
+      return `You are subscribing to <b>rejeses consult</b> 35 hour training plan. You will be charged ${
         isNigeria ? "NGN " : "$"
       }${
         isNigeria
@@ -39,13 +42,26 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
         ? formatPrice(pricingItem?.payment.total2)
         : formatPrice(pricingItem?.payment.total);
     } else {
-      return formatPrice(paymentInfo.price2);
+      const price = paymentInfo.price;
+      const price2 = paymentInfo.price2;
+      const adjustedPrice = paymentInfo.is_group ? price * 5 : price;
+      const adjustedPrice2 = paymentInfo.is_group ? price2 * 5 : price2;
+
+      return isNigeria
+        ? formatPrice(adjustedPrice2)
+        : formatPrice(adjustedPrice);
     }
   };
 
   useEffect(() => {
     setFormattedSummary(formatPaymentSummary());
   }, [paymentInfo, pricingItem, isNigeria]);
+
+  useEffect(() => {
+    if (paymentInfo.price === 0 || paymentInfo.price2 === 0) {
+      router.push("/training");
+    }
+  }, [paymentInfo.price, paymentInfo.price2]);
 
   return (
     <section className="w-full px-8 flex flex-col gap-12 py-12 justify-center items-center">

@@ -212,7 +212,7 @@ export interface PaymentInfo {
   training_type: string;
   start_date: string;
   training_option?: string;
-  is_group?: boolean;
+  is_group: boolean;
 }
 
 export interface OrderResponse {

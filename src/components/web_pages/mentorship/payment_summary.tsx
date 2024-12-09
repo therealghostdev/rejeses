@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Dynamic_nav from "@/components/reusables/navigation/dynamic_nav";
 import { usePayment, useNavigation } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
@@ -11,21 +11,22 @@ export default function MentorshipPaymentSummary() {
   const { isNigeria } = useNavigation();
 
   const formatTrainingOption = (text: string) => {
-    return text.replace(/rejeses consult/gi, "<b><i>rejeses consult</i></b>");
+    return text.replace(/rejeses consult/gi, "<b>rejeses consult</b>");
   };
 
   function formatPrice(price: number): string {
-    if (price >= 1000) {
-      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    let adjustedPrice = paymentInfo.is_group ? price * 5 : price;
+    if (adjustedPrice >= 1000) {
+      return adjustedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     } else {
-      return price.toString();
+      return adjustedPrice.toString();
     }
   }
 
   const trainingOption = paymentInfo.training_option
     ? formatTrainingOption(paymentInfo.training_option)
-    : `You are subscribing to <b><i>rejeses consult</i></b> 3-month mentoring plan. You will be charged ${
-        isNigeria ? "NGN 450,000" : "$300"
+    : `You are subscribing to <b>rejeses consult</b> 3-month mentoring plan. You will be charged ${
+        isNigeria ? `NGN ${formatPrice(450000)}` : `$${formatPrice(300)}`
       } for this.`;
 
   const router = useRouter();
@@ -46,6 +47,12 @@ export default function MentorshipPaymentSummary() {
       return formatPrice(paymentInfo.price2);
     }
   };
+
+  useEffect(() => {
+    if (paymentInfo.price === 0 || paymentInfo.price2 === 0) {
+      router.push("/mentorship");
+    }
+  }, [paymentInfo.price, paymentInfo.price2]);
 
   return (
     <section className="w-full px-8 flex flex-col gap-12 py-12 justify-center items-center">
