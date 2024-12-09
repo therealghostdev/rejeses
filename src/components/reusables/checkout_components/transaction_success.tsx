@@ -160,7 +160,7 @@ export default function Transaction_success({
 
             <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
               <li className="list-none flex justify-between items-center">
-                TRAINING:
+                PROGRAM:
                 <span className="mx-4 inline-flex w-2/4 justify-end">
                   {order?.courseType || "N/A"}
                 </span>
