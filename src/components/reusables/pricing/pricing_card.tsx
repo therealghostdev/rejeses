@@ -115,14 +115,14 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                 registerBtnClick(
                   isNigeria ? training_only.price : training_only.price2,
                   decodeURIComponent(pathname).split("/")[1] === "training"
-                    ? `You are subscribing to rejeses 35-hour training plan. You will be charged  ${
+                    ? `You are subscribing to <b>rejeses</b> 35-hour training plan. You will be charged  ${
                         isNigeria ? "NGN " : "$"
                       }${
                         isNigeria
                           ? formatPrice(training_only.price2)
                           : formatPrice(training_only.price)
                       } for this.`
-                    : `You are subscribing to rejeses 3-month mentoring plan. You will be charged ${
+                    : `You are subscribing to <b>rejeses</b> 3-month mentoring plan. You will be charged ${
                         isNigeria ? "NGN " : "$"
                       }${
                         isNigeria
@@ -189,7 +189,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                   isNigeria
                     ? training_with_mentorship.price
                     : training_with_mentorship.price2,
-                  `You are subscribing to rejeses 35-hour training plus 3-month mentoring plan. You will be charged ${
+                  `You are subscribing to <b>rejeses</b> 35-hour training plus 3-month mentoring plan. You will be charged ${
                     isNigeria ? "NGN " : "$"
                   }${
                     isNigeria
