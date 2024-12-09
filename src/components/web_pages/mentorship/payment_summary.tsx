@@ -11,7 +11,7 @@ export default function MentorshipPaymentSummary() {
   const { isNigeria } = useNavigation();
 
   const formatTrainingOption = (text: string) => {
-    return text.replace(/rejeses consult/gi, "<b><i>rejeses consult</i></b>");
+    return text.replace(/rejeses consult/gi, "<b>rejeses</b>");
   };
 
   function formatPrice(price: number): string {
@@ -24,7 +24,7 @@ export default function MentorshipPaymentSummary() {
 
   const trainingOption = paymentInfo.training_option
     ? formatTrainingOption(paymentInfo.training_option)
-    : `You are subscribing to <b><i>rejeses consult</i></b> 3-month mentoring plan. You will be charged ${
+    : `You are subscribing to <b>rejeses</b> 3-month mentoring plan. You will be charged ${
         isNigeria ? "NGN 450,000" : "$300"
       } for this.`;
 
