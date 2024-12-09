@@ -7,7 +7,7 @@ export default function GeneralCard(props: GeneralCardProps) {
     const parts = comment.split(/(rejeses)/i);
     return parts.map((part, index) =>
       /rejeses/i.test(part) ? (
-        <span key={index} className="font-bold italic">
+        <span key={index} className="font-bold">
           {part}
         </span>
       ) : (

@@ -94,25 +94,25 @@ export function createCourseEmailTemplate(
             <div style="margin-top: 18px;">
               <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Dear ${firstName} ${lastName},</div>
               <p style="margin-bottom: 15px; font-size: 15px;">
-                Thank you for registering for the <strong>${courseType}</strong> course. Below are your registration details:
+                Thank you for registering for the <strong>${courseType}</strong> program. Below are your registration details:
               </p>
 
               ${
                 courseType.includes("Mentoring")
                   ? `<p style="margin-bottom: 15px; font-size: 15px;">
-                      You have registered for the mentoring program. As a result, you will be contacted soon regarding the course commencement date.
+                      You have registered for the mentoring program. As a result, you will be contacted soon regarding the program details.
                     </p>`
                   : ""
               }
               
               
-              <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Type:</div>
+              <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Program Type:</div>
               <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${courseType}</div>
               
               <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Start Date:</div>
               <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${
                 courseType.includes("Mentoring")
-                  ? "Rejeses will contact you"
+                  ? "You will be contacted"
                   : startDate
               }</div>
               

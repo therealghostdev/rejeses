@@ -12,7 +12,7 @@ export default function Book_session() {
         <div className="md:w-[661px] flex justify-center items-center px-12 z-10">
           <p className="text-lg text-center break-words text-wrap">
             Schedule a 30-minute consultation with
-            one of our experts to discuss your specifics.
+            one of our experts to discuss your specifics
           </p>
         </div>
 

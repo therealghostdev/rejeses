@@ -157,8 +157,7 @@ const BookSessionPage = () => {
                 transition={{ delay: 0.3 }}
                 className="text-white mb-6"
               >
-                Find the perfect time, and let&apos;s talk about unlocking your
-                success in project management!
+                Schedule a time that works for you, and let&apos;s create something amazing together!
               </motion.p>
 
               <div className="space-y-4 text-white">

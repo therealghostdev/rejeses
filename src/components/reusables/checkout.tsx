@@ -470,7 +470,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
             <div className="w-full font-bricolage_grotesque flex justify-between text-lg py-4 border-b border-dashed border-b-[#DBE1E7]">
               <h1>Product</h1>
-              <h1>Subtotal</h1>
+              <h1>Amount</h1>
             </div>
 
             <div className="w-full flex justify-between py-4 border-b border-dashed border-b-[#DBE1E7]">
