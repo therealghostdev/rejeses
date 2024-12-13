@@ -499,7 +499,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                     -
                   </button>
                   <span className="text-[#666666] font-medium text-lg">
-                    Multiplier {`(${count})`}
+                    How many? {`(${count})`}
                   </span>
                   <button
                     onClick={plus}
