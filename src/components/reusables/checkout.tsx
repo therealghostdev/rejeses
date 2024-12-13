@@ -36,6 +36,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       data: { authorization_url: "", access_code: "", reference: "" },
     });
 
+  const [count, setCount] = useState<number>(paymentInfo.is_group ? 5 : 1);
+
   const POLLING_INTERVAL = 5000;
   const MAX_POLLING_ATTEMPTS = 60;
 
@@ -218,6 +220,27 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     }
   };
 
+  const plus = () => {
+    if (paymentInfo.is_group) {
+      setCount((prev) => prev + 5);
+    } else {
+      setCount((prev) => prev + 1);
+    }
+  };
+
+  const minus = () => {
+    if (paymentInfo.is_group) {
+      setCount((prev) => Math.max(prev - 5, 5));
+    } else {
+      setCount((prev) => Math.max(prev - 1, 1));
+    }
+  };
+
+  // useEffect(() => {
+  //   paymentInfo.price * count;
+  //   paymentInfo.price2 * count;
+  // }, [count, paymentInfo.price, paymentInfo.price2]);
+
   const continueTransaction = async () => {
     try {
       if (
@@ -353,21 +376,25 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     let price;
     if (isNigeria && formData.currency === "NGN") {
       price = paymentInfo.is_group
-        ? paymentInfo.price2 * 5
-        : paymentInfo.price2;
+        ? paymentInfo.price2 * count
+        : paymentInfo.price2 * count;
     } else if (isNigeria && formData.currency === "USD") {
-      price = paymentInfo.is_group ? paymentInfo.price * 5 : paymentInfo.price;
+      price = paymentInfo.is_group
+        ? paymentInfo.price * count
+        : paymentInfo.price * count;
     } else if (!isNigeria && formData.currency === "NGN") {
-      price = paymentInfo.is_group ? paymentInfo.price * 5 : paymentInfo.price;
+      price = paymentInfo.is_group
+        ? paymentInfo.price * count
+        : paymentInfo.price * count;
     } else if (!isNigeria && formData.currency === "USD") {
       price = paymentInfo.is_group
-        ? paymentInfo.price2 * 5
-        : paymentInfo.price2;
+        ? paymentInfo.price2 * count
+        : paymentInfo.price2 * count;
     } else {
       price = 0;
     }
     return price;
-  }, [isNigeria, formData.currency, paymentInfo.price, paymentInfo.price2]);
+  }, [isNigeria, formData.currency, paymentInfo.price, paymentInfo.price2, count, paymentInfo.is_group]);
 
   useEffect(() => {
     setPrice(getPrice());
@@ -460,6 +487,28 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                     USD
                   </option>
                 </select>
+              </div>
+
+              <div className="w-full py-4 flex items-center">
+                <div className="lg:w-3/4 w-[98%] flex items-center justify-between border border-[#DBE1E7] rounded-md bg-[#F7F8F9] px-4 py-3">
+                  <button
+                    onClick={minus}
+                    type="button"
+                    className="w-8 h-8 rounded-full bg-[#497016] text-white flex justify-center items-center text-lg hover:bg-[#5a8620] transition-colors"
+                  >
+                    -
+                  </button>
+                  <span className="text-[#666666] font-medium text-lg">
+                    Multiplier {`(${count})`}
+                  </span>
+                  <button
+                    onClick={plus}
+                    type="button"
+                    className="w-8 h-8 rounded-full bg-[#497016] text-white flex justify-center items-center text-lg hover:bg-[#5a8620] transition-colors"
+                  >
+                    +
+                  </button>
+                </div>
               </div>
             </form>
           </div>
