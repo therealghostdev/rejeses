@@ -17,7 +17,7 @@
     ],
     "requirements": {
       "software": "Training Medium:",
-      "how": "This course will be delivered as a live instructor-led virtual training program. Kindly contact us for live in-person sessions.",
+      "how": "This course will be delivered as a live instructor-led virtual training program. Kindly <link href={`/contact-us`} className="font-bold transition_border py-1 font-bricolage_grostesque">contact us</link> for live in-person sessions.",
       "tool": "Zoom"
     },
     "payment": {
