@@ -136,8 +136,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
               two weekends only
             </strong>
             , and the course is completed in
-            <strong className="font-bricolage_grotesque"> four days</strong>.
-            :
+            <strong className="font-bricolage_grotesque"> four days:</strong>
             <ul className="list-disc list-inside pl-4">
               <li>
                 <strong className="font-bricolage_grotesque">Saturdays</strong>:{" "}
