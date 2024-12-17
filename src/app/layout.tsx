@@ -41,8 +41,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" id="el">
-      <ToastContainer />
-      <body className={`${inter.className} ${bricolage_grotesque.variable} max-w-[1440px] m-auto`}>
+      <body
+        className={`${inter.className} ${bricolage_grotesque.variable} max-w-[1440px] m-auto`}
+      >
+        <ToastContainer />
         <PaymentProvider>
           <Navigation />
           {children}

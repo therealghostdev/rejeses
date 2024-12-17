@@ -24,15 +24,11 @@ export default function Card(props: CardProps) {
 
   const updatePrice = useCallback(() => {
     const priceArray = props.price?.individuals
-      .map((item) =>
-        isNigeria ? item.training_only?.price : item.training_only?.price2
-      )
+      .map((item) => item.training_only?.price)
       .filter((price) => price && !isNaN(price))[0];
 
     const priceArray2 = props.price?.individuals
-      .map((item) =>
-        isNigeria ? item.training_only?.price2 : item.training_only?.price
-      )
+      .map((item) => item.training_only?.price2)
       .filter((price) => price && !isNaN(price))[0];
 
     setPaymentInfo((prev) => ({
@@ -43,7 +39,9 @@ export default function Card(props: CardProps) {
       start_date: props.date,
       training_option: `You are subscribing to <b>rejeses</b> consult 35-hour training plan. You will be charged ${
         isNigeria ? "NGN " : "$"
-      }${formatPrice(priceArray2)} for this.`,
+      }${
+        isNigeria ? formatPrice(priceArray2) : formatPrice(priceArray)
+      } for this.`,
       is_group: false,
     }));
   }, [
