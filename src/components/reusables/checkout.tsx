@@ -384,12 +384,12 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         : paymentInfo.price * count;
     } else if (!isNigeria && formData.currency === "NGN") {
       price = paymentInfo.is_group
-        ? paymentInfo.price * count
-        : paymentInfo.price * count;
-    } else if (!isNigeria && formData.currency === "USD") {
-      price = paymentInfo.is_group
         ? paymentInfo.price2 * count
         : paymentInfo.price2 * count;
+    } else if (!isNigeria && formData.currency === "USD") {
+      price = paymentInfo.is_group
+        ? paymentInfo.price * count
+        : paymentInfo.price * count;
     } else {
       price = 0;
     }

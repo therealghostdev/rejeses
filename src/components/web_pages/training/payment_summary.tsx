@@ -37,20 +37,12 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   };
 
   const renderPrice = () => {
-    if (paymentInfo.price === 0) {
-      return isNigeria
-        ? formatPrice(pricingItem?.payment.total2)
-        : formatPrice(pricingItem?.payment.total);
-    } else {
-      const price = paymentInfo.price;
-      const price2 = paymentInfo.price2;
-      const adjustedPrice = paymentInfo.is_group ? price * 5 : price;
-      const adjustedPrice2 = paymentInfo.is_group ? price2 * 5 : price2;
+    const { price, price2, is_group } = paymentInfo;
 
-      return isNigeria
-        ? formatPrice(adjustedPrice2)
-        : formatPrice(adjustedPrice);
-    }
+    const adjustedPrice = is_group ? price * 5 : price || 0;
+    const adjustedPrice2 = is_group ? price2 * 5 : price2 || 0;
+
+    return isNigeria ? formatPrice(adjustedPrice2) : formatPrice(adjustedPrice);
   };
 
   useEffect(() => {

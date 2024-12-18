@@ -136,7 +136,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
 
                 registerBtnClick(
                   training_only.name,
-                  isNigeria ? training_only.price : training_only.price2,
+                  training_only.price,
                   decodeURIComponent(pathname).split("/")[1] === "training"
                     ? `You are subscribing to <b>rejeses</b> 35-hour training plan. You will be charged  ${
                         isNigeria ? "NGN " : "$"
@@ -152,7 +152,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                           ? formatPrice(training_only.price2)
                           : formatPrice(training_only.price)
                       } for this.`,
-                  isNigeria ? training_only.price2 : training_only.price
+                  training_only.price2
                 );
               }}
               // href={training_only.register_link}
@@ -218,9 +218,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
 
                 registerBtnClick(
                   training_with_mentorship.name,
-                  isNigeria
-                    ? training_with_mentorship.price
-                    : training_with_mentorship.price2,
+                  training_with_mentorship.price,
                   `You are subscribing to <b>rejeses</b> 35-hour training plus 3-month mentoring plan. You will be charged ${
                     isNigeria ? "NGN " : "$"
                   }${
@@ -228,9 +226,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                       ? formatPrice(adjustedPrice)
                       : formatPrice(adjustedPrice)
                   } for this.`,
-                  isNigeria
-                    ? training_with_mentorship.price2
-                    : training_with_mentorship.price
+                  training_with_mentorship.price2
                 );
               }}
               // href={training_with_mentorship.register_link}
