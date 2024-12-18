@@ -94,9 +94,9 @@ export async function POST(req: Request) {
         ).toLocaleString("en-GB")}</div>
 
         <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Payment Fees:</div>
-        <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${currency} ${(
+        <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${currency} ${formatPrice(
       fees / 100
-    ).toFixed(2)}</div>
+    )}</div>
       </div>
     </div>
   </body>
