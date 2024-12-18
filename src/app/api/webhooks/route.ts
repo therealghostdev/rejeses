@@ -122,7 +122,7 @@ export async function POST(req: Request) {
         },
       });
 
-      transporter.sendMail({
+      await transporter.sendMail({
         from: `Rejeses Consult ${process.env.EMAIL_USER}`,
         to: process.env.EMAIL_USER,
         subject: `Course Payment Notification`,
