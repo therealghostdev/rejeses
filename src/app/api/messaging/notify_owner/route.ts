@@ -55,6 +55,8 @@ export async function POST(req: Request) {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
+      debug: true,
+      logger: true,
     });
 
     const mailOptions = {
@@ -71,7 +73,7 @@ export async function POST(req: Request) {
       ),
     };
 
-    transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
 
     const appOwnerEmailConfirmationContent = `
     <html>
@@ -111,7 +113,7 @@ export async function POST(req: Request) {
     </html>
   `;
 
-    transporter.sendMail({
+    await transporter.sendMail({
       from: `Rejeses Consult ${process.env.EMAIL_USER}`,
       to: process.env.EMAIL_USER,
       subject: "Course Registration Confirmation",
