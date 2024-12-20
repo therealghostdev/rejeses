@@ -59,7 +59,7 @@ export default function Last_el() {
         </Link>
 
         <Link
-          href="https://wa.me/+2348057677247?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20courses."
+          href="https://wa.me/+2348156738747?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20courses."
           target="_blank"
           className="md:mx-4"
         >
