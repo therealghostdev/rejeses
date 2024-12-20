@@ -5,13 +5,19 @@ export default function Last_el() {
   return (
     <div className="flex justify-between items-center py-8 md:px-12 px-6 w-full text-[#5B5B5B] md:flex-nowrap flex-wrap-reverse">
       <div className="lg:w-[30%] md:w-[50%] w-full flex lg:justify-between md:justify-around justify-between items-center text-nowrap text-ellipsis">
-        <p className="text-2xl lg:mx-2 font-bricolage_grotesque">&copy;</p>
+        <p className="text-2xl lg:mx-2 font-bricolage_grotesque lg:mr-0 md:mr-1">&copy;</p>
 
         <p className="text-lg lg:mx-2 font-bricolage_grotesque">
-          2024 <span className="font-bold font-bricolage_grotesque">Rejeses Consult</span>.
+          2024{" "}
+          <span className="font-bold font-bricolage_grotesque">
+            Rejeses Consult
+          </span>
+          .
         </p>
 
-        <p className="text-lg lg:mx-2 font-bricolage_grotesque">All rights reserved.</p>
+        <p className="text-lg lg:mx-2 font-bricolage_grotesque">
+          All rights reserved.
+        </p>
       </div>
 
       <div className="lg:w-1/4 md:w-[40%] w-full flex md:justify-end justify-between items-center md:mb-0 mb-12">
@@ -45,8 +51,21 @@ export default function Last_el() {
           className="md:mx-4"
         >
           <Image
-            src="/twitter.svg"
+            src="/x-icon.svg"
             alt="X(Formerly-twitter)"
+            width={30}
+            height={50}
+          />
+        </Link>
+
+        <Link
+          href="https://wa.me/+2348057677247?text=Hello,%20I%20would%20like%20to%20inquire%20about%20your%20courses."
+          target="_blank"
+          className="md:mx-4"
+        >
+          <Image
+            src="/whatsapp-icon.svg"
+            alt="whatsapp"
             width={30}
             height={50}
           />

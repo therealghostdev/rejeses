@@ -79,7 +79,7 @@ export async function POST(req: Request) {
     <html>
       <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f4f4f4;">
         <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 30px;">
-          <div style="background-color: #89c13e; color: white; text-align: center; padding: 15px; border-radius: 8px 8px 0 0; font-size: 20px;">
+          <div style="background-color: #BA6820; color: white; text-align: center; padding: 15px; border-radius: 8px 8px 0 0; font-size: 20px;">
             <h1 style="margin: 0;">Course Registration Confirmation</h1>
           </div>
           <div style="margin-top: 18px;">
