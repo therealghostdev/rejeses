@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import SkeletalLoader from "@/components/reusables/animation/skeletol_loader";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Services() {
   const [imageLoading1, setImageLoading1] = useState<boolean>(true);
@@ -14,7 +15,7 @@ export default function Services() {
   };
 
   return (
-    <section className="w-full lg:px-3 px-8 py-12 md:pb-32 flex flex-col justify-center items-center gap-12 bg-[#FEF9F6]">
+    <section className="w-full lg:px-3 px-8 py-12 md:pb-24 flex flex-col justify-center items-center gap-12 bg-[#FEF9F6]">
       <div className="lg:max-w-[90%] max-w-[98%] flex flex-col gap-12 justify-center items-center">
         <h1 className="lg:text-[48px] md:text-3xl text-2xl font-bold text-center md:my-12 my-8 font-bricolage_grotesque">
           Our Services
@@ -156,6 +157,17 @@ export default function Services() {
             </span>
           </div>
         </div>
+      </div>
+
+      <div className="w-full flex justify-center items-center">
+        <span className="mx-2 inline-flex lg:w-[12%] md:w-[25%] w-[50%] margin-sm-override">
+          <Link
+            href="/training#upcoming-training"
+            className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 w-full h-full flex justify-center items-center border transition_button border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
+          >
+            Enroll now
+          </Link>
+        </span>
       </div>
     </section>
   );

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import GeneralCard from "@/components/reusables/card";
 import { UniqueComponentsProps } from "@/utils/types/types";
-import Link from "next/link";
 
 export default function Testimonial(props: UniqueComponentsProps) {
   const [visibleItems, setVisibleItems] = useState(6);
@@ -16,17 +15,6 @@ export default function Testimonial(props: UniqueComponentsProps) {
 
   return (
     <section className="w-full flex flex-col lg:px-12 px-6 py-4">
-      <div className="w-full flex justify-center items-center">
-        <span className="mx-2 inline-flex w-[12%] justify-center items-center bg-[#89C13E] py-0 rounded-[.3rem]">
-          <Link
-            href="/training#upcoming-training"
-            className="bg-[#89C13E] text-white px-6 inline-flex w-full h-full justify-center items-center py-4 rounded-[.3rem] font-bricolage_grotesque transition_button4"
-          >
-            Enroll Now
-          </Link>
-        </span>
-      </div>
-
       <div className="my-8 flex flex-col gap-2 lg:px-6 md:px-6">
         <h1 className="md:text-4xl text-2xl font-bold font-bricolage_grotesque">
           Don&apos;t just take our word for it . . .

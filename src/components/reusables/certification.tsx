@@ -1,6 +1,16 @@
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useMemo } from "react";
 
 export default function Certification() {
+  const pathname = usePathname();
+
+  const decodedPathname = useMemo(
+    () => decodeURIComponent(pathname),
+    [pathname]
+  );
+
   return (
     <section className="w-full bg-[#FEF9F6] lg:px-3 px-8 py-12 flex flex-col justify-center items-center gap-12">
       <div className="lg:max-w-[90%] max-w-[98%] flex flex-col">
@@ -54,6 +64,19 @@ export default function Certification() {
           </div>
         </div>
       </div>
+
+      {decodedPathname === "/" && (
+        <div className="w-full flex justify-center items-center">
+          <span className="mx-2 inline-flex lg:w-[12%] md:w-[25%] justify-center items-center bg-[#89C13E] py-0 rounded-[.3rem]">
+            <Link
+              href="/training#upcoming-training"
+              className="bg-[#89C13E] text-white px-6 inline-flex w-full h-full justify-center items-center py-4 rounded-[.3rem] font-bricolage_grotesque transition_button4"
+            >
+              Enroll Now
+            </Link>
+          </span>
+        </div>
+      )}
     </section>
   );
 }

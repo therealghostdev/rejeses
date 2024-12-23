@@ -3,7 +3,6 @@ import React, { useMemo, useState } from "react";
 import GeneralCard from "@/components/reusables/card";
 import { UniqueComponentsProps } from "@/utils/types/types";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
 
 export default function Why_us(props: UniqueComponentsProps) {
   const pathname = usePathname();
@@ -72,17 +71,6 @@ export default function Why_us(props: UniqueComponentsProps) {
 
   return (
     <section className="w-full flex flex-col lg:px-12 md:px-6 py-4 md:mt-16 my-8">
-      <div className="w-full flex justify-center items-center">
-        <span className="mx-2 inline-flex w-[12%] margin-sm-override">
-          <Link
-            href="/training#upcoming-training"
-            className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 w-full h-full flex justify-center items-center border transition_button border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
-          >
-            Enroll now
-          </Link>
-        </span>
-      </div>
-
       <h1 className="md:text-4xl text-2xl my-8 font-bold font-bricolage_grotesque">
         {getHeadingText()}
       </h1>
