@@ -20,7 +20,7 @@ export default function Testimonial(props: UniqueComponentsProps) {
           Don&apos;t just take our word for it . . .
         </h1>
         <p className="lg:text-[24px] text-wrap text-[16px]">
-         Listen to some who have tried us out . . .
+          Listen to some who have tried us out . . .
         </p>
       </div>
 

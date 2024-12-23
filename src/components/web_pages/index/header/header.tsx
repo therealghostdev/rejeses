@@ -20,12 +20,12 @@ export default function Header() {
     e.preventDefault();
 
     if (pathname === "/training") {
-      const pricingSection = document.getElementById("pricing");
+      const pricingSection = document.getElementById("upcoming-training");
       if (pricingSection) {
         pricingSection.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      router.push("/training#pricing");
+      router.push("/training#upcoming-training");
     }
   };
 
@@ -48,7 +48,22 @@ export default function Header() {
 
   return (
     <header className="bg-[#F5F0FA] flex flex-col w-full gap-4 overflow-hidden">
-      <div className="w-full flex flex-col justify-center items-center gap-3 my-8">
+      <div className="w-full flex flex-col justify-center items-center my-8">
+        <div className="text-[#DF8244] bg-[#FEF9F6] border border-[#F8E2D3] mt-8 -mb-6 font-semibold rounded-lg flex items-center text-ellipsis text-nowrap px-4 py-2">
+          <div className="w-full h-10 flex justify-between items-center gap-x-4">
+            <div className="flex justify-center items-center">
+              <Image
+                src={"/thumbs_up.svg"}
+                width={50}
+                height={50}
+                alt="thumbs-up"
+                className="h-9"
+              />
+            </div>
+
+            <p>Your Partner in Project Excellence</p>
+          </div>
+        </div>
         <div className="md:w-3/4 w-full flex flex-col justify-center items-center gap-3 px-4 py-8 mt-8 mb-8">
           <h1 className="lg:text-[60px] md:text-6xl text-5xl text-center font-bold lg:leading-[80px] leading-tight font-bricolage_grotesque">
             Learn and become excellent at project management
@@ -56,14 +71,14 @@ export default function Header() {
           <p className="lg:text-2xl text-lg text-center max-w-[90%] lg:leading-[36px] leading-[28px]">
             Everything from learning about project management to one-on-one
             mentoring and even consultation,{" "}
-            <span className="font-bold font-bricolage_grotesque">rejeses</span> is here to help
-            you learn and master project management.
+            <span className="font-bold font-bricolage_grotesque">rejeses</span>{" "}
+            is here to help you learn and master project management.
           </p>
 
-          {/* <div className="w-full flex justify-center items-center my-4"> // could bring this back
+          <div className="w-full flex justify-center items-center my-4">
             <span className="mx-2 margin-sm-override">
               <Link
-                // onClick={handleEnrollClick}
+                onClick={handleEnrollClick}
                 href="/training"
                 className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border transition_button border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
               >
@@ -79,7 +94,7 @@ export default function Header() {
                 Book Session
               </Link>
             </span>
-          </div> */}
+          </div>
         </div>
       </div>
 
