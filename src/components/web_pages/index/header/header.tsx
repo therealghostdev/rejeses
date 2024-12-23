@@ -49,7 +49,7 @@ export default function Header() {
   return (
     <header className="bg-[#F5F0FA] flex flex-col w-full gap-4 overflow-hidden">
       <div className="w-full flex flex-col justify-center items-center my-8">
-        <div className="text-[#DF8244] bg-[#FEF9F6] border border-[#F8E2D3] font-semibold rounded-lg flex items-center text-ellipsis text-nowrap px-4 py-2">
+        <div className="text-[#DF8244] bg-[#FEF9F6] border border-[#F8E2D3] mt-8 -mb-6 font-semibold rounded-lg flex items-center text-ellipsis text-nowrap px-4 py-2">
           <div className="w-full h-10 flex justify-between items-center gap-x-4">
             <div className="flex justify-center items-center">
               <Image

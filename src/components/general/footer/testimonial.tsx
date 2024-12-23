@@ -17,10 +17,10 @@ export default function Testimonial(props: UniqueComponentsProps) {
   return (
     <section className="w-full flex flex-col lg:px-12 px-6 py-4">
       <div className="w-full flex justify-center items-center">
-        <span className="mx-2 bg-[#89C13E] py-3 rounded-[.3rem]">
+        <span className="mx-2 inline-flex w-[12%] justify-center items-center bg-[#89C13E] py-0 rounded-[.3rem]">
           <Link
             href="/training#upcoming-training"
-            className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] font-bricolage_grotesque transition_button4"
+            className="bg-[#89C13E] text-white px-6 inline-flex w-full h-full justify-center items-center py-4 rounded-[.3rem] font-bricolage_grotesque transition_button4"
           >
             Enroll Now
           </Link>
