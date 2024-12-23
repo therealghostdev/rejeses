@@ -20,6 +20,8 @@ export default function Nav_desktop() {
   const navRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
 
+  const [hover, setHover] = useState(false);
+
   const decodedPathname = useMemo(
     () => decodeURIComponent(pathname),
     [pathname]
@@ -148,6 +150,29 @@ export default function Nav_desktop() {
                 ))}
               </ul>
             </section>
+
+            <section className="flex space-x-2">
+              {linkButtons.map((button, index) =>
+                index === 0 ? (
+                  <Link
+                    className={button.className}
+                    href={button.url}
+                    key={index}
+                  >
+                    {button.label.toUpperCase()}
+                  </Link>
+                ) : (
+                  <span
+                    key={index}
+                    className="mx-2 bg-[#89C13E] py-3 rounded-[.3rem]"
+                  >
+                    <Link className={`${button.className} lg:py-4`} href={button.url}>
+                      {button.label.toUpperCase()}
+                    </Link>
+                  </span>
+                )
+              )}
+            </section>
           </>
         )}
 
@@ -189,6 +214,26 @@ export default function Nav_desktop() {
                         </li>
                       ))}
                     </ul>
+                  </section>
+
+                  <section className="flex flex-col space-y-4">
+                    {linkButtons.map((button, index) =>
+                      index === 0 ? (
+                        <Link
+                          className={button.className}
+                          href={button.url}
+                          key={index}
+                        >
+                          {button.label.toUpperCase()}
+                        </Link>
+                      ) : (
+                        <span key={index} className="bg-[#89C13E] rounded-[.3rem]">
+                          <Link className={`${button.className} flex justify-center items-center text-center`} href={button.url}>
+                            {button.label.toUpperCase()}
+                          </Link>
+                        </span>
+                      )
+                    )}
                   </section>
                 </motion.div>
               )}

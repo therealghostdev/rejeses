@@ -7,7 +7,7 @@ export default function UpcomingCohorts() {
   const mondayDates = getNextMondayDates(data.length);
 
   return (
-    <section className="w-full flex flex-col lg:px-12 px-6 py-4 md:mt-16 my-8">
+    <section className="w-full flex flex-col lg:px-12 px-6 py-4 md:mt-16 my-8" id="upcoming-training">
       <h1 className="md:text-4xl text-2xl my-8 font-bold font-bricolage_grotesque lg:px-6 md:px-6">
         Upcoming Trainings
       </h1>
