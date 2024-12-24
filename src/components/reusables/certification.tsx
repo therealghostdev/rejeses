@@ -72,7 +72,7 @@ export default function Certification() {
               href="/training#upcoming-training"
               className="bg-[#89C13E] text-white px-6 inline-flex w-full h-full justify-center items-center py-4 rounded-[.3rem] font-bricolage_grotesque transition_button4"
             >
-              Enroll Now
+              ENROLL NOW
             </Link>
           </span>
         </div>

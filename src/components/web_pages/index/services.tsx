@@ -165,7 +165,7 @@ export default function Services() {
             href="/training#upcoming-training"
             className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 w-full h-full flex justify-center items-center border transition_button border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
           >
-            Enroll now
+            ENROLL NOW
           </Link>
         </span>
       </div>
