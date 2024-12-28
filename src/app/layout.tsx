@@ -8,6 +8,7 @@ import { PaymentProvider } from "@/utils/context/payment";
 import Scroll_to_top from "@/components/general/bact_to_top/scroll_to_top";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,6 +42,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" id="el">
+      <head>
+      <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-NESY97PHWD"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-NESY97PHWD');
+          `}
+        </Script>
+      </head>
       <body
         className={`${inter.className} ${bricolage_grotesque.variable} max-w-[1440px] m-auto`}
       >
