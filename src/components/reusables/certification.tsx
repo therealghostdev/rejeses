@@ -1,15 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useMemo } from "react";
+import { motion } from "framer-motion";
 
 export default function Certification() {
   const pathname = usePathname();
+  const router = useRouter();
 
   const decodedPathname = useMemo(
     () => decodeURIComponent(pathname),
     [pathname]
   );
+
+  const handleCertificationClick = (slug: string) => {
+    router.push(`/${slug}`);
+  };
 
   return (
     <section className="w-full bg-[#FEF9F6] lg:px-3 px-8 py-12 flex flex-col justify-center items-center gap-12">
@@ -23,45 +29,87 @@ export default function Certification() {
           Institute (PMI):
         </p>
 
-        <div className="w-full flex md:flex-row flex-col my-8">
-          <div className="md:w-1/3 w-full border border-[#DBE1E7] rounded-md px-2 py-2 bg-white my-4">
-            <Image
-              src="/camp.svg"
-              width={100}
-              height={100}
-              alt="capm certification"
-              className="w-full"
-            />
-            <p className="font-bold font-bricolage_grotesque my-1">
+        <div className="w-full flex md:flex-row flex-col my-8 gap-x-3">
+          <motion.div
+            className="md:w-1/3 w-full flex flex-col justify-center items-center border border-[#DBE1E7] text-black hover:text-white hover:cursor-pointer rounded-md px-2 py-2 bg-white my-4"
+            whileHover={{
+              scale: 1.08,
+              borderColor: "#89C13E",
+              backgroundColor: "#89C13E",
+              transition: { duration: 0.3 },
+            }}
+            whileTap={{
+              scale: 0.95,
+            }}
+            onClick={() => handleCertificationClick("capm-certification")}
+          >
+            <div className="flex justify-center items-center">
+              <Image
+                src="/camp.svg"
+                width={300}
+                height={200}
+                alt="CAPM certification"
+                className="object-contain"
+              />
+            </div>
+            <p className="font-bold font-bricolage_grotesque my-1 transition-all duration-300 text-center">
               Certified Associate in Project Management (CAPM)
             </p>
-          </div>
+          </motion.div>
 
-          <div className="md:w-1/3 w-full border border-[#DBE1E7] rounded-md px-2 py-2 bg-white my-4 md:ml-6">
-            <Image
-              src="/pmp.svg"
-              width={100}
-              height={100}
-              alt="capm certification"
-              className="w-full"
-            />
-            <p className="font-bold font-bricolage_grotesque my-1">
+          <motion.div
+            className="md:w-1/3 w-full flex flex-col justify-center items-center border border-[#DBE1E7] text-black hover:text-white hover:cursor-pointer rounded-md px-2 py-2 bg-white my-4"
+            whileHover={{
+              scale: 1.08,
+              borderColor: "#89C13E",
+              backgroundColor: "#89C13E",
+              transition: { duration: 0.3 },
+            }}
+            whileTap={{
+              scale: 0.95,
+            }}
+            onClick={() => handleCertificationClick("pmp-certification")}
+          >
+            <div className="flex justify-center items-center">
+              <Image
+                src="/pmp.svg"
+                width={300}
+                height={200}
+                alt="PMP certification"
+                className="object-contain"
+              />
+            </div>
+            <p className="font-bold font-bricolage_grotesque my-1 transition-all duration-300 text-center">
               Project Management Professional (PMP)
             </p>
-          </div>
+          </motion.div>
 
-          <div className="md:w-1/3 w-full border border-[#DBE1E7] rounded-md px-2 py-2 bg-white my-4 md:ml-6">
-            <Image
-              src="/pmi.svg"
-              width={100}
-              height={100}
-              alt="capm certification"
-              className="w-full"
-            />
-            <p className="font-bold font-bricolage_grotesque my-1">
+          <motion.div
+            className="md:w-1/3 w-full flex flex-col justify-center items-center border border-[#DBE1E7] text-black hover:text-white hover:cursor-pointer rounded-md px-2 py-2 bg-white my-4"
+            whileHover={{
+              scale: 1.08,
+              borderColor: "#89C13E",
+              backgroundColor: "#89C13E",
+              transition: { duration: 0.3 },
+            }}
+            whileTap={{
+              scale: 0.95,
+            }}
+            onClick={() => handleCertificationClick("pmi-certification")}
+          >
+            <div className="flex justify-center items-center">
+              <Image
+                src="/pmi.svg"
+                width={300}
+                height={200}
+                alt="PMI certification"
+                className="object-contain"
+              />
+            </div>
+            <p className="font-bold font-bricolage_grotesque my-1 transition-all duration-300 text-center">
               PMI - Agile Certified Practitioner (PMI-ACP)
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
 

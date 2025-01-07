@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, Fragment } from "react";
 import data from "@/utils/data/training_data.json";
 import Link from "next/link";
 import { ArchiveIcon } from "@radix-ui/react-icons";
@@ -126,6 +126,22 @@ export default function Training_page() {
     );
   };
 
+  const replaceContactUs = (content: string) => {
+    return content.split("contact us").map((part, index, arr) => (
+      <Fragment key={index}>
+        {part}
+        {index < arr.length - 1 && (
+          <Link
+            href="/contact-us"
+            className="hover:text-[#89C13E] transition_border1 py-1 italic"
+          >
+            contact us
+          </Link>
+        )}
+      </Fragment>
+    ));
+  };
+
   return (
     <section className="w-full flex flex-col justify-center items-center">
       <section className="w-full px-8 flex flex-col gap-6 py-12  md:max-w-[98%] justify-center">
@@ -195,7 +211,7 @@ export default function Training_page() {
               <h1 className="font-bold text-2xl font-bricolage_grotesque">
                 {trainingItem.requirements.software}
               </h1>
-              <p>{trainingItem.requirements.how}</p>
+              <p>{replaceContactUs(trainingItem.requirements.how)}</p>
               {/* <li>{trainingItem.requirements.tool}</li> */}
             </div>
           </div>

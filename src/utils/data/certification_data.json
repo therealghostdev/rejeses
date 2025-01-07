@@ -1,0 +1,72 @@
+{
+  "capm-certification": {
+    "title": "Certified Associate in Project Management (CAPM®) Certification",
+    "logo": "/camp.svg",
+    "content": {
+      "description": "The Certified Associate in Project Management (CAPM®) from the Project Management Institute (PMI) is an entry-level certification for aspiring project managers or team members who want to enhance their project management skills.",
+      "qualifications": {
+        "intro": "To qualify for the CAPM®, you need:",
+        "experience": "Secondary school degree, or high school diploma. No project experience is required.",
+        "education": "23 hours of project management education.",
+        "exam": "A PMI-arranged examination of 150 questions to be covered in 180 minutes. The cost of the exam is $158 for PMI members, or $210, for non-members."
+      },
+      "benefits": {
+        "intro": "Earning the CAPM® demonstrates your understanding of core project management concepts, tools, and processes outlined in PMI’s Project Management Body of Knowledge (PMBOK® Guide). It is beneficial for:",
+        "lists": [
+          "Establishing credibility in project management.",
+          "Increasing job opportunities by showcasing commitment to professional growth.",
+          "Gaining a strong foundation to prepare for more advanced certifications, like the PMP®."
+        ]
+      },
+      "salary": "CAPM® holders can earn an average annual salary of $65,000 to $90,000, depending on their role, industry, and location. The certification can open doors to positions such as project coordinator, team lead, or junior project manager.",
+      "last": "Start your project management career with the CAPM and set yourself apart in today’s competitive job market!"
+    }
+  },
+  "pmp-certification": {
+    "title": "Project Management Professional (PMP®) Certification",
+    "logo": "/pmp.svg",
+    "content": {
+      "description": "The Project Management Professional (PMP®) certification, offered by the Project Management Institute (PMI), is a globally recognized credential for experienced project managers.",
+      "qualifications": {
+        "intro": "To qualify for the PMP®, you need:",
+        "experience": "A 4-year bachelors degree with 3-5 years of project management experience within the past 8 years.",
+        "education": "35 hours of project management training, or hold a CAPM® certification.",
+        "exam": "A PMI-arranged examination of 180 questions to be covered in 230 minutes."
+      },
+      "benefits": {
+        "intro": "Some of the benefits of the PMP® certification includes:",
+        "lists": [
+          "Credibility: Validates your expertise and sets you apart in a competitive job market.",
+          "Increased Earning Potential: PMP®-certified professionals earn 20% more on average than non-certified peers.",
+          "Global Recognition: Respected by employers worldwide, opening doors to international opportunities.",
+          "Enhanced Skills: Provides advanced tools and techniques to drive successful project outcomes."
+        ]
+      },
+      "salary": "PMP® certification significantly boosts earning potential. According to PMI’s Earning Power: Project Management Salary Survey (12th Edition), PMP® holders earn a median salary of $123,000 annually in the United States, with similar trends in Canada and Europe.",
+      "ready": "Invest in your future with the PMP® certification and join a global community of top-performing project managers!"
+    }
+  },
+  "pmi-certification": {
+    "title": "Agile Certified Practitioner (PMI-ACP®) Certification",
+    "logo": "/pmi.svg",
+    "content": {
+      "description": "The Agile Certified Practitioner (PMI-ACP®) certification validates your expertise in agile principles, methodologies, and frameworks.",
+      "qualifications": {
+        "intro": "To qualify for the PMI®, you need:",
+        "experience": "Secondary school degree, or high school diploma. Two years of agile experience within the last 5 years.",
+        "education": "28 hours of PMI-ACP® training in agile practices.",
+        "exam": "A PMI-arranged examination of 120 questions to be covered in 180 minutes."
+      },
+      "benefits": {
+        "intro": "Some of the benefits of the (PMI-ACP®) certification includes:",
+        "lists": [
+          "Global Recognition: Establishes your expertise in agile approaches, making you a sought-after professional in the global job market.",
+          "Career Growth: Boosts your qualifications for agile project management roles across industries.",
+          "Versatility: Demonstrates your adaptability to work with diverse agile frameworks, enhancing your value to organizations."
+        ]
+      },
+      "salary": "PMP® certification significantly boosts earning potential. According to PMI’s Earning Power: Project Management Salary Survey (12th Edition), PMP® holders earn a median salary of $123,000 annually in the United States, with similar trends in Canada and Europe.",
+      "last": "Whether you're looking to advance your career in project management or take on leadership roles in agile environments, the PMI-ACP® is an excellent investment in your professional development."
+    }
+  }
+}
