@@ -14,6 +14,10 @@
       "url": "/consultation"
     },
     {
+      "label": "About us",
+      "url": "/about-us"
+    },
+    {
       "label": "Contact Us",
       "url": "/contact-us"
     }

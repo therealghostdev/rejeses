@@ -131,8 +131,8 @@ export default function Nav_desktop() {
 
         {!isMobile && (
           <>
-            <section className="flex lg:ml-12 lg:mr-12 justify-between items-center">
-              <ul className="flex lg:space-x-10 space-x-4">
+            <section className="flex justify-between items-center">
+              <ul className="flex lg:space-x-6 space-x-4">
                 {links.map((link, index) => (
                   <li
                     key={index}
