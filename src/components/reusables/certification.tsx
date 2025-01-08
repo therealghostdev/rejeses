@@ -39,7 +39,11 @@ export default function Certification() {
               transition: { duration: 0.3 },
             }}
             whileTap={{
-              scale: 0.95,
+              scale: 1.05,
+              borderColor: "#89C13E",
+              backgroundColor: "#89C13E",
+              color: "#ffffff",
+              transition: { duration: 0.1 },
             }}
             onClick={() => handleCertificationClick("capm-certification")}
           >
@@ -66,7 +70,11 @@ export default function Certification() {
               transition: { duration: 0.3 },
             }}
             whileTap={{
-              scale: 0.95,
+              scale: 1.05,
+              borderColor: "#89C13E",
+              backgroundColor: "#89C13E",
+              color: "#ffffff",
+              transition: { duration: 0.1 },
             }}
             onClick={() => handleCertificationClick("pmp-certification")}
           >
@@ -93,7 +101,11 @@ export default function Certification() {
               transition: { duration: 0.3 },
             }}
             whileTap={{
-              scale: 0.95,
+              scale: 1.05,
+              borderColor: "#89C13E",
+              backgroundColor: "#89C13E",
+              color: "#ffffff",
+              transition: { duration: 0.1 },
             }}
             onClick={() => handleCertificationClick("pmi-certification")}
           >
