@@ -1,17 +1,42 @@
 "use client";
-import React, { createContext, useState, useContext, useEffect } from "react";
+
+import React, {
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+  useMemo,
+  useCallback
+} from "react";
 import { PaymentInfo } from "../types/types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+// Define types for Navigation Context
 interface NavigationContextType {
   isNigeria: boolean;
   setIsNigeria: React.Dispatch<React.SetStateAction<boolean>>;
+  isMobile: boolean;
+  width: number;
+  updateWidth: () => void;
 }
 
-const PaymentContext = createContext<{
+// Define types for Payment Context
+interface PaymentContextType {
   paymentInfo: PaymentInfo;
   setPaymentInfo: React.Dispatch<React.SetStateAction<PaymentInfo>>;
-}>({
+}
+
+// Create Navigation Context
+const NavigationContext = createContext<NavigationContextType>({
+  isNigeria: false,
+  setIsNigeria: () => {},
+  isMobile: false,
+  width: 0,
+  updateWidth: () => {},
+});
+
+// Create Payment Context
+const PaymentContext = createContext<PaymentContextType>({
   paymentInfo: {
     price: 0,
     price2: 0,
@@ -23,16 +48,12 @@ const PaymentContext = createContext<{
   setPaymentInfo: () => {},
 });
 
-// Create the navigation context
-const NavigationContext = createContext<NavigationContextType>({
-  isNigeria: false,
-  setIsNigeria: () => {},
-});
-
+// Custom hooks for accessing contexts
 export const useNavigation = () => useContext(NavigationContext);
 
 export const usePayment = () => useContext(PaymentContext);
 
+// React Query Client
 const queryClient = new QueryClient();
 
 export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -44,11 +65,23 @@ export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({
     training_id: null,
     training_type: "",
     start_date: "",
-    is_group: false
+    is_group: false,
   });
 
   const [isNigeria, setIsNigeria] = useState(false);
+  const [width, setWidth] = useState<number>(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
+  // Update width and isMobile on resize
+  const updateWidth = useCallback(() => {
+    const newWidth = window.innerWidth;
+    setWidth(newWidth);
+    setIsMobile(newWidth <= 1023);
+  }, []);
+
+  // Check user location and update isNigeria
   useEffect(() => {
     const checkLocation = async () => {
       try {
@@ -62,11 +95,22 @@ export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({
     };
 
     checkLocation();
-  }, []);
+
+    window.addEventListener("resize", updateWidth);
+
+    // Initial call to set dimensions
+    updateWidth();
+
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    };
+  }, [updateWidth]);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <NavigationContext.Provider value={{ isNigeria, setIsNigeria }}>
+      <NavigationContext.Provider
+        value={{ isNigeria, setIsNigeria, isMobile, width, updateWidth }}
+      >
         <PaymentContext.Provider value={{ paymentInfo, setPaymentInfo }}>
           {children}
         </PaymentContext.Provider>

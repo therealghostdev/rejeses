@@ -250,6 +250,54 @@ export interface OrderDataType {
   updatedAt: string;
 }
 
+// -------------------------------------------------> Animation indicator Types <--------------------------------------------------
+export interface MobileIndicatorProps {
+  totalItems: number;
+  currentIndex: number;
+  onIndicatorClick: (index: number) => void;
+}
+// -------------------------------------------------> End of Animation indicator Types <--------------------------------------------------
+
+// -------------------------------------------------> Certification indicator Types <--------------------------------------------------
+
+export interface Qualifications {
+  intro: string;
+  experience: string;
+  education: string;
+  exam: string;
+}
+
+export interface Benefits {
+  intro: string;
+  lists: string[];
+}
+
+export interface CertificationContent {
+  description: string;
+  qualifications: Qualifications;
+  benefits: Benefits;
+  salary: string;
+  last?: string;
+  ready?: string;
+}
+
+export interface Certification {
+  title: string;
+  logo: string;
+  content: CertificationContent;
+}
+
+export interface CertificationData {
+  [key: string]: Certification;
+}
+
+export interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+// -------------------------------------------------> Endo of certification Types <--------------------------------------------------
+
 // !--------------------------------------------DB & Server Types -----------------------------------------------------!
 export interface OrderType {
   firstName: string;

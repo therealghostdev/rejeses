@@ -8,19 +8,15 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigation } from "@/utils/context/payment";
 
 export default function Nav_desktop() {
   const { logo, links, linkButtons }: NavTypes = navData;
-  const [width, setWidth] = useState<number>(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const { isMobile, updateWidth } = useNavigation();
   const [openMobileNav, setOpenMobileNav] = useState<boolean>(false);
   const [isNavFixed, setIsNavFixed] = useState<boolean>(false);
   const navRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
-
-  const [hover, setHover] = useState(false);
 
   const decodedPathname = useMemo(
     () => decodeURIComponent(pathname),
@@ -28,12 +24,6 @@ export default function Nav_desktop() {
   );
 
   useEffect(() => {
-    const updateWidth = () => {
-      const newWidth = window.innerWidth;
-      setWidth(newWidth);
-      setIsMobile(newWidth <= 1023);
-    };
-
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const viewportHeight = window.innerHeight;
@@ -53,7 +43,7 @@ export default function Nav_desktop() {
       window.removeEventListener("resize", updateWidth);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [updateWidth]);
 
   const handleHamburgerClick = () => {
     setOpenMobileNav(!openMobileNav);
@@ -166,7 +156,10 @@ export default function Nav_desktop() {
                     key={index}
                     className="mx-2 bg-[#89C13E] py-3 rounded-[.3rem]"
                   >
-                    <Link className={`${button.className} lg:py-4`} href={button.url}>
+                    <Link
+                      className={`${button.className} lg:py-4`}
+                      href={button.url}
+                    >
                       {button.label.toUpperCase()}
                     </Link>
                   </span>
@@ -227,8 +220,14 @@ export default function Nav_desktop() {
                           {button.label.toUpperCase()}
                         </Link>
                       ) : (
-                        <span key={index} className="bg-[#89C13E] rounded-[.3rem]">
-                          <Link className={`${button.className} flex justify-center items-center text-center`} href={button.url}>
+                        <span
+                          key={index}
+                          className="bg-[#89C13E] rounded-[.3rem]"
+                        >
+                          <Link
+                            className={`${button.className} flex justify-center items-center text-center`}
+                            href={button.url}
+                          >
                             {button.label.toUpperCase()}
                           </Link>
                         </span>

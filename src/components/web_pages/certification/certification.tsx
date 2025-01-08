@@ -3,33 +3,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
-
-export interface Qualifications {
-  intro: string;
-  experience: string;
-  education: string;
-  exam: string;
-}
-
-export interface Benefits {
-  intro: string;
-  lists: string[];
-}
-
-export interface CertificationContent {
-  description: string;
-  qualifications: Qualifications;
-  benefits: Benefits;
-  salary: string;
-  last?: string;
-  ready?: string;
-}
-
-export interface Certification {
-  title: string;
-  logo: string;
-  content: CertificationContent;
-}
+import { Certification } from "@/utils/types/types";
 
 export interface CertificationProps {
   certification: Certification;
@@ -81,7 +55,7 @@ function makeBold(text: string) {
   return jsxParts;
 }
 
-export default function Certification({ certification }: CertificationProps) {
+export default function Certifications({ certification }: CertificationProps) {
   return (
     <section className="flex flex-col px-4 my-6">
       <div className="flex flex-col lg:justify-center lg:items-center w-full">
