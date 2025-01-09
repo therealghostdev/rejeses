@@ -122,7 +122,7 @@ export default function Header() {
               alt={logo.alt}
               width={logo.width}
               height={logo.height}
-              className={logo.className}
+              className={`${logo.className}`}
             />
           ))}
         </motion.div>
@@ -130,3 +130,6 @@ export default function Header() {
     </header>
   );
 }
+
+// class to make logo gray:
+// filter grayscale hover:grayscale-0
