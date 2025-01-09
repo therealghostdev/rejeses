@@ -13,21 +13,17 @@ export default function Tagline() {
   useEffect(() => {
     const type = () => {
       if (!isDeleting) {
-        // Typing
         if (typingIndex < text.length) {
           setDisplayText((prev) => prev + text[typingIndex]);
           setTypingIndex((prev) => prev + 1);
         } else {
-          // Pause before starting to delete
           setTimeout(() => setIsDeleting(true), delayAfterComplete);
         }
       } else {
-        // Deleting
         if (typingIndex > 0) {
           setDisplayText((prev) => prev.slice(0, -1));
           setTypingIndex((prev) => prev - 1);
         } else {
-          // Reset to start typing again
           setIsDeleting(false);
         }
       }
@@ -36,7 +32,7 @@ export default function Tagline() {
     const timeout = setTimeout(type, isDeleting ? deleteSpeed : typeSpeed);
 
     return () => clearTimeout(timeout);
-  }, [typingIndex, isDeleting]); // Only update when these dependencies change
+  }, [typingIndex, isDeleting]);
 
   return (
     <div className="text-[#DF8244] bg-[#FEF9F6] border border-[#F8E2D3] mt-8 -mb-6 font-semibold rounded-lg flex items-center text-ellipsis text-nowrap px-4 py-2">
