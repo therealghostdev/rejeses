@@ -1,7 +1,7 @@
 "use client";
 import Services from "@/components/web_pages/index/services";
 import Certification from "@/components/reusables/certification";
-import Why_us from "@/components/general/why_us";
+import Why_us from "@/components/reusables/why_us/why_us";
 import { usePathname } from "next/navigation";
 import whyUsData from "@/utils/data/why_us_data.json";
 import Header from "@/components/web_pages/index/header/header";

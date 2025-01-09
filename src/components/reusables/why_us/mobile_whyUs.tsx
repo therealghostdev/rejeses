@@ -144,25 +144,6 @@ export default function Mobile_why_us(props: UniqueComponentsProps) {
         className="w-full flex md:flex-row flex-col justify-center items-center relative overflow-hidden py-8"
         {...handlers}
       >
-        {/* Previous Button */}
-        {!isMobile && (
-          <motion.button
-            whileHover={{
-              scale: 1.08,
-              transition: { duration: 0.3, type: "tween" },
-            }}
-            whileTap={{
-              scale: 1.12,
-              transition: { duration: 0.1, type: "tween" },
-            }}
-            onClick={handlePrev}
-            aria-label="Previous"
-            className="absolute left-[10%] z-10 h-[200px] w-[100px] flex items-center justify-center bg-transparent"
-          >
-            <div className="w-0 h-0 border-t-[100px] border-t-transparent border-r-[100px] border-r-[#535353] border-b-[100px] border-b-transparent transform -scale-x-100 rotate-180" />
-          </motion.button>
-        )}
-
         <div className="relative w-full max-w-md h-[410px]">
           {/* animation container */}
           <AnimatePresence initial={false} custom={direction}>
@@ -222,25 +203,6 @@ export default function Mobile_why_us(props: UniqueComponentsProps) {
             />
           )}
         </div>
-
-        {/* Next Button */}
-        {!isMobile && (
-          <motion.button
-            whileHover={{
-              scale: 1.08,
-              transition: { duration: 0.3, type: "tween" },
-            }}
-            whileTap={{
-              scale: 1.12,
-              transition: { duration: 0.1, type: "tween" },
-            }}
-            onClick={handleNext}
-            aria-label="Next"
-            className="absolute right-[10%] z-10 h-[200px] w-[100px] flex items-center justify-center bg-transparent"
-          >
-            <div className="w-0 h-0 border-t-[100px] border-t-transparent border-r-[100px] border-r-[#535353] border-b-[100px] border-b-transparent rotate-180" />
-          </motion.button>
-        )}
       </div>
     </section>
   );

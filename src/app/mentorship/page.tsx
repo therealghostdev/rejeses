@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import Why_us from "@/components/general/why_us";
+import Why_us from "@/components/reusables/why_us/why_us";
 import Benefits from "@/components/reusables/dynamic_pages/benefits";
 import Pricing from "@/components/reusables/pricing/pricing";
 import { usePathname } from "next/navigation";
