@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useMemo, useRef, useState, useEffect } from "react";
+import React, {
+  useMemo,
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import GeneralCard from "@/components/reusables/card";
 import { UniqueComponentsProps } from "@/utils/types/types";
 import { usePathname } from "next/navigation";
@@ -13,6 +19,7 @@ export default function Why_us(props: UniqueComponentsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { isMobile, updateWidth, width } = useNavigation();
   const controls = useAnimation();
+  const [startX, setStartX] = useState<number | null>(null);
 
   const decodedPathname = useMemo(
     () => decodeURIComponent(pathname),
@@ -73,7 +80,7 @@ export default function Why_us(props: UniqueComponentsProps) {
     return () => window.removeEventListener("resize", updateWidth);
   }, [updateWidth]);
 
-  const startAnimation = () => {
+  const startAnimation = useCallback(() => {
     controls.start({
       x: [0, "-100%"],
       transition: {
@@ -82,7 +89,7 @@ export default function Why_us(props: UniqueComponentsProps) {
         repeat: Infinity,
       },
     });
-  };
+  }, [controls]);
 
   const handleNext = () => {
     if (containerRef.current) {
@@ -109,20 +116,51 @@ export default function Why_us(props: UniqueComponentsProps) {
 
   useEffect(() => {
     startAnimation();
-  }, []);
+  }, [startAnimation]);
 
-  // Conditionally render Mobile_why_us if isMobile and width <= 767
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    setStartX(e.clientX);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (startX !== null) {
+      const deltaX = e.clientX - startX;
+
+      if (Math.abs(deltaX) > 50) {
+        if (deltaX > 0) {
+          handlePrev();
+        } else {
+          handleNext();
+        }
+        setStartX(null);
+      }
+    }
+  };
+
+  const handlePointerUp = () => {
+    setStartX(null);
+  };
+
   if (isMobile && width <= 767) {
     return <Mobile_why_us data={filteredData} />;
   }
 
+  const buttonClasses =
+    "hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-white bg-opacity-20 backdrop-blur-sm border border-[#DBE1E7] border-opacity-50 cursor-pointer transition-all duration-300 hover:bg-opacity-50 absolute top-[60%] shadow-md";
+
   return (
-    <section className="w-full flex flex-col lg:px-12 md:px-6 py-4 md:mt-16 my-8">
+    <section className="w-full flex flex-col lg:px-12 md:px-6 py-4 md:mt-16 my-8 relative">
       <h1 className="md:text-4xl text-2xl my-8 font-bold font-bricolage_grotesque">
         {getHeadingText()}
       </h1>
 
-      <div className="w-full overflow-hidden relative" ref={containerRef}>
+      <div
+        className="w-full overflow-hidden relative cursor-move touch-pan-y touch-pinch-zoom"
+        ref={containerRef}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+      >
         <motion.div className="flex gap-4" animate={controls}>
           {filteredData.concat(filteredData).map((item, index) => (
             <div
@@ -140,50 +178,36 @@ export default function Why_us(props: UniqueComponentsProps) {
         </motion.div>
       </div>
 
-      <div className="hidden md:flex justify-center mt-8 gap-6">
-        <button
-          onClick={handlePrev}
-          className="fancy-button fancy-button-prev"
-          aria-label="Previous"
-        >
-          <span className="button-content">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.72 12.53a.75.75 0 010-1.06l7.5-7.5a.75.75 0 111.06 1.06L9.31 12l6.97 6.97a.75.75 0 11-1.06 1.06l-7.5-7.5z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Prev
-          </span>
-        </button>
-        <button
-          onClick={handleNext}
-          className="fancy-button fancy-button-next"
-          aria-label="Next"
-        >
-          <span className="button-content">
-            Next
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                fillRule="evenodd"
-                d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </span>
-        </button>
-      </div>
+      <motion.button
+        whileHover={{
+          scale: 1.08,
+          transition: { duration: 0.3, type: "tween" },
+        }}
+        whileTap={{
+          scale: 1.12,
+          transition: { duration: 0.1, type: "tween" },
+        }}
+        onClick={handlePrev}
+        className={`${buttonClasses} lg:left-6 left-2`}
+        aria-label="Previous"
+      >
+        <span className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[12px] border-r-[#535353]"></span>
+      </motion.button>
+      <motion.button
+        whileHover={{
+          scale: 1.08,
+          transition: { duration: 0.3, type: "tween" },
+        }}
+        whileTap={{
+          scale: 1.12,
+          transition: { duration: 0.1, type: "tween" },
+        }}
+        onClick={handleNext}
+        className={`${buttonClasses} lg:right-6 right-2`}
+        aria-label="Next"
+      >
+        <span className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] border-l-[#535353]"></span>
+      </motion.button>
     </section>
   );
 }

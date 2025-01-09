@@ -5,11 +5,11 @@
 @tailwind utilities;
 
 :root {
-  --background-general: #FFFFFF;
+  --background-general: #ffffff;
   --text-general: #090909;
-  --button-general: #89C13E;
-  --button-white: #DBE1E7;
-  --header-color: #F5F0FA;
+  --button-general: #89c13e;
+  --button-white: #dbe1e7;
+  --header-color: #f5f0fa;
 }
 
 html {
@@ -20,8 +20,7 @@ body {
   font-family: var(--font-inter);
   font-weight: 400;
   color: rgb(var(--text-general));
-  background:
-    rgb(var(--background-general));
+  background: rgb(var(--background-general));
   overflow-x: hidden;
 }
 
@@ -42,40 +41,45 @@ body {
   overflow: auto;
 }
 
-.transition_border, .transition_border1 {
+.transition_border,
+.transition_border1 {
   text-align: center;
   position: relative;
 }
 
-.transition_border::after, .transition_border1::after {
+.transition_border::after,
+.transition_border1::after {
   position: absolute;
   bottom: 0;
   left: 0;
   content: "";
   display: block;
   width: 0;
-  background: #FFFFFF;
+  background: #ffffff;
   height: 3px;
   opacity: 0;
-  transition: opacity .8s, width .8s, left .8s;
+  transition: opacity 0.8s, width 0.8s, left 0.8s;
 }
 
 .transition_border1::after {
-  background: #89C13E;
+  background: #89c13e;
 }
 
-.transition_border:hover::after, .transition_border1:hover::after {
+.transition_border:hover::after,
+.transition_border1:hover::after {
   opacity: 1;
   width: 100%;
 }
 
-.transition_border:not(:hover)::after, .transition_border1:not(:hover)::after {
+.transition_border:not(:hover)::after,
+.transition_border1:not(:hover)::after {
   left: auto;
   right: 0;
   width: 0;
 }
 
-.transition_button, .transition_button4 {
+.transition_button,
+.transition_button4 {
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -84,16 +88,17 @@ body {
 }
 
 .transition_button {
-  color: #89C13E;
+  color: #89c13e;
   background: transparent;
 }
 
 .transition_button4 {
-  color: #FFFFFF;
+  color: #ffffff;
   background: transparent;
 }
 
-.transition_button::before, .transition_button4::before {
+.transition_button::before,
+.transition_button4::before {
   content: "";
   position: absolute;
   top: 0;
@@ -106,19 +111,19 @@ body {
 }
 
 .transition_button::before {
-  background: #89C13E;
+  background: #89c13e;
 }
 
 .transition_button4::before {
-  background: #FFFFFF !important;
+  background: #ffffff !important;
 }
 
 .transition_button:hover {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .transition_button4:hover {
-  color: #89C13E;
+  color: #89c13e;
   background: transparent;
 }
 
@@ -157,14 +162,12 @@ body {
   }
 }
 
-
-
 @media screen and (max-width: 767px) {
   .sm_btn-container {
     flex-wrap: wrap;
   }
 
-  .sm_btn-container>.btn {
+  .sm_btn-container > .btn {
     width: 100%;
     margin: 2% 0;
     text-align: center;
@@ -186,64 +189,3 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
-
-.fancy-button {
-  position: relative;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  background: linear-gradient(45deg, #89C13E, #92ce43);
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-
-.fancy-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
-}
-
-.fancy-button:active {
-  transform: translateY(1px);
-}
-
-.fancy-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  transition: all 0.6s ease;
-}
-
-.fancy-button:hover::before {
-  left: 100%;
-}
-
-.button-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.fancy-button-prev .button-content {
-  flex-direction: row-reverse;
-}
-
-.fancy-button svg {
-  width: 20px;
-  height: 20px;
-}
-
