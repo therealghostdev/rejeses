@@ -118,7 +118,7 @@ export default function Benefits(props: UniqueComponentsProps) {
   };
 
   const buttonClasses =
-    "hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-white bg-opacity-20 backdrop-blur-sm border border-[#DBE1E7] border-opacity-50 cursor-pointer transition-all duration-300 hover:bg-opacity-50 absolute top-[60%] shadow-md";
+    "hidden md:flex items-center justify-center lg:w-[50px] lg:h-[50px] w-[60px] h-[60px] rounded-full bg-white bg-opacity-20 backdrop-blur-sm border border-[#DBE1E7] border-opacity-50 cursor-pointer transition-all duration-300 hover:bg-opacity-50 absolute top-[60%] shadow-md";
 
   if (isMobile && width <= 767) {
     return <Mobile_benefits data={filteredData} />;

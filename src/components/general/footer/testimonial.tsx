@@ -100,7 +100,7 @@ const TestimonialCarousel: React.FC<UniqueComponentsProps> = ({ data }) => {
           </motion.button>
         )}
 
-        <div className="relative w-full max-w-md h-[410px]">
+        <div className="relative w-full max-w-md md:h-[410px] h-[440px]">
           {/* animation container */}
           <AnimatePresence initial={false} custom={direction}>
             {[-1, 0, 1].map((offset) => {

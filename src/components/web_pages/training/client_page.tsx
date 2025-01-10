@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, Fragment } from "react";
+import { useEffect, useRef, Fragment, useState } from "react";
 import data from "@/utils/data/training_data.json";
 import Link from "next/link";
 import { ArchiveIcon } from "@radix-ui/react-icons";
@@ -127,6 +127,7 @@ export default function Training_page() {
   };
 
   const replaceContactUs = (content: string) => {
+    console.log(content, "contact");
     return content.split("contact us").map((part, index, arr) => (
       <Fragment key={index}>
         {part}
@@ -140,6 +141,58 @@ export default function Training_page() {
         )}
       </Fragment>
     ));
+  };
+
+  const replaceCertifications = (
+    content: string,
+    currentIndex: number
+  ): React.ReactNode => {
+    const patterns = [
+      {
+        regex: /Project Management Professional \(PMP\)|PMP/g,
+        link: "/pmp-certification",
+      },
+      {
+        regex: /Certified Associate in Project Management \(CAPM\)|CAPM/g,
+        link: "/capm-certification",
+      },
+      {
+        regex: /Agile Certified Practitioner \(PMI-ACP\)|PMI-ACP/g,
+        link: "/pmi-certification",
+      },
+    ];
+
+    let parts: React.ReactNode[] = [content];
+
+    patterns.forEach(({ regex, link }) => {
+      parts = parts.flatMap((part) => {
+        if (typeof part !== "string") return part;
+
+        console.log(part);
+
+        const segments = part.split(regex);
+        return segments.map((segment, index, array) => {
+          if (index === array.length - 1) return segment;
+
+          const match = part.match(regex)?.[0];
+          console.log(match, "match")
+
+          return (
+            <Fragment key={`${match}-${index}`}>
+              {segment}
+              <Link
+                href={link}
+                className="hover:text-[#89C13E] transition_border1 py-1 italic"
+              >
+                {match}
+              </Link>
+            </Fragment>
+          );
+        });
+      });
+    });
+
+    return <>{parts}</>;
   };
 
   return (
@@ -203,7 +256,7 @@ export default function Training_page() {
                 {item.why}
               </h1>
               {item.answer.map((value, index) => (
-                <li key={index}>{value}</li>
+                <li key={index}>{replaceCertifications(value, index)}</li>
               ))}
             </div>
 

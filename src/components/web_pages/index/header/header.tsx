@@ -122,7 +122,7 @@ export default function Header() {
               alt={logo.alt}
               width={logo.width}
               height={logo.height}
-              className={`${logo.className}`}
+              className={`${logo.className} hover:filter hover:grayscale`}
             />
           ))}
         </motion.div>
