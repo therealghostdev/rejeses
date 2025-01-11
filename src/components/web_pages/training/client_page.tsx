@@ -18,6 +18,7 @@ export default function Training_page() {
   const whyUsItems = whyUsData.filter((item) => item.tag === "training");
   const pricingRef = useRef<HTMLDivElement | null>(null);
   const { setPaymentInfo, paymentInfo } = usePayment();
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const { isNigeria } = useNavigation();
 
@@ -127,14 +128,13 @@ export default function Training_page() {
   };
 
   const replaceContactUs = (content: string) => {
-    console.log(content, "contact");
     return content.split("contact us").map((part, index, arr) => (
       <Fragment key={index}>
         {part}
         {index < arr.length - 1 && (
           <Link
             href="/contact-us"
-            className="hover:text-[#89C13E] transition_border1 py-1 italic"
+            className="hover:text-[#89C13E] transition_border1 py-1 italic font-bold font-bricolage_grotesque"
           >
             contact us
           </Link>
@@ -162,37 +162,39 @@ export default function Training_page() {
       },
     ];
 
-    let parts: React.ReactNode[] = [content];
+    return (
+      <>
+        {patterns.reduce(
+          (parts: React.ReactNode[], { regex, link }, patternIndex) => {
+            return parts.flatMap((part) => {
+              if (typeof part !== "string") return part;
 
-    patterns.forEach(({ regex, link }) => {
-      parts = parts.flatMap((part) => {
-        if (typeof part !== "string") return part;
+              const segments = part.split(regex);
+              return segments.map((segment, index, array) => {
+                if (index === array.length - 1) return segment;
 
-        console.log(part);
+                const match = part.match(regex)?.[index];
 
-        const segments = part.split(regex);
-        return segments.map((segment, index, array) => {
-          if (index === array.length - 1) return segment;
-
-          const match = part.match(regex)?.[0];
-          console.log(match, "match")
-
-          return (
-            <Fragment key={`${match}-${index}`}>
-              {segment}
-              <Link
-                href={link}
-                className="hover:text-[#89C13E] transition_border1 py-1 italic"
-              >
-                {match}
-              </Link>
-            </Fragment>
-          );
-        });
-      });
-    });
-
-    return <>{parts}</>;
+                return (
+                  <Fragment key={`${currentIndex}-${patternIndex}-${index}`}>
+                    {segment}
+                    <Link
+                      href={link}
+                      className={`hover:text-[#89C13E] ${
+                        hoveredIndex === patternIndex ? "" : ""
+                      } py-1 italic font-bold font-bricolage_grotesque`}
+                    >
+                      {match}
+                    </Link>
+                  </Fragment>
+                );
+              });
+            });
+          },
+          [content]
+        )}
+      </>
+    );
   };
 
   return (
@@ -256,7 +258,13 @@ export default function Training_page() {
                 {item.why}
               </h1>
               {item.answer.map((value, index) => (
-                <li key={index}>{replaceCertifications(value, index)}</li>
+                <li
+                  key={index}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(index)}
+                >
+                  {replaceCertifications(value, index)}
+                </li>
               ))}
             </div>
 
