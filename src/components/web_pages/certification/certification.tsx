@@ -55,6 +55,15 @@ function makeBold(text: string) {
   return jsxParts;
 }
 
+function formatTextWithBold(item: string) {
+  const [boldText, remainingText] = item.split(/:(.+)/);
+  return (
+    <>
+      <strong>{boldText}:</strong> {remainingText}
+    </>
+  );
+}
+
 export default function Certifications({ certification }: CertificationProps) {
   return (
     <section className="flex flex-col px-4 my-6">
@@ -178,7 +187,7 @@ export default function Certifications({ certification }: CertificationProps) {
                   className="flex items-center"
                 >
                   <span className="mr-2 mt-[2px] text-lg">⭐</span>
-                  <div>{item}</div>
+                  <div>{formatTextWithBold(item)}</div>
                 </motion.li>
               ))}
             </ul>
