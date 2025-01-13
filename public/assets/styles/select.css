@@ -1,0 +1,72 @@
+.fancy-selector {
+    width: 100%;
+    display: flex;
+    margin: 20px 0;
+  }
+  .selector-container {
+    background-color: #f0f0f0;
+    border-radius: 30px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .selector-option {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    transition: all 0.3s ease;
+    flex: 1;
+  }
+  .selector-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+  .selector-text {
+    font-weight: bold;
+  }
+  .selector-highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #89C13E;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+  }
+  .selector-container.weekend .selector-highlight {
+    transform: translateX(100%);
+  }
+  .selector-container.weekday .weekday,
+  .selector-container.weekend .weekend {
+    color: white;
+  }
+  .selector-container:hover {
+    box-shadow: 0 0 15px rgba(137, 193, 62, 0.5);
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  .selector-container:active {
+    animation: pulse 0.3s ease-in-out;
+  }
+  @media (max-width: 640px) {
+    .selector-option {
+      padding: 10px 16px;
+    }
+    .selector-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
+    }
+  }

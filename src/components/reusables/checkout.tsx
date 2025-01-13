@@ -1,5 +1,5 @@
 "use client";
-import { ClientPageProps } from "@/utils/types/types";
+import { classSceduleType, ClientPageProps } from "@/utils/types/types";
 import {
   ChangeEvent,
   FormEvent,
@@ -64,6 +64,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     firstName: "",
     lastName: "",
     courseType: "",
+    courseSchedule: [],
+    courseScheduleType: "weekday" as classSceduleType,
     startDate: "",
     email: "",
     amount: 0,
@@ -129,6 +131,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         lastName: formData.lastName,
         courseType: paymentInfo.training_type,
         startDate: paymentInfo.start_date,
+        courseScheduleType: paymentInfo.classScheduleType,
         email: formData.email,
         amount: getPrice(),
         currency: formData.currency,
@@ -289,6 +292,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
           firstName: order.firstName,
           lastName: order.lastName,
           courseType: order.courseType,
+          courseScheduleType: order.courseScheduleType,
+          courseSchedule: order.courseSchedule,
           startDate: order.startDate,
           email: order.email,
           amount: order.amount,
@@ -394,7 +399,14 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       price = 0;
     }
     return price;
-  }, [isNigeria, formData.currency, paymentInfo.price, paymentInfo.price2, count, paymentInfo.is_group]);
+  }, [
+    isNigeria,
+    formData.currency,
+    paymentInfo.price,
+    paymentInfo.price2,
+    count,
+    paymentInfo.is_group,
+  ]);
 
   useEffect(() => {
     setPrice(getPrice());

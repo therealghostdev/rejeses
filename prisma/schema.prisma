@@ -8,17 +8,19 @@ datasource db {
 }
 
 model Order {
-  id          Int          @id @default(autoincrement())
-  firstName   String
-  lastName    String
-  courseType  String
-  startDate   String
-  email       String
-  amount      Int
-  status      OrderStatus
-  transaction Transaction? @relation("transaction")
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  id                 Int          @id @default(autoincrement())
+  firstName          String
+  lastName           String
+  courseType         String
+  courseScheduleType ClassSchedule
+  courseSchedule     DateTime[]
+  startDate          String
+  email              String
+  amount             Int
+  status             OrderStatus
+  transaction        Transaction? @relation("transaction")
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
 }
 
 model Transaction {
@@ -46,4 +48,9 @@ enum OrderStatus {
 enum Currency {
   naira
   dollar
+}
+
+enum ClassSchedule {
+  weekend
+  weekday
 }

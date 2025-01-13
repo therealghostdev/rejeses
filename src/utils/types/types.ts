@@ -211,6 +211,7 @@ export interface PaymentInfo {
   training_id: number | null;
   training_type: string;
   start_date: string;
+  classScheduleType: string;
   training_option?: string;
   is_group: boolean;
 }
@@ -242,6 +243,8 @@ export interface OrderDataType {
   firstName: string;
   lastName: string;
   courseType: string;
+  courseSchedule: Date[];
+  courseScheduleType: classSceduleType;
   startDate: string;
   email: string;
   amount: number;
@@ -303,6 +306,8 @@ export interface OrderType {
   firstName: string;
   lastName: string;
   courseType: string;
+  courseSchedule: Date[];
+  courseScheduleType: classSceduleType;
   startDate: string;
   email: string;
   amount: number;
@@ -314,6 +319,11 @@ export enum StatusType {
   completed = "completed",
   failed = "failed",
   canceled = "canceled",
+}
+
+export enum classSceduleType {
+  weekend = "weekend",
+  weekday = "weekday",
 }
 
 export enum CurrencyType {
@@ -330,6 +340,12 @@ export interface TransactionType {
   accessCode: string;
   currency: CurrencyType;
   fee: number;
+}
+
+export interface WeekendSchedule {
+  dates: Date[];
+  month: number;
+  year: number;
 }
 
 // !-----------------------------------------End of DB & Server Types -------------------------------------------------!

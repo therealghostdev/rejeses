@@ -43,6 +43,7 @@ const PaymentContext = createContext<PaymentContextType>({
     training_id: null,
     training_type: "",
     start_date: "",
+    classScheduleType: "",
     is_group: false,
   },
   setPaymentInfo: () => {},
@@ -65,6 +66,7 @@ export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({
     training_id: null,
     training_type: "",
     start_date: "",
+    classScheduleType: "",
     is_group: false,
   });
 
