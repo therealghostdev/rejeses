@@ -83,6 +83,8 @@ export function createCourseEmailTemplate(
   lastName: string,
   courseType: string,
   startDate: string,
+  courseSchedule: Date[],
+  courseScheduleType: string,
   amount: number,
   currency: string
 ) {
@@ -117,6 +119,21 @@ export function createCourseEmailTemplate(
                   ? "You will be contacted"
                   : startDate
               }</div>
+
+              ${
+                !courseType.includes("Mentoring")
+                  ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Schedule Type:</div>
+              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${courseScheduleType}</div>`
+                  : ""
+              }
+              ${
+                !courseType.includes("Mentoring")
+                  ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Schedule:</div>
+              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${formatCourseSchedule(
+                courseSchedule
+              )}</div>`
+                  : ""
+              }
               
               <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Amount Paid:</div>
               <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${
@@ -146,82 +163,75 @@ export function calculateClassSchedule(
   startDate: Date,
   courseScheduleType: string
 ): Date[] {
-  // If not weekend schedule, return weekday dates (Monday to Friday)
+  // Handle weekday schedule
   if (courseScheduleType !== "weekend") {
     const weekSchedule: Date[] = [];
     const currentDate = new Date(startDate);
 
-    // Add dates from Monday to Friday
     for (let i = 0; i < 5; i++) {
       weekSchedule.push(new Date(currentDate));
       currentDate.setDate(currentDate.getDate() + 1);
     }
-
     return weekSchedule;
   }
 
-  // For weekend scheduling
+  // Weekend schedule logic
   const currentDate = new Date(startDate);
-  const currentWeek = Math.ceil(currentDate.getDate() / 7);
-  const currentMonth = currentDate.getMonth();
-  const currentYear = currentDate.getFullYear();
 
-  function getWeekendDates(week: number, month: number, year: number): Date[] {
-    const dates: Date[] = [];
-    const firstDayOfMonth = new Date(year, month, 1);
-    let saturday = new Date(
-      year,
-      month,
-      (week - 1) * 7 + (7 - firstDayOfMonth.getDay())
-    );
-    let sunday = new Date(saturday);
-    sunday.setDate(saturday.getDate() + 1);
+  function getWeekendPair(date: Date): Date[] {
+    const year = date.getFullYear();
+    const month = date.getMonth();
 
-    // Adjust if Saturday falls in previous month
-    if (saturday.getMonth() !== month) {
-      saturday = new Date(year, month, saturday.getDate() + 7);
-      sunday = new Date(saturday);
-      sunday.setDate(saturday.getDate() + 1);
+    // Get all weekends in the month
+    const weekends: Date[] = [];
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+
+    // Find first Saturday of the month
+    let currentDay = new Date(firstDay);
+    while (currentDay.getDay() !== 6) {
+      // 6 is Saturday
+      currentDay.setDate(currentDay.getDate() + 1);
     }
 
-    dates.push(saturday, sunday);
-    return dates;
+    // Get all weekends (Saturday and Sunday pairs)
+    while (currentDay <= lastDay) {
+      const saturday = new Date(currentDay);
+      const sunday = new Date(currentDay);
+      sunday.setDate(sunday.getDate() + 1);
+
+      if (sunday <= lastDay) {
+        weekends.push(saturday, sunday);
+      }
+
+      currentDay.setDate(currentDay.getDate() + 7);
+    }
+
+    // Group weekends into pairs (1&2, 3&4)
+    const firstPair = weekends.slice(0, 4); // First two weekends
+    const secondPair = weekends.slice(4, 8); // Third and fourth weekends
+
+    // Determine which pair to use based on current date
+    const isInFirstHalf = currentDate <= weekends[3];
+    const validFirstPair = firstPair.every((date) => date >= currentDate);
+    const validSecondPair =
+      secondPair.length === 4 &&
+      secondPair.every((date) => date >= currentDate);
+
+    if (validFirstPair && isInFirstHalf) {
+      return firstPair;
+    } else if (validSecondPair) {
+      return secondPair;
+    }
+
+    // If no valid pairs in current month, get first pair of next month
+    const nextMonth = new Date(year, month + 1, 1);
+    return getWeekendPair(nextMonth);
   }
 
-  function getNextMonthWeekends(year: number, month: number): WeekendSchedule {
-    const nextMonth = month === 11 ? 0 : month + 1;
-    const nextYear = month === 11 ? year + 1 : year;
-    return {
-      dates: [
-        ...getWeekendDates(1, nextMonth, nextYear),
-        ...getWeekendDates(2, nextMonth, nextYear),
-      ],
-      month: nextMonth,
-      year: nextYear,
-    };
-  }
-
-  // Determine which weekend pair to schedule based on current week
-  if (currentWeek <= 2) {
-    // Schedule for first and second weekends of current month
-    return [
-      ...getWeekendDates(1, currentMonth, currentYear),
-      ...getWeekendDates(2, currentMonth, currentYear),
-    ];
-  } else if (currentWeek === 3 || currentWeek === 4) {
-    // Schedule for third and fourth weekends of current month
-    return [
-      ...getWeekendDates(3, currentMonth, currentYear),
-      ...getWeekendDates(4, currentMonth, currentYear),
-    ];
-  } else {
-    // If we're in the fifth week or beyond, schedule for first and second weekends of next month
-    const nextMonth = getNextMonthWeekends(currentYear, currentMonth);
-    return nextMonth.dates;
-  }
+  return getWeekendPair(currentDate);
 }
 
-// issues with this
 export function formatCourseSchedule(dates: (Date | string)[]): string {
   const getOrdinalSuffix = (day: number): string => {
     if (day % 10 === 1 && day !== 11) return `${day}st`;
@@ -232,14 +242,13 @@ export function formatCourseSchedule(dates: (Date | string)[]): string {
 
   // format individual dates
   const formatDate = (date: Date | string): string => {
-    const parsedDate = typeof date === "string" ? new Date(date) : date; // Ensure it's a Date object
-    const options = { weekday: "long", month: "long" } as const;
+    const parsedDate = typeof date === "string" ? new Date(date) : date;
     const day = parsedDate.getDate();
-    const formattedDate = `${parsedDate.toLocaleDateString(
-      "en-US",
-      options
-    )}, ${getOrdinalSuffix(day)} ${parsedDate.getFullYear()}`;
-    return formattedDate;
+    const dayName = parsedDate.toLocaleDateString("en-GB", { weekday: "long" });
+    const monthName = parsedDate.toLocaleDateString("en-GB", { month: "long" });
+    const year = parsedDate.getFullYear();
+
+    return `${dayName} ${getOrdinalSuffix(day)} ${monthName}, ${year}`;
   };
 
   const formattedDates = dates.map(formatDate);

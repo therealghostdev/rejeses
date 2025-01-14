@@ -155,7 +155,7 @@ export default function Transaction_success({
             </div>
 
             {order.courseScheduleType &&
-              order.courseType?.includes("Training") && (
+              !order.courseType?.includes("Mentoring") && (
                 <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
                   <li className="list-none flex justify-between items-center">
                     SCHEDULE TYPE:
@@ -166,7 +166,7 @@ export default function Transaction_success({
                 </div>
               )}
 
-            {order.courseSchedule && order.courseType?.includes("Training") && (
+            {order.courseSchedule && !order.courseType?.includes("Mentoring") && (
               <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
                 <li className="list-none flex justify-between items-start">
                   SCHEDULE:

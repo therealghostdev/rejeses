@@ -86,27 +86,30 @@ export async function POST(req: Request) {
       status,
     } = requestBody;
 
-    const courseSchedule = calculateClassSchedule(
-      startDate,
-      courseScheduleType as classSceduleType
-    );
-    console.log(courseScheduleType);
-    
+    let courseSchedule;
+    let renewedCourseScheduleTYpe = courseScheduleType;
+
+    if (!courseType.includes("Mentoring")) {
+      courseSchedule = calculateClassSchedule(
+        startDate,
+        courseScheduleType as classSceduleType
+      );
+    } else {
+      courseSchedule = [new Date()];
+      renewedCourseScheduleTYpe = "weekday";
+    }
 
     const requiredFields = {
       firstName,
       lastName,
       courseType,
       courseSchedule,
-      courseScheduleType,
+      courseScheduleType: renewedCourseScheduleTYpe,
       startDate,
       email,
       amount,
       status: "pending" as StatusType,
     };
-
-    console.log(requiredFields.courseSchedule);
-    console.log(requiredFields.courseScheduleType);
     
 
     if (

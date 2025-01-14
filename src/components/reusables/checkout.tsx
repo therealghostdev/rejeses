@@ -239,11 +239,6 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     }
   };
 
-  // useEffect(() => {
-  //   paymentInfo.price * count;
-  //   paymentInfo.price2 * count;
-  // }, [count, paymentInfo.price, paymentInfo.price2]);
-
   const continueTransaction = async () => {
     try {
       if (
