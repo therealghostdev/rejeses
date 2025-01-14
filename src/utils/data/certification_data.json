@@ -1,7 +1,7 @@
 {
   "capm-certification": {
     "title": "Certified Associate in Project Management (CAPM®) Certification",
-    "logo": "/camp.svg",
+    "logo": "/CAPM.png",
     "content": {
       "description": "The Certified Associate in Project Management (CAPM®) from the Project Management Institute (PMI) is an entry-level certification for aspiring project managers or team members who want to enhance their project management skills.",
       "qualifications": {
@@ -24,7 +24,7 @@
   },
   "pmp-certification": {
     "title": "Project Management Professional (PMP®) Certification",
-    "logo": "/pmp.svg",
+    "logo": "/PMP.png",
     "content": {
       "description": "The Project Management Professional (PMP®) certification, offered by the Project Management Institute (PMI), is a globally recognized credential for experienced project managers.",
       "qualifications": {
@@ -48,7 +48,7 @@
   },
   "pmi-certification": {
     "title": "Agile Certified Practitioner (PMI-ACP®) Certification",
-    "logo": "/pmi.svg",
+    "logo": "/PMI-ACP.png",
     "content": {
       "description": "The Agile Certified Practitioner (PMI-ACP®) certification validates your expertise in agile principles, methodologies, and frameworks.",
       "qualifications": {

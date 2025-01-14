@@ -49,7 +49,7 @@ export default function Certification() {
           >
             <div className="flex justify-center items-center">
               <Image
-                src="/camp.svg"
+                src="/CAPM.png"
                 width={300}
                 height={200}
                 alt="CAPM certification"
@@ -80,7 +80,7 @@ export default function Certification() {
           >
             <div className="flex justify-center items-center">
               <Image
-                src="/pmp.svg"
+                src="/PMP.png"
                 width={300}
                 height={200}
                 alt="PMP certification"
@@ -111,7 +111,7 @@ export default function Certification() {
           >
             <div className="flex justify-center items-center">
               <Image
-                src="/pmi.svg"
+                src="/PMI-ACP.png"
                 width={300}
                 height={200}
                 alt="PMI certification"
