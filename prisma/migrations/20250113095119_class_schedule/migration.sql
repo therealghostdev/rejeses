@@ -9,4 +9,4 @@ CREATE TYPE "ClassSchedule" AS ENUM ('weekend', 'weekday');
 
 -- AlterTable
 ALTER TABLE "Order" ADD COLUMN     "courseSchedule" TIMESTAMP(3)[],
-ADD COLUMN     "courseScheduleType" "ClassSchedule" NOT NULL;
+ADD COLUMN     "courseScheduleType" "ClassSchedule" NOT NULL DEFAULT 'weekday';
