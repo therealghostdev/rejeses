@@ -40,7 +40,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="lg:px-12 md:px-3 lg:max-h-[900px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6 object-cover">
+        <div className="lg:px-12 md:px-3 lg:max-h-[900px] h-[calc(50vw)] lg:w-full my-4 md:mb-12 mb-6 relative overflow-hidden">
           <div
             className={`filter w-full h-full ${
               imageLoading ? "blur-2xl" : "blur-none"
@@ -55,11 +55,11 @@ export default function Page() {
               />
             )}
             <Image
-              src={`/mentorship_hero.svg`}
+              src="/mentorship_hero.svg"
               alt="image"
               layout="fill"
               objectFit="cover"
-              className={`w-full h-full object-contain rounded-2xl ${
+              className={`rounded-2xl transition-all ${
                 imageLoading ? "blur-2xl" : "blur-none"
               }`}
               placeholder="blur"

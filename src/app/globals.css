@@ -14,6 +14,7 @@
 
 html {
   overflow-x: hidden;
+  height: -webkit-fill-available;
 }
 
 body {
@@ -22,6 +23,7 @@ body {
   color: rgb(var(--text-general));
   background: rgb(var(--background-general));
   overflow-x: hidden;
+  min-height: -webkit-fill-available;
 }
 
 .bg-img {

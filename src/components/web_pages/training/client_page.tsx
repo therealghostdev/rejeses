@@ -243,7 +243,7 @@ export default function Training_page() {
         </div> */}
 
         {trainingItem.image && trainingItem.image !== "" && (
-          <div className="lg:px-12 md:px-3 lg:h-[700px] h-[50vw] lg:w-[100%] my-4">
+          <div className="lg:px-12 md:px-3 lg:h-[700px] h-[calc(50vw)] lg:w-full my-4 relative overflow-hidden">
             <ClientImage trainingItem={trainingItem} />
           </div>
         )}

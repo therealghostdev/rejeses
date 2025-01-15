@@ -15,7 +15,7 @@ export default function ClientImage({ trainingItem }: ClientImageProps) {
     <div
       className={`filter w-full h-full ${
         loadingState ? "blur-2xl" : "blur-none"
-      } transition duration-1000 ease-in-out`}
+      } transition duration-1000 ease-in-out relative`}
     >
       {loadingState && (
         <SkeletalLoader
