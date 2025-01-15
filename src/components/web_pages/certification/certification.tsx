@@ -56,12 +56,16 @@ function makeBold(text: string) {
 }
 
 function formatTextWithBold(item: string) {
-  const [boldText, remainingText] = item.split(/:(.+)/);
-  return (
-    <>
-      <strong>{boldText}:</strong> {remainingText}
-    </>
-  );
+  if (item.includes(":")) {
+    const [boldText, remainingText] = item.split(/:(.+)/);
+
+    return (
+      <>
+        <strong>{boldText}:</strong> {remainingText}
+      </>
+    );
+  }
+  return <>{item}</>;
 }
 
 export default function Certifications({ certification }: CertificationProps) {
