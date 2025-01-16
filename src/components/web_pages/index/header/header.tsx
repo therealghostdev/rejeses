@@ -88,7 +88,7 @@ export default function Header() {
                 href="/training"
                 className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border transition_button border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
               >
-                Enroll now
+                Enroll Now
               </Link>
             </span>
 
