@@ -97,7 +97,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
       training_id: props.all.id,
       training_type: "Project Management Training",
       start_date: props.all.start_date,
-      training_option: `You are subscribing to <b>rejeses</b> 35-hour training plan. You will be charged ${
+      training_option: `You are subscribing to <b>rejeses consult</b> 35-hour training plan. You will be charged ${
         isNigeria ? "NGN " : "$"
       }${formatPrice(individualPrice2)} for this.`,
       is_group: false,
@@ -122,7 +122,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
             </strong>
             : These run from{" "}
             <strong className="font-bricolage_grotesque">
-              Monday to Friday, 09:00 to 16:00 (UTC)
+              Monday to Friday, 09:00 to 16:00 (UTC + 1)
             </strong>
             , and the course is completed in
             <strong className="font-bricolage_grotesque"> five days</strong>.
@@ -141,13 +141,13 @@ export default function ClassSchedule(props: SchedulePropsData) {
               <li>
                 <strong className="font-bricolage_grotesque">Saturdays</strong>:{" "}
                 <strong className="font-bricolage_grotesque">
-                  08:00 to 17:00 (UTC)
+                  08:00 to 17:00 (UTC + 1)
                 </strong>
               </li>
               <li>
                 <strong className="font-bricolage_grotesque">Sundays</strong>:{" "}
                 <strong className="font-bricolage_grotesque">
-                  12:00 to 20:00 (UTC)
+                  12:00 to 20:00 (UTC + 1)
                 </strong>
               </li>
             </ul>
