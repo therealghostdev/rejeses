@@ -50,9 +50,9 @@ export default function Services() {
             </h1>
             <p className="lg:text-[24px] lg:max-w-[95%] text-wrap text-[16px]">
               Our 35-hour training program is excellently designed to help you
-              master the skills needed to become a seasoned project manager and
-              pass the prestigious Project Management Professional (PMP)
-              certification examination, and others, on your first try!
+              master the skills needed to become a seasoned project manager. 95%
+              of those who train with us pass the prestigious Project Management Professional (PMP)
+              certification examination on your their try!
             </p>
 
             <span className="text-white">
