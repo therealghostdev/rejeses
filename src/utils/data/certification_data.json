@@ -6,9 +6,9 @@
       "description": "The Certified Associate in Project Management (CAPM®) from the Project Management Institute (PMI) is an entry-level certification for aspiring project managers or team members who want to enhance their project management skills.",
       "qualifications": {
         "intro": "To qualify for the CAPM®, you need:",
-        "experience": "Secondary school degree, or high school diploma. No project experience is required.",
+        "experience": "A secondary school degree, or high school diploma. No project experience is required.",
         "education": "23 hours of project management education.",
-        "exam": "A PMI-arranged examination of 150 questions to be covered in 180 minutes. The cost of the exam is $158 for PMI members, or $210, for non-members."
+        "exam": "Pass a PMI-arranged examination of 150 questions to be covered in 180 minutes. The cost of the exam is $158 for PMI members, or $210, for non-members."
       },
       "benefits": {
         "intro": "Earning the CAPM® demonstrates your understanding of core project management concepts, tools, and processes outlined in PMI’s Project Management Body of Knowledge (PMBOK® Guide). It is beneficial for:",
@@ -31,7 +31,7 @@
         "intro": "To qualify for the PMP®, you need:",
         "experience": "A 4-year bachelors degree with 3-5 years of project management experience within the past 8 years.",
         "education": "35 hours of project management training, or hold a CAPM® certification.",
-        "exam": "A PMI-arranged examination of 180 questions to be covered in 230 minutes."
+        "exam": "Pass a PMI-arranged examination of 180 questions to be covered in 230 minutes."
       },
       "benefits": {
         "intro": "Some of the benefits of the PMP® certification includes:",
@@ -53,9 +53,9 @@
       "description": "The Agile Certified Practitioner (PMI-ACP®) certification validates your expertise in agile principles, methodologies, and frameworks.",
       "qualifications": {
         "intro": "To qualify for the PMI®, you need:",
-        "experience": "Secondary school degree, or high school diploma. Two years of agile experience within the last 5 years.",
+        "experience": "A secondary school degree, or high school diploma. Two years of agile experience within the last 5 years.",
         "education": "28 hours of PMI-ACP® training in agile practices.",
-        "exam": "A PMI-arranged examination of 120 questions to be covered in 180 minutes."
+        "exam": "Pass a PMI-arranged examination of 120 questions to be covered in 180 minutes."
       },
       "benefits": {
         "intro": "Some of the benefits of the (PMI-ACP®) certification includes:",
