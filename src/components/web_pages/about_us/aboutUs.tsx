@@ -7,7 +7,7 @@ export default function AboutUs() {
     <section className=" flex flex-col px-4 my-6">
       <div className="flex flex-col lg:justify-center lg:items-center w-full">
         <motion.header
-          className="bg-[#89C13E] text-white py-6 lg:w-3/4 font-bricolage_grotesque lg:text-4xl"
+          className="bg-[#4B006E] text-white py-6 lg:w-3/4 font-bricolage_grotesque lg:text-4xl"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -35,7 +35,7 @@ export default function AboutUs() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: 0.4 }}
             >
-              At Rejeses PM Consulting, we are passionate about empowering
+              At <strong>Rejeses PM Consulting,</strong> we are passionate about empowering
               individuals and organizations through exceptional training and
               mentoring in project management. With a proven track record
               spanning over 18 years, we help projectprofessionals and teams
@@ -305,7 +305,7 @@ export default function AboutUs() {
             >
               Whether you&apos;re an aspiring project manager, a seasoned
               professional, or a business seeking project management expertise,
-              Rejeses PM Consulting is here to support your journey. Contact us
+              <strong>Rejeses PM Consulting,</strong> is here to support your journey. Contact us
               today, or follow us on our social handles at the bottom of this
               page, to learn more about our training, mentoring, and consulting
               services.
