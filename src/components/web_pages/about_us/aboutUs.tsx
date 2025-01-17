@@ -305,7 +305,7 @@ export default function AboutUs() {
             >
               Whether you&apos;re an aspiring project manager, a seasoned
               professional, or a business seeking project management expertise,
-              <b>rejeses</b> is here to support your journey. Contact us today,
+               <strong>Rejeses</strong> is here to support your journey. Contact us today,
               or follow us on our social handles at the bottom of this page, to
               learn more about our training, mentoring, and consulting services.
             </motion.p>
