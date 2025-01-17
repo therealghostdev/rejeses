@@ -38,7 +38,7 @@ export default function AboutUs() {
               At <strong>Rejeses PM Consulting,</strong> we are passionate about empowering
               individuals and organizations through exceptional training and
               mentoring in project management. With a proven track record
-              spanning over 18 years, we help projectprofessionals and teams
+              spanning over 18 years, we help project professionals and teams
               develop the skills, confidence, and knowledge they need to excel
               in today&apos;s dynamic business environment. While training and
               mentoring are our core focus, we also provide consulting services
@@ -304,8 +304,8 @@ export default function AboutUs() {
               transition={{ duration: 0.3, delay: 1 }}
             >
               Whether you&apos;re an aspiring project manager, a seasoned
-              professional, or a business seeking project management expertise,
-              <strong>Rejeses PM Consulting,</strong> is here to support your journey. Contact us
+              professional, or a business seeking project management expertise, 
+              <strong>Rejeses PM Consulting</strong> is here to support your journey. Contact us
               today, or follow us on our social handles at the bottom of this
               page, to learn more about our training, mentoring, and consulting
               services.
