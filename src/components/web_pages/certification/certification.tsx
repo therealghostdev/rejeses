@@ -73,7 +73,7 @@ export default function Certifications({ certification }: CertificationProps) {
     <section className="flex flex-col px-4 my-6">
       <div className="flex flex-col lg:justify-center lg:items-center w-full">
         <motion.header
-          className="bg-[#BF40BF] text-white py-6 lg:w-3/4 font-bricolage_grotesque lg:text-4xl"
+          className="bg-[#301934] text-white py-6 lg:w-3/4 font-bricolage_grotesque lg:text-4xl"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
