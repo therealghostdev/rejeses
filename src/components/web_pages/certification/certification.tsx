@@ -133,7 +133,7 @@ export default function Certifications({ certification }: CertificationProps) {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.5 }}
-                className="flex items-center"
+                className="flex items-start"
               >
                 <span className="mr-2 mt-[2px] text-lg">⭐</span>
                 <div>
@@ -145,7 +145,7 @@ export default function Certifications({ certification }: CertificationProps) {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.6 }}
-                className="flex items-center"
+                className="flex items-start"
               >
                 <span className="mr-2 mt-[2px] text-lg">⭐</span>
                 <div>
@@ -157,7 +157,7 @@ export default function Certifications({ certification }: CertificationProps) {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.7 }}
-                className="flex items-center"
+                className="flex items-start"
               >
                 <span className="mr-2 mt-[2px] text-lg">⭐</span>
                 <div>
@@ -188,7 +188,7 @@ export default function Certifications({ certification }: CertificationProps) {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.5 }}
-                  className="flex items-center"
+                  className="flex items-start"
                 >
                   <span className="mr-2 mt-[2px] text-lg">⭐</span>
                   <div>{formatTextWithBold(item)}</div>
@@ -212,7 +212,7 @@ export default function Certifications({ certification }: CertificationProps) {
 
             {certification.content.ready ? (
               <div>
-                <h4 className="text-xl md:text-lg font-semibold text-[#535353] font-bricolage_grotesque">
+                <h4 className="text-2xl md:text-3xl font-semibold text-[#535353] font-bricolage_grotesque">
                   Ready to Elevate Your Career?
                 </h4>
 

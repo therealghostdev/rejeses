@@ -2,7 +2,8 @@ import nodemailer from "nodemailer";
 import {
   createCourseEmailTemplate,
   formatPrice,
-  formatCourseSchedule,
+  formatCourseSchedule2,
+  formatSingleDate,
 } from "@/utils/reusables/functions";
 
 export async function POST(req: Request) {
@@ -105,7 +106,11 @@ export async function POST(req: Request) {
             ${
               !courseType.includes("Mentoring")
                 ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Start Date:</div>
-                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${startDate}</div>`
+                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${
+                   courseScheduleType === "weekend"
+                     ? formatSingleDate(courseSchedule[0])
+                     : formatSingleDate(startDate)
+                 }</div>`
                 : ""
             }
 
@@ -119,7 +124,7 @@ export async function POST(req: Request) {
             ${
               !courseType.includes("Mentoring")
                 ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Schedule:</div>
-                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${formatCourseSchedule(
+                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${formatCourseSchedule2(
                    courseSchedule
                  )}</div>`
                 : ""

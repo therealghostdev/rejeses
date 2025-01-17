@@ -55,7 +55,7 @@ export default function Header() {
     controls.start({
       x: ["-100%", 0],
       transition: {
-        duration: 50,
+        duration: 20,
         ease: "linear",
         repeat: Infinity,
       },
@@ -82,20 +82,20 @@ export default function Header() {
           </p>
 
           <div className="w-full flex justify-center items-center my-4">
-            <span className="mx-2 margin-sm-override">
+          <span className="mx-2 bg-[#89C13E] py-3 rounded-[.3rem]">
               <Link
-                onClick={handleEnrollClick}
                 href="/training"
-                className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border transition_button border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
+                className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] font-bricolage_grotesque transition_button4"
               >
                 Enroll Now
               </Link>
             </span>
 
-            <span className="mx-2 bg-[#89C13E] py-3 rounded-[.3rem]">
+            <span className="mx-2 margin-sm-override">
               <Link
+                onClick={handleEnrollClick}
                 href="/book-session"
-                className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] font-bricolage_grotesque transition_button4"
+                className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border transition_button border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
               >
                 Book Session
               </Link>
@@ -122,7 +122,7 @@ export default function Header() {
               alt={logo.alt}
               width={logo.width}
               height={logo.height}
-              className={`${logo.className} hover:filter hover:grayscale`}
+              className={`${logo.className} hover:filter hover:grayscale w-40`}
             />
           ))}
         </motion.div>

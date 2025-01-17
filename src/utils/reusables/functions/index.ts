@@ -117,7 +117,10 @@ export function createCourseEmailTemplate(
               <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${
                 courseType.includes("Mentoring")
                   ? "You will be contacted"
-                  : startDate
+                  : !courseType.includes("Mentoring") &&
+                    courseScheduleType === "weekend"
+                  ? formatSingleDate(courseSchedule[0])
+                  : formatSingleDate(startDate)
               }</div>
 
               ${
@@ -129,7 +132,7 @@ export function createCourseEmailTemplate(
               ${
                 !courseType.includes("Mentoring")
                   ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Schedule:</div>
-              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${formatCourseSchedule(
+              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${formatCourseSchedule2(
                 courseSchedule
               )}</div>`
                   : ""
@@ -144,7 +147,11 @@ export function createCourseEmailTemplate(
             ${
               !courseType.includes("Mentoring")
                 ? `<p style="margin: 0;">
-                    If you have any questions, feel free to contact us. We look forward to seeing you on <strong>${startDate}</strong>.
+                    If you have any questions, feel free to contact us. We look forward to seeing you on <strong>${
+                      courseScheduleType === "weekend"
+                        ? formatSingleDate(courseSchedule[0])
+                        : formatSingleDate(startDate)
+                    }</strong>.
                   </p>`
                 : `<p style="margin: 0;">
                     If you have any questions, feel free to contact us. We look forward to seeing you in class.
@@ -258,4 +265,44 @@ export function formatCourseSchedule(dates: (Date | string)[]): string {
         formattedDates[formattedDates.length - 1]
       }`
     : formattedDates[0];
+}
+
+export function formatCourseSchedule2(dates: (Date | string)[]): string {
+  const getOrdinalSuffix = (day: number): string => {
+    if (day % 10 === 1 && day !== 11) return `${day}st`;
+    if (day % 10 === 2 && day !== 12) return `${day}nd`;
+    if (day % 10 === 3 && day !== 13) return `${day}rd`;
+    return `${day}th`;
+  };
+
+  const formatDate = (date: Date | string): string => {
+    const parsedDate = typeof date === "string" ? new Date(date) : date;
+    const day = parsedDate.getDate();
+    const dayName = parsedDate.toLocaleDateString("en-GB", { weekday: "long" });
+    const monthName = parsedDate.toLocaleDateString("en-GB", { month: "long" });
+    const year = parsedDate.getFullYear();
+
+    return `${dayName} ${getOrdinalSuffix(day)} ${monthName}, ${year}`;
+  };
+
+  const formattedDates = dates.map(formatDate);
+
+  return formattedDates.map((date) => `${date} <br />`).join("\n");
+}
+
+export function formatSingleDate(date: Date | string): string {
+  const getOrdinalSuffix = (day: number): string => {
+    if (day % 10 === 1 && day !== 11) return `${day}st`;
+    if (day % 10 === 2 && day !== 12) return `${day}nd`;
+    if (day % 10 === 3 && day !== 13) return `${day}rd`;
+    return `${day}th`;
+  };
+
+  const parsedDate = typeof date === "string" ? new Date(date) : date;
+  const day = parsedDate.getDate();
+  const dayName = parsedDate.toLocaleDateString("en-GB", { weekday: "long" });
+  const monthName = parsedDate.toLocaleDateString("en-GB", { month: "long" });
+  const year = parsedDate.getFullYear();
+
+  return `${dayName} ${getOrdinalSuffix(day)} ${monthName}, ${year}`;
 }

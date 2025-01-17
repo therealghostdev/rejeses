@@ -144,7 +144,7 @@ export default function Mobile_why_us(props: UniqueComponentsProps) {
         className="w-full flex md:flex-row flex-col justify-center items-center relative overflow-hidden py-8"
         {...handlers}
       >
-        <div className="relative w-full max-w-md h-[410px]">
+        <div className="relative w-full max-w-md h-[350px]">
           {/* animation container */}
           <AnimatePresence initial={false} custom={direction}>
             {[-1, 0, 1].map((offset) => {
@@ -178,13 +178,12 @@ export default function Mobile_why_us(props: UniqueComponentsProps) {
                   style={{
                     position: "absolute",
                     width: "100%",
-                    height: "100%",
                   }}
                 >
                   <div
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
-                    className={`w-full h-full border border-[#DBE1E7] rounded-2xl ${
+                    className={`w-full border border-[#DBE1E7] rounded-2xl ${
                       offset !== 0 ? "opacity-50" : ""
                     }`}
                   >

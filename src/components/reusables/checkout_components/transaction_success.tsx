@@ -4,7 +4,11 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { formatDate, formatCourseSchedule } from "@/utils/reusables/functions";
+import {
+  formatDate,
+  formatCourseSchedule,
+  formatSingleDate,
+} from "@/utils/reusables/functions";
 import Link from "next/link";
 
 type TransactionSuccessProps = Partial<
@@ -149,7 +153,10 @@ export default function Transaction_success({
                 <span className="mx-4 inline-flex w-2/4 justify-end">
                   {order.courseType && order.courseType.includes("Mentoring")
                     ? "Rejeses will contact you"
-                    : order.startDate || "N/A"}
+                    : order.courseSchedule &&
+                      order.courseScheduleType === "weekend"
+                    ? formatSingleDate(order.courseSchedule[0] || "") || "N/A"
+                    : formatSingleDate(order.startDate || "") || "N/A"}
                 </span>
               </li>
             </div>
@@ -166,16 +173,17 @@ export default function Transaction_success({
                 </div>
               )}
 
-            {order.courseSchedule && !order.courseType?.includes("Mentoring") && (
-              <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
-                <li className="list-none flex justify-between items-start">
-                  SCHEDULE:
-                  <span className="mx-4 inline-flex w-2/4 justify-end">
-                    {formatCourseSchedule(order.courseSchedule)}
-                  </span>
-                </li>
-              </div>
-            )}
+            {order.courseSchedule &&
+              !order.courseType?.includes("Mentoring") && (
+                <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
+                  <li className="list-none flex justify-between items-start">
+                    SCHEDULE:
+                    <span className="mx-4 inline-flex w-2/4 justify-end">
+                      {formatCourseSchedule(order.courseSchedule)}
+                    </span>
+                  </li>
+                </div>
+              )}
 
             <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
               <li className="list-none flex justify-between items-center">
