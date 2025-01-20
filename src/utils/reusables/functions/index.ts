@@ -131,7 +131,7 @@ export function createCourseEmailTemplate(
               }
               ${
                 !courseType.includes("Mentoring")
-                  ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Schedule:</div>
+                  ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Days:</div>
               <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${formatCourseSchedule2(
                 courseSchedule
               )}</div>`

@@ -25,10 +25,6 @@ export default function Page() {
 
   const [imageLoading, setImageLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    console.log(filteredPricing);
-  }, []);
-
   return (
     <section className="w-full flex flex-col justify-center items-center">
       <section className="w-full px-8 flex flex-col gap-6 py-12 md:max-w-[98%]">

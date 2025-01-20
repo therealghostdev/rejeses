@@ -56,10 +56,6 @@ export default function MentorshipPaymentSummary() {
     }
   }, [paymentInfo.price, paymentInfo.price2]);
 
-  useEffect(() => {
-    console.log(paymentInfo, "is paymentInfo");
-  }, []);
-
   return (
     <section className="w-full px-8 flex flex-col gap-12 py-12 justify-center items-center">
       <div className="md:max-w-[98%] w-full py-12 gap-6 md:px-8 flex flex-col gap-y-6 justify-center">

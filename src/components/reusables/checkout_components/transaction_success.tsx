@@ -46,10 +46,6 @@ export default function Transaction_success({
     router.push("/");
   };
 
-  useEffect(() => {
-    console.log(order.courseSchedule, order.courseScheduleType);
-  }, [order.courseSchedule, order.courseScheduleType]);
-
   const capitalizeCourseScheduleType = (item: string) => {
     const restOfItems = item.slice(1);
     const first = item.charAt(0).toUpperCase() + restOfItems;

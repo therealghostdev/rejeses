@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Logo_slider from "../../reusables/animation/logo_slider";
 
 export default function AboutUs() {
   return (
@@ -204,93 +205,7 @@ export default function AboutUs() {
             <h2 className="text-2xl md:text-3xl font-semibold text-[#535353] font-bricolage_grotesque">
               We have worked directly with such companies as
             </h2>
-            <ul className="space-y-2 flex flex-col gap-y-2 text-[#535353]">
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 1.2 }}
-                className="flex items-center"
-              >
-                <span className="mr-2 mt-[2px] text-lg">⭐</span> Alan Dick
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 1.3 }}
-                className="flex items-center"
-              >
-                <span className="mr-2 mt-[2px] text-lg">⭐</span> Mtn
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 1.4 }}
-                className="flex items-center"
-              >
-                <span className="mr-2 mt-[2px] text-lg">⭐</span> Everlast
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 1.5 }}
-                className="flex items-center"
-              >
-                <span className="mr-2 mt-[2px] text-lg">⭐</span> Huawei
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 1.6 }}
-                className="flex items-center"
-              >
-                <span className="mr-2 mt-[2px] text-lg">⭐</span>
-                Multilinks-Telkom
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 1.7 }}
-                className="flex items-center"
-              >
-                <span className="mr-2 mt-[2px] text-lg">⭐</span>
-                9-Mobile
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 1.8 }}
-                className="flex items-center"
-              >
-                <span className="mr-2 mt-[2px] text-lg">⭐</span>
-                Hydro Pet
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 1.9 }}
-                className="flex items-center"
-              >
-                <span className="mr-2 mt-[2px] text-lg">⭐</span>
-                Nnpc
-              </motion.li>
-
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 2 }}
-                className="flex items-center"
-              >
-                <span className="mr-2 mt-[2px] text-lg">⭐</span>
-                Visafone
-              </motion.li>
-            </ul>
+            <Logo_slider />
           </div>
 
           <div className="w-full flex flex-col gap-y-4">
@@ -305,9 +220,10 @@ export default function AboutUs() {
             >
               Whether you&apos;re an aspiring project manager, a seasoned
               professional, or a business seeking project management expertise,
-               <strong>Rejeses</strong> is here to support your journey. Contact us today,
-              or follow us on our social handles at the bottom of this page, to
-              learn more about our training, mentoring, and consulting services.
+              <strong>Rejeses</strong> is here to support your journey. Contact
+              us today, or follow us on our social handles at the bottom of this
+              page, to learn more about our training, mentoring, and consulting
+              services.
             </motion.p>
           </div>
         </motion.div>

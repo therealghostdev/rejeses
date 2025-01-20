@@ -38,7 +38,6 @@ export default function PriceCard({ data, id }: PriceCardProps) {
       const goTo = `/training/${id}`;
       directTo.push(goTo);
     } else if (currentPath === "mentorship") {
-      console.log(trainingTypeValue, "is value");
       setPaymentInfo((prev) => ({
         ...prev,
         price: item,

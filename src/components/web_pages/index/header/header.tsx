@@ -5,16 +5,13 @@ import Mobile_Image_slider from "./mobile_image_slider";
 import { useState, useEffect, useCallback } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Tagline from "./tagline";
-import logos from "@/utils/data/logos.json";
-import { useAnimation, motion } from "framer-motion";
+import Logo_slider from "../../../reusables/animation/logo_slider";
 
 export default function Header() {
   const [width, setWidth] = useState<number>(
     typeof window !== "undefined" ? window.innerWidth : 0
   );
   const [isMobile, setIsMobile] = useState<boolean>(false);
-
-  const controls = useAnimation();
 
   const pathname = usePathname();
   const router = useRouter();
@@ -51,21 +48,6 @@ export default function Header() {
     };
   }, []);
 
-  const startAnimation = useCallback(() => {
-    controls.start({
-      x: ["-100%", 0],
-      transition: {
-        duration: 20,
-        ease: "linear",
-        repeat: Infinity,
-      },
-    });
-  }, [controls]);
-
-  useEffect(() => {
-    startAnimation();
-  }, [startAnimation]);
-
   return (
     <header className="bg-[#F5F0FA] flex flex-col w-full gap-4 overflow-hidden">
       <div className="w-full flex flex-col justify-center items-center my-8">
@@ -82,7 +64,7 @@ export default function Header() {
           </p>
 
           <div className="w-full flex justify-center items-center my-4">
-          <span className="mx-2 bg-[#89C13E] py-3 rounded-[.3rem]">
+            <span className="mx-2 bg-[#89C13E] py-3 rounded-[.3rem]">
               <Link
                 href="/training"
                 className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] font-bricolage_grotesque transition_button4"
@@ -111,21 +93,7 @@ export default function Header() {
           Learn directly from people who worked at such companies as
         </p>
 
-        <motion.div
-          className="lg:w-3/4 w-full flex md:justify-around justify-center items-center flex-nowrap gap-x-6"
-          animate={controls}
-        >
-          {logos.concat(logos).map((logo, index) => (
-            <Image
-              key={index}
-              src={logo.src}
-              alt={logo.alt}
-              width={logo.width}
-              height={logo.height}
-              className={`${logo.className} hover:filter hover:grayscale w-40`}
-            />
-          ))}
-        </motion.div>
+        <Logo_slider />
       </div>
     </header>
   );
