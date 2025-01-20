@@ -30,7 +30,7 @@ export default function Last_el() {
         </Link>
 
         <Link
-          href="https://www.facebook.com/rejeses/"
+          href="https://www.facebook.com/rejesespmc/"
           target="_blank"
           className="md:mx-4"
         >
