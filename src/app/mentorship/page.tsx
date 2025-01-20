@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 import whyUsData from "@/utils/data/why_us_data.json";
 import benefit_data from "@/utils/data/benefits_data.json";
 import priceData from "@/utils/data/price_data.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SkeletalLoader from "@/components/reusables/animation/skeletol_loader";
 
 export default function Page() {
@@ -24,6 +24,10 @@ export default function Page() {
   const filteredPricing = priceData.find((item) => item.tag === currentTag);
 
   const [imageLoading, setImageLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    console.log(filteredPricing);
+  }, []);
 
   return (
     <section className="w-full flex flex-col justify-center items-center">

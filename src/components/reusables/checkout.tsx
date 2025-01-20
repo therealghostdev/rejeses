@@ -413,6 +413,10 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     }
   };
 
+  useEffect(() => {
+    console.log(paymentInfo, "is paymentInfo at training");
+  }, []);
+
   return (
     <section
       className="flex justify-center items-center w-full min-h-screen px-8 py-12"

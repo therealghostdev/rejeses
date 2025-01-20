@@ -50,6 +50,12 @@ export default function Transaction_success({
     console.log(order.courseSchedule, order.courseScheduleType);
   }, [order.courseSchedule, order.courseScheduleType]);
 
+  const capitalizeCourseScheduleType = (item: string) => {
+    const restOfItems = item.slice(1);
+    const first = item.charAt(0).toUpperCase() + restOfItems;
+    return first;
+  };
+
   return (
     <motion.div
       initial={{ x: "100vw" }}
@@ -167,7 +173,7 @@ export default function Transaction_success({
                   <li className="list-none flex justify-between items-center">
                     SCHEDULE TYPE:
                     <span className="mx-4 inline-flex w-2/4 justify-end">
-                      {order.courseScheduleType}
+                      {capitalizeCourseScheduleType(order.courseScheduleType)}
                     </span>
                   </li>
                 </div>
@@ -177,7 +183,7 @@ export default function Transaction_success({
               !order.courseType?.includes("Mentoring") && (
                 <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
                   <li className="list-none flex justify-between items-start">
-                    SCHEDULE:
+                    COURSE DAYS:
                     <span className="mx-4 inline-flex w-2/4 justify-end">
                       {formatCourseSchedule(order.courseSchedule)}
                     </span>

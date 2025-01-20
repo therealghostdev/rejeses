@@ -255,7 +255,7 @@ export function formatCourseSchedule(dates: (Date | string)[]): string {
     const monthName = parsedDate.toLocaleDateString("en-GB", { month: "long" });
     const year = parsedDate.getFullYear();
 
-    return `${dayName} ${getOrdinalSuffix(day)} ${monthName}, ${year}`;
+    return `${dayName}, ${monthName} ${getOrdinalSuffix(day)}, ${year}`;
   };
 
   const formattedDates = dates.map(formatDate);
@@ -282,7 +282,7 @@ export function formatCourseSchedule2(dates: (Date | string)[]): string {
     const monthName = parsedDate.toLocaleDateString("en-GB", { month: "long" });
     const year = parsedDate.getFullYear();
 
-    return `${dayName} ${getOrdinalSuffix(day)} ${monthName}, ${year}`;
+    return `${dayName}, ${monthName} ${getOrdinalSuffix(day)}, ${year}`;
   };
 
   const formattedDates = dates.map(formatDate);
@@ -304,5 +304,5 @@ export function formatSingleDate(date: Date | string): string {
   const monthName = parsedDate.toLocaleDateString("en-GB", { month: "long" });
   const year = parsedDate.getFullYear();
 
-  return `${dayName} ${getOrdinalSuffix(day)} ${monthName}, ${year}`;
+  return `${dayName}, ${monthName} ${getOrdinalSuffix(day)}, ${year}`;
 }

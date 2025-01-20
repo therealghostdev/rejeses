@@ -38,13 +38,14 @@ export default function PriceCard({ data, id }: PriceCardProps) {
       const goTo = `/training/${id}`;
       directTo.push(goTo);
     } else if (currentPath === "mentorship") {
+      console.log(trainingTypeValue, "is value");
       setPaymentInfo((prev) => ({
         ...prev,
         price: item,
         price2: item2,
         training_option: option,
         training_type:
-          trainingTypeValue === "Training only"
+          trainingTypeValue === "Mentoring only"
             ? "Project Management Mentoring"
             : "Project Management Training & Mentoring",
       }));

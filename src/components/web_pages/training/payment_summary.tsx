@@ -154,7 +154,9 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
 
               <div className="flex flex-wrap items-center my-4 mb-4">
                 <p className="">
-                  <span className="text-xl font-bold font-bricolage_grotesque">Class Schedule:</span>
+                  <span className="text-xl font-bold font-bricolage_grotesque">
+                    Class Schedule:
+                  </span>
                   <span className="ml-2">
                     {isWeekday ? "Weekdays" : "Weekends"}
                   </span>

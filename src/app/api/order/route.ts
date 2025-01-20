@@ -89,14 +89,18 @@ export async function POST(req: Request) {
     let courseSchedule;
     let renewedCourseScheduleTYpe = courseScheduleType;
 
+    console.log(typeof startDate); // should be string
+
     if (!courseType.includes("Mentoring")) {
       courseSchedule = calculateClassSchedule(
         startDate,
         courseScheduleType as classSceduleType
       );
+      console.log("if ran");
     } else {
       courseSchedule = [new Date()];
       renewedCourseScheduleTYpe = "weekday";
+      console.log("else ran");
     }
 
     const requiredFields = {
@@ -110,6 +114,8 @@ export async function POST(req: Request) {
       amount,
       status: "pending" as StatusType,
     };
+
+    console.log(requiredFields, "required fields");
     
 
     if (
