@@ -1,7 +1,7 @@
 "use client";
 import { TransactionDataType, OrderDataType } from "@/utils/types/types";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -9,7 +9,9 @@ import {
   formatCourseSchedule,
   formatSingleDate,
 } from "@/utils/reusables/functions";
-import Link from "next/link";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import Loading from "@/app/feed/loading";
 
 type TransactionSuccessProps = Partial<
   Omit<TransactionDataType, "accessCode" | "fee" | "createdAt">
@@ -28,6 +30,8 @@ export default function Transaction_success({
   order: TransactionOrder;
   close: () => void;
 }) {
+  const receiptRef = useRef<HTMLDivElement>(null);
+
   function formatPrice(price: number | undefined): string | undefined {
     if (price && price >= 1000) {
       return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -40,8 +44,6 @@ export default function Transaction_success({
 
   const router = useRouter();
 
-  const [path, setPath] = useState<string>("");
-
   const returnBtnClick = () => {
     router.push("/");
   };
@@ -50,6 +52,124 @@ export default function Transaction_success({
     const restOfItems = item.slice(1);
     const first = item.charAt(0).toUpperCase() + restOfItems;
     return first;
+  };
+
+  const [copyingData, setCopyingData] = useState<boolean>(false);
+  const downloadTransactReceipt = async () => {
+    if (receiptRef.current) {
+      try {
+        setCopyingData(true);
+        // Create clone with proper styling
+        const receiptClone = receiptRef.current.cloneNode(true) as HTMLElement;
+        const container = document.createElement("div");
+
+        container.style.width = `${receiptRef.current.offsetWidth}px`;
+        container.style.backgroundColor = "white";
+        container.style.position = "absolute";
+        container.style.left = "-9999px";
+        container.style.padding = "64px 16px";
+
+        // Copy all styles
+        const originalElements = receiptRef.current.getElementsByTagName("*");
+        const cloneElements = receiptClone.getElementsByTagName("*");
+
+        for (let i = 0; i < originalElements.length; i++) {
+          const originalStyle = window.getComputedStyle(originalElements[i]);
+          const cloneElement = cloneElements[i] as HTMLElement;
+
+          Array.from(originalStyle).forEach((key) => {
+            cloneElement.style[key as any] =
+              originalStyle.getPropertyValue(key);
+          });
+
+          if (originalStyle.display === "flex") {
+            cloneElement.style.display = "flex";
+            cloneElement.style.justifyContent = originalStyle.justifyContent;
+            cloneElement.style.alignItems = originalStyle.alignItems;
+          }
+        }
+
+        container.appendChild(receiptClone);
+        document.body.appendChild(container);
+
+        const canvas = await html2canvas(container, {
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          allowTaint: true,
+          backgroundColor: "#ffffff",
+          windowHeight: container.scrollHeight,
+          height: container.scrollHeight,
+          onclone: (clonedDoc) => {
+            const style = clonedDoc.createElement("style");
+            style.textContent = `
+              @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&display=swap');
+              * { font-family: 'Bricolage Grotesque', sans-serif; }
+            `;
+            clonedDoc.head.appendChild(style);
+          },
+        });
+
+        document.body.removeChild(container);
+
+        const imgData = canvas.toDataURL("image/png", 1.0);
+
+        // Create PDF with proper dimensions
+        const pdf = new jsPDF("p", "pt", "a4");
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+
+        // Calculate the number of pages needed
+        const imgWidth = canvas.width;
+        const imgHeight = canvas.height;
+
+        // Set a fixed width that fits the page with margins
+        const margin = 40;
+        const availableWidth = pageWidth - 2 * margin;
+        const scaleFactor = availableWidth / imgWidth;
+        const scaledHeight = imgHeight * scaleFactor;
+
+        // Split into multiple pages if needed
+        let heightLeft = scaledHeight;
+        let position = 0;
+        let page = 1;
+
+        // First page
+        pdf.addImage(
+          imgData,
+          "PNG",
+          margin,
+          position + margin,
+          availableWidth,
+          scaledHeight
+        );
+        heightLeft -= pageHeight - 2 * margin;
+
+        // Add new pages if content exceeds page height
+        while (heightLeft > 0) {
+          pdf.addPage();
+          page++;
+          position = -(pageHeight - 2 * margin) * (page - 1);
+
+          pdf.addImage(
+            imgData,
+            "PNG",
+            margin,
+            position + margin,
+            availableWidth,
+            scaledHeight
+          );
+
+          heightLeft -= pageHeight - 2 * margin;
+        }
+
+        pdf.save(`Rejeses_payment_receipt_${data?.txid || "confirmation"}.pdf`);
+        setCopyingData(false);
+      } catch (error) {
+        console.error("Error generating PDF:", error);
+        setCopyingData(false);
+      }
+    }
   };
 
   return (
@@ -72,7 +192,11 @@ export default function Transaction_success({
       </button>
 
       <div className="w-full flex flex-col justify-between">
-        <div className="w-full flex flex-col py-16">
+        <div
+          className="w-full flex flex-col py-16"
+          ref={receiptRef}
+          style={{ pageBreakInside: copyingData ? "avoid" : "inherit" }}
+        >
           <div className="w-full flex flex-col justify-center items-center">
             <Image src="/success.svg" width={80} height={80} alt="Success" />
             <h1 className="font-bold lg:text-4xl text-2xl text-center my-4 lg:mb-12 font-bricolage_grotesque">
@@ -214,6 +338,13 @@ export default function Transaction_success({
             </div>
           </div>
         </div>
+
+        <button
+          className="bg-[white] flex justify-center gap-x-4 py-4 px-2 w-full my-4 text-[#89C13E] border border-[#89C13E] rounded-md font-bold"
+          onClick={downloadTransactReceipt}
+        >
+          Download Receipt {copyingData && <Loading />}
+        </button>
 
         <button
           className="bg-[#89C13E] py-4 px-2 w-full my-4 text-white rounded-md font-bold"
