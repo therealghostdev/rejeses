@@ -66,7 +66,7 @@ export default function Header() {
           <div className="w-full flex justify-center items-center my-4">
             <span className="mx-2 bg-[#89C13E] py-3 rounded-[.3rem]">
               <Link
-                href="/training"
+                href="/training#upcoming-training"
                 className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] font-bricolage_grotesque transition_button4"
               >
                 Enroll Now
