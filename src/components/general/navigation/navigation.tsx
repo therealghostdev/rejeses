@@ -144,14 +144,6 @@ export default function Nav_desktop() {
             <section className="flex space-x-2">
               {linkButtons.map((button, index) =>
                 index === 0 ? (
-                  <Link
-                    className={button.className}
-                    href={button.url}
-                    key={index}
-                  >
-                    {button.label.toUpperCase()}
-                  </Link>
-                ) : (
                   <span
                     key={index}
                     className="mx-2 bg-[#89C13E] py-3 rounded-[.3rem]"
@@ -163,6 +155,14 @@ export default function Nav_desktop() {
                       {button.label.toUpperCase()}
                     </Link>
                   </span>
+                ) : (
+                  <Link
+                    className={button.className}
+                    href={button.url}
+                    key={index}
+                  >
+                    {button.label.toUpperCase()}
+                  </Link>
                 )
               )}
             </section>
@@ -212,14 +212,6 @@ export default function Nav_desktop() {
                   <section className="flex flex-col space-y-4">
                     {linkButtons.map((button, index) =>
                       index === 0 ? (
-                        <Link
-                          className={button.className}
-                          href={button.url}
-                          key={index}
-                        >
-                          {button.label.toUpperCase()}
-                        </Link>
-                      ) : (
                         <span
                           key={index}
                           className="bg-[#89C13E] rounded-[.3rem]"
@@ -231,6 +223,14 @@ export default function Nav_desktop() {
                             {button.label.toUpperCase()}
                           </Link>
                         </span>
+                      ) : (
+                        <Link
+                          className={button.className}
+                          href={button.url}
+                          key={index}
+                        >
+                          {button.label.toUpperCase()}
+                        </Link>
                       )
                     )}
                   </section>

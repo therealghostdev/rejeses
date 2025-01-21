@@ -126,7 +126,7 @@ export function createCourseEmailTemplate(
               ${
                 !courseType.includes("Mentoring")
                   ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Schedule Type:</div>
-              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${courseScheduleType}</div>`
+              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${capitalizeCourseScheduleType(courseScheduleType)}</div>`
                   : ""
               }
               ${
@@ -255,7 +255,7 @@ export function formatCourseSchedule(dates: (Date | string)[]): string {
     const monthName = parsedDate.toLocaleDateString("en-GB", { month: "long" });
     const year = parsedDate.getFullYear();
 
-    return `${dayName}, ${monthName} ${getOrdinalSuffix(day)}, ${year}`;
+    return `${dayName}, ${monthName} ${day}, ${year}`;
   };
 
   const formattedDates = dates.map(formatDate);
@@ -282,7 +282,7 @@ export function formatCourseSchedule2(dates: (Date | string)[]): string {
     const monthName = parsedDate.toLocaleDateString("en-GB", { month: "long" });
     const year = parsedDate.getFullYear();
 
-    return `${dayName}, ${monthName} ${getOrdinalSuffix(day)}, ${year}`;
+    return `${dayName}, ${monthName} ${day}, ${year}`;
   };
 
   const formattedDates = dates.map(formatDate);
@@ -304,5 +304,11 @@ export function formatSingleDate(date: Date | string): string {
   const monthName = parsedDate.toLocaleDateString("en-GB", { month: "long" });
   const year = parsedDate.getFullYear();
 
-  return `${dayName}, ${monthName} ${getOrdinalSuffix(day)}, ${year}`;
+  return `${dayName}, ${monthName} ${day}, ${year}`;
 }
+
+export const capitalizeCourseScheduleType = (item: string) => {
+    const restOfItems = item.slice(1);
+    const first = item.charAt(0).toUpperCase() + restOfItems;
+    return first;
+  };

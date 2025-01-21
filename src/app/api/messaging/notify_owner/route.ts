@@ -3,7 +3,7 @@ import {
   createCourseEmailTemplate,
   formatPrice,
   formatCourseSchedule2,
-  formatSingleDate,
+  formatSingleDate, capitalizeCourseScheduleType
 } from "@/utils/reusables/functions";
 
 export async function POST(req: Request) {
@@ -117,7 +117,7 @@ export async function POST(req: Request) {
             ${
               !courseType.includes("Mentoring")
                 ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Schedule Type:</div>
-                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${courseScheduleType}</div>`
+                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${capitalizeCourseScheduleType(courseScheduleType)}</div>`
                 : ""
             }
 

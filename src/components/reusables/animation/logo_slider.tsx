@@ -36,7 +36,7 @@ export default function Logo_slider() {
             alt={logo.alt}
             width={logo.width}
             height={logo.height}
-            className={`${logo.className} hover:filter hover:grayscale w-40`}
+            className={`${logo.className} filter grayscale hover:grayscale-0 w-40`}
           />
         ))}
       </motion.div>
@@ -53,7 +53,7 @@ export default function Logo_slider() {
           alt={logo.alt}
           width={logo.width}
           height={logo.height}
-          className={`${logo.className} hover:filter hover:grayscale w-40`}
+          className={`${logo.className} filter grayscale w-40 hover:grayscale-0`}
         />
       ))}
     </motion.div>

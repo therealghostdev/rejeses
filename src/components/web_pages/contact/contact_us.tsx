@@ -12,6 +12,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Loading from "@/app/feed/loading";
+import { useNavigation } from "@/utils/context/payment";
 
 export default function ContactUs() {
   const [formValues, setFormValues] = useState<contact_us_values>({
@@ -27,6 +28,8 @@ export default function ContactUs() {
   });
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
+
+  const { isMobile } = useNavigation();
 
   const emailRegex = useMemo(
     () => /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/,
@@ -120,6 +123,11 @@ export default function ContactUs() {
     <div>
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
+          {isMobile && (
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-bricolage_grotesque">
+              Get in touch
+            </h2>
+          )}
           <motion.div
             className="relative h-64 overflow-hidden rounded-lg sm:h-80 lg:min-h-full"
             initial={{ opacity: 0, x: -50 }}
@@ -141,10 +149,12 @@ export default function ContactUs() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="mx-auto max-w-lg lg:mx-0">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-bricolage_grotesque">
-                Get in touch
-              </h2>
+            <div className="md:mx-4 mx-auto max-w-lg lg:mx-0">
+              {!isMobile && (
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-bricolage_grotesque">
+                  Get in touch
+                </h2>
+              )}
               <p className="mt-4 text-lg text-gray-500">
                 We&apos;d love to hear from you! Whether you have a question
                 about our courses, need career advice, or want to make an

@@ -8,6 +8,7 @@ import {
   formatDate,
   formatCourseSchedule,
   formatSingleDate,
+  capitalizeCourseScheduleType,
 } from "@/utils/reusables/functions";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -46,12 +47,6 @@ export default function Transaction_success({
 
   const returnBtnClick = () => {
     router.push("/");
-  };
-
-  const capitalizeCourseScheduleType = (item: string) => {
-    const restOfItems = item.slice(1);
-    const first = item.charAt(0).toUpperCase() + restOfItems;
-    return first;
   };
 
   const [copyingData, setCopyingData] = useState<boolean>(false);

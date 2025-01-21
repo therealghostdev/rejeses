@@ -21,7 +21,7 @@ export default function UpcomingCohorts() {
           >
             <Card
               id={index}
-              description={item.description}
+              description={""}
               date={mondayDates[index].toLocaleDateString("en-US", {
                 day: "numeric",
                 month: "long",

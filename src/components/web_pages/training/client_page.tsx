@@ -10,7 +10,6 @@ import Pricing from "@/components/reusables/pricing/pricing";
 import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
 import { usePayment, useNavigation } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
-import Certification from "@/components/reusables/certification";
 import { getNextMondayDates } from "@/utils/reusables/functions";
 
 export default function Training_page() {
@@ -282,8 +281,6 @@ export default function Training_page() {
         ))}
 
         <Why_us data={whyUsItems} />
-
-        <Certification />
 
         <UpcomingCohorts />
 
