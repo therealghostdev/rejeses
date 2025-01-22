@@ -259,7 +259,7 @@ export default function Transaction_success({
 
             <div className="lg:my-4 font-bold border-b border-[#DBE1E7] py-2">
               <li className="list-none flex justify-between items-center">
-                TRANSACTION DATE:
+                PAYMENT DATE:
                 <span className="mx-4 inline-flex w-2/4 justify-end">
                   {data.updatedAt
                     ? new Date(data.updatedAt).toLocaleString("en-GB")
