@@ -75,7 +75,7 @@ export default function Card(props: CardProps) {
         </h1>
         <p className="text-[#5B5B5B]">{props.description}</p>
         <p className="font-bold font-bricolage_grotesque">
-          <span>Week Starting:</span> {props.date}
+          <span>Start Week:</span> {props.date}
         </p>
       </div>
 

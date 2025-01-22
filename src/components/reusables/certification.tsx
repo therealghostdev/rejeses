@@ -1,12 +1,33 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import SkeletalLoader from "./animation/skeletol_loader";
 
 export default function Certification() {
   const pathname = usePathname();
   const router = useRouter();
+
+  const [loadingStates, setLoadingStates] = useState<{
+    image1: boolean;
+    image2: boolean;
+    image3: boolean;
+  }>({
+    image1: true,
+    image2: true,
+    image3: true,
+  });
+
+  const handleImageLoad1 = () => {
+    setLoadingStates((prev) => ({ ...prev, image1: false }));
+  };
+  const handleImageLoad2 = () => {
+    setLoadingStates((prev) => ({ ...prev, image2: false }));
+  };
+  const handleImageLoad3 = () => {
+    setLoadingStates((prev) => ({ ...prev, image3: false }));
+  };
 
   const decodedPathname = useMemo(
     () => decodeURIComponent(pathname),
@@ -47,16 +68,46 @@ export default function Certification() {
             }}
             onClick={() => handleCertificationClick("capm-certification")}
           >
-            <div className="flex justify-center items-center">
-              <Image
-                src="/CAPM.png"
-                width={300}
-                height={200}
-                alt="CAPM certification"
-                className="object-contain"
-              />
+            <div
+              className={`flex justify-center items-center min-h-[320px] md:min-h-0`}
+            >
+              <div
+                className={`lg:w-[300px] md:w-[200px] w-[240px] ${
+                  loadingStates.image1 ? "blur-2xl" : "blur-none"
+                } transition duration-1000 ease-in-out relative`}
+              >
+                {loadingStates.image1 && (
+                  <SkeletalLoader
+                    blockWidth="w-[80%]"
+                    cardHeight="h-5"
+                    cardImageHeight="h-5"
+                    cardColor="bg-[#FEF9F6]"
+                    cardContentColor="bg-[#FEF9F6]"
+                    cardImageColor="bg-[#F5F0FA]"
+                  />
+                )}
+                <Image
+                  src="/CAPM.png"
+                  width={300}
+                  height={200}
+                  alt="CAPM certification"
+                  className={`object-contain ${
+                    loadingStates.image1
+                      ? "w-full h-full object-top absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                      : ""
+                  }`}
+                  placeholder="blur"
+                  priority
+                  blurDataURL="/CAPM.png"
+                  onLoad={handleImageLoad1}
+                />
+              </div>
             </div>
-            <p className="font-bold font-bricolage_grotesque my-1 transition-all duration-300 text-center">
+            <p
+              className={`font-bold font-bricolage_grotesque my-1 transition-all duration-300 text-center ${
+                loadingStates.image1 ? "mt-4" : ""
+              }`}
+            >
               Certified Associate in Project Management (CAPM)
             </p>
           </motion.div>
@@ -78,14 +129,38 @@ export default function Certification() {
             }}
             onClick={() => handleCertificationClick("pmp-certification")}
           >
-            <div className="flex justify-center items-center">
-              <Image
-                src="/PMP.png"
-                width={300}
-                height={200}
-                alt="PMP certification"
-                className="object-contain"
-              />
+            <div className={`flex justify-center items-center min-h-[320px] md:min-h-0`}>
+              <div
+                className={`lg:w-[300px] md:w-[200px] w-[240px] ${
+                  loadingStates.image2 ? "blur-2xl" : "blur-none"
+                } transition duration-1000 ease-in-out relative`}
+              >
+                {loadingStates.image2 && (
+                  <SkeletalLoader
+                    blockWidth="w-[80%]"
+                    cardHeight="h-5"
+                    cardImageHeight="h-5"
+                    cardColor="bg-[#FEF9F6]"
+                    cardContentColor="bg-[#FEF9F6]"
+                    cardImageColor="bg-[#F5F0FA]"
+                  />
+                )}
+                <Image
+                  src="/PMP.png"
+                  width={300}
+                  height={200}
+                  alt="PMP certification"
+                  className={`object-contain ${
+                    loadingStates.image2
+                      ? "w-full h-full object-top absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                      : ""
+                  }`}
+                  placeholder="blur"
+                  priority
+                  blurDataURL="/PMP.png"
+                  onLoad={handleImageLoad2}
+                />
+              </div>
             </div>
             <p className="font-bold font-bricolage_grotesque my-1 transition-all duration-300 text-center">
               Project Management Professional (PMP)
@@ -109,14 +184,38 @@ export default function Certification() {
             }}
             onClick={() => handleCertificationClick("pmi-certification")}
           >
-            <div className="flex justify-center items-center">
-              <Image
-                src="/PMI-ACP.png"
-                width={300}
-                height={200}
-                alt="PMI certification"
-                className="object-contain"
-              />
+            <div className={`flex justify-center items-center min-h-[320px] md:min-h-0`}>
+              <div
+                className={`lg:w-[300px] md:w-[200px] w-[240px] ${
+                  loadingStates.image3 ? "blur-2xl" : "blur-none"
+                } transition duration-1000 ease-in-out relative`}
+              >
+                {loadingStates.image3 && (
+                  <SkeletalLoader
+                    blockWidth="w-[80%]"
+                    cardHeight="h-5"
+                    cardImageHeight="h-5"
+                    cardColor="bg-[#FEF9F6]"
+                    cardContentColor="bg-[#FEF9F6]"
+                    cardImageColor="bg-[#F5F0FA]"
+                  />
+                )}
+                <Image
+                  src="/PMI-ACP.png"
+                  width={300}
+                  height={200}
+                  alt="PMI certification"
+                  className={`object-contain ${
+                    loadingStates.image3
+                      ? "w-full h-full object-top absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                      : ""
+                  }`}
+                  placeholder="blur"
+                  priority
+                  blurDataURL="/PMI-ACP.png"
+                  onLoad={handleImageLoad3}
+                />
+              </div>
             </div>
             <p className="font-bold font-bricolage_grotesque my-1 transition-all duration-300 text-center">
               PMI - Agile Certified Practitioner (PMI-ACP)

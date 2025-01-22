@@ -415,7 +415,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
   return (
     <section
-      className="flex justify-center items-center w-full min-h-screen px-8 py-12"
+      className="flex justify-center items-center w-full min-h-screen px-8 lg:py-12 py-4"
       tabIndex={0}
       onKeyDown={handleKeyDown}
     >
@@ -427,7 +427,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
       {!isPolling && (
         <div className="w-full h-full flex gap-x-4 lg:flex-row flex-col md:px-8">
-          <div className="lg:w-2/4 w-full flex py-6 px-4 items-center flex-col gap-4 lg:h-full lg:my-auto my-4">
+          <div className="lg:w-2/4 w-full flex py-6 px-4 items-center flex-col gap-4 lg:h-full lg:my-auto my-2">
             <div className="w-full flex flex-col gap-y-6">
               <h1 className="font-bold lg:text-5xl text-3xl font-bricolage_grotesque">
                 Checkout

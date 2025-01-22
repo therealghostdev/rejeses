@@ -2,8 +2,9 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Certification } from "@/utils/types/types";
+import SkeletalLoader from "@/components/reusables/animation/skeletol_loader";
 
 export interface CertificationProps {
   certification: Certification;
@@ -69,6 +70,12 @@ function formatTextWithBold(item: string) {
 }
 
 export default function Certifications({ certification }: CertificationProps) {
+  const [loadingState, setLoadingState] = useState<boolean>(true);
+
+  const handleImageLoad = () => {
+    setLoadingState(false);
+  };
+
   return (
     <section className="flex flex-col px-4 my-6">
       <div className="flex flex-col lg:justify-center lg:items-center w-full">
@@ -85,21 +92,44 @@ export default function Certifications({ certification }: CertificationProps) {
           </div>
         </motion.header>
 
-        <motion.div
-          className="flex flex-col space-y-6 my-6 lg:w-3/4 gap-y-4"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <div className="flex items-center justify-center mb-6">
-            <Image
-              src={certification.logo}
-              width={300}
-              height={200}
-              alt={certification.title}
-              className="object-contain"
-            />
-          </div>
+        <div className="flex flex-col space-y-6 my-6 lg:w-3/4 gap-y-4">
+          <motion.div
+            className={`flex items-center justify-center mb-6 filter `}
+            style={{ transform: "none" }}
+          >
+            <div
+              className={`lg:w-[300px] md:w-[200px] w-[240px] ${
+                loadingState ? "blur-2xl" : "blur-none"
+              } transition duration-1000 ease-in-out relative`}
+            >
+              {loadingState && (
+                <SkeletalLoader
+                  blockWidth="w-[80%]"
+                  cardHeight="h-5"
+                  cardImageHeight="h-5"
+                  cardColor="bg-[#FEF9F6]"
+                  cardContentColor="bg-[#FEF9F6]"
+                  cardImageColor="bg-[#F5F0FA]"
+                />
+              )}
+
+              <Image
+                src={certification.logo}
+                width={300}
+                height={200}
+                alt={certification.title}
+                className={`object-contain ${
+                  loadingState
+                    ? "w-full h-full object-top absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                    : ""
+                }`}
+                blurDataURL={certification.logo}
+                priority
+                placeholder="blur"
+                onLoad={handleImageLoad}
+              />
+            </div>
+          </motion.div>
 
           <div className="w-full flex flex-col gap-y-4">
             <h2 className="text-2xl md:text-3xl font-semibold text-[#535353] font-bricolage_grotesque">
@@ -252,7 +282,7 @@ export default function Certifications({ certification }: CertificationProps) {
               </Link>
             </motion.span>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

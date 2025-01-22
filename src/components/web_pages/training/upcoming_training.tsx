@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import data from "@/utils/data/training_data.json";
 import Card from "./card";
 import { getNextMondayDates } from "@/utils/reusables/functions";
+import { motion } from "framer-motion";
 
 export default function UpcomingCohorts() {
   const mondayDates = getNextMondayDates(15);
@@ -20,10 +21,6 @@ export default function UpcomingCohorts() {
     }
   };
 
-  useEffect(() => {
-    console.log(displayItems);
-  }, []);
-
   return (
     <section
       className="w-full flex flex-col lg:px-12 px-6 py-4 md:mt-16 my-8"
@@ -35,10 +32,12 @@ export default function UpcomingCohorts() {
 
       <div className="w-full flex flex-wrap py-2">
         {displayItems.slice(0, visibleItems).map((item, index) => (
-          <div
+          <motion.div
             className="lg:w-[30%] md:w-[45%] w-full border border-[#DBE1E7] md:mx-4 md:my-4 mx-2 my-2 rounded-2xl shadow-sm shadow-[#0000001A] cursor-pointer hover:border-[#89C13E] transition-all duration-300"
             style={{ transform: "translateZ(0)" }}
             key={index}
+            whileHover={{ scale: 1.05, transition: { duration: 0.1, type: "keyframes" } }}
+            whileTap={{ scale: 1.08, transition: { duration: 0.1, type: "keyframes"} }}
           >
             <Card
               id={index}
@@ -52,7 +51,7 @@ export default function UpcomingCohorts() {
               id2={item.id}
               price={item.pricing}
             />
-          </div>
+          </motion.div>
         ))}
       </div>
 

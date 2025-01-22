@@ -126,7 +126,9 @@ export function createCourseEmailTemplate(
               ${
                 !courseType.includes("Mentoring")
                   ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Schedule Type:</div>
-              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${capitalizeCourseScheduleType(courseScheduleType)}</div>`
+              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${capitalizeCourseScheduleType(
+                courseScheduleType
+              )}</div>`
                   : ""
               }
               ${
@@ -240,13 +242,6 @@ export function calculateClassSchedule(
 }
 
 export function formatCourseSchedule(dates: (Date | string)[]): string {
-  const getOrdinalSuffix = (day: number): string => {
-    if (day % 10 === 1 && day !== 11) return `${day}st`;
-    if (day % 10 === 2 && day !== 12) return `${day}nd`;
-    if (day % 10 === 3 && day !== 13) return `${day}rd`;
-    return `${day}th`;
-  };
-
   // format individual dates
   const formatDate = (date: Date | string): string => {
     const parsedDate = typeof date === "string" ? new Date(date) : date;
@@ -267,14 +262,17 @@ export function formatCourseSchedule(dates: (Date | string)[]): string {
     : formattedDates[0];
 }
 
-export function formatCourseSchedule2(dates: (Date | string)[]): string {
+// might be needed later
+export const dateOrdinalSuffix = () => {
   const getOrdinalSuffix = (day: number): string => {
     if (day % 10 === 1 && day !== 11) return `${day}st`;
     if (day % 10 === 2 && day !== 12) return `${day}nd`;
     if (day % 10 === 3 && day !== 13) return `${day}rd`;
     return `${day}th`;
   };
+};
 
+export function formatCourseSchedule2(dates: (Date | string)[]): string {
   const formatDate = (date: Date | string): string => {
     const parsedDate = typeof date === "string" ? new Date(date) : date;
     const day = parsedDate.getDate();
@@ -291,13 +289,6 @@ export function formatCourseSchedule2(dates: (Date | string)[]): string {
 }
 
 export function formatSingleDate(date: Date | string): string {
-  const getOrdinalSuffix = (day: number): string => {
-    if (day % 10 === 1 && day !== 11) return `${day}st`;
-    if (day % 10 === 2 && day !== 12) return `${day}nd`;
-    if (day % 10 === 3 && day !== 13) return `${day}rd`;
-    return `${day}th`;
-  };
-
   const parsedDate = typeof date === "string" ? new Date(date) : date;
   const day = parsedDate.getDate();
   const dayName = parsedDate.toLocaleDateString("en-GB", { weekday: "long" });
@@ -308,7 +299,7 @@ export function formatSingleDate(date: Date | string): string {
 }
 
 export const capitalizeCourseScheduleType = (item: string) => {
-    const restOfItems = item.slice(1);
-    const first = item.charAt(0).toUpperCase() + restOfItems;
-    return first;
-  };
+  const restOfItems = item.slice(1);
+  const first = item.charAt(0).toUpperCase() + restOfItems;
+  return first;
+};

@@ -6,7 +6,7 @@ import Logo_slider from "../../reusables/animation/logo_slider";
 export default function AboutUs() {
   return (
     <section className=" flex flex-col px-4 my-6">
-      <div className="flex flex-col lg:justify-center lg:items-center w-full">
+      <div className="flex flex-col lg:justify-center lg:items-center w-full gap-y-4">
         <motion.header
           className="bg-[#4B006E] text-white py-6 lg:w-3/4 font-bricolage_grotesque lg:text-4xl"
           initial={{ opacity: 0, y: -50 }}
@@ -89,7 +89,7 @@ export default function AboutUs() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.4 }}
-                className="flex items-center"
+                className="flex items-start"
               >
                 <span className="mr-2 mt-[2px] text-lg">⭐</span>
                 <div>
@@ -103,7 +103,7 @@ export default function AboutUs() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.5 }}
-                className="flex items-center"
+                className="flex items-start"
               >
                 <span className="mr-2 mt-[2px] text-lg">⭐</span>
                 <div>
@@ -117,7 +117,7 @@ export default function AboutUs() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.6 }}
-                className="flex items-center"
+                className="flex items-start"
               >
                 <span className="mr-2 mt-[2px] text-lg">⭐</span>
                 <div>
@@ -131,7 +131,7 @@ export default function AboutUs() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.7 }}
-                className="flex items-center"
+                className="flex items-start"
               >
                 <span className="mr-2 mt-[2px] text-lg">⭐</span>
                 <div>
@@ -151,7 +151,7 @@ export default function AboutUs() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.8 }}
-                className="flex items-center"
+                className="flex items-start"
               >
                 <span className="mr-2 mt-[2px] text-lg">⭐</span>
                 <div>
@@ -164,7 +164,7 @@ export default function AboutUs() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.9 }}
-                className="flex items-center"
+                className="flex items-start"
               >
                 <span className="mr-2 mt-[2px] text-lg">⭐</span>
                 <div>
@@ -177,7 +177,7 @@ export default function AboutUs() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 1 }}
-                className="flex items-center"
+                className="flex items-start"
               >
                 <span className="mr-2 mt-[2px] text-lg">⭐</span>
                 <div>
@@ -190,7 +190,7 @@ export default function AboutUs() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 1.1 }}
-                className="flex items-center"
+                className="flex items-start"
               >
                 <span className="mr-2 mt-[2px] text-lg">⭐</span>
                 <div>

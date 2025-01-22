@@ -1,7 +1,7 @@
 "use client";
 import { TransactionDataType, OrderDataType } from "@/utils/types/types";
 import { useRouter } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Fragment } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -13,6 +13,7 @@ import {
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import Loading from "@/app/feed/loading";
+import { useNavigation } from "@/utils/context/payment";
 
 type TransactionSuccessProps = Partial<
   Omit<TransactionDataType, "accessCode" | "fee" | "createdAt">
@@ -167,6 +168,39 @@ export default function Transaction_success({
     }
   };
 
+  const { isMobile, width } = useNavigation();
+  const formatReceiptCourseSchedule = (
+    dates: Date | string | (Date | string)[]
+  ): JSX.Element => {
+    // Format individual dates
+    const formatDate = (date: Date | string): string => {
+      const parsedDate = typeof date === "string" ? new Date(date) : date;
+      const day = parsedDate.getDate();
+      const dayName = parsedDate.toLocaleDateString("en-US", {
+        weekday: "short",
+      });
+      const monthName = parsedDate.toLocaleDateString("en-US", {
+        month: "short",
+      });
+      const year = parsedDate.getFullYear();
+
+      return `${dayName}, ${monthName} ${day}, ${year}`;
+    };
+
+    // Normalize input to an array
+    const dateArray = Array.isArray(dates) ? dates : [dates];
+
+    // Format all dates
+    const formattedDates = dateArray.map((date, index) => (
+      <Fragment key={index}>
+        {formatDate(date)}
+        <br />
+      </Fragment>
+    ));
+
+    return <>{formattedDates}</>;
+  };
+
   return (
     <motion.div
       initial={{ x: "100vw" }}
@@ -276,7 +310,19 @@ export default function Transaction_success({
                     ? "Rejeses will contact you"
                     : order.courseSchedule &&
                       order.courseScheduleType === "weekend"
-                    ? formatSingleDate(order.courseSchedule[0] || "") || "N/A"
+                    ? isMobile && width <= 767
+                      ? order.courseSchedule[0]
+                        ? formatReceiptCourseSchedule(
+                            new Date(order.courseSchedule[0])
+                          ) || "N/A"
+                        : "N/A"
+                      : formatSingleDate(order.startDate || "") || "N/A"
+                    : isMobile && width <= 767
+                    ? order.courseSchedule && order.courseSchedule[0]
+                      ? formatReceiptCourseSchedule(
+                          new Date(order.courseSchedule[0])
+                        ) || "N/A"
+                      : "N/A"
                     : formatSingleDate(order.startDate || "") || "N/A"}
                 </span>
               </li>
@@ -300,7 +346,9 @@ export default function Transaction_success({
                   <li className="list-none flex justify-between items-start">
                     COURSE DAYS:
                     <span className="mx-4 inline-flex w-2/4 justify-end">
-                      {formatCourseSchedule(order.courseSchedule)}
+                      {isMobile && width <= 767
+                        ? formatReceiptCourseSchedule(order.courseSchedule)
+                        : formatCourseSchedule(order.courseSchedule || "")}
                     </span>
                   </li>
                 </div>
