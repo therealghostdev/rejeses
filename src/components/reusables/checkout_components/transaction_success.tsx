@@ -177,10 +177,10 @@ export default function Transaction_success({
       const parsedDate = typeof date === "string" ? new Date(date) : date;
       const day = parsedDate.getDate();
       const dayName = parsedDate.toLocaleDateString("en-US", {
-        weekday: "short",
+        weekday: isMobile && width <= 767 ? "short" : "long",
       });
       const monthName = parsedDate.toLocaleDateString("en-US", {
-        month: "short",
+        month: isMobile && width <= 767 ? "short" : "long",
       });
       const year = parsedDate.getFullYear();
 
@@ -310,20 +310,9 @@ export default function Transaction_success({
                     ? "Rejeses will contact you"
                     : order.courseSchedule &&
                       order.courseScheduleType === "weekend"
-                    ? isMobile && width <= 767
-                      ? order.courseSchedule[0]
-                        ? formatReceiptCourseSchedule(
-                            new Date(order.courseSchedule[0])
-                          ) || "N/A"
-                        : "N/A"
-                      : formatSingleDate(order.startDate || "") || "N/A"
-                    : isMobile && width <= 767
-                    ? order.courseSchedule && order.courseSchedule[0]
-                      ? formatReceiptCourseSchedule(
-                          new Date(order.courseSchedule[0])
-                        ) || "N/A"
-                      : "N/A"
-                    : formatSingleDate(order.startDate || "") || "N/A"}
+                    ? formatReceiptCourseSchedule(order.courseSchedule[0])
+                    : formatReceiptCourseSchedule(order.startDate || "N/A") ||
+                      "N/A"}
                 </span>
               </li>
             </div>
@@ -346,9 +335,7 @@ export default function Transaction_success({
                   <li className="list-none flex justify-between items-start">
                     COURSE DAYS:
                     <span className="mx-4 inline-flex w-2/4 justify-end">
-                      {isMobile && width <= 767
-                        ? formatReceiptCourseSchedule(order.courseSchedule)
-                        : formatCourseSchedule(order.courseSchedule || "")}
+                      {formatReceiptCourseSchedule(order.courseSchedule)}
                     </span>
                   </li>
                 </div>
