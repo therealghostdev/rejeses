@@ -1,3 +1,5 @@
+import { WeekendSchedule } from "@/utils/types/types";
+
 export function createEmailTemplate(
   name: string,
   email: string,
@@ -81,6 +83,8 @@ export function createCourseEmailTemplate(
   lastName: string,
   courseType: string,
   startDate: string,
+  courseSchedule: Date[],
+  courseScheduleType: string,
   amount: number,
   currency: string
 ) {
@@ -113,8 +117,28 @@ export function createCourseEmailTemplate(
               <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${
                 courseType.includes("Mentoring")
                   ? "You will be contacted"
-                  : startDate
+                  : !courseType.includes("Mentoring") &&
+                    courseScheduleType === "weekend"
+                  ? formatSingleDate(courseSchedule[0])
+                  : formatSingleDate(startDate)
               }</div>
+
+              ${
+                !courseType.includes("Mentoring")
+                  ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Schedule Type:</div>
+              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${capitalizeCourseScheduleType(
+                courseScheduleType
+              )}</div>`
+                  : ""
+              }
+              ${
+                !courseType.includes("Mentoring")
+                  ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Days:</div>
+              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${formatCourseSchedule2(
+                courseSchedule
+              )}</div>`
+                  : ""
+              }
               
               <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Amount Paid:</div>
               <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${
@@ -125,7 +149,11 @@ export function createCourseEmailTemplate(
             ${
               !courseType.includes("Mentoring")
                 ? `<p style="margin: 0;">
-                    If you have any questions, feel free to contact us. We look forward to seeing you on <strong>${startDate}</strong>.
+                    If you have any questions, feel free to contact us. We look forward to seeing you on <strong>${
+                      courseScheduleType === "weekend"
+                        ? formatSingleDate(courseSchedule[0])
+                        : formatSingleDate(startDate)
+                    }</strong>.
                   </p>`
                 : `<p style="margin: 0;">
                     If you have any questions, feel free to contact us. We look forward to seeing you in class.
@@ -139,3 +167,139 @@ export function createCourseEmailTemplate(
       </html>
     `;
 }
+
+export function calculateClassSchedule(
+  startDate: Date,
+  courseScheduleType: string
+): Date[] {
+  // Handle weekday schedule
+  if (courseScheduleType !== "weekend") {
+    const weekSchedule: Date[] = [];
+    const currentDate = new Date(startDate);
+
+    for (let i = 0; i < 5; i++) {
+      weekSchedule.push(new Date(currentDate));
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+    return weekSchedule;
+  }
+
+  // Weekend schedule logic
+  const currentDate = new Date(startDate);
+
+  function getWeekendPair(date: Date): Date[] {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+
+    // Get all weekends in the month
+    const weekends: Date[] = [];
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+
+    // Find first Saturday of the month
+    let currentDay = new Date(firstDay);
+    while (currentDay.getDay() !== 6) {
+      // 6 is Saturday
+      currentDay.setDate(currentDay.getDate() + 1);
+    }
+
+    // Get all weekends (Saturday and Sunday pairs)
+    while (currentDay <= lastDay) {
+      const saturday = new Date(currentDay);
+      const sunday = new Date(currentDay);
+      sunday.setDate(sunday.getDate() + 1);
+
+      if (sunday <= lastDay) {
+        weekends.push(saturday, sunday);
+      }
+
+      currentDay.setDate(currentDay.getDate() + 7);
+    }
+
+    // Group weekends into pairs (1&2, 3&4)
+    const firstPair = weekends.slice(0, 4); // First two weekends
+    const secondPair = weekends.slice(4, 8); // Third and fourth weekends
+
+    // Determine which pair to use based on current date
+    const isInFirstHalf = currentDate <= weekends[3];
+    const validFirstPair = firstPair.every((date) => date >= currentDate);
+    const validSecondPair =
+      secondPair.length === 4 &&
+      secondPair.every((date) => date >= currentDate);
+
+    if (validFirstPair && isInFirstHalf) {
+      return firstPair;
+    } else if (validSecondPair) {
+      return secondPair;
+    }
+
+    // If no valid pairs in current month, get first pair of next month
+    const nextMonth = new Date(year, month + 1, 1);
+    return getWeekendPair(nextMonth);
+  }
+
+  return getWeekendPair(currentDate);
+}
+
+export function formatCourseSchedule(dates: (Date | string)[]): string {
+  // format individual dates
+  const formatDate = (date: Date | string): string => {
+    const parsedDate = typeof date === "string" ? new Date(date) : date;
+    const day = parsedDate.getDate();
+    const dayName = parsedDate.toLocaleDateString("en-GB", { weekday: "long" });
+    const monthName = parsedDate.toLocaleDateString("en-GB", { month: "long" });
+    const year = parsedDate.getFullYear();
+
+    return `${dayName}, ${monthName} ${day}, ${year}`;
+  };
+
+  const formattedDates = dates.map(formatDate);
+
+  return formattedDates.length > 1
+    ? `${formattedDates.slice(0, -1).join(", ")} & ${
+        formattedDates[formattedDates.length - 1]
+      }`
+    : formattedDates[0];
+}
+
+// might be needed later
+export const dateOrdinalSuffix = () => {
+  const getOrdinalSuffix = (day: number): string => {
+    if (day % 10 === 1 && day !== 11) return `${day}st`;
+    if (day % 10 === 2 && day !== 12) return `${day}nd`;
+    if (day % 10 === 3 && day !== 13) return `${day}rd`;
+    return `${day}th`;
+  };
+};
+
+export function formatCourseSchedule2(dates: (Date | string)[]): string {
+  const formatDate = (date: Date | string): string => {
+    const parsedDate = typeof date === "string" ? new Date(date) : date;
+    const day = parsedDate.getDate();
+    const dayName = parsedDate.toLocaleDateString("en-GB", { weekday: "long" });
+    const monthName = parsedDate.toLocaleDateString("en-GB", { month: "long" });
+    const year = parsedDate.getFullYear();
+
+    return `${dayName}, ${monthName} ${day}, ${year}`;
+  };
+
+  const formattedDates = dates.map(formatDate);
+
+  return formattedDates.map((date) => `${date} <br />`).join("\n");
+}
+
+export function formatSingleDate(date: Date | string): string {
+  const parsedDate = typeof date === "string" ? new Date(date) : date;
+  const day = parsedDate.getDate();
+  const dayName = parsedDate.toLocaleDateString("en-GB", { weekday: "long" });
+  const monthName = parsedDate.toLocaleDateString("en-GB", { month: "long" });
+  const year = parsedDate.getFullYear();
+
+  return `${dayName}, ${monthName} ${day}, ${year}`;
+}
+
+export const capitalizeCourseScheduleType = (item: string) => {
+  const restOfItems = item.slice(1);
+  const first = item.charAt(0).toUpperCase() + restOfItems;
+  return first;
+};

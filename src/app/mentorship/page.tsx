@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import Why_us from "@/components/general/why_us";
+import Why_us from "@/components/reusables/why_us/why_us";
 import Benefits from "@/components/reusables/dynamic_pages/benefits";
 import Pricing from "@/components/reusables/pricing/pricing";
 import { usePathname } from "next/navigation";
@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 import whyUsData from "@/utils/data/why_us_data.json";
 import benefit_data from "@/utils/data/benefits_data.json";
 import priceData from "@/utils/data/price_data.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SkeletalLoader from "@/components/reusables/animation/skeletol_loader";
 
 export default function Page() {
@@ -40,7 +40,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="lg:px-12 md:px-3 lg:max-h-[900px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6 object-cover">
+        <div className="lg:px-12 md:px-3 lg:max-h-[900px] h-[calc(50vw)] lg:w-full my-4 md:mb-12 mb-6 relative overflow-hidden">
           <div
             className={`filter w-full h-full ${
               imageLoading ? "blur-2xl" : "blur-none"
@@ -55,11 +55,11 @@ export default function Page() {
               />
             )}
             <Image
-              src={`/mentorship_hero.svg`}
+              src="/mentorship_hero.svg"
               alt="image"
               layout="fill"
               objectFit="cover"
-              className={`w-full h-full object-contain rounded-2xl ${
+              className={`rounded-2xl transition-all ${
                 imageLoading ? "blur-2xl" : "blur-none"
               }`}
               placeholder="blur"

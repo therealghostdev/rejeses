@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import Why_us from "@/components/general/why_us";
+import Why_us from "@/components/reusables/why_us/why_us";
 import Benefits from "@/components/reusables/dynamic_pages/benefits";
 import Pricing from "@/components/reusables/pricing/pricing";
 import { usePathname } from "next/navigation";
@@ -34,11 +34,14 @@ export default function Page() {
             Consulting
           </h1>
           <p className="lg:max-w-[80%] lg:text-[24px] text-wrap text-[16px]">
-            Our top-notch consultancy services appeal to organizations of all sizes and across various sectors that seek to improve project outcomes, enhance efficiency, mitigate risks, and achieve strategic objectives through effective project management.
+            Our top-notch consultancy services appeal to organizations of all
+            sizes and across various sectors that seek to improve project
+            outcomes, enhance efficiency, mitigate risks, and achieve strategic
+            objectives through effective project management.
           </p>
         </div>
 
-        <div className="lg:px-12 md:px-3 lg:max-h-[900px] h-[50vw] lg:w-[100%] my-4 md:mb-12 mb-6">
+        <div className="lg:px-12 md:px-3 lg:max-h-[900px] h-[calc(50vw)] lg:w-full my-4 md:mb-12 mb-6 relative overflow-hidden">
           <div
             className={`filter w-full h-full ${
               imageLoading ? "blur-2xl" : "blur-none"
@@ -53,11 +56,11 @@ export default function Page() {
               />
             )}
             <Image
-              src={`/consultation_hero.svg`}
+              src="/consultation_hero.svg"
               alt="image"
               layout="fill"
               objectFit="cover"
-              className={`w-full h-full object-contain object-top rounded-2xl ${
+              className={`rounded-2xl transition-all ${
                 imageLoading ? "blur-2xl" : "blur-none"
               }`}
               placeholder="blur"
@@ -76,12 +79,17 @@ export default function Page() {
               Pricing
             </h1>
             <p className="text-center lg:text-[24px] text-wrap text-[16px] lg:max-w-[80%]">
-              Due to the uniqueness and complexity of each project, we suggest that
-              you book a session with us to discuss more of your needs.
+              Due to the uniqueness and complexity of each project, we suggest
+              that you book a session with us to discuss more of your needs.
             </p>
 
             <div className="flex justify-center items-center w-full">
-              <Button url="/book-session" text="Book a Session" bg="#89C13E" transition_class="transition_button4" />
+              <Button
+                url="/book-session"
+                text="Book a Session"
+                bg="#89C13E"
+                transition_class="transition_button4"
+              />
             </div>
           </div>
         </div>

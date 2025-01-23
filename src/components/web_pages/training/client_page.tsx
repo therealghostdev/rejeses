@@ -1,28 +1,27 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, Fragment, useState } from "react";
 import data from "@/utils/data/training_data.json";
 import Link from "next/link";
 import { ArchiveIcon } from "@radix-ui/react-icons";
-import Why_us from "@/components/general/why_us";
+import Why_us from "@/components/reusables/why_us/why_us";
 import whyUsData from "@/utils/data/why_us_data.json";
 import ClientImage from "@/components/web_pages/training/client_image";
 import Pricing from "@/components/reusables/pricing/pricing";
 import UpcomingCohorts from "@/components/web_pages/training/upcoming_training";
 import { usePayment, useNavigation } from "@/utils/context/payment";
 import Button from "@/components/reusables/button";
-import Certification from "@/components/reusables/certification";
-import { getNextMondayDates, formatDate } from "@/utils/reusables/functions";
+import { getNextMondayDates } from "@/utils/reusables/functions";
 
 export default function Training_page() {
   const trainingItem = data[0];
   const whyUsItems = whyUsData.filter((item) => item.tag === "training");
   const pricingRef = useRef<HTMLDivElement | null>(null);
   const { setPaymentInfo, paymentInfo } = usePayment();
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const { isNigeria } = useNavigation();
 
   const startDates = getNextMondayDates(data.length);
-  const courseDate = formatDate(startDates[0]);
 
   function formatPrice(price: number | undefined): string {
     if (price && price >= 1000) {
@@ -66,7 +65,11 @@ export default function Training_page() {
   useEffect(() => {
     setPaymentInfo((prev) => ({
       ...prev,
-      start_date: courseDate,
+      start_date: startDates[0].toLocaleDateString("en-US", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }),
       training_type: "Project Management Training",
     }));
 
@@ -126,6 +129,76 @@ export default function Training_page() {
     );
   };
 
+  const replaceContactUs = (content: string) => {
+    return content.split("contact us").map((part, index, arr) => (
+      <Fragment key={index}>
+        {part}
+        {index < arr.length - 1 && (
+          <Link
+            href="/contact-us"
+            className="hover:text-[#89C13E] transition_border1 py-1 italic font-bold font-bricolage_grotesque"
+          >
+            contact us
+          </Link>
+        )}
+      </Fragment>
+    ));
+  };
+
+  const replaceCertifications = (
+    content: string,
+    currentIndex: number
+  ): React.ReactNode => {
+    const patterns = [
+      {
+        regex: /Project Management Professional \(PMP\)|PMP/g,
+        link: "/pmp-certification",
+      },
+      {
+        regex: /Certified Associate in Project Management \(CAPM\)|CAPM/g,
+        link: "/capm-certification",
+      },
+      {
+        regex: /Agile Certified Practitioner \(PMI-ACP\)|PMI-ACP/g,
+        link: "/pmi-certification",
+      },
+    ];
+
+    return (
+      <>
+        {patterns.reduce(
+          (parts: React.ReactNode[], { regex, link }, patternIndex) => {
+            return parts.flatMap((part) => {
+              if (typeof part !== "string") return part;
+
+              const segments = part.split(regex);
+              return segments.map((segment, index, array) => {
+                if (index === array.length - 1) return segment;
+
+                const match = part.match(regex)?.[index];
+
+                return (
+                  <Fragment key={`${currentIndex}-${patternIndex}-${index}`}>
+                    {segment}
+                    <Link
+                      href={link}
+                      className={`hover:text-[#89C13E] ${
+                        hoveredIndex === patternIndex ? "" : ""
+                      } py-1 italic font-bold font-bricolage_grotesque`}
+                    >
+                      {match}
+                    </Link>
+                  </Fragment>
+                );
+              });
+            });
+          },
+          [content]
+        )}
+      </>
+    );
+  };
+
   return (
     <section className="w-full flex flex-col justify-center items-center">
       <section className="w-full px-8 flex flex-col gap-6 py-12  md:max-w-[98%] justify-center">
@@ -172,7 +245,7 @@ export default function Training_page() {
         </div> */}
 
         {trainingItem.image && trainingItem.image !== "" && (
-          <div className="lg:px-12 md:px-3 lg:h-[700px] h-[50vw] lg:w-[100%] my-4">
+          <div className="lg:px-12 md:px-3 lg:h-[700px] h-[calc(50vw)] lg:w-full my-4 relative overflow-hidden">
             <ClientImage trainingItem={trainingItem} />
           </div>
         )}
@@ -187,7 +260,13 @@ export default function Training_page() {
                 {item.why}
               </h1>
               {item.answer.map((value, index) => (
-                <li key={index}>{value}</li>
+                <li
+                  key={index}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(index)}
+                >
+                  {replaceCertifications(value, index)}
+                </li>
               ))}
             </div>
 
@@ -195,15 +274,13 @@ export default function Training_page() {
               <h1 className="font-bold text-2xl font-bricolage_grotesque">
                 {trainingItem.requirements.software}
               </h1>
-              <p>{trainingItem.requirements.how}</p>
+              <p>{replaceContactUs(trainingItem.requirements.how)}</p>
               {/* <li>{trainingItem.requirements.tool}</li> */}
             </div>
           </div>
         ))}
 
         <Why_us data={whyUsItems} />
-
-        <Certification />
 
         <UpcomingCohorts />
 

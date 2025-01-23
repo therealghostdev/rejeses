@@ -4,7 +4,8 @@ import {
   getOrderByStatus,
   createOrder,
 } from "../../services/repository/order/order";
-import { StatusType, OrderType } from "@/utils/types/types";
+import { StatusType, OrderType, classSceduleType } from "@/utils/types/types";
+import { calculateClassSchedule } from "@/utils/reusables/functions";
 
 export async function GET(req: Request) {
   try {
@@ -81,18 +82,41 @@ export async function POST(req: Request) {
       startDate,
       email,
       amount,
+      courseScheduleType,
       status,
     } = requestBody;
+
+    let courseSchedule;
+    let renewedCourseScheduleTYpe = courseScheduleType;
+
+    console.log(typeof startDate); // should be string
+
+    if (!courseType.includes("Mentoring")) {
+      courseSchedule = calculateClassSchedule(
+        startDate,
+        courseScheduleType as classSceduleType
+      );
+      console.log("if ran");
+    } else {
+      courseSchedule = [new Date()];
+      renewedCourseScheduleTYpe = "weekday";
+      console.log("else ran");
+    }
 
     const requiredFields = {
       firstName,
       lastName,
       courseType,
+      courseSchedule,
+      courseScheduleType: renewedCourseScheduleTYpe,
       startDate,
       email,
       amount,
       status: "pending" as StatusType,
     };
+
+    console.log(requiredFields, "required fields");
+    
 
     if (
       Object.values(requiredFields).some(

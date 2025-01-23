@@ -2,6 +2,8 @@ import nodemailer from "nodemailer";
 import {
   createCourseEmailTemplate,
   formatPrice,
+  formatCourseSchedule2,
+  formatSingleDate, capitalizeCourseScheduleType
 } from "@/utils/reusables/functions";
 
 export async function POST(req: Request) {
@@ -21,6 +23,8 @@ export async function POST(req: Request) {
       lastName,
       courseType,
       startDate,
+      courseSchedule,
+      courseScheduleType,
       email,
       amount,
       currency,
@@ -35,6 +39,10 @@ export async function POST(req: Request) {
       courseType === "" ||
       !startDate ||
       startDate === "" ||
+      !courseScheduleType ||
+      courseScheduleType === "" ||
+      !courseSchedule ||
+      courseSchedule.length === 0 ||
       !email ||
       email === "" ||
       !amount ||
@@ -68,6 +76,8 @@ export async function POST(req: Request) {
         lastName,
         courseType,
         startDate,
+        courseSchedule,
+        courseScheduleType,
         amount,
         currency
       ),
@@ -96,7 +106,27 @@ export async function POST(req: Request) {
             ${
               !courseType.includes("Mentoring")
                 ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Start Date:</div>
-                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${startDate}</div>`
+                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${
+                   courseScheduleType === "weekend"
+                     ? formatSingleDate(courseSchedule[0])
+                     : formatSingleDate(startDate)
+                 }</div>`
+                : ""
+            }
+
+            ${
+              !courseType.includes("Mentoring")
+                ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Schedule Type:</div>
+                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${capitalizeCourseScheduleType(courseScheduleType)}</div>`
+                : ""
+            }
+
+            ${
+              !courseType.includes("Mentoring")
+                ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Days:</div>
+                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${formatCourseSchedule2(
+                   courseSchedule
+                 )}</div>`
                 : ""
             }
 

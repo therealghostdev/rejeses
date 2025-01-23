@@ -1,0 +1,58 @@
+[
+  {
+    "src": "/hydropet.png",
+    "alt": "hydropet-logo",
+    "width": 100,
+    "height": 100,
+    "className": "w-36 md:my-0 my-2"
+  },
+  {
+    "src": "/mtn-3-logo.svg",
+    "alt": "mtn-logo",
+    "width": 60,
+    "height": 80,
+    "className": "w-36 md:my-0 my-2"
+  },
+  {
+    "src": "/multilinks.jpeg",
+    "alt": "multilinks-logo",
+    "width": 100,
+    "height": 100,
+    "className": "w-40 md:my-0 my-2"
+  },
+  {
+    "src": "/alandick.png",
+    "alt": "alandick-logo",
+    "width": 100,
+    "height": 200,
+    "className": "w-20 md:my-0 my-2"
+  },
+  {
+    "src": "/9mobile-logo.png",
+    "alt": "9mobile-logo",
+    "width": 60,
+    "height": 80,
+    "className": "w-20 md:my-0 my-2 mx-4"
+  },
+  {
+    "src": "/nnpc-logo.jpg",
+    "alt": "nnpc-logo",
+    "width": 100,
+    "height": 100,
+    "className": "w-40 md:my-0 my-12 md:-ml-8 -ml-1"
+  },
+  {
+    "src": "/Everlas.svg",
+    "alt": "everlast-brand-logo",
+    "width": 100,
+    "height": 100,
+    "className": "w-40 md:my-0 my-12 md:-ml-8 -ml-1"
+  },
+  {
+    "src": "visafone-logo.svg",
+    "alt": "visafone-logo",
+    "width": 100,
+    "height": 100,
+    "className": "w-40 md:my-0 my-12 md:-ml-5 -ml-1"
+  }
+]

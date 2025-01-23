@@ -8,7 +8,7 @@ export default function Last_el() {
         <p className="text-2xl lg:mx-2 font-bricolage_grotesque lg:mr-0 md:mr-1">&copy;</p>
 
         <p className="text-lg lg:mx-2 font-bricolage_grotesque">
-          2024{" "}
+          2025{" "}
           <span className="font-bold font-bricolage_grotesque">
             Rejeses Consult
           </span>
@@ -30,7 +30,7 @@ export default function Last_el() {
         </Link>
 
         <Link
-          href="https://www.facebook.com/rejeses/"
+          href="https://www.facebook.com/rejesespmc/"
           target="_blank"
           className="md:mx-4"
         >

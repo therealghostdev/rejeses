@@ -211,6 +211,7 @@ export interface PaymentInfo {
   training_id: number | null;
   training_type: string;
   start_date: string;
+  classScheduleType: string;
   training_option?: string;
   is_group: boolean;
 }
@@ -242,6 +243,8 @@ export interface OrderDataType {
   firstName: string;
   lastName: string;
   courseType: string;
+  courseSchedule: Date[];
+  courseScheduleType: classSceduleType;
   startDate: string;
   email: string;
   amount: number;
@@ -250,11 +253,61 @@ export interface OrderDataType {
   updatedAt: string;
 }
 
+// -------------------------------------------------> Animation indicator Types <--------------------------------------------------
+export interface MobileIndicatorProps {
+  totalItems: number;
+  currentIndex: number;
+  onIndicatorClick: (index: number) => void;
+}
+// -------------------------------------------------> End of Animation indicator Types <--------------------------------------------------
+
+// -------------------------------------------------> Certification indicator Types <--------------------------------------------------
+
+export interface Qualifications {
+  intro: string;
+  experience: string;
+  education: string;
+  exam: string;
+}
+
+export interface Benefits {
+  intro: string;
+  lists: string[];
+}
+
+export interface CertificationContent {
+  description: string;
+  qualifications: Qualifications;
+  benefits: Benefits;
+  salary: string;
+  last?: string;
+  ready?: string;
+}
+
+export interface Certification {
+  title: string;
+  logo: string;
+  content: CertificationContent;
+}
+
+export interface CertificationData {
+  [key: string]: Certification;
+}
+
+export interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+// -------------------------------------------------> Endo of certification Types <--------------------------------------------------
+
 // !--------------------------------------------DB & Server Types -----------------------------------------------------!
 export interface OrderType {
   firstName: string;
   lastName: string;
   courseType: string;
+  courseSchedule: Date[];
+  courseScheduleType: classSceduleType;
   startDate: string;
   email: string;
   amount: number;
@@ -266,6 +319,11 @@ export enum StatusType {
   completed = "completed",
   failed = "failed",
   canceled = "canceled",
+}
+
+export enum classSceduleType {
+  weekend = "weekend",
+  weekday = "weekday",
 }
 
 export enum CurrencyType {
@@ -282,6 +340,12 @@ export interface TransactionType {
   accessCode: string;
   currency: CurrencyType;
   fee: number;
+}
+
+export interface WeekendSchedule {
+  dates: Date[];
+  month: number;
+  year: number;
 }
 
 // !-----------------------------------------End of DB & Server Types -------------------------------------------------!

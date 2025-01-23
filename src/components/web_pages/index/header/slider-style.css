@@ -1,75 +1,75 @@
 .container-item {
-    width: 100vw;
-    overflow: hidden;
-    position: relative;
-    --v-offset: 60px;
-    --curve-height: 120px;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  --v-offset: 60px;
+  --curve-height: 120px;
 }
 
 .container-item::before,
 .container-item::after {
-    content: "";
-    display: block;
-    background: #F5F0FA;
-    width: calc(100vw + 2 * var(--v-offset));
-    height: var(--curve-height);
-    position: absolute;
-    border-radius: 50%;
-    left: calc(-1 * var(--v-offset));
-    right: calc(-1 * var(--v-offset));
+  content: "";
+  display: block;
+  background: #f5f0fa;
+  width: calc(100vw + 2 * var(--v-offset));
+  height: var(--curve-height);
+  position: absolute;
+  border-radius: 50%;
+  left: calc(-1 * var(--v-offset));
+  right: calc(-1 * var(--v-offset));
 }
 
 .container-item::before {
-    top: calc(-0.6 * var(--curve-height));
-    z-index: 1;
+  top: calc(-0.6 * var(--curve-height));
+  z-index: 1;
 }
 
 .container-item::after {
-    bottom: calc(-0.6 * var(--curve-height));
+  bottom: calc(-0.6 * var(--curve-height));
 }
 
 .wrapper {
-    display: grid;
-    /* grid-template-rows: 400px; */
-    grid-auto-flow: column;
-    grid-gap: 10px;
-    overflow: hidden;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    transform: translateX(0%) translateZ(0) !important;
-    max-height: 400px;
+  display: grid;
+  /* grid-template-rows: 400px; */
+  grid-auto-flow: column;
+  grid-gap: 10px;
+  overflow: hidden;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  transform: translateX(0%) translateZ(0) !important;
+  max-height: 400px;
 }
 
 .item {
-    scroll-snap-align: center;
+  scroll-snap-align: center;
 }
 
 @media screen and (max-width: 1023px) {
-    .wrapper {
-        max-height: 280px;
-    }
+  .wrapper {
+    max-height: 280px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
-    .wrapper {
-        max-height: 350px;
-    }
+  .wrapper {
+    max-height: 350px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
-    .wrapper {
-        max-height: 450px;
-    }
+  .wrapper {
+    max-height: 450px;
+  }
 }
 
 @media screen and (min-width: 1500px) {
-    .wrapper {
-        max-height: 620px;
-    }
+  .wrapper {
+    max-height: 620px;
+  }
 }
 
 @media screen and (min-width: 2000px) {
-    .wrapper {
-        max-height: 750px;
-    }
+  .wrapper {
+    max-height: 750px;
+  }
 }

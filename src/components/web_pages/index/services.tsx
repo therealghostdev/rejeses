@@ -17,7 +17,7 @@ export default function Services() {
   return (
     <section className="w-full lg:px-3 px-8 py-12 md:pb-24 flex flex-col justify-center items-center gap-12 bg-[#FEF9F6]">
       <div className="lg:max-w-[90%] max-w-[98%] flex flex-col gap-12 justify-center items-center">
-        <h1 className="lg:text-[48px] md:text-3xl text-2xl font-bold text-center md:my-12 my-8 font-bricolage_grotesque">
+        <h1 className="lg:text-[48px] md:text-3xl text-3xl font-bold text-center md:my-12 my-8 font-bricolage_grotesque">
           Our Services
         </h1>
 

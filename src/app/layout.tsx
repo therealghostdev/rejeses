@@ -30,6 +30,11 @@ const bricolage_grotesque = localfont({
   variable: "--font-bricolage-grotesque",
 });
 
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://rejeses.com"
+    : "http://localhost:3000";
+
 export const metadata: Metadata = {
   title: "Rejeses PM Consulting",
   description: "Learn and become excellent at project management",
@@ -43,7 +48,41 @@ export default function RootLayout({
   return (
     <html lang="en" id="el">
       <head>
-      <Script
+        <meta
+          name="description"
+          content="Learn and become excellent at project management"
+        />
+
+        {/* Open Graph / LinkedIn Tags  */}
+        <meta property="og:title" content="Rejeses PM Consulting" />
+        <meta
+          property="og:description"
+          content="Learn and become excellent at project management"
+        />
+        <meta property="og:image" content={`${baseUrl}/logo.svg`} />
+        <meta
+          property="og:image:alt"
+          content="A preview image of project management learning resources"
+        />
+        <meta property="og:url" content={`${baseUrl}/logo.svg`} />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card Tags */}
+        <meta
+          name="twitter:card"
+          content="Your Partner in Project excellence"
+        />
+        <meta name="twitter:title" content="Rejeses PM Consulting" />
+        <meta
+          name="twitter:description"
+          content="Learn and become excellent at project management"
+        />
+        <meta
+          name="twitter:image"
+          content={`${baseUrl}/logo.svg`}
+        />
+
+        <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-NESY97PHWD"
           strategy="afterInteractive"
         />

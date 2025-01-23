@@ -1,64 +1,38 @@
 "use client";
-import React, { useState, useEffect, ReactNode } from "react";
+import React, { useState, useEffect, ReactNode, Fragment } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import { PlusIcon, MinusIcon } from "@radix-ui/react-icons";
 import { TableProps } from "@/utils/types/types";
 import Link from "next/link";
+import { useNavigation } from "@/utils/context/payment";
 
 const Table: React.FC<TableProps> = ({ data }) => {
-  const [width, setWidth] = useState<number>(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const { isMobile, updateWidth } = useNavigation();
 
   useEffect(() => {
-    const updateWidth = () => {
-      const newWidth = window.innerWidth;
-      setWidth(newWidth);
-      setIsMobile(newWidth <= 1023);
-    };
-
     window.addEventListener("resize", updateWidth);
-
-    // Initial check
     updateWidth();
-
-    return () => {
-      window.removeEventListener("resize", updateWidth);
-    };
-  }, []);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, [updateWidth]);
 
   const replaceBookingLink = (content: string): ReactNode[] => {
-    const bookingPhrase = "booking a session";
-    const parts = content.split(new RegExp(`(${bookingPhrase})`, "i"));
+    const bookingPhrases = [
+      "clicking on the button below",
+      "booking a session",
+    ];
+
+    const pattern = new RegExp(`(${bookingPhrases.join("|")})`, "i");
+    const parts = content.split(pattern);
 
     return parts.map((part, index) => {
-      if (part.toLowerCase() === bookingPhrase.toLowerCase()) {
+      const lowerPart = part.toLowerCase();
+      if (bookingPhrases.some((phrase) => phrase.toLowerCase() === lowerPart)) {
         return (
           <Link
-            key={index}
+            key={`booking-${index}`}
             href="/book-session"
-            className="transition_border italic py-1 font-bold font-bricolage_grotesque"
-          >
-            {bookingPhrase}
-          </Link>
-        );
-      }
-      return part;
-    });
-  };
-
-  const replaceBookingLink2 = (content: string): ReactNode[] => {
-    const buttonPhrase = "clicking on the button below";
-    const parts = content.split(new RegExp(`(${buttonPhrase})`, "i"));
-
-    return parts.map((part, index) => {
-      if (part.toLowerCase() === buttonPhrase.toLowerCase()) {
-        return (
-          <Link
-            key={index}
-            href="/book-session"
-            className="transition_border italic py-1 font-bold font-bricolage_grotesque"
+            className="italic transition_border1 py-1 font-bold font-bricolage_grotesque cursor-pointer"
+            prefetch={false}
           >
             booking a session
           </Link>
@@ -68,14 +42,83 @@ const Table: React.FC<TableProps> = ({ data }) => {
     });
   };
 
-  const renderContent = (content: string): ReactNode => {
+  const replaceCertifications = (
+    content: string,
+    currentIndex: number
+  ): React.ReactNode => {
+    const patterns = [
+      {
+        regex: /Project Management Professional \(PMP\)|PMP/g,
+        link: "/pmp-certification",
+      },
+      {
+        regex: /Certified Associate in Project Management \(CAPM\)|CAPM/g,
+        link: "/capm-certification",
+      },
+      {
+        regex: /Agile Certified Practitioner \(PMI-ACP\)|PMI-ACP/g,
+        link: "/pmi-certification",
+      },
+    ];
+
+    return (
+      <>
+        {patterns.reduce(
+          (parts: React.ReactNode[], { regex, link }, patternIndex) => {
+            return parts.flatMap((part) => {
+              if (typeof part !== "string") return part;
+
+              const segments = part.split(regex);
+              return segments.map((segment, index, array) => {
+                if (index === array.length - 1) return segment;
+
+                const match = part.match(regex)?.[index];
+
+                return (
+                  <Fragment key={`${currentIndex}-${patternIndex}-${index}`}>
+                    {segment}
+                    <Link
+                      href={link}
+                      className="hover:text-[#89C13E] py-1 italic font-bold font-bricolage_grotesque cursor-pointer"
+                      prefetch={false}
+                    >
+                      {match}
+                    </Link>
+                  </Fragment>
+                );
+              });
+            });
+          },
+          [content]
+        )}
+      </>
+    );
+  };
+
+  const renderContent = (content: string, index: number = 0): ReactNode => {
     if (isMobile) {
-      const mobileContent = replaceBookingLink2(content);
-      return mobileContent.map((part, index) =>
-        typeof part === "string" ? replaceBookingLink(part) : part
+      const withBookingLinks = replaceBookingLink(content);
+      return (
+        <>
+          {withBookingLinks.map((part, partIndex) =>
+            typeof part === "string"
+              ? replaceCertifications(part, index + partIndex)
+              : part
+          )}
+        </>
       );
     }
-    return replaceBookingLink(content);
+
+    const withBookingLinks = replaceBookingLink(content);
+    return (
+      <>
+        {withBookingLinks.map((part, partIndex) =>
+          typeof part === "string"
+            ? replaceCertifications(part, index + partIndex)
+            : part
+        )}
+      </>
+    );
   };
 
   return (
@@ -87,8 +130,9 @@ const Table: React.FC<TableProps> = ({ data }) => {
         <small>
           Have another question?{" "}
           <Link
-            href={`/contact-us`}
-            className="font-bold transition_border py-1 font-bricolage_grotesque"
+            href="/contact-us"
+            className="font-bold transition_border py-1 font-bricolage_grotesque cursor-pointer"
+            prefetch={false}
           >
             Contact us{" "}
           </Link>
