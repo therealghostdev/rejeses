@@ -23,7 +23,7 @@ export default function UpcomingCohorts() {
 
   return (
     <section
-      className="w-screen flex flex-col lg:px-12 px-6 py-4 md:mt-16 my-8 bg-[#FEF9F6] -mx-8"
+      className="w-screen flex flex-col lg:px-12 px-6 py-4 md:mt-16 my-8 bg-[#FEF9F6] lg:-mx-10 -mx-8 2xl:mx-0 2xl:w-full"
       id="upcoming-training"
     >
       <h1 className="md:text-4xl text-2xl my-8 font-bold font-bricolage_grotesque lg:px-6 md:px-6">
