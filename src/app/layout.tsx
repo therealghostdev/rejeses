@@ -74,7 +74,7 @@ export default function RootLayout({
           name="twitter:description"
           content="Learn and become excellent at project management"
         />
-        <meta name="twitter:image" content={`${baseUrl}/logo.png`} />
+        <meta name="twitter:image" content={`${baseUrl}/logo.svg`} />
         <meta
           name="twitter:image:alt"
           content="A preview image of project management learning resources"
