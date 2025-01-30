@@ -68,7 +68,7 @@ export async function POST(req: Request) {
       </div>
       <div style="margin-top: 18px;">
         <p style="margin-bottom: 15px; font-size: 15px;">
-          A customer has accessed the payment portal and their payment was successful Below are the details:
+          A customer has accessed the payment portal and their payment was successful. Below are the details:
         </p>
 
         <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Transaction ID:</div>
