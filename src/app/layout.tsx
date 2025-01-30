@@ -59,7 +59,11 @@ export default function RootLayout({
           property="og:description"
           content="Learn and become excellent at project management"
         />
-        <meta name="image" property="og:image" content={`${baseUrl}/logo.svg`} />
+        <meta
+          name="image"
+          property="og:image"
+          content={`${baseUrl}/logo.png`}
+        />
         <meta
           property="og:image:alt"
           content="A preview image of project management learning resources"
@@ -74,7 +78,7 @@ export default function RootLayout({
           name="twitter:description"
           content="Learn and become excellent at project management"
         />
-        <meta name="twitter:image" content={`${baseUrl}/logo.svg`} />
+        <meta name="twitter:image" content={`${baseUrl}/logo.png`} />
         <meta
           name="twitter:image:alt"
           content="A preview image of project management learning resources"
