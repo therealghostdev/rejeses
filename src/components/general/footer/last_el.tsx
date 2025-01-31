@@ -71,7 +71,7 @@ export default function Last_el() {
           />
         </Link>
 
-        <Link href="mailto:rejesesconsult@gmail.com" className="md:mx-4">
+        <Link href="mailto:info@rejeses.com" className="md:mx-4">
           <Image src="/mail.svg" alt="E-mail" width={30} height={50} />
         </Link>
       </div>
