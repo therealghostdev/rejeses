@@ -3,7 +3,8 @@ import {
   createCourseEmailTemplate,
   formatPrice,
   formatCourseSchedule2,
-  formatSingleDate, capitalizeCourseScheduleType
+  formatSingleDate,
+  capitalizeCourseScheduleType,
 } from "@/utils/reusables/functions";
 
 export async function POST(req: Request) {
@@ -117,7 +118,9 @@ export async function POST(req: Request) {
             ${
               !courseType.includes("Mentoring")
                 ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Schedule Type:</div>
-                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${capitalizeCourseScheduleType(courseScheduleType)}</div>`
+                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${capitalizeCourseScheduleType(
+                   courseScheduleType
+                 )}</div>`
                 : ""
             }
 
@@ -138,6 +141,18 @@ export async function POST(req: Request) {
             <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Customer Email:</div>
             <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${email}</div>
           </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; font-size: 14px; color: #666; margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd;">
+          <p style="margin: 5px 0;">© 2024 Rejeses Consult. All rights reserved.</p>
+          <p style="margin: 5px 0;">
+            Need help? Contact us at 
+            <a href="mailto:info@rejeses.com" text-decoration: none;">info@rejeses.com</a>
+          </p>
+          <p style="margin: 5px 0;">
+            <a href="https://rejeses.com/" style="color: #BA6820; text-decoration: none;">visit website</a>
+          </p>
         </div>
       </body>
     </html>
