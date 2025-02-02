@@ -5,7 +5,7 @@ import { updateOrder } from "@/app/services/repository/order/order";
 import nodemailer from "nodemailer";
 import { formatPrice, getEmailConfig } from "@/utils/reusables/functions";
 
-const email =
+const email1 =
   process.env.NODE_ENV === "development"
     ? process.env.EMAIL_USER || ""
     : process.env.EMAIL_SERVICES || "";
@@ -13,11 +13,6 @@ const password =
   process.env.NODE_ENV === "development"
     ? process.env.EMAIL_PASS || ""
     : process.env.EMAIL_PASS_SERVICES || "";
-
-const createTransporter = () => {
-  const config = getEmailConfig(email, password);
-  return nodemailer.createTransport(config);
-};
 
 export async function POST(req: Request) {
   try {
@@ -135,11 +130,16 @@ export async function POST(req: Request) {
         status: StatusType.completed,
       });
 
+      const createTransporter = () => {
+        const config = getEmailConfig(email1, password);
+        return nodemailer.createTransport(config);
+      };
+
       const transporter = createTransporter();
 
       await transporter.sendMail({
-        from: `Rejeses Consult ${email}`,
-        to: email,
+        from: `Rejeses Consult ${email1}`,
+        to: email1,
         subject: `Course Payment Notification`,
         html: appOwnerEmailConfirmationContent,
       });

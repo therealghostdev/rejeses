@@ -191,7 +191,6 @@ export function formatPrice(price: number | undefined): string {
     return price?.toString() || "";
   }
 }
-
 export function createCourseEmailTemplate(
   firstName: string,
   lastName: string,
@@ -258,31 +257,36 @@ export function createCourseEmailTemplate(
               } ${formatPrice(amount)}</div>
               
               <div style="background-color: #f9f9f9; border-left: 4px solid #89c13e; padding: 15px; margin-top: 20px; font-size: 15px;">
-            ${
-              !courseType.includes("Mentoring")
-                ? `<p style="margin: 0;">
-                    If you have any questions, kindly reply to this email. We look forward to seeing you on <strong>${
-                      courseScheduleType === "weekend"
-                        ? formatSingleDate(courseSchedule[0])
-                        : formatSingleDate(startDate)
-                    }</strong>.
-                  </p>`
-                : `<p style="margin: 0;">
-                    If you have any questions, feel free to contact us. We look forward to seeing you in class.
-                  </p>`
-            }
-</div>
+                ${
+                  !courseType.includes("Mentoring")
+                    ? `<p style="margin: 0;">
+                        If you have any questions, kindly reply to this email. We look forward to seeing you on <strong>${
+                          courseScheduleType === "weekend"
+                            ? formatSingleDate(courseSchedule[0])
+                            : formatSingleDate(startDate)
+                        }</strong>.
+                      </p>`
+                    : `<p style="margin: 0;">
+                        If you have any questions, feel free to contact us. We look forward to seeing you in class.
+                      </p>`
+                }
+              </div>
 
-          <div style="text-align: center; margin-top: 20px;">
-            <p style="font-size: 15px; color: #666;">
-              Click the button below to join the classes on each of the class days.
-            </p>
-            <a href="https://us06web.zoom.us/j/4740587248?pwd=Y0NTc2phUHcxVXV1OTlCUGxGdjU5dz09&omn=89077871808"
-              style="display: inline-block; background-color: #007bff; color: white; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-size: 15px; font-weight: bold;">
-              Join Class
-            </a>
-          </div>
-
+              ${
+                !courseType.includes("Mentoring")
+                  ? `
+                    <div style="text-align: center; margin-top: 20px;">
+                      <p style="font-size: 15px; color: #666;">
+                        Click the button below to join the classes on each of the class days.
+                      </p>
+                      <a href="https://us06web.zoom.us/j/4740587248?pwd=Y0NTc2phUHcxVXV1OTlCUGxGdjU5dz09&omn=89077871808"
+                        style="display: inline-block; background-color: #007bff; color: white; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-size: 15px; font-weight: bold;">
+                        Join Class
+                      </a>
+                    </div>
+                  `
+                  : ""
+              }
             </div>
 
             <!-- Footer -->
@@ -296,7 +300,6 @@ export function createCourseEmailTemplate(
                 <a href="https://rejeses.com/" style="color: #89c13e; text-decoration: none;">Visit website</a>
               </p>
             </div>
-
           </div>
         </body>
       </html>
@@ -506,8 +509,8 @@ export const getEmailConfig = (
   return {
     service: "gmail",
     auth: {
-      user: email,
-      pass: password,
+      user: process.env.EMAIL_USER || "",
+      pass: process.env.EMAIL_PASS || "",
     },
   };
 };

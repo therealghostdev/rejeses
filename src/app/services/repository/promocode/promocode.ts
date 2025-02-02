@@ -53,8 +53,6 @@ export const generatePromoCode = async () => {
   try {
     const code = await generateUniquePromoCode();
 
-    console.log(code, "is generatedCode");
-
     const newPromoCode = await prisma.promoCode.create({
       data: {
         code,

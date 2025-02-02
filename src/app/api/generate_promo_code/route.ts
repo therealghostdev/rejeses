@@ -9,7 +9,9 @@ export async function GET() {
     const configData = await fs.readFile(CONFIG_PATH, "utf-8");
     const config = JSON.parse(configData);
 
-    if (config.isPromo) {
+    const today = new Date().getDay();
+
+    if (config.isPromo && today === 1) {
       await generatePromoCode();
       return Response.json({ success: true, message: "Promo code generated" });
     }

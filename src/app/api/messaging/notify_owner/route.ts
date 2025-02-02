@@ -17,11 +17,6 @@ const password =
     ? process.env.EMAIL_PASS || ""
     : process.env.EMAIL_PASS_SERVICES || "";
 
-const createTransporter = () => {
-  const config = getEmailConfig(email1, password);
-  return nodemailer.createTransport(config);
-};
-
 export async function POST(req: Request) {
   try {
     let body;
@@ -72,6 +67,11 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
+
+    const createTransporter = () => {
+      const config = getEmailConfig(email1, password);
+      return nodemailer.createTransport(config);
+    };
 
     const transporter = createTransporter()
     const mailOptions = {
