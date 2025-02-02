@@ -4,8 +4,13 @@ import {
   getOrderByStatus,
   createOrder,
 } from "../../services/repository/order/order";
-import { StatusType, OrderType, classSceduleType } from "@/utils/types/types";
+import { StatusType, classSceduleType, OrderType2 } from "@/utils/types/types";
 import { calculateClassSchedule } from "@/utils/reusables/functions";
+import {
+  validatePromoCode,
+  generatePromoCode,
+} from "@/app/services/repository/promocode/promocode";
+import { OrderType } from "../../services/repository/order/order";
 
 export async function GET(req: Request) {
   try {
@@ -83,27 +88,25 @@ export async function POST(req: Request) {
       email,
       amount,
       courseScheduleType,
+      promocode,
       status,
     } = requestBody;
 
     let courseSchedule;
     let renewedCourseScheduleTYpe = courseScheduleType;
 
-    console.log(typeof startDate); // should be string
-
     if (!courseType.includes("Mentoring")) {
       courseSchedule = calculateClassSchedule(
         startDate,
         courseScheduleType as classSceduleType
       );
-      console.log("if ran");
     } else {
       courseSchedule = [new Date()];
       renewedCourseScheduleTYpe = "weekday";
       console.log("else ran");
     }
 
-    const requiredFields = {
+    const baseFields: Omit<OrderType, "promocode"> = {
       firstName,
       lastName,
       courseType,
@@ -115,13 +118,8 @@ export async function POST(req: Request) {
       status: "pending" as StatusType,
     };
 
-    console.log(requiredFields, "required fields");
-    
-
     if (
-      Object.values(requiredFields).some(
-        (field) => field == null || field === ""
-      )
+      Object.values(baseFields).some((field) => field == null || field === "")
     ) {
       return Response.json(
         { message: "Missing or empty body parameters" },
@@ -129,13 +127,35 @@ export async function POST(req: Request) {
       );
     }
 
-    if (
-      !Object.values(StatusType).includes(requiredFields.status as StatusType)
-    )
-      return Response.json(
-        { message: "Invalid status value" },
-        { status: 400 }
-      );
+    // // Validate status
+    // if (!Object.values(StatusType).includes(baseFields.status)) {
+    //   return Response.json(
+    //     { message: "Invalid status value" },
+    //     { status: 400 }
+    //   );
+    // }
+
+    let requiredFields: OrderType = { ...baseFields };
+    if (promocode) {
+      const promoCodeData = await validatePromoCode(promocode);
+      console.log(promoCodeData, "ispr");
+
+      if (!promoCodeData) {
+        return Response.json(
+          { message: "Invalid or expired promo code given" },
+          { status: 403 }
+        );
+      } else {
+        requiredFields = {
+          ...baseFields,
+          promocode: {
+            connect: {
+              id: promoCodeData.id,
+            },
+          },
+        };
+      }
+    }
 
     const order = await createOrder(requiredFields);
     return Response.json({ data: order.id, message: "Success", status: 200 });
@@ -177,7 +197,7 @@ export async function PUT(req: Request) {
       status,
     } = requestBody;
 
-    const validFields: Partial<OrderType> = {};
+    const validFields: Partial<OrderType2> = {};
     const refinedStatus = status?.toLowerCase() as StatusType;
 
     if (firstName !== undefined) validFields.firstName = firstName;

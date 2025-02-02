@@ -1,6 +1,7 @@
 import { prisma } from "../../../lib/prisma";
-import { StatusType, OrderType } from "@/utils/types/types";
+import { StatusType } from "@/utils/types/types";
 import { Order } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
 const getOrderById = async (query: number) => {
   try {
@@ -19,6 +20,8 @@ const getOrderByStatus = async (query: StatusType) => {
     throw err;
   }
 };
+
+export type OrderType = Prisma.OrderCreateInput;
 
 const createOrder = async (data: OrderType) => {
   try {
