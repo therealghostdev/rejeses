@@ -492,8 +492,8 @@ export const getEmailConfig = (
 ): EmailConfig => {
   if (process.env.NODE_ENV === "production") {
     return {
-      host: "smtp.zoho.com",
-      port: 465,
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT) || 0,
       secure: true,
       auth: {
         user: email,

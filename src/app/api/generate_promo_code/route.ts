@@ -11,8 +11,9 @@ export async function GET() {
 
     if (config.isPromo) {
       await generatePromoCode();
+      return Response.json({ success: true, message: "Promo code generated" });
     }
-    return Response.json({ success: true, message: "Promo code generated" });
+    return Response.json({ success: false, message: "Promo is disabled" });
   } catch (err) {
     console.log("Error generating promo code:", err);
   }
