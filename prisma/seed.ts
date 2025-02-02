@@ -64,6 +64,18 @@ async function main() {
   });
 
   console.log(updatedOrder);
+
+  const updatePromocode = await prisma.promoCode.upsert({
+    where: { code: "test-promocode" },
+    update: {},
+    create: {
+      code: "test-promocode",
+      expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+      createdAt: new Date(),
+    },
+  });
+
+  console.log(updatePromocode);
 }
 
 main()

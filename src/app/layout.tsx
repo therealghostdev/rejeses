@@ -53,33 +53,35 @@ export default function RootLayout({
           content="Learn and become excellent at project management"
         />
 
-        {/* Open Graph / LinkedIn Tags  */}
+        {/* Open Graph / LinkedIn Tags */}
         <meta property="og:title" content="Rejeses PM Consulting" />
         <meta
           property="og:description"
           content="Learn and become excellent at project management"
         />
-        <meta property="og:image" content={`${baseUrl}/logo.svg`} />
+        <meta
+          name="image"
+          property="og:image"
+          content={`${baseUrl}/logo.png`}
+        />
         <meta
           property="og:image:alt"
           content="A preview image of project management learning resources"
         />
-        <meta property="og:url" content={`${baseUrl}/logo.svg`} />
+        <meta property="og:url" content={baseUrl} />
         <meta property="og:type" content="website" />
 
         {/* Twitter Card Tags */}
-        <meta
-          name="twitter:card"
-          content="Your Partner in Project excellence"
-        />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Rejeses PM Consulting" />
         <meta
           name="twitter:description"
           content="Learn and become excellent at project management"
         />
+        <meta name="twitter:image" content={`${baseUrl}/logo.png`} />
         <meta
-          name="twitter:image"
-          content={`${baseUrl}/logo.svg`}
+          name="twitter:image:alt"
+          content="A preview image of project management learning resources"
         />
 
         <Script

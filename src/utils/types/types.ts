@@ -202,6 +202,7 @@ export interface FormDataTYpe {
   lastName: string;
   email: string;
   currency: string;
+  discount?: string;
 }
 
 // !-------------------------------------------- end for class schedule --------------------------------------!
@@ -302,7 +303,7 @@ export interface PageProps {
 // -------------------------------------------------> Endo of certification Types <--------------------------------------------------
 
 // !--------------------------------------------DB & Server Types -----------------------------------------------------!
-export interface OrderType {
+export interface OrderType2 {
   firstName: string;
   lastName: string;
   courseType: string;
@@ -311,6 +312,7 @@ export interface OrderType {
   startDate: string;
   email: string;
   amount: number;
+  promocode?: string;
   status: StatusType;
 }
 
@@ -346,6 +348,17 @@ export interface WeekendSchedule {
   dates: Date[];
   month: number;
   year: number;
+}
+
+export interface EmailConfig {
+  host?: string;
+  port?: number;
+  secure?: boolean;
+  service?: string;
+  auth: {
+    user: string;
+    pass: string;
+  };
 }
 
 // !-----------------------------------------End of DB & Server Types -------------------------------------------------!

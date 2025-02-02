@@ -3,8 +3,19 @@ import {
   createCourseEmailTemplate,
   formatPrice,
   formatCourseSchedule2,
-  formatSingleDate, capitalizeCourseScheduleType
+  formatSingleDate,
+  capitalizeCourseScheduleType,
+  getEmailConfig,
 } from "@/utils/reusables/functions";
+
+const email1 =
+  process.env.NODE_ENV === "development"
+    ? process.env.EMAIL_USER || ""
+    : process.env.EMAIL_SERVICES || "";
+const password =
+  process.env.NODE_ENV === "development"
+    ? process.env.EMAIL_PASS || ""
+    : process.env.EMAIL_PASS_SERVICES || "";
 
 export async function POST(req: Request) {
   try {
@@ -57,18 +68,14 @@ export async function POST(req: Request) {
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-      debug: true,
-      logger: true,
-    });
+    const createTransporter = () => {
+      const config = getEmailConfig(email1, password);
+      return nodemailer.createTransport(config);
+    };
 
+    const transporter = createTransporter()
     const mailOptions = {
-      from: `"Rejeses Consult" <${process.env.EMAIL_USER}>`,
+      from: `"Rejeses PM Consulting" <${email1}>`,
       to: email,
       subject: "Course Registration Confirmation",
       html: createCourseEmailTemplate(
@@ -117,7 +124,9 @@ export async function POST(req: Request) {
             ${
               !courseType.includes("Mentoring")
                 ? `<div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Schedule Type:</div>
-                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${capitalizeCourseScheduleType(courseScheduleType)}</div>`
+                 <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${capitalizeCourseScheduleType(
+                   courseScheduleType
+                 )}</div>`
                 : ""
             }
 
@@ -139,13 +148,25 @@ export async function POST(req: Request) {
             <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${email}</div>
           </div>
         </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; font-size: 14px; color: #666; margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd;">
+          <p style="margin: 5px 0;">© 2025 Rejeses Consult. All rights reserved.</p>
+          <p style="margin: 5px 0;">
+            Need help? Contact us at 
+            <a href="mailto:info@rejeses.com" text-decoration: none;">info@rejeses.com</a>
+          </p>
+          <p style="margin: 5px 0;">
+            <a href="https://rejeses.com/" style="color: #BA6820; text-decoration: none;">visit website</a>
+          </p>
+        </div>
       </body>
     </html>
   `;
 
     await transporter.sendMail({
-      from: `Rejeses Consult ${process.env.EMAIL_USER}`,
-      to: process.env.EMAIL_USER,
+      from: `Rejeses PM Consulting ${email1}`,
+      to: email1,
       subject: "Course Registration Confirmation",
       html: appOwnerEmailConfirmationContent,
     });

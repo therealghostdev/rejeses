@@ -1,5 +1,8 @@
 import nodemailer from "nodemailer";
-import { createEmailTemplate } from "@/utils/reusables/functions";
+import {
+  createEmailTemplate,
+  getEmailConfig,
+} from "@/utils/reusables/functions";
 
 export async function POST(req: Request) {
   try {
@@ -13,17 +16,26 @@ export async function POST(req: Request) {
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+    const email1 =
+      process.env.NODE_ENV === "development"
+        ? process.env.EMAIL_USER || ""
+        : process.env.EMAIL_INFO || "";
+
+    const password =
+      process.env.NODE_ENV === "development"
+        ? process.env.EMAIL_PASS || ""
+        : process.env.EMAIL_PASS_INFO || "";
+
+    const createTransporter = () => {
+      const config = getEmailConfig(email1, password);
+      return nodemailer.createTransport(config);
+    };
+
+    const transporter = createTransporter();
 
     await transporter.sendMail({
-      from: `"${name}" <${email}>`,
-      to: process.env.EMAIL_USER,
+      from: `"Rejeses PM Consulting" <${email1}>`,
+      to: email1,
       subject: `New Message from ${name}`,
       text: message,
       html: createEmailTemplate(name, email, message),
