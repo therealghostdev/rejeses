@@ -168,6 +168,42 @@ export function createCourseEmailTemplate(
     `;
 }
 
+export function createPromoEmailTemplate(code: string, expiryDate: Date) {
+  return `
+      <html>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f4f4f4;">
+          <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 30px;">
+            <div style="background-color: #5a2d6e; color: white; text-align: center; padding: 15px; border-radius: 8px 8px 0 0; font-size: 20px;">
+              <h1 style="margin: 0;">New Promo Code Generated</h1>
+            </div>
+            <div style="margin-top: 18px;">
+              <p style="font-size: 16px;">Hello,</p>
+              <p style="font-size: 16px;">
+                A new promo code has been successfully generated for this week. Use the code below to get a discount:
+              </p>
+
+              <div style="text-align: center; margin: 20px 0;">
+                <span style="background-color: #0073e6; color: white; padding: 10px 15px; font-size: 18px; font-weight: bold; border-radius: 5px; display: inline-block;">
+                  ${code}
+                </span>
+              </div>
+
+              <p style="font-size: 16px;">This code expires on <strong>${formatSingleDate(
+                expiryDate
+              )}</strong>.</p>
+
+              <div style="background-color: #f9f9f9; border-left: 4px solid #0073e6; padding: 15px; margin-top: 20px; font-size: 15px;">
+                <p style="margin: 0;">Ensure to use your promo code before the expiration date!</p>
+              </div>
+
+              <p style="margin-top: 20px; font-size: 16px;">Best regards,<br>Rejeses Consult</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `;
+}
+
 export function calculateClassSchedule(
   startDate: Date,
   courseScheduleType: string

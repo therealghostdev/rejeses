@@ -1,15 +1,15 @@
 "use client";
-import { classSceduleType, ClientPageProps } from "@/utils/types/types";
+import type { classSceduleType, ClientPageProps } from "@/utils/types/types";
 import {
-  ChangeEvent,
-  FormEvent,
+  type ChangeEvent,
+  type FormEvent,
   useEffect,
   useMemo,
   useState,
-  KeyboardEvent as ReactKeyboardEvent,
+  type KeyboardEvent as ReactKeyboardEvent,
   useCallback,
 } from "react";
-import {
+import type {
   FormDataTYpe,
   OrderResponse,
   TransactionResponseType,
@@ -20,7 +20,7 @@ import { useRouter, usePathname } from "next/navigation";
 import PaystackPop from "@paystack/inline-js";
 import { useMutation } from "@tanstack/react-query";
 import Loading from "@/app/feed/loading";
-import { TransactionDataType, OrderDataType } from "@/utils/types/types";
+import type { TransactionDataType, OrderDataType } from "@/utils/types/types";
 import Transaction_success from "./checkout_components/transaction_success";
 import Transaction_failed from "./checkout_components/transaction_failed";
 import Image from "next/image";
@@ -91,6 +91,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     firstName: "",
     lastName: "",
     email: "",
+    discount: undefined,
     currency: isNigeria ? "NGN" : "USD",
   });
 
@@ -135,6 +136,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         email: formData.email,
         amount: getPrice(),
         currency: formData.currency,
+        promocode: formData.discount,
       };
 
       const response = await axios.post<OrderResponse>(
@@ -144,9 +146,23 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
       return response.data;
     } catch (err) {
-      console.error("Something went wrong creating order", err);
-      setModal(true);
-      setErrorMessage("Something went wrong creating your order 😓");
+      if (axios.isAxiosError(err) && err.response) {
+        const { status, data } = err.response;
+        const message = data?.message;
+
+        if (
+          status === 403 &&
+          message === "Invalid or expired promo code given"
+        ) {
+          setErrorMessage("Invalid or expired promo code given");
+          return null;
+        }
+      } else {
+        console.error("Something went wrong creating order", err);
+        setModal(true);
+        setErrorMessage("Something went wrong creating your order 😓");
+        return null;
+      }
       return null;
     }
   };
@@ -156,7 +172,9 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       const order = await createOrder(formData);
 
       if (!order) {
-        throw new Error("Failed to create order");
+        console.error("Order creation failed, stopping transaction.");
+        setModal(true)
+        return;
       }
 
       const transactionBodyParam = {
@@ -201,7 +219,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       toastId: "1",
     });
 
-  const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
+  const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
   const handleFormSubmit = async (
     e: FormEvent<HTMLButtonElement> | ReactKeyboardEvent
   ) => {
@@ -262,6 +280,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       lastName: "",
       email: "",
       currency: "",
+      discount: undefined,
     }));
   };
 
@@ -393,7 +412,11 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     } else {
       price = 0;
     }
-    return price;
+    return !paymentInfo.is_group &&
+      formData.currency === "NGN" &&
+      formData.discount
+      ? 50000
+      : price;
   }, [
     isNigeria,
     formData.currency,
@@ -401,6 +424,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     paymentInfo.price2,
     count,
     paymentInfo.is_group,
+    formData.discount,
   ]);
 
   useEffect(() => {
@@ -412,6 +436,10 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       handleFormSubmit(e);
     }
   };
+
+  useEffect(() => {
+    console.log(formData.discount);
+  }, [formData.discount]);
 
   return (
     <section
@@ -495,6 +523,26 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                   </option>
                 </select>
               </div>
+
+              {!paymentInfo.is_group &&
+                isNigeria &&
+                formData.currency === "NGN" && (
+                  <div className="w-full py-4 flex items-center">
+                    <label
+                      htmlFor="Discount for NYSC members only"
+                      hidden
+                    ></label>
+                    <input
+                      id="Discount for NYSC members only"
+                      type="text"
+                      placeholder="Enter promo code given to you (NYSC members only)"
+                      onChange={handleChange}
+                      name="discount"
+                      value={formData.discount}
+                      className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#666666]"
+                    />
+                  </div>
+                )}
 
               <div className="w-full py-4 flex items-center">
                 <div className="lg:w-3/4 w-[98%] flex items-center justify-between border border-[#DBE1E7] rounded-md bg-[#F7F8F9] px-4 py-3">
