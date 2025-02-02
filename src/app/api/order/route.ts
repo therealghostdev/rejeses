@@ -138,7 +138,6 @@ export async function POST(req: Request) {
     let requiredFields: OrderType = { ...baseFields };
     if (promocode) {
       const promoCodeData = await validatePromoCode(promocode);
-      console.log(promoCodeData, "ispr");
 
       if (!promoCodeData) {
         return Response.json(

@@ -59,6 +59,15 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     createdAt: "",
   });
 
+  const [isPromo, setIsPromo] = useState(false);
+
+  useEffect(() => {
+    fetch("/promo/promo.json")
+      .then((res) => res.json())
+      .then((data) => setIsPromo(data.isPromo))
+      .catch((err) => console.error("Error fetching promo status", err));
+  }, []);
+
   const [orderValue, setOrderValue] = useState<OrderDataType>({
     id: 0,
     firstName: "",
@@ -173,7 +182,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
       if (!order) {
         console.error("Order creation failed, stopping transaction.");
-        setModal(true)
+        setModal(true);
         return;
       }
 
@@ -414,7 +423,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     }
     return !paymentInfo.is_group &&
       formData.currency === "NGN" &&
-      formData.discount
+      formData.discount &&
+      isPromo
       ? 50000
       : price;
   }, [
@@ -425,6 +435,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     count,
     paymentInfo.is_group,
     formData.discount,
+    isPromo,
   ]);
 
   useEffect(() => {
@@ -438,8 +449,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   };
 
   useEffect(() => {
-    console.log(formData.discount);
-  }, [formData.discount]);
+    console.log(isPromo);
+  }, [isPromo]);
 
   return (
     <section
@@ -526,7 +537,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
               {!paymentInfo.is_group &&
                 isNigeria &&
-                formData.currency === "NGN" && (
+                formData.currency === "NGN" &&
+                isPromo && (
                   <div className="w-full py-4 flex items-center">
                     <label
                       htmlFor="Discount for NYSC members only"
