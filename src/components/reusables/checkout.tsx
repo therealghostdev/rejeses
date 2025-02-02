@@ -565,7 +565,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                     <input
                       id="Discount for NYSC members only"
                       type="text"
-                      placeholder="Enter promo code given to you (NYSC members only)"
+                      placeholder="Enter Promo Code (if applicable)"
                       onChange={handleChange}
                       name="discount"
                       value={formData.discount}

@@ -75,7 +75,7 @@ export async function POST(req: Request) {
 
     const transporter = createTransporter()
     const mailOptions = {
-      from: `"Rejeses Consult" <${email1}>`,
+      from: `"Rejeses PM Consulting" <${email1}>`,
       to: email,
       subject: "Course Registration Confirmation",
       html: createCourseEmailTemplate(
@@ -165,7 +165,7 @@ export async function POST(req: Request) {
   `;
 
     await transporter.sendMail({
-      from: `Rejeses Consult ${email1}`,
+      from: `Rejeses PM Consulting ${email1}`,
       to: email1,
       subject: "Course Registration Confirmation",
       html: appOwnerEmailConfirmationContent,

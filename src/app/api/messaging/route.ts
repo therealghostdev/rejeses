@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     const transporter = createTransporter();
 
     await transporter.sendMail({
-      from: `"${name}" <${email1}>`,
+      from: `"Rejeses PM Consulting" <${email1}>`,
       to: email1,
       subject: `New Message from ${name}`,
       text: message,

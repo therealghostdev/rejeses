@@ -80,7 +80,7 @@ export async function POST(req: Request) {
               A customer has accessed the payment portal and their payment was successful Below are the details:
             </p>
     
-            <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Transaction ID:</div>
+            <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Payment ID:</div>
             <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${id}</div>
     
             <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Reference:</div>
@@ -138,7 +138,7 @@ export async function POST(req: Request) {
       const transporter = createTransporter();
 
       await transporter.sendMail({
-        from: `Rejeses Consult ${email1}`,
+        from: `Rejeses PM Consulting ${email1}`,
         to: email1,
         subject: `Course Payment Notification`,
         html: appOwnerEmailConfirmationContent,
