@@ -421,12 +421,33 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     } else {
       price = 0;
     }
-    return !paymentInfo.is_group &&
-      formData.currency === "NGN" &&
-      formData.discount &&
-      isPromo
-      ? 50000
-      : price;
+
+    if (paymentInfo.is_group || !isPromo) {
+      return price;
+    } else {
+      if (
+        !paymentInfo.is_group &&
+        formData.currency === "NGN" &&
+        formData.discount &&
+        isPromo
+      ) {
+        if (paymentInfo.training_type === "Project Management Training") {
+          return 50000;
+        } else if (
+          paymentInfo.training_type === "Project Management Mentoring"
+        ) {
+          return 250000;
+        } else if (
+          paymentInfo.training_type ===
+          "Project Management Training & Mentoring"
+        ) {
+          return 300000;
+        }
+      } else {
+        return price;
+      }
+    }
+    return price;
   }, [
     isNigeria,
     formData.currency,
@@ -436,6 +457,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     paymentInfo.is_group,
     formData.discount,
     isPromo,
+    paymentInfo.training_type,
   ]);
 
   useEffect(() => {
@@ -447,10 +469,6 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       handleFormSubmit(e);
     }
   };
-
-  useEffect(() => {
-    console.log(isPromo);
-  }, [isPromo]);
 
   return (
     <section

@@ -1,6 +1,15 @@
 import { prisma } from "../../../lib/prisma";
-import { transporter } from "@/app/lib/mailTransporter";
 import { createPromoEmailTemplate } from "@/utils/reusables/functions";
+import nodemailer from "nodemailer";
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
 
 const generateUniquePromoCode = async (): Promise<string> => {
   let code: string;

@@ -100,7 +100,6 @@ export function createCourseEmailTemplate(
               <p style="margin-bottom: 15px; font-size: 15px;">
                 Thank you for registering for the <strong>${courseType}</strong> program. Below are your registration details:
               </p>
-
               ${
                 courseType.includes("Mentoring")
                   ? `<p style="margin-bottom: 15px; font-size: 15px;">
@@ -108,7 +107,6 @@ export function createCourseEmailTemplate(
                     </p>`
                   : ""
               }
-              
               
               <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Program Type:</div>
               <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 15px;">${courseType}</div>
@@ -149,7 +147,7 @@ export function createCourseEmailTemplate(
             ${
               !courseType.includes("Mentoring")
                 ? `<p style="margin: 0;">
-                    If you have any questions, feel free to contact us. We look forward to seeing you on <strong>${
+                    If you have any questions, kindly reply to this email. We look forward to seeing you on <strong>${
                       courseScheduleType === "weekend"
                         ? formatSingleDate(courseSchedule[0])
                         : formatSingleDate(startDate)
@@ -161,7 +159,30 @@ export function createCourseEmailTemplate(
             }
 </div>
 
+          <div style="text-align: center; margin-top: 20px;">
+            <p style="font-size: 15px; color: #666;">
+              Click the button below to join the classes on each of the class days.
+            </p>
+            <a href="https://us06web.zoom.us/j/4740587248?pwd=Y0NTc2phUHcxVXV1OTlCUGxGdjU5dz09&omn=89077871808"
+              style="display: inline-block; background-color: #007bff; color: white; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-size: 15px; font-weight: bold;">
+              Join Class
+            </a>
+          </div>
+
             </div>
+
+            <!-- Footer -->
+            <div style="text-align: center; font-size: 14px; color: #666; margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd;">
+              <p style="margin: 5px 0;">© 2024 Rejeses Consult. All rights reserved.</p>
+              <p style="margin: 5px 0;">
+                Need help? Contact us at 
+                <a href="mailto:info@rejeses.com" text-decoration: none;">info@rejeses.com</a>
+              </p>
+              <p style="margin: 5px 0;">
+                <a href="https://rejeses.com/" style="color: #89c13e; text-decoration: none;">Visit website</a>
+              </p>
+            </div>
+
           </div>
         </body>
       </html>
@@ -173,17 +194,20 @@ export function createPromoEmailTemplate(code: string, expiryDate: Date) {
       <html>
         <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f4f4f4;">
           <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 30px;">
+            
+            <!-- Header -->
             <div style="background-color: #5a2d6e; color: white; text-align: center; padding: 15px; border-radius: 8px 8px 0 0; font-size: 20px;">
               <h1 style="margin: 0;">New Promo Code Generated</h1>
             </div>
+
+            <!-- Body Content -->
             <div style="margin-top: 18px;">
-              <p style="font-size: 16px;">Hello,</p>
               <p style="font-size: 16px;">
-                A new promo code has been successfully generated for this week. Use the code below to get a discount:
+                A new promo code has been successfully generated for this week.
               </p>
 
               <div style="text-align: center; margin: 20px 0;">
-                <span style="background-color: #0073e6; color: white; padding: 10px 15px; font-size: 18px; font-weight: bold; border-radius: 5px; display: inline-block;">
+                <span style="background-color: #BA6820; color: white; padding: 10px 15px; font-size: 18px; font-weight: bold; border-radius: 5px; display: inline-block;">
                   ${code}
                 </span>
               </div>
@@ -192,12 +216,19 @@ export function createPromoEmailTemplate(code: string, expiryDate: Date) {
                 expiryDate
               )}</strong>.</p>
 
-              <div style="background-color: #f9f9f9; border-left: 4px solid #0073e6; padding: 15px; margin-top: 20px; font-size: 15px;">
+              <div style="background-color: #f9f9f9; border-left: 4px solid #5a2d6e; padding: 15px; margin-top: 20px; font-size: 15px;">
                 <p style="margin: 0;">Ensure to use your promo code before the expiration date!</p>
               </div>
-
-              <p style="margin-top: 20px; font-size: 16px;">Best regards,<br>Rejeses Consult</p>
             </div>
+
+            <!-- Footer -->
+            <div style="text-align: center; font-size: 14px; color: #666; margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd;">
+              <p style="margin: 5px 0;">© 2024 Rejeses Consult. All rights reserved.</p>
+              <p style="margin: 5px 0;">
+                <a href="https://rejeses.com/ style="color: #5a2d6e; text-decoration: none;">visit website</a>
+              </p>
+            </div>
+
           </div>
         </body>
       </html>
