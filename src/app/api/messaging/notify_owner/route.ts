@@ -151,7 +151,7 @@ export async function POST(req: Request) {
 
         <!-- Footer -->
         <div style="text-align: center; font-size: 14px; color: #666; margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd;">
-          <p style="margin: 5px 0;">© 2024 Rejeses Consult. All rights reserved.</p>
+          <p style="margin: 5px 0;">© 2025 Rejeses Consult. All rights reserved.</p>
           <p style="margin: 5px 0;">
             Need help? Contact us at 
             <a href="mailto:info@rejeses.com" text-decoration: none;">info@rejeses.com</a>

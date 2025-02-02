@@ -9,9 +9,11 @@ export async function GET() {
     const configData = await fs.readFile(CONFIG_PATH, "utf-8");
     const config = JSON.parse(configData);
 
-    const today = new Date().getDay();
+    const today = new Date();
+    const nigeriaDate = new Date(today.getTime() + 1 * 60 * 60 * 1000);
+    const nigeriaDay = nigeriaDate.getDay();
 
-    if (config.isPromo && today === 1) {
+    if (config.isPromo && nigeriaDay === 1) {
       await generatePromoCode();
       return Response.json({ success: true, message: "Promo code generated" });
     }

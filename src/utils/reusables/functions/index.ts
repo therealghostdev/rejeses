@@ -120,7 +120,7 @@ export function createEmailTemplate(
                         margin: 0 0 10px 0;
                         font-size: 14px;
                         color: #666;
-                      ">© 2024 Rejeses Consult. All rights reserved.</p>
+                      ">© 2025 Rejeses Consult. All rights reserved.</p>
                       <p style="
                         margin: 0;
                         font-size: 14px;
@@ -291,7 +291,7 @@ export function createCourseEmailTemplate(
 
             <!-- Footer -->
             <div style="text-align: center; font-size: 14px; color: #666; margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd;">
-              <p style="margin: 5px 0;">© 2024 Rejeses Consult. All rights reserved.</p>
+              <p style="margin: 5px 0;">© 2025 Rejeses Consult. All rights reserved.</p>
               <p style="margin: 5px 0;">
                 Need help? Contact us at 
                 <a href="mailto:info@rejeses.com" text-decoration: none;">info@rejeses.com</a>
@@ -313,7 +313,7 @@ export function createPromoEmailTemplate(code: string, expiryDate: Date) {
           <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 30px;">
             
             <!-- Header -->
-            <div style="background-color: #5a2d6e; color: white; text-align: center; padding: 15px; border-radius: 8px 8px 0 0; font-size: 20px;">
+            <div style="background-color: #074ca6; color: white; text-align: center; padding: 15px; border-radius: 8px 8px 0 0; font-size: 20px;">
               <h1 style="margin: 0;">New Promo Code Generated</h1>
             </div>
 
@@ -333,16 +333,16 @@ export function createPromoEmailTemplate(code: string, expiryDate: Date) {
                 expiryDate
               )}</strong>.</p>
 
-              <div style="background-color: #f9f9f9; border-left: 4px solid #5a2d6e; padding: 15px; margin-top: 20px; font-size: 15px;">
+              <div style="background-color: #f9f9f9; border-left: 4px solid #074ca6; padding: 15px; margin-top: 20px; font-size: 15px;">
                 <p style="margin: 0;">Ensure to use your promo code before the expiration date!</p>
               </div>
             </div>
 
             <!-- Footer -->
             <div style="text-align: center; font-size: 14px; color: #666; margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd;">
-              <p style="margin: 5px 0;">© 2024 Rejeses Consult. All rights reserved.</p>
+              <p style="margin: 5px 0;">© 2025 Rejeses Consult. All rights reserved.</p>
               <p style="margin: 5px 0;">
-                <a href="https://rejeses.com/ style="color: #5a2d6e; text-decoration: none;">visit website</a>
+                <a href="https://rejeses.com/ style="color: #074ca6; text-decoration: none;">visit website</a>
               </p>
             </div>
 
