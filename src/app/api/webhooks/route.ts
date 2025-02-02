@@ -3,7 +3,21 @@ import { StatusType } from "@/utils/types/types";
 import { updateTransaction } from "@/app/services/repository/transactions/transactions";
 import { updateOrder } from "@/app/services/repository/order/order";
 import nodemailer from "nodemailer";
-import { formatPrice } from "@/utils/reusables/functions";
+import { formatPrice, getEmailConfig } from "@/utils/reusables/functions";
+
+const email =
+  process.env.NODE_ENV === "development"
+    ? process.env.EMAIL_USER || ""
+    : process.env.EMAIL_SERVICES || "";
+const password =
+  process.env.NODE_ENV === "development"
+    ? process.env.EMAIL_PASS || ""
+    : process.env.EMAIL_PASS_SERVICES || "";
+
+const createTransporter = () => {
+  const config = getEmailConfig(email, password);
+  return nodemailer.createTransport(config);
+};
 
 export async function POST(req: Request) {
   try {
@@ -121,17 +135,11 @@ export async function POST(req: Request) {
         status: StatusType.completed,
       });
 
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
-      });
+      const transporter = createTransporter();
 
       await transporter.sendMail({
-        from: `Rejeses Consult ${process.env.EMAIL_USER}`,
-        to: process.env.EMAIL_USER,
+        from: `Rejeses Consult ${email}`,
+        to: email,
         subject: `Course Payment Notification`,
         html: appOwnerEmailConfirmationContent,
       });

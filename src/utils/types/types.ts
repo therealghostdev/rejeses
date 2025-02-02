@@ -350,4 +350,15 @@ export interface WeekendSchedule {
   year: number;
 }
 
+export interface EmailConfig {
+  host?: string;
+  port?: number;
+  secure?: boolean;
+  service?: string;
+  auth: {
+    user: string;
+    pass: string;
+  };
+}
+
 // !-----------------------------------------End of DB & Server Types -------------------------------------------------!

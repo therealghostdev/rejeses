@@ -1,4 +1,4 @@
-import { WeekendSchedule } from "@/utils/types/types";
+import { EmailConfig } from "@/utils/types/types";
 
 export function createEmailTemplate(
   name: string,
@@ -6,28 +6,142 @@ export function createEmailTemplate(
   message: string
 ) {
   return `
-      <html>
-        <body style="font-family: -apple-system, BlinkMacSystemFont, font-size: 30px; 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f4f4f4;">
-          <div style="background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); padding: 30px;">
-            <div style="background-color: #5a2d6e; color: white; text-align: center; padding: 15px; border-radius: 8px 8px 0 0; font-size: 20px;">
-              <h1 style="margin: 0;">New Contact Form Submission</h1>
-            </div>
-            <div style="margin-top: 18px;">
-              <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 30px;">Name:</div>
-              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 30px;">${name}</div>
-              
-              <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Email:</div>
-              <div style="margin-bottom: 15px; word-wrap: break-word; font-size: 30px;">${email}</div>
-              
-              <div style="background-color: #f9f9f9; border-left: 4px solid #5a2d6e; padding: 15px; margin-top: 30px; font-size: 20px;">
-                <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 30px;">Message:</div>
-                <div style="word-wrap: break-word; font-size: 30px;">${message}</div>
-              </div>
-            </div>
-          </div>
-        </body>
-      </html>
-    `;
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Form Submission</title>
+      </head>
+      <body style="
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f4f4f4;
+      ">
+        <!-- Main Container -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="
+          background-color: #f4f4f4;
+          padding: 20px;
+        ">
+          <tr>
+            <td align="center">
+              <table width="600" cellpadding="0" cellspacing="0" style="
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                max-width: 600px;
+                width: 100%;
+              ">
+                <!-- Header -->
+                <tr>
+                  <td style="
+                    background-color: #5a2d6e;
+                    color: white;
+                    text-align: center;
+                    padding: 20px;
+                    border-radius: 8px 8px 0 0;
+                  ">
+                    <h1 style="
+                      margin: 0;
+                      font-size: 24px;
+                      font-weight: bold;
+                    ">New Contact Form Submission</h1>
+                  </td>
+                </tr>
+
+                <!-- Content -->
+                <tr>
+                  <td style="padding: 30px;">
+                    <!-- Name Section -->
+                    <div style="margin-bottom: 20px;">
+                      <p style="
+                        color: #666;
+                        font-weight: bold;
+                        font-size: 16px;
+                        margin: 0 0 5px 0;
+                      ">Name:</p>
+                      <p style="
+                        margin: 0;
+                        font-size: 18px;
+                        word-break: break-word;
+                      ">${name}</p>
+                    </div>
+
+                    <!-- Email Section -->
+                    <div style="margin-bottom: 20px;">
+                      <p style="
+                        color: #666;
+                        font-weight: bold;
+                        font-size: 16px;
+                        margin: 0 0 5px 0;
+                      ">Email:</p>
+                      <p style="
+                        margin: 0;
+                        font-size: 18px;
+                        word-break: break-word;
+                      ">${email}</p>
+                    </div>
+
+                    <!-- Message Section -->
+                    <div style="
+                      background-color: #f9f9f9;
+                      border-left: 4px solid #5a2d6e;
+                      padding: 20px;
+                      margin-top: 20px;
+                    ">
+                      <p style="
+                        color: #666;
+                        font-weight: bold;
+                        font-size: 16px;
+                        margin: 0 0 5px 0;
+                      ">Message:</p>
+                      <p style="
+                        margin: 0;
+                        font-size: 18px;
+                        word-break: break-word;
+                        white-space: pre-wrap;
+                      ">${message}</p>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr>
+                  <td style="padding: 0 30px;">
+                    <div style="
+                      text-align: center;
+                      padding: 20px 0;
+                      border-top: 1px solid #ddd;
+                    ">
+                      <p style="
+                        margin: 0 0 10px 0;
+                        font-size: 14px;
+                        color: #666;
+                      ">© 2024 Rejeses Consult. All rights reserved.</p>
+                      <p style="
+                        margin: 0;
+                        font-size: 14px;
+                        color: #666;
+                      ">
+                        <a href="https://rejeses.com/" style="
+                          color: #5a2d6e;
+                          text-decoration: none;
+                          font-weight: bold;
+                        ">Visit website</a>
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </body>
+    </html>
+  `;
 }
 
 export const getNextMondayDates = (count: number) => {
@@ -369,4 +483,31 @@ export const capitalizeCourseScheduleType = (item: string) => {
   const restOfItems = item.slice(1);
   const first = item.charAt(0).toUpperCase() + restOfItems;
   return first;
+};
+
+// Function to get the appropriate email configuration based on environment
+export const getEmailConfig = (
+  email: string,
+  password: string
+): EmailConfig => {
+  if (process.env.NODE_ENV === "production") {
+    return {
+      host: "smtp.zoho.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: email,
+        pass: password,
+      },
+    };
+  }
+
+  // Development configuration
+  return {
+    service: "gmail",
+    auth: {
+      user: email,
+      pass: password,
+    },
+  };
 };

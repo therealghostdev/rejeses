@@ -1,15 +1,23 @@
 import { prisma } from "../../../lib/prisma";
-import { createPromoEmailTemplate } from "@/utils/reusables/functions";
-import nodemailer from "nodemailer";
+import {
+  createPromoEmailTemplate,
+  getEmailConfig,
+} from "@/utils/reusables/functions";
+import nodemailer from "nodemailer"
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+const email =
+  process.env.NODE_ENV === "development"
+    ? process.env.EMAIL_USER || ""
+    : process.env.EMAIL_SERVICES || "";
+const password =
+  process.env.NODE_ENV === "development"
+    ? process.env.EMAIL_PASS || ""
+    : process.env.EMAIL_PASS_SERVICES || "";
 
+const createTransporter = () => {
+  const config = getEmailConfig(email, password);
+  return nodemailer.createTransport(config);
+};
 
 const generateUniquePromoCode = async (): Promise<string> => {
   let code: string;
@@ -54,9 +62,10 @@ export const generatePromoCode = async () => {
       },
     });
 
+    const transporter = createTransporter();
     await transporter.sendMail({
-      from: `Rejeses Consult ${process.env.EMAIL_USER}`,
-      to: process.env.EMAIL_USER,
+      from: `Rejeses Consult ${email}`,
+      to: email,
       subject: `NEW PROMOCODE GENERATED FROM APP SERVER`,
       html: createPromoEmailTemplate(newPromoCode.code, newPromoCode.expiresAt),
     });

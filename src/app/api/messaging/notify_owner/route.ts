@@ -5,7 +5,22 @@ import {
   formatCourseSchedule2,
   formatSingleDate,
   capitalizeCourseScheduleType,
+  getEmailConfig,
 } from "@/utils/reusables/functions";
+
+const email1 =
+  process.env.NODE_ENV === "development"
+    ? process.env.EMAIL_USER || ""
+    : process.env.EMAIL_SERVICES || "";
+const password =
+  process.env.NODE_ENV === "development"
+    ? process.env.EMAIL_PASS || ""
+    : process.env.EMAIL_PASS_SERVICES || "";
+
+const createTransporter = () => {
+  const config = getEmailConfig(email1, password);
+  return nodemailer.createTransport(config);
+};
 
 export async function POST(req: Request) {
   try {
@@ -58,18 +73,9 @@ export async function POST(req: Request) {
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-      debug: true,
-      logger: true,
-    });
-
+    const transporter = createTransporter()
     const mailOptions = {
-      from: `"Rejeses Consult" <${process.env.EMAIL_USER}>`,
+      from: `"Rejeses Consult" <${email1}>`,
       to: email,
       subject: "Course Registration Confirmation",
       html: createCourseEmailTemplate(
@@ -159,8 +165,8 @@ export async function POST(req: Request) {
   `;
 
     await transporter.sendMail({
-      from: `Rejeses Consult ${process.env.EMAIL_USER}`,
-      to: process.env.EMAIL_USER,
+      from: `Rejeses Consult ${email1}`,
+      to: email1,
       subject: "Course Registration Confirmation",
       html: appOwnerEmailConfirmationContent,
     });
