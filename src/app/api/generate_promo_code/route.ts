@@ -13,7 +13,7 @@ export async function GET() {
     const nigeriaDate = new Date(today.getTime() + 1 * 60 * 60 * 1000);
     const nigeriaDay = nigeriaDate.getDay();
 
-    console.log(today, nigeriaDate);
+    console.log(today, nigeriaDate)
 
     if (config.isPromo && nigeriaDay === 2) {
       await generatePromoCode();
