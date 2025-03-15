@@ -432,16 +432,16 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         isPromo
       ) {
         if (paymentInfo.training_type === "Project Management Training") {
-          return 55000;
+          return 55000 * count;
         } else if (
           paymentInfo.training_type === "Project Management Mentoring"
         ) {
-          return 250000;
+          return 250000 * count;
         } else if (
           paymentInfo.training_type ===
           "Project Management Training & Mentoring"
         ) {
-          return 300000;
+          return 300000 * count;
         }
       } else {
         return price;
