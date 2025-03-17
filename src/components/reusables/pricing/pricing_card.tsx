@@ -219,7 +219,7 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                 registerBtnClick(
                   training_with_mentorship.name,
                   training_with_mentorship.price,
-                  `You are subscribing to <b>rejeses consult</b> 35-hour training plus 3-month mentoring plan. You will be charged ${
+                  `You are subscribing to <b>Rejeses Consult</b> 35-hour training plus 3-month mentoring plan. You will be charged ${
                     isNigeria ? "NGN " : "$"
                   }${
                     isNigeria
