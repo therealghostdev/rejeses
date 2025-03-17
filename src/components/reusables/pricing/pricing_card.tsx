@@ -138,14 +138,14 @@ export default function PriceCard({ data, id }: PriceCardProps) {
                   training_only.name,
                   training_only.price,
                   decodeURIComponent(pathname).split("/")[1] === "training"
-                    ? `You are subscribing to <b>rejeses consult</b> 35-hour training plan. You will be charged  ${
+                    ? `You are subscribing to <b>Rejeses Consult</b> 35-hour training plan. You will be charged  ${
                         isNigeria ? "NGN " : "$"
                       }${
                         isNigeria
                           ? formatPrice(adjustedPrice)
                           : formatPrice(adjustedPrice)
                       } for this.`
-                    : `You are subscribing to <b>rejeses consult</b> 3-month mentoring plan. You will be charged ${
+                    : `You are subscribing to <b>Rejeses Consult</b> 3-month mentoring plan. You will be charged ${
                         isNigeria ? "NGN " : "$"
                       }${
                         isNigeria
