@@ -37,7 +37,7 @@ export default function Pricing({ item, id }: PricingProps) {
         </p>
       </div>
 
-      {item.group && (
+      {/* {item.group && (
         <div className="flex justify-center items-center gap-2 my-4">
           <button
             className={`py-3 px-6 rounded-md -mx-2 text-nowrap text-ellipsis btn font-bricolage_grotesque ${
@@ -60,7 +60,7 @@ export default function Pricing({ item, id }: PricingProps) {
             Groups of 5
           </button>
         </div>
-      )}
+      )} */}
 
       <div className="w-full flex flex-col md:flex-row justify-center items-center md:px-8 md:py-6 px-4 py-2 text-[#5B5B5B]">
         {pricingData?.map((data, index) => (
