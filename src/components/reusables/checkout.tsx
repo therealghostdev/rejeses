@@ -443,6 +443,24 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         ) {
           return 300000 * count;
         }
+      } else if (
+        !paymentInfo.is_group &&
+        formData.currency === "USD" &&
+        formData.discount &&
+        isPromo
+      ) {
+        if (paymentInfo.training_type === "Project Management Training") {
+          return 60 * count;
+        } else if (
+          paymentInfo.training_type === "Project Management Mentoring"
+        ) {
+          return 240 * count;
+        } else if (
+          paymentInfo.training_type ===
+          "Project Management Training & Mentoring"
+        ) {
+          return 300 * count;
+        }
       } else {
         return price;
       }
@@ -553,26 +571,23 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                 </select>
               </div>
 
-              {!paymentInfo.is_group &&
-                isNigeria &&
-                formData.currency === "NGN" &&
-                isPromo && (
-                  <div className="w-full py-4 flex items-center">
-                    <label
-                      htmlFor="Discount for NYSC members only"
-                      hidden
-                    ></label>
-                    <input
-                      id="Discount for NYSC members only"
-                      type="text"
-                      placeholder="Enter Promo Code (if applicable)"
-                      onChange={handleChange}
-                      name="discount"
-                      value={formData.discount}
-                      className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#666666]"
-                    />
-                  </div>
-                )}
+              {!paymentInfo.is_group && isPromo && (
+                <div className="w-full py-4 flex items-center">
+                  <label
+                    htmlFor="Discount for NYSC members only"
+                    hidden
+                  ></label>
+                  <input
+                    id="Discount for NYSC members only"
+                    type="text"
+                    placeholder="Enter Promo Code (if applicable)"
+                    onChange={handleChange}
+                    name="discount"
+                    value={formData.discount}
+                    className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#666666]"
+                  />
+                </div>
+              )}
 
               <div className="w-full py-4 flex items-center">
                 <div className="lg:w-3/4 w-[98%] flex items-center justify-between border border-[#DBE1E7] rounded-md bg-[#F7F8F9] px-4 py-3">
