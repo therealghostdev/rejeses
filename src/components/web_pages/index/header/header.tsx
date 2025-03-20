@@ -75,7 +75,6 @@ export default function Header() {
 
             <span className="mx-2 margin-sm-override">
               <Link
-                onClick={handleEnrollClick}
                 href="/book-session"
                 className="bg-[#FFFFFF] text-[#89C13E] px-6 py-4 border transition_button border-[#89C13E] rounded-[.3rem] font-bricolage_grotesque"
               >
