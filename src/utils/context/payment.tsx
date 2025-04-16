@@ -6,7 +6,7 @@ import React, {
   useContext,
   useEffect,
   useMemo,
-  useCallback
+  useCallback,
 } from "react";
 import { PaymentInfo } from "../types/types";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -68,6 +68,18 @@ export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({
     start_date: "",
     classScheduleType: "",
     is_group: false,
+    promoPrices: {
+      naira: {
+        training: 0,
+        mentoring: 0,
+        "training&mentoring": 0,
+      },
+      dollar: {
+        training: 0,
+        mentoring: 0,
+        "training&mentoring": 0,
+      },
+    },
   });
 
   const [isNigeria, setIsNigeria] = useState(false);

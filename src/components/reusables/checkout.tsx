@@ -30,7 +30,7 @@ import { toast } from "react-toastify";
 
 export default function Checkout({ pricingItem }: ClientPageProps) {
   const [generalPrice, setGeneralPrice] = useState<number>(0);
-  const { paymentInfo } = usePayment();
+  const { paymentInfo, setPaymentInfo } = usePayment();
   const [transactionResponse, setTransactionResponse] =
     useState<TransactionResponseType>({
       data: { authorization_url: "", access_code: "", reference: "" },
@@ -64,7 +64,27 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   useEffect(() => {
     fetch("/promo/promo.json")
       .then((res) => res.json())
-      .then((data) => setIsPromo(data.isPromo))
+      .then((data) => {
+        setIsPromo(data.isPromo);
+
+        if (data.isPromo && data.prices) {
+          setPaymentInfo((prev) => ({
+            ...prev,
+            promoPrices: {
+              naira: {
+                training: data.prices.naira.training,
+                mentoring: data.prices.naira.mentoring,
+                "training&mentoring": data.prices.naira["training&mentoring"],
+              },
+              dollar: {
+                training: data.prices.dollar.training,
+                mentoring: data.prices.dollar.mentoring,
+                "training&mentoring": data.prices.dollar["training&mentoring"],
+              },
+            },
+          }));
+        }
+      })
       .catch((err) => console.error("Error fetching promo status", err));
   }, []);
 
@@ -87,6 +107,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const [price, setPrice] = useState<number>(0);
+  const [fees, setFees] = useState<number>(0);
 
   const { isNigeria } = useNavigation();
 
@@ -104,14 +125,11 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     currency: isNigeria ? "NGN" : "USD",
   });
 
-  function formatPrice(price: number | undefined): string | undefined {
-    if (price && price >= 1000) {
-      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    } else {
-      if (price) {
-        return price.toString();
-      }
-    }
+  function formatPrice(price: number | undefined): string {
+    if (typeof price !== "number") return "";
+
+    const rounded = Math.round(price);
+    return rounded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   const popup = useMemo(() => new PaystackPop(), []);
@@ -145,7 +163,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         email: formData.email,
         amount: getPrice(),
         currency: formData.currency,
-        promocode: formData.discount,
+        // promocode: formData.discount,
       };
 
       const response = await axios.post<OrderResponse>(
@@ -400,6 +418,23 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     }
   }, []);
 
+  const VatCalculation = (priceval: number): number => {
+    const roundedPrice = Math.ceil(priceval);
+    const flatFee = roundedPrice < 2500 ? 0 : 100;
+    const percentageFee = 0.015 * roundedPrice;
+    const paystackFee = Math.min(percentageFee + flatFee, 2000);
+    const vat = 0.075 * paystackFee;
+    const totalFee = paystackFee + vat;
+
+    // Apply 2% user VAT + absorb 5.5% business cost
+    const priceWithUserVAT = roundedPrice * 1.02; // User pays 2%
+    const finalAmount = priceWithUserVAT / (1 - 0.055); // Business absorbs 5.5%
+    const extraPaid = finalAmount - roundedPrice;
+    const roundedExtraPaid = Math.round(extraPaid);
+    setFees(roundedExtraPaid);
+    return Math.round(finalAmount);
+  };
+
   const getPrice = useCallback((): number => {
     let price;
     if (isNigeria && formData.currency === "NGN") {
@@ -423,49 +458,53 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     }
 
     if (paymentInfo.is_group || !isPromo) {
-      return price;
+      return VatCalculation(price);
     } else {
-      if (
-        !paymentInfo.is_group &&
-        formData.currency === "NGN" &&
-        formData.discount &&
-        isPromo
-      ) {
+      if (!paymentInfo.is_group && formData.currency === "NGN" && isPromo) {
         if (paymentInfo.training_type === "Project Management Training") {
-          return 55000 * count;
+          const fixedPrice =
+            (paymentInfo.promoPrices?.naira.training || 55000) * count;
+          return VatCalculation(fixedPrice);
         } else if (
           paymentInfo.training_type === "Project Management Mentoring"
         ) {
-          return 250000 * count;
+          const fixedPrice =
+            (paymentInfo.promoPrices?.naira.mentoring || 250000) * count;
+          return VatCalculation(fixedPrice);
         } else if (
           paymentInfo.training_type ===
           "Project Management Training & Mentoring"
         ) {
-          return 300000 * count;
+          const fixedPrice =
+            (paymentInfo.promoPrices?.naira["training&mentoring"] || 300000) *
+            count;
+          return VatCalculation(fixedPrice);
         }
       } else if (
         !paymentInfo.is_group &&
         formData.currency === "USD" &&
-        formData.discount &&
         isPromo
       ) {
         if (paymentInfo.training_type === "Project Management Training") {
-          return 60 * count;
+          return (paymentInfo.promoPrices?.dollar.training || 60) * count;
         } else if (
           paymentInfo.training_type === "Project Management Mentoring"
         ) {
-          return 240 * count;
+          return (paymentInfo.promoPrices?.dollar.mentoring || 240) * count;
         } else if (
           paymentInfo.training_type ===
           "Project Management Training & Mentoring"
         ) {
-          return 300 * count;
+          return (
+            (paymentInfo.promoPrices?.dollar["training&mentoring"] || 300) *
+            count
+          );
         }
       } else {
-        return price;
+        return VatCalculation(price);
       }
     }
-    return price;
+    return VatCalculation(price);
   }, [
     isNigeria,
     formData.currency,
@@ -473,13 +512,15 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     paymentInfo.price2,
     count,
     paymentInfo.is_group,
-    formData.discount,
     isPromo,
     paymentInfo.training_type,
+    paymentInfo.promoPrices,
   ]);
 
   useEffect(() => {
-    setPrice(getPrice());
+    const calculatedPrice = getPrice();
+    setPrice(calculatedPrice);
+    console.log(getPrice());
   }, [getPrice]);
 
   const handleKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
@@ -571,7 +612,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                 </select>
               </div>
 
-              {!paymentInfo.is_group && isPromo && (
+              {/* {!paymentInfo.is_group && isPromo && (
                 <div className="w-full py-4 flex items-center">
                   <label
                     htmlFor="Discount for NYSC members only"
@@ -587,7 +628,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                     className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#666666]"
                   />
                 </div>
-              )}
+              )} */}
 
               <div className="w-full py-4 flex items-center">
                 <div className="lg:w-3/4 w-[98%] flex items-center justify-between border border-[#DBE1E7] rounded-md bg-[#F7F8F9] px-4 py-3">
@@ -613,6 +654,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
             </form>
           </div>
 
+          {/* --- Begin Order Summary Section --- */}
           <div className="lg:w-2/4 w-full lg:h-full flex flex-col justify-center gap-5 md:px-4 py-4">
             <div className="flex justify-start">
               <h1 className="font-bold text-left text-2xl font-bricolage_grotesque">
@@ -628,13 +670,12 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
             <div className="w-full flex justify-between py-4 border-b border-dashed border-b-[#DBE1E7]">
               <div className="max-w-3/4 flex lg:h-auto md:h-20">
                 <div className="w-3/4 flex md:flex-row flex-col justify-center">
-                  <div className="flex justify-center items-center h-full w-48 border border-[#FFFAF5]  bg-[#FFE0C2] rounded-md mx-2">
+                  <div className="flex justify-center items-center h-full w-48 border border-[#FFFAF5] bg-[#FFE0C2] rounded-md mx-2">
                     <Image
                       src="/trophy.svg"
                       width={60}
                       height={30}
                       alt="certification"
-                      className=""
                     />
                   </div>
                   <div className="mx-2 flex justify-center flex-col lg:my-auto md:mt-0 mt-2">
@@ -649,38 +690,140 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                 </div>
               </div>
               <div className="flex justify-center items-center">
-                <h1 className="font-bold">
-                  {(isNigeria || !isNigeria) && formData.currency === "NGN"
-                    ? "NGN "
-                    : (isNigeria || !isNigeria) && formData.currency === "USD"
-                    ? "$"
-                    : ""}
-                  {formatPrice(price)}
-                </h1>
+                <div className="text-right">
+                  {isPromo ? (
+                    <>
+                      {/* Calculate proper promo key */}
+                      {/*
+                Ensure that paymentInfo.training_type is one of the allowed keys.
+                If it's not defined or not in the object, default to "training".
+            */}
+                      {(() => {
+                        const allowedKeys: (
+                          | "training"
+                          | "mentoring"
+                          | "training&mentoring"
+                        )[] = ["training", "mentoring", "training&mentoring"];
+                        const promoKey =
+                          paymentInfo.training_type &&
+                          allowedKeys.includes(paymentInfo.training_type as any)
+                            ? (paymentInfo.training_type as
+                                | "training"
+                                | "mentoring"
+                                | "training&mentoring")
+                            : "training";
+                        return (
+                          <>
+                            <p className="line-through text-[#9CA3AF] text-sm">
+                              {(formData.currency === "NGN" ? "NGN " : "$") +
+                                formatPrice(
+                                  formData.currency === "NGN"
+                                    ? paymentInfo.price2 * count
+                                    : paymentInfo.price * count
+                                )}
+                            </p>
+                            <h1 className="font-bold text-[#89C13E] text-lg">
+                              {(formData.currency === "NGN" ? "NGN " : "$") +
+                                formatPrice(
+                                  formData.currency === "NGN"
+                                    ? paymentInfo.promoPrices.naira[promoKey] *
+                                        count
+                                    : paymentInfo.promoPrices.dollar[promoKey] *
+                                        count
+                                )}
+                            </h1>
+                          </>
+                        );
+                      })()}
+                    </>
+                  ) : (
+                    <h1 className="font-bold">
+                      {(formData.currency === "NGN" ? "NGN " : "$") +
+                        formatPrice(
+                          formData.currency === "NGN"
+                            ? paymentInfo.price2 * count
+                            : paymentInfo.price * count
+                        )}
+                    </h1>
+                  )}
+                </div>
               </div>
             </div>
 
+            {/* Subtotal Section */}
             <div className="w-full flex justify-between items-center py-4 border-b border-dashed border-b-[#DBE1E7]">
               <h1 className="font-bold font-bricolage_grotesque">Subtotal</h1>
-              <h1 className="font-bold font-bricolage_grotesque">
-                {(isNigeria || !isNigeria) && formData.currency === "NGN"
-                  ? "NGN "
-                  : (isNigeria || !isNigeria) && formData.currency === "USD"
-                  ? "$"
-                  : ""}
-                {formatPrice(price)}
-              </h1>
+              <div className="text-right">
+                {isPromo ? (
+                  <>
+                    <p className="line-through text-[#9CA3AF] text-sm">
+                      {(formData.currency === "NGN" ? "NGN " : "$") +
+                        formatPrice(
+                          formData.currency === "NGN"
+                            ? paymentInfo.price2 * count
+                            : paymentInfo.price * count
+                        )}
+                    </p>
+                    <h1 className="font-bold text-[#89C13E]">
+                      {(formData.currency === "NGN" ? "NGN " : "$") +
+                        formatPrice(
+                          formData.currency === "NGN"
+                            ? paymentInfo.promoPrices.naira[
+                                (paymentInfo.training_type &&
+                                [
+                                  "training",
+                                  "mentoring",
+                                  "training&mentoring",
+                                ].includes(paymentInfo.training_type)
+                                  ? paymentInfo.training_type
+                                  : "training") as
+                                  | "training"
+                                  | "mentoring"
+                                  | "training&mentoring"
+                              ] * count
+                            : paymentInfo.promoPrices.dollar[
+                                (paymentInfo.training_type &&
+                                [
+                                  "training",
+                                  "mentoring",
+                                  "training&mentoring",
+                                ].includes(paymentInfo.training_type)
+                                  ? paymentInfo.training_type
+                                  : "training") as
+                                  | "training"
+                                  | "mentoring"
+                                  | "training&mentoring"
+                              ] * count
+                        )}
+                    </h1>
+                  </>
+                ) : (
+                  <h1 className="font-bold font-bricolage_grotesque">
+                    {(formData.currency === "NGN" ? "NGN " : "$") +
+                      formatPrice(
+                        formData.currency === "NGN"
+                          ? paymentInfo.price2 * count
+                          : paymentInfo.price * count
+                      )}
+                  </h1>
+                )}
+              </div>
             </div>
+
+            {formData.currency === "NGN" && (
+              <div className="w-full flex justify-between items-center py-4 border-b border-dashed border-b-[#DBE1E7]">
+                <h1 className="font-bold font-bricolage_grotesque">Fee:</h1>
+                <h1 className="font-bold font-bricolage_grotesque">
+                  NGN {formatPrice(fees)}
+                </h1>
+              </div>
+            )}
 
             <div className="w-full flex justify-between items-center py-4 border-b border-b-[#DBE1E7]">
               <h1 className="font-bold font-bricolage_grotesque">TOTAL</h1>
               <h1 className="text-[#89C13E] font-bold font-bricolage_grotesque">
-                {(isNigeria || !isNigeria) && formData.currency === "NGN"
-                  ? "NGN "
-                  : (isNigeria || !isNigeria) && formData.currency === "USD"
-                  ? "$"
-                  : ""}
-                {formatPrice(price)}
+                {(formData.currency === "NGN" ? "NGN " : "$") +
+                  formatPrice(price)}
               </h1>
             </div>
 
@@ -691,13 +834,14 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
               >
                 Complete Checkout
                 {mutation.isPending && (
-                  <span className=" mx-2 flex justify-center items-center h-full">
+                  <span className="mx-2 flex justify-center items-center h-full">
                     <Loading />
                   </span>
                 )}
               </button>
             </div>
           </div>
+          {/* --- End Order Summary Section --- */}
         </div>
       )}
 
