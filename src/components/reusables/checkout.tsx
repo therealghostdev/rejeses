@@ -726,10 +726,14 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                               {(formData.currency === "NGN" ? "NGN " : "$") +
                                 formatPrice(
                                   formData.currency === "NGN"
-                                    ? paymentInfo.promoPrices.naira[promoKey] *
-                                        count
-                                    : paymentInfo.promoPrices.dollar[promoKey] *
-                                        count
+                                    ? paymentInfo.promoPrices &&
+                                        paymentInfo.promoPrices.naira[
+                                          promoKey
+                                        ] * count
+                                    : paymentInfo.promoPrices &&
+                                        paymentInfo.promoPrices.dollar[
+                                          promoKey
+                                        ] * count
                                 )}
                             </h1>
                           </>
@@ -767,7 +771,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                     <h1 className="font-bold text-[#89C13E]">
                       {(formData.currency === "NGN" ? "NGN " : "$") +
                         formatPrice(
-                          formData.currency === "NGN"
+                          formData.currency === "NGN" && paymentInfo.promoPrices
                             ? paymentInfo.promoPrices.naira[
                                 (paymentInfo.training_type &&
                                 [
@@ -781,19 +785,20 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                                   | "mentoring"
                                   | "training&mentoring"
                               ] * count
-                            : paymentInfo.promoPrices.dollar[
-                                (paymentInfo.training_type &&
-                                [
-                                  "training",
-                                  "mentoring",
-                                  "training&mentoring",
-                                ].includes(paymentInfo.training_type)
-                                  ? paymentInfo.training_type
-                                  : "training") as
-                                  | "training"
-                                  | "mentoring"
-                                  | "training&mentoring"
-                              ] * count
+                            : paymentInfo.promoPrices &&
+                                paymentInfo.promoPrices.dollar[
+                                  (paymentInfo.training_type &&
+                                  [
+                                    "training",
+                                    "mentoring",
+                                    "training&mentoring",
+                                  ].includes(paymentInfo.training_type)
+                                    ? paymentInfo.training_type
+                                    : "training") as
+                                    | "training"
+                                    | "mentoring"
+                                    | "training&mentoring"
+                                ] * count
                         )}
                     </h1>
                   </>
