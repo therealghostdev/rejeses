@@ -1,3 +1,15 @@
 {
-  "isPromo": false
+  "isPromo": false,
+  "prices": {
+    "naira": {
+      "training": 50000,
+      "mentoring": 250000,
+      "training&mentoring": 300000
+    },
+    "dollar": {
+      "training": 60,
+      "mentoring": 240,
+      "training&mentoring": 300
+    }
+  }
 }

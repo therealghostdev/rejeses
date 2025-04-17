@@ -215,6 +215,18 @@ export interface PaymentInfo {
   classScheduleType: string;
   training_option?: string;
   is_group: boolean;
+  promoPrices?: {
+    naira: {
+      training: number;
+      mentoring: number;
+      "training&mentoring": number;
+    };
+    dollar: {
+      training: number;
+      mentoring: number;
+      "training&mentoring": number;
+    };
+  };
 }
 
 export interface OrderResponse {
