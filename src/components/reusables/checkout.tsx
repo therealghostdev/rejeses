@@ -654,7 +654,6 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
             </form>
           </div>
 
-          {/* --- Begin Order Summary Section --- */}
           <div className="lg:w-2/4 w-full lg:h-full flex flex-col justify-center gap-5 md:px-4 py-4">
             <div className="flex justify-start">
               <h1 className="font-bold text-left text-2xl font-bricolage_grotesque">
@@ -693,11 +692,6 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                 <div className="text-right">
                   {isPromo ? (
                     <>
-                      {/* Calculate proper promo key */}
-                      {/*
-                Ensure that paymentInfo.training_type is one of the allowed keys.
-                If it's not defined or not in the object, default to "training".
-            */}
                       {(() => {
                         const allowedKeys: (
                           | "training"
@@ -817,7 +811,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
 
             {formData.currency === "NGN" && (
               <div className="w-full flex justify-between items-center py-4 border-b border-dashed border-b-[#DBE1E7]">
-                <h1 className="font-bold font-bricolage_grotesque">Fee:</h1>
+                <h1 className="font-bold font-bricolage_grotesque">Tax:</h1>
                 <h1 className="font-bold font-bricolage_grotesque">
                   NGN {formatPrice(fees)}
                 </h1>
@@ -846,7 +840,6 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
               </button>
             </div>
           </div>
-          {/* --- End Order Summary Section --- */}
         </div>
       )}
 
