@@ -419,20 +419,29 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   }, []);
 
   const VatCalculation = (priceval: number): number => {
-    const roundedPrice = Math.ceil(priceval);
-    const flatFee = roundedPrice < 2500 ? 0 : 100;
-    const percentageFee = 0.015 * roundedPrice;
-    const paystackFee = Math.min(percentageFee + flatFee, 2000);
-    const vat = 0.075 * paystackFee;
-    const totalFee = paystackFee + vat;
+    const P = Math.ceil(priceval);
 
-    // Apply 2% user VAT + absorb 5.5% business cost
-    const priceWithUserVAT = roundedPrice * 1.02; // User pays 2%
-    const finalAmount = priceWithUserVAT / (1 - 0.055); // Business absorbs 5.5%
-    const extraPaid = finalAmount - roundedPrice;
-    const roundedExtraPaid = Math.round(extraPaid);
-    setFees(roundedExtraPaid);
-    return Math.round(finalAmount);
+    // Paystack fee
+    const flatFee = P < 2500 ? 0 : 100;
+    const percentFee = 0.015 * P;
+    const psFee = Math.min(percentFee + flatFee, 2000);
+
+    // VAT on Paystack fee
+    const vatOnFee = 0.075 * psFee;
+
+    // VAT on actual price
+    const vatOnPrice = 0.075 * P;
+
+    // Customer covers 2% of *both* VATs
+    const customerVAT = 0.02 * (vatOnFee + vatOnPrice);
+
+    // Total extra charges
+    const totalExtra = psFee + customerVAT;
+
+    setFees(Math.ceil(totalExtra));
+
+    // Final amount
+    return Math.ceil(P + totalExtra);
   };
 
   const getPrice = useCallback((): number => {
