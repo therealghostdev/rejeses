@@ -90,6 +90,7 @@ export async function POST(req: Request) {
       courseScheduleType,
       promocode,
       status,
+      participants,
     } = requestBody;
 
     let courseSchedule;
@@ -116,10 +117,12 @@ export async function POST(req: Request) {
       email,
       amount,
       status: "pending" as StatusType,
+      participants,
     };
+    const { participants: participatingUsers, ...neededFields } = baseFields;
 
     if (
-      Object.values(baseFields).some((field) => field == null || field === "")
+      Object.values(neededFields).some((field) => field == null || field === "")
     ) {
       return Response.json(
         { message: "Missing or empty body parameters" },

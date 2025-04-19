@@ -203,6 +203,10 @@ export interface FormDataTYpe {
   email: string;
   currency: string;
   discount?: string;
+  participants: Array<{
+    name: string;
+    email: string;
+  }>;
 }
 
 // !-------------------------------------------- end for class schedule --------------------------------------!
@@ -264,6 +268,7 @@ export interface OrderDataType {
   status: string;
   createdAt: string;
   updatedAt: string;
+  participants: string[];
 }
 
 // -------------------------------------------------> Animation indicator Types <--------------------------------------------------
@@ -372,5 +377,10 @@ export interface EmailConfig {
     pass: string;
   };
 }
+
+export type Participant = {
+  name: string;
+  email: string;
+};
 
 // !-----------------------------------------End of DB & Server Types -------------------------------------------------!

@@ -25,7 +25,7 @@ import Transaction_success from "./checkout_components/transaction_success";
 import Transaction_failed from "./checkout_components/transaction_failed";
 import Image from "next/image";
 import Transaction_error from "./checkout_components/transaction_error";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-toastify";
 
 export default function Checkout({ pricingItem }: ClientPageProps) {
@@ -37,6 +37,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     });
 
   const [count, setCount] = useState<number>(paymentInfo.is_group ? 5 : 1);
+  const [createInputs, setCreateInputs] = useState<number[]>([]);
+  const [showInput, setShowInput] = useState<boolean>(false);
 
   const POLLING_INTERVAL = 5000;
   const MAX_POLLING_ATTEMPTS = 60;
@@ -101,6 +103,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     status: "",
     createdAt: "",
     updatedAt: "",
+    participants: [],
   });
 
   const [modal, setModal] = useState<boolean>(false);
@@ -123,6 +126,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     email: "",
     discount: undefined,
     currency: isNigeria ? "NGN" : "USD",
+    participants: [],
   });
 
   function formatPrice(price: number | undefined): string {
@@ -141,7 +145,41 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   ) => {
     const { name, value } = e.target;
 
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Check if this is a participant field
+    if (name.startsWith("participant")) {
+      // Extract participant index and field type from name
+      const matches = name.match(/participant(Name|Email)-(\d+)/);
+
+      if (matches) {
+        const fieldType = matches[1].toLowerCase(); // "name" or "email"
+        const index = parseInt(matches[2]); // Participant index
+
+        setFormData((prev) => {
+          // Create a copy of the current participants array
+          const updatedParticipants = [...(prev.participants || [])];
+
+          // Make sure we have an object for this participant
+          if (!updatedParticipants[index]) {
+            updatedParticipants[index] = { name: "", email: "" };
+          }
+
+          // Update the specific field
+          updatedParticipants[index] = {
+            ...updatedParticipants[index],
+            [fieldType]: value,
+          };
+
+          // Return updated form data
+          return {
+            ...prev,
+            participants: updatedParticipants,
+          };
+        });
+      }
+    } else {
+      // Handle regular form fields as before
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const closeModal = () => {
@@ -150,10 +188,27 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     setErrorMessage("");
   };
 
+  function capitalizeWords(name: string) {
+    return name
+      .trim()
+      .split(" ")
+      .filter(Boolean)
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(" ");
+  }
+
   const createOrder = async (
     formData: FormDataTYpe
   ): Promise<OrderResponse | null> => {
     try {
+      let formattedParticipants;
+      if (formData.participants && formData.participants.length > 0) {
+        formattedParticipants = formData.participants.map((participant) => ({
+          name: capitalizeWords(participant.name),
+          email: participant.email,
+        }));
+      }
+
       const orderBodyParam = {
         firstName: formData.firstName,
         lastName: formData.lastName,
@@ -163,6 +218,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         email: formData.email,
         amount: getPrice(),
         currency: formData.currency,
+        participants: formattedParticipants,
         // promocode: formData.discount,
       };
 
@@ -252,17 +308,49 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   ) => {
     e.preventDefault();
     try {
+      // Basic validation for main form fields
       if (
-        formData.lastName !== "" &&
-        formData.firstName !== "" &&
-        emailRegex.test(formData.email)
+        formData.lastName === "" ||
+        formData.firstName === "" ||
+        !emailRegex.test(formData.email)
       ) {
-        mutation.mutate(formData);
-      } else if (!emailRegex.test(formData.email)) {
-        notify("please input a valid mail");
-      } else {
-        notify("Please fill in your details");
+        if (!emailRegex.test(formData.email)) {
+          notify("Please input a valid email address");
+        } else {
+          notify("Please fill in your details");
+        }
+        return;
       }
+
+      if (count > 1 || (count === 1 && showInput)) {
+        if (!formData.participants || formData.participants.length < count) {
+          notify("Missing participant information");
+          return;
+        }
+
+        for (let i = 0; i < count; i++) {
+          const participant = formData.participants[i];
+
+          if (!participant || !participant.name || !participant.email) {
+            notify(`Please fill in details for Participant ${i + 1}`);
+            return;
+          }
+
+          if (!participant.name.trim().includes(" ")) {
+            notify(
+              `Please enter full name (first and last) for Participant ${i + 1}`
+            );
+            return;
+          }
+
+          if (!emailRegex.test(participant.email)) {
+            notify(`Please input a valid email for Participant ${i + 1}`);
+            return;
+          }
+        }
+      }
+
+      mutation.mutate(formData);
     } catch (err) {
       console.error("Something went wrong!", err);
     }
@@ -283,6 +371,24 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       setCount((prev) => Math.max(prev - 1, 1));
     }
   };
+
+  useEffect(() => {
+    const inputs = Array.from({ length: count }, (_, i) => i);
+    setCreateInputs(inputs);
+
+    // initilaize particpants inputs values
+    setFormData((prev) => {
+      const updatedParticipants = [...prev.participants];
+
+      while (updatedParticipants.length < count) {
+        updatedParticipants.push({ name: "", email: "" });
+      }
+      if (updatedParticipants.length > count) {
+        updatedParticipants.length = count;
+      }
+      return { ...prev, participants: updatedParticipants };
+    });
+  }, [count]);
 
   const continueTransaction = async () => {
     try {
@@ -308,6 +414,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       email: "",
       currency: "",
       discount: undefined,
+      participants: [],
     }));
   };
 
@@ -339,6 +446,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
           email: order.email,
           amount: order.amount,
           currency: data.currency,
+          participants: order.participants,
         };
 
         if (status === 200 && data.status === "completed") {
@@ -466,7 +574,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       price = 0;
     }
 
-    if (paymentInfo.is_group || !isPromo) {
+    if ((paymentInfo.is_group || !isPromo) && formData.currency === "NGN") {
       return VatCalculation(price);
     } else {
       if (!paymentInfo.is_group && formData.currency === "NGN" && isPromo) {
@@ -510,7 +618,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
           );
         }
       } else {
-        return VatCalculation(price);
+        return price;
       }
     }
     return VatCalculation(price);
@@ -529,7 +637,6 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   useEffect(() => {
     const calculatedPrice = getPrice();
     setPrice(calculatedPrice);
-    console.log(getPrice());
   }, [getPrice]);
 
   const handleKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
@@ -639,27 +746,162 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                 </div>
               )} */}
 
-              <div className="w-full py-4 flex items-center">
-                <div className="lg:w-3/4 w-[98%] flex items-center justify-between border border-[#DBE1E7] rounded-md bg-[#F7F8F9] px-4 py-3">
-                  <button
+              <div className="w-full py-6 flex flex-col">
+                <label className="text-lg font-medium text-[#333] mb-2 font-bricolage_grotesque">
+                  Number of Participants
+                </label>
+
+                <div className="lg:w-3/4 w-[98%] flex items-center justify-between border border-[#DBE1E7] rounded-md bg-[#F7F8F9] px-3 py-2">
+                  <motion.button
+                    whileTap={{ scale: 0.95 }}
                     onClick={minus}
                     type="button"
-                    className="w-8 h-8 rounded-full bg-[#497016] text-white flex justify-center items-center text-lg hover:bg-[#5a8620] transition-colors"
+                    disabled={count <= (paymentInfo.is_group ? 5 : 1)}
+                    className={`w-10 h-10 rounded-full ${
+                      count <= (paymentInfo.is_group ? 5 : 1)
+                        ? "bg-[#CCD9BE] cursor-not-allowed"
+                        : "bg-[#497016] hover:bg-[#5a8620]"
+                    } text-white flex justify-center items-center text-xl transition-colors`}
                   >
-                    -
-                  </button>
-                  <span className="text-[#666666] font-medium text-lg">
-                    How many? {`(${count})`}
-                  </span>
-                  <button
+                    <span className="transform translate-y-[-1px]">-</span>
+                  </motion.button>
+
+                  <div className="flex flex-col items-center">
+                    <motion.span
+                      key={count}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-[#333333] font-bold text-2xl"
+                    >
+                      {count}
+                    </motion.span>
+                    <span className="text-[#9CA3AF] text-sm">
+                      {count === 1 ? "Participant" : "Participants"}
+                    </span>
+                  </div>
+
+                  <motion.button
+                    whileTap={{ scale: 0.95 }}
                     onClick={plus}
                     type="button"
-                    className="w-8 h-8 rounded-full bg-[#497016] text-white flex justify-center items-center text-lg hover:bg-[#5a8620] transition-colors"
+                    className="w-10 h-10 rounded-full bg-[#497016] text-white flex justify-center items-center text-xl hover:bg-[#5a8620] transition-colors"
                   >
-                    +
-                  </button>
+                    <span className="transform translate-y-[-1px]">+</span>
+                  </motion.button>
                 </div>
+
+                {count > 1 && (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="mt-2 text-sm text-[#9CA3AF] italic"
+                  >
+                    {paymentInfo.is_group
+                      ? "Adding participants in groups of 5"
+                      : "Information needed for each participant"}
+                  </motion.p>
+                )}
               </div>
+              {count === 1 && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="w-full flex justify-start"
+                >
+                  <button
+                    type="button"
+                    className="w-fit text-[#9CA3AF] text-sm border-none -mt-5 text-left"
+                    onClick={() => setShowInput(!showInput)}
+                  >
+                    {showInput
+                      ? "Registering for you, click here"
+                      : "Registering for someone? Click to enter participant's name"}
+                  </button>
+                </motion.div>
+              )}
+
+              {(createInputs.length > 1 || showInput) && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="w-full mt-8 mb-4 border-t-2 border-[#F0F0F0] pt-6"
+                >
+                  <h2 className="font-bold text-xl font-bricolage_grotesque mb-4 text-[#497016]">
+                    Participant Information
+                  </h2>
+                  <p className="text-sm text-[#666666] mb-6">
+                    Please provide details for each participant
+                  </p>
+
+                  <div className="space-y-2">
+                    <AnimatePresence>
+                      {createInputs.map((_, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{
+                            duration: 0.3,
+                            delay: index * 0.1,
+                            ease: "easeInOut",
+                          }}
+                          className="w-full rounded-lg bg-[#FAFBFC] border border-[#E8ECF0] p-4 mb-3"
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <h3 className="font-medium text-[#497016]">
+                              Participant {index + 1}
+                            </h3>
+                            <div className="h-6 w-6 rounded-full bg-[#F0F5E8] text-[#497016] flex items-center justify-center font-bold">
+                              {index + 1}
+                            </div>
+                          </div>
+
+                          <div className="flex lg:flex-row flex-col gap-3 mb-3">
+                            <div className="lg:w-1/2 w-full">
+                              <label
+                                htmlFor={`participantName-${index}`}
+                                className="text-sm text-[#666666] block mb-1"
+                              >
+                                Full Name
+                              </label>
+                              <input
+                                id={`participantName-${index}`}
+                                type="text"
+                                placeholder="Participant's Full Name"
+                                onChange={handleChange}
+                                name={`participantName-${index}`}
+                                value={formData.participants[index]?.name || ""}
+                                className="w-full py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#9CA3AF] focus:border-[#89C13E] transition-all"
+                              />
+                            </div>
+
+                            <div className="lg:w-1/2 w-full">
+                              <label
+                                htmlFor={`participantEmail-${index}`}
+                                className="text-sm text-[#9CA3AF] block mb-1"
+                              >
+                                Email Address
+                              </label>
+                              <input
+                                id={`participantEmail-${index}`}
+                                type="email"
+                                placeholder="Participant's Email"
+                                onChange={handleChange}
+                                name={`participantEmail-${index}`}
+                                value={
+                                  formData.participants[index]?.email || ""
+                                }
+                                className="w-full py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#9CA3AF] focus:border-[#89C13E] transition-all"
+                              />
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
+              )}
             </form>
           </div>
 

@@ -1,9 +1,16 @@
 import crypto from "crypto";
-import { StatusType } from "@/utils/types/types";
+import { StatusType, Participant } from "@/utils/types/types";
 import { updateTransaction } from "@/app/services/repository/transactions/transactions";
-import { updateOrder } from "@/app/services/repository/order/order";
+import {
+  getOrderByTransactionRef,
+  updateOrder,
+} from "@/app/services/repository/order/order";
 import nodemailer from "nodemailer";
-import { formatPrice, getEmailConfig } from "@/utils/reusables/functions";
+import {
+  createCourseEmailTemplate,
+  formatPrice,
+  getEmailConfig,
+} from "@/utils/reusables/functions";
 
 const email1 =
   process.env.NODE_ENV === "development"
@@ -130,6 +137,15 @@ export async function POST(req: Request) {
         status: StatusType.completed,
       });
 
+      const order = await getOrderByTransactionRef(
+        Number(transaction.orderRef)
+      );
+
+      console.log(order?.participants);
+      let courseParticipants;
+      if (order && order.participants) {
+        courseParticipants = order.participants as Participant[];
+      }
       const createTransporter = () => {
         const config = getEmailConfig(email1, password);
         return nodemailer.createTransport(config);
@@ -143,6 +159,102 @@ export async function POST(req: Request) {
         subject: `Course Payment Notification`,
         html: appOwnerEmailConfirmationContent,
       });
+
+      if (courseParticipants && courseParticipants.length > 0 && order) {
+        const payermail = email as string;
+
+        const Payerfoundmail = courseParticipants.find(
+          (item) => item.email.toLocaleLowerCase() === payermail.toLowerCase()
+        );
+
+        if (Payerfoundmail) {
+          // Send to payer
+          await transporter.sendMail({
+            from: `Rejeses PM Consulting ${email1}`,
+            to: Payerfoundmail.email,
+            subject: `Course Payment Notification`,
+            html: createCourseEmailTemplate(
+              order.firstName,
+              order.lastName,
+              order.courseType,
+              order.startDate,
+              order.courseSchedule,
+              order.courseScheduleType,
+              order.amount,
+              order.startDate,
+              order.participants as { name: string; email: string }[],
+              false,
+              true
+            ),
+          });
+
+          // Send to others
+          const restOfMails = courseParticipants.filter(
+            (item) => item.email.toLocaleLowerCase() !== payermail.toLowerCase()
+          );
+
+          for (const participant of restOfMails) {
+            const fullName = (participant.name || "")
+              .trim()
+              .replace(/\s+/g, " ");
+            const nameParts = fullName.split(" ");
+
+            const firstName = nameParts[0] || "";
+            const lastName =
+              nameParts.length > 1 ? nameParts[nameParts.length - 1] : "";
+
+            await transporter.sendMail({
+              from: `Rejeses PM Consulting ${email1}`,
+              to: participant.email,
+              subject: `Course Payment Notification`,
+              html: createCourseEmailTemplate(
+                firstName,
+                lastName,
+                order.courseType,
+                order.startDate,
+                order.courseSchedule,
+                order.courseScheduleType,
+                order.amount,
+                order.startDate,
+                order.participants as { name: string; email: string }[],
+                true,
+                false
+              ),
+            });
+          }
+        } else {
+          // Send to all participants
+          for (const participant of courseParticipants) {
+            const fullName = (participant.name || "")
+              .trim()
+              .replace(/\s+/g, " ");
+            const nameParts = fullName.split(" ");
+
+            const firstName = nameParts[0] || "";
+            const lastName =
+              nameParts.length > 1 ? nameParts[nameParts.length - 1] : "";
+
+            await transporter.sendMail({
+              from: `Rejeses PM Consulting ${email1}`,
+              to: participant.email,
+              subject: `Course Payment Notification`,
+              html: createCourseEmailTemplate(
+                firstName,
+                lastName,
+                order.courseType,
+                order.startDate,
+                order.courseSchedule,
+                order.courseScheduleType,
+                order.amount,
+                order.startDate,
+                order.participants as { name: string; email: string }[],
+                true,
+                false
+              ),
+            });
+          }
+        }
+      }
 
       return Response.json(
         { message: "Transaction completed" },
