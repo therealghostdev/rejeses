@@ -9,18 +9,25 @@ import { DownloadIcon } from "@radix-ui/react-icons";
 import { Class, ScheduleData, TrainingOption1 } from "@/utils/types/types";
 import { usePayment } from "@/utils/context/payment";
 import { useNavigation } from "@/utils/context/payment";
+import { usePathname } from "next/navigation";
 
 const { days, times } = data as ScheduleData;
 
 interface SchedulePropsData {
   data: Class[];
   all: TrainingOption1;
+  promo: boolean;
+  promoPrices?: {
+    dollarprice: number;
+    nairaPrice: number;
+  };
 }
 
 export default function ClassSchedule(props: SchedulePropsData) {
   const scheduleRef = useRef<HTMLDivElement>(null);
   const { paymentInfo, setPaymentInfo } = usePayment();
   const { isNigeria } = useNavigation();
+  const pathname = usePathname();
 
   const downloadPdf = async () => {
     if (scheduleRef.current) {
@@ -92,8 +99,12 @@ export default function ClassSchedule(props: SchedulePropsData) {
   const BacktoSummary = () => {
     setPaymentInfo((prev) => ({
       ...prev,
-      price: individualPrice,
-      price2: individualPrice2,
+      price: props.promo
+        ? props.promoPrices?.dollarprice || 0
+        : individualPrice,
+      price2: props.promo
+        ? props.promoPrices?.nairaPrice || 0
+        : individualPrice2,
       training_id: props.all.id,
       training_type: "Project Management Training",
       start_date: props.all.start_date,
@@ -107,6 +118,10 @@ export default function ClassSchedule(props: SchedulePropsData) {
   useEffect(() => {
     BacktoSummary();
   }, [isNigeria]);
+
+  useEffect(() => {
+    console.log(props.promoPrices, "class");
+  }, []);
 
   return (
     <div className="flex flex-col items-center px-6 md:max-w-[90%] gap-6 w-full my-4 mt-12">
@@ -207,7 +222,17 @@ export default function ClassSchedule(props: SchedulePropsData) {
           className="bg-[#89C13E] text-white px-12 py-4 flex justify-center items-center rounded-md w-full sm:w-auto text-xs sm:text-sm"
         >
           Pay now {isNigeria ? "NGN " : "$"}
-          {formatPrice(individualPrice2) || 0}
+          {isNigeria
+            ? formatPrice(
+                props.promo && pathname.includes("/promo")
+                  ? props.promoPrices?.nairaPrice
+                  : individualPrice2
+              ) || 0
+            : formatPrice(
+                props.promo && pathname.includes("/promo")
+                  ? props.promoPrices?.dollarprice
+                  : individualPrice
+              ) || 0}
         </Link>
         <button
           onClick={downloadPdf}

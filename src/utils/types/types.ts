@@ -219,7 +219,14 @@ export interface PaymentInfo {
   classScheduleType: string;
   training_option?: string;
   is_group: boolean;
-  promoPrices?: {
+  promoPrices?: PromoData;
+}
+
+export type TrainingType = "training" | "mentoring" | "training&mentoring";
+
+export interface PromoData {
+  isPromo: boolean;
+  prices: {
     naira: {
       training: number;
       mentoring: number;

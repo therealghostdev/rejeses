@@ -27,10 +27,13 @@ import Image from "next/image";
 import Transaction_error from "./checkout_components/transaction_error";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-toastify";
+import usePromoData from "@/utils/hooks/usePromoData";
 
 export default function Checkout({ pricingItem }: ClientPageProps) {
   const [generalPrice, setGeneralPrice] = useState<number>(0);
-  const { paymentInfo, setPaymentInfo } = usePayment();
+  const { promoData } = usePromoData();
+  const { paymentInfo, setPaymentInfo, selectedType } =
+    usePayment();
   const [transactionResponse, setTransactionResponse] =
     useState<TransactionResponseType>({
       data: { authorization_url: "", access_code: "", reference: "" },
@@ -73,15 +76,20 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
           setPaymentInfo((prev) => ({
             ...prev,
             promoPrices: {
-              naira: {
-                training: data.prices.naira.training,
-                mentoring: data.prices.naira.mentoring,
-                "training&mentoring": data.prices.naira["training&mentoring"],
-              },
-              dollar: {
-                training: data.prices.dollar.training,
-                mentoring: data.prices.dollar.mentoring,
-                "training&mentoring": data.prices.dollar["training&mentoring"],
+              isPromo: true,
+              prices: {
+                // <-- FIXED: added colon here
+                naira: {
+                  training: data.prices.naira.training,
+                  mentoring: data.prices.naira.mentoring,
+                  "training&mentoring": data.prices.naira["training&mentoring"],
+                },
+                dollar: {
+                  training: data.prices.dollar.training,
+                  mentoring: data.prices.dollar.mentoring,
+                  "training&mentoring":
+                    data.prices.dollar["training&mentoring"],
+                },
               },
             },
           }));
@@ -580,21 +588,21 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       if (!paymentInfo.is_group && formData.currency === "NGN" && isPromo) {
         if (paymentInfo.training_type === "Project Management Training") {
           const fixedPrice =
-            (paymentInfo.promoPrices?.naira.training || 55000) * count;
+            (paymentInfo.promoPrices?.prices.naira.training || 55000) * count;
           return VatCalculation(fixedPrice);
         } else if (
           paymentInfo.training_type === "Project Management Mentoring"
         ) {
           const fixedPrice =
-            (paymentInfo.promoPrices?.naira.mentoring || 250000) * count;
+            (paymentInfo.promoPrices?.prices.naira.mentoring || 250000) * count;
           return VatCalculation(fixedPrice);
         } else if (
           paymentInfo.training_type ===
           "Project Management Training & Mentoring"
         ) {
           const fixedPrice =
-            (paymentInfo.promoPrices?.naira["training&mentoring"] || 300000) *
-            count;
+            (paymentInfo.promoPrices?.prices.naira["training&mentoring"] ||
+              300000) * count;
           return VatCalculation(fixedPrice);
         }
       } else if (
@@ -603,18 +611,22 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
         isPromo
       ) {
         if (paymentInfo.training_type === "Project Management Training") {
-          return (paymentInfo.promoPrices?.dollar.training || 60) * count;
+          return (
+            (paymentInfo.promoPrices?.prices.dollar.training || 60) * count
+          );
         } else if (
           paymentInfo.training_type === "Project Management Mentoring"
         ) {
-          return (paymentInfo.promoPrices?.dollar.mentoring || 240) * count;
+          return (
+            (paymentInfo.promoPrices?.prices.dollar.mentoring || 240) * count
+          );
         } else if (
           paymentInfo.training_type ===
           "Project Management Training & Mentoring"
         ) {
           return (
-            (paymentInfo.promoPrices?.dollar["training&mentoring"] || 300) *
-            count
+            (paymentInfo.promoPrices?.prices.dollar["training&mentoring"] ||
+              300) * count
           );
         }
       } else {
@@ -972,11 +984,11 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                                 formatPrice(
                                   formData.currency === "NGN"
                                     ? paymentInfo.promoPrices &&
-                                        paymentInfo.promoPrices.naira[
+                                        paymentInfo.promoPrices.prices.naira[
                                           promoKey
                                         ] * count
                                     : paymentInfo.promoPrices &&
-                                        paymentInfo.promoPrices.dollar[
+                                        paymentInfo.promoPrices.prices.dollar[
                                           promoKey
                                         ] * count
                                 )}
@@ -1017,7 +1029,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                       {(formData.currency === "NGN" ? "NGN " : "$") +
                         formatPrice(
                           formData.currency === "NGN" && paymentInfo.promoPrices
-                            ? paymentInfo.promoPrices.naira[
+                            ? paymentInfo.promoPrices.prices.naira[
                                 (paymentInfo.training_type &&
                                 [
                                   "training",
@@ -1031,7 +1043,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                                   | "training&mentoring"
                               ] * count
                             : paymentInfo.promoPrices &&
-                                paymentInfo.promoPrices.dollar[
+                                paymentInfo.promoPrices.prices.dollar[
                                   (paymentInfo.training_type &&
                                   [
                                     "training",

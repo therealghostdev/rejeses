@@ -1,6 +1,8 @@
 import React from "react";
 import data from "@/utils/data/training_data.json";
 import ClassSchedule from "@/components/web_pages/training/class_schedule";
+import { usePayment } from "@/utils/context/payment";
+
 
 export async function generateStaticParams() {
   return data.map((item) => ({
@@ -12,6 +14,8 @@ export default function Page({ params }: { params: { slug: string } }) {
   const scheduleItem = data.find(
     (item) => item.id.toString() === params.slug.toString()
   );
+
+  const { paymentInfo } = usePayment();
 
   if (!scheduleItem) {
     return (
@@ -25,7 +29,11 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   return (
     <div className="flex justify-center items-center py-4 px-2">
-      <ClassSchedule data={scheduleItem.class_schedule} all={scheduleItem} />
+      <ClassSchedule
+        data={scheduleItem.class_schedule}
+        all={scheduleItem}
+        promo={paymentInfo.promoPrices?.isPromo || false}
+      />
     </div>
   );
 }

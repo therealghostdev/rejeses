@@ -9,9 +9,11 @@ import { ClientPageProps } from "@/utils/types/types";
 import { formatPrice } from "@/utils/reusables/functions";
 import { useRouter } from "next/navigation";
 import "../../../../public/assets/styles/select.css";
+import usePromoData from "@/utils/hooks/usePromoData";
 
 export default function TrainingPayment({ pricingItem }: ClientPageProps) {
-  const { paymentInfo, setPaymentInfo } = usePayment();
+  const { paymentInfo, setPaymentInfo, selectedType } = usePayment();
+  const { promoData } = usePromoData();
   const [formattedSummary, setFormattedSummary] = useState<string>("");
   const { isNigeria } = useNavigation();
   const [isWeekday, setIsWeekday] = useState(true);
@@ -40,12 +42,45 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   };
 
   const renderPrice = () => {
-    const { price, price2, is_group } = paymentInfo;
+    const { price, price2, is_group, promoPrices } = paymentInfo;
 
     const adjustedPrice = is_group ? price * 5 : price || 0;
     const adjustedPrice2 = is_group ? price2 * 5 : price2 || 0;
 
-    return isNigeria ? formatPrice(adjustedPrice2) : formatPrice(adjustedPrice);
+    if (adjustedPrice === 0) {
+      return isNigeria ? formatPrice(450000) : formatPrice(300);
+    }
+
+    if (isNigeria && !promoData) {
+      return formatPrice(adjustedPrice2);
+    }
+
+    if (!isNigeria) {
+      return formatPrice(adjustedPrice);
+    }
+
+    if (promoData && isNigeria) {
+      const nairaPrices = promoData.prices.naira;
+      const selectedNairaPrice =
+        nairaPrices?.[selectedType as keyof typeof nairaPrices] || 0;
+      console.log(selectedNairaPrice, "render");
+      const adjustedPromoNairaPrice = is_group
+        ? selectedNairaPrice * 5
+        : selectedNairaPrice;
+      return formatPrice(adjustedPromoNairaPrice);
+    }
+
+    if (promoData && !isNigeria) {
+      const dollarPrices = promoData?.prices.dollar;
+      const selectedDollarPrice =
+        dollarPrices?.[selectedType as keyof typeof dollarPrices] || 0;
+      const adjustedPromoDollarPrice = is_group
+        ? selectedDollarPrice * 5
+        : selectedDollarPrice;
+      return formatPrice(adjustedPromoDollarPrice);
+    }
+
+    return "";
   };
 
   useEffect(() => {
@@ -53,7 +88,14 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   }, [paymentInfo, pricingItem, isNigeria]);
 
   useEffect(() => {
-    if (paymentInfo.price === 0 || paymentInfo.price2 === 0) {
+    const isPromo = promoData?.isPromo;
+
+    if (
+      paymentInfo.price === 0 ||
+      paymentInfo.price2 === 0 ||
+      (isPromo && !promoData?.prices.naira[selectedType]) ||
+      (isPromo && !promoData?.prices.dollar[selectedType])
+    ) {
       router.push("/training");
     }
   }, [paymentInfo.price, paymentInfo.price2]);
