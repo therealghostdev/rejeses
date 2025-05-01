@@ -197,6 +197,11 @@ export type TouchedFields = {
   message: boolean;
 };
 
+export interface scrollSectionTypes {
+  children: React.ReactNode;
+  className: string;
+}
+
 export interface FormDataTYpe {
   firstName: string;
   lastName: string;

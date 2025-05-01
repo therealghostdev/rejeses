@@ -40,7 +40,7 @@ export default function PromoPage() {
     const nairaPrice = promoData?.prices.naira[selectedType] ?? 0;
     const dollarprice = promoData?.prices.dollar[selectedType] ?? 0;
     console.log(dollarprice, nairaPrice, "here");
-    
+
     return { nairaPrice, dollarprice };
   };
 
@@ -196,7 +196,7 @@ export default function PromoPage() {
         variants={fadeIn}
       >
         <motion.div
-          className="absolute top-0 right-0 w-40 h-40 md:w-64 md:h-64 opacity-10"
+          className="absolute top-0 right-0 w-40 h-40 md:w-64 md:h-64 opacity-10 text-[#89C13E]"
           animate={{
             rotate: 360,
             scale: [1, 1.1, 1],
@@ -207,12 +207,45 @@ export default function PromoPage() {
             ease: "linear",
           }}
         >
-          <Image
-            src="/images/pattern-circle.svg"
-            alt="Background Pattern"
-            fill
-            style={{ objectFit: "contain" }}
-          />
+          <svg
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-full"
+          >
+            {/* Circular border */}
+            <path
+              d="M100 0C44.8 0 0 44.8 0 100s44.8 100 100 100 100-44.8 100-100S155.2 0 100 0zm0 180c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z"
+              fill="currentColor"
+            />
+
+            {/* Percentage symbols */}
+            <circle cx="70" cy="70" r="12" fill="currentColor" />
+            <circle cx="130" cy="130" r="12" fill="currentColor" />
+            <path
+              d="M140 60L60 140"
+              stroke="currentColor"
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+
+            {/* Price tag shapes */}
+            <path
+              d="M40 100l15-15h30l5-5v-20l-5-5h-20l-5 5-20 20v20z"
+              fill="currentColor"
+              fill-opacity="0.5"
+            />
+            <path
+              d="M140 60l15 15v30l5 5h20l5-5v-20l-5-5-20-20h-20z"
+              fill="currentColor"
+              fill-opacity="0.5"
+            />
+
+            {/* Star burst elements */}
+            <path
+              d="M100 15l3 12-3-12zm0 170l-3-12 3 12zm85-85l-12 3 12-3zm-170 0l12-3-12 3z"
+              fill="currentColor"
+            />
+          </svg>
         </motion.div>
 
         <div className="max-w-7xl mx-auto">
@@ -409,14 +442,31 @@ export default function PromoPage() {
             </motion.div>
           </motion.div>
 
-          {/* Only show training selection if not mentoring only */}
           {selectedType !== "mentoring" && (
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-              variants={containerVariants}
-            >
-              {data.map((training) => {
-                return (
+            <div>
+              <div className="max-w-7xl mx-auto">
+                <motion.h2
+                  className="text-3xl font-bold font-bricolage_grotesque mb-2 text-center"
+                  variants={itemVariants}
+                >
+                  Course Schedule
+                </motion.h2>
+                <motion.p
+                  className="text-gray-600 text-center mb-12 max-w-2xl mx-auto"
+                  variants={itemVariants}
+                >
+                  Explore our training programs to discover exclusive
+                  promotional pricing and detailed schedules tailored to your
+                  availability. Choose the one that best fits your goals and get
+                  started today.
+                </motion.p>
+              </div>
+
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                variants={containerVariants}
+              >
+                {data.map((training) => (
                   <motion.div
                     key={training.id}
                     className={`border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:shadow-md ${
@@ -465,9 +515,9 @@ export default function PromoPage() {
                       </div>
                     )}
                   </motion.div>
-                );
-              })}
-            </motion.div>
+                ))}
+              </motion.div>
+            </div>
           )}
         </div>
       </motion.div>
