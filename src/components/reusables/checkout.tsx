@@ -28,12 +28,12 @@ import Transaction_error from "./checkout_components/transaction_error";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-toastify";
 import usePromoData from "@/utils/hooks/usePromoData";
+import { notify } from "@/utils/reusables/functions";
 
 export default function Checkout({ pricingItem }: ClientPageProps) {
   const [generalPrice, setGeneralPrice] = useState<number>(0);
   const { promoData } = usePromoData();
-  const { paymentInfo, setPaymentInfo, selectedType } =
-    usePayment();
+  const { paymentInfo, setPaymentInfo, selectedType } = usePayment();
   const [transactionResponse, setTransactionResponse] =
     useState<TransactionResponseType>({
       data: { authorization_url: "", access_code: "", reference: "" },
@@ -301,14 +301,6 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
       setIsPolling(true);
     },
   });
-
-  const notify = (message: string) =>
-    toast.error(message, {
-      autoClose: 3000,
-      hideProgressBar: true,
-      theme: "colored",
-      toastId: "1",
-    });
 
   const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
   const handleFormSubmit = async (
@@ -657,6 +649,12 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     }
   };
 
+  useEffect(() => {
+    console.log(paymentInfo, "full info at about");
+    console.log(paymentInfo.price2, "price2 at about");
+    console.log(paymentInfo.price, "price at about");
+  }, [paymentInfo]);
+
   return (
     <section
       className="flex justify-center items-center w-full min-h-screen px-8 lg:py-12 py-4"
@@ -975,8 +973,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                               {(formData.currency === "NGN" ? "NGN " : "$") +
                                 formatPrice(
                                   formData.currency === "NGN"
-                                    ? paymentInfo.price2 * count
-                                    : paymentInfo.price * count
+                                    ? paymentInfo.original_price * count
+                                    : paymentInfo.original_price2 * count
                                 )}
                             </p>
                             <h1 className="font-bold text-[#89C13E] text-lg">
@@ -985,11 +983,11 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                                   formData.currency === "NGN"
                                     ? paymentInfo.promoPrices &&
                                         paymentInfo.promoPrices.prices.naira[
-                                          promoKey
+                                          selectedType
                                         ] * count
                                     : paymentInfo.promoPrices &&
                                         paymentInfo.promoPrices.prices.dollar[
-                                          promoKey
+                                          selectedType
                                         ] * count
                                 )}
                             </h1>
@@ -1021,8 +1019,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                       {(formData.currency === "NGN" ? "NGN " : "$") +
                         formatPrice(
                           formData.currency === "NGN"
-                            ? paymentInfo.price2 * count
-                            : paymentInfo.price * count
+                            ? paymentInfo.original_price * count
+                            : paymentInfo.original_price2 * count
                         )}
                     </p>
                     <h1 className="font-bold text-[#89C13E]">
@@ -1030,31 +1028,11 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                         formatPrice(
                           formData.currency === "NGN" && paymentInfo.promoPrices
                             ? paymentInfo.promoPrices.prices.naira[
-                                (paymentInfo.training_type &&
-                                [
-                                  "training",
-                                  "mentoring",
-                                  "training&mentoring",
-                                ].includes(paymentInfo.training_type)
-                                  ? paymentInfo.training_type
-                                  : "training") as
-                                  | "training"
-                                  | "mentoring"
-                                  | "training&mentoring"
+                                selectedType
                               ] * count
                             : paymentInfo.promoPrices &&
                                 paymentInfo.promoPrices.prices.dollar[
-                                  (paymentInfo.training_type &&
-                                  [
-                                    "training",
-                                    "mentoring",
-                                    "training&mentoring",
-                                  ].includes(paymentInfo.training_type)
-                                    ? paymentInfo.training_type
-                                    : "training") as
-                                    | "training"
-                                    | "mentoring"
-                                    | "training&mentoring"
+                                  selectedType
                                 ] * count
                         )}
                     </h1>

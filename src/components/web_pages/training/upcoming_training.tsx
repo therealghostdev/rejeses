@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import data from "@/utils/data/training_data.json";
 import Card from "./card";
 import { getNextMondayDates } from "@/utils/reusables/functions";

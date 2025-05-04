@@ -7,8 +7,10 @@ import ClassSchedule from "@/components/web_pages/training/class_schedule";
 import { usePayment, useNavigation } from "@/utils/context/payment";
 import data from "@/utils/data/training_data.json";
 import { Switch } from "radix-ui";
-import { TrainingType } from "@/utils/types/types";
+import { TrainingType, PaymentInfo } from "@/utils/types/types";
 import usePromoData from "@/utils/hooks/usePromoData";
+import { getNextMondayDates } from "@/utils/reusables/functions";
+import { notify } from "@/utils/reusables/functions";
 
 export default function PromoPage() {
   const { promoData, isLoading } = usePromoData();
@@ -16,6 +18,51 @@ export default function PromoPage() {
   const { paymentInfo, setPaymentInfo, selectedType, setSelectedType } =
     usePayment();
   const { isNigeria, setIsNigeria } = useNavigation();
+  const [visibleItems, setVisibleItems] = useState(6);
+
+  const mondayDates = getNextMondayDates(15);
+  const itemsReplica = data[0];
+
+  const initialPaymentInfo: PaymentInfo = {
+    price: 0,
+    price2: 0,
+    original_price: 0,
+    original_price2: 0,
+    training_id: null,
+    training_type: "",
+    start_date: "",
+    classScheduleType: "",
+    is_group: false,
+    promoPrices: {
+      isPromo: false,
+      prices: {
+        naira: {
+          training: 0,
+          mentoring: 0,
+          "training&mentoring": 0,
+        },
+        dollar: {
+          training: 0,
+          mentoring: 0,
+          "training&mentoring": 0,
+        },
+      },
+    },
+  };
+
+  const handleSeeMore = () => {
+    if (visibleItems < 15) {
+      setVisibleItems(visibleItems + 3);
+    } else {
+      setVisibleItems(6);
+    }
+  };
+
+  const displayItems = new Array(15).fill(itemsReplica).map((item, index) => ({
+    ...item,
+    cohortIndex: index % data.length,
+    mondayDate: mondayDates[index],
+  }));
 
   function formatPrice(price: number): string {
     if (price >= 1000) {
@@ -25,15 +72,45 @@ export default function PromoPage() {
     }
   }
 
-  const handleTrainingChange = (trainingId: string) => {
+  const handleTrainingChange = (trainingId: string, mondayDate?: Date) => {
     const selected = data.find((item) => item.id.toString() === trainingId);
     if (selected) {
       setSelectedTraining(selected);
+
+      if (mondayDate) {
+        const formattedDate = mondayDate.toLocaleDateString("en-US", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+
+        setPaymentInfo((prev) => ({
+          ...prev,
+          start_date: formattedDate,
+        }));
+      }
     }
   };
 
+  useEffect(() => {
+    setPaymentInfo(initialPaymentInfo);
+  }, []);
+
   const handleTypeChange = (type: TrainingType) => {
     setSelectedType(type);
+
+    if (type === "training" || type === "training&mentoring") {
+      const firstTraining = {
+        ...data[0],
+        cohortIndex: 0,
+        mondayDate: mondayDates[0],
+      };
+
+      handleTrainingChange(
+        firstTraining.id.toString(),
+        firstTraining.mondayDate
+      );
+    }
   };
 
   const classSchedulePrice = () => {
@@ -88,26 +165,58 @@ export default function PromoPage() {
         training_id: selectedTraining.id,
         training_type:
           selectedType === "mentoring"
-            ? "Mentoring Program"
+            ? "Project Management Mentoring"
             : selectedType === "training&mentoring"
-            ? `${selectedTraining.title} Training with Mentoring`
-            : `${selectedTraining.title} Training`,
-        start_date: selectedTraining.start_date,
+            ? `${selectedTraining.title} & Mentoring`
+            : `Project Management Training`,
+        start_date: prev.start_date || selectedTraining.start_date,
         training_option: `You are subscribing to <b>rejeses consult</b> ${
           selectedType === "mentoring"
             ? "3-month mentoring plan"
             : selectedType === "training&mentoring"
-            ? "35-hour training plus 6-month mentorship plan"
+            ? "35-hour training plus 3-month mentorship plan"
             : "35-hour training plan"
         }. You will be charged ${isNigeria ? "NGN " : "$"}${formatPrice(
           price
         )} for this.`,
         is_group: false,
         promo: true,
-        original_price: isNigeria ? originalPriceNGN : originalPriceUSD,
+        original_price: originalPriceNGN,
+        original_price2: originalPriceUSD,
       }));
     }
   }, [selectedTraining, selectedType, isNigeria, promoData]);
+
+  useEffect(() => {
+    console.log("selectedType", selectedType);
+    console.log("selectedTraining", selectedTraining);
+    console.log("startDate", paymentInfo);
+    if (selectedType && selectedTraining) {
+      handleTypeChange(selectedType);
+    }
+  }, [selectedType, selectedTraining]);
+
+  const routetoPath = (): string => {
+    if (
+      paymentInfo.start_date === "1st March, 2034" ||
+      !paymentInfo.start_date ||
+      paymentInfo.start_date === ""
+    ) {
+      return "";
+    } else {
+      return `/training/${paymentInfo.training_id}`;
+    }
+  };
+
+  const notifyuser = () => {
+    if (
+      paymentInfo.start_date === "1st March, 2034" ||
+      !paymentInfo.start_date ||
+      paymentInfo.start_date === ""
+    ) {
+      notify("select a training schedule");
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -134,7 +243,7 @@ export default function PromoPage() {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-[60vh]">
-        <div className="w-12 h-12 border-4 border-[#89C13E] border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-[#4B006E] border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -192,11 +301,11 @@ export default function PromoPage() {
     >
       {/* Hero Banner */}
       <motion.div
-        className="relative w-full bg-gradient-to-r from-[#ECF5E0] to-white py-20 px-6 md:px-12"
+        className="relative w-full bg-gradient-to-r from-[#4B006E] to-white py-20 px-6 md:px-12"
         variants={fadeIn}
       >
         <motion.div
-          className="absolute top-0 right-0 w-40 h-40 md:w-64 md:h-64 opacity-10 text-[#89C13E]"
+          className="absolute top-0 right-0 w-40 h-40 md:w-64 md:h-64 opacity-10 text-[#4B006E]"
           animate={{
             rotate: 360,
             scale: [1, 1.1, 1],
@@ -253,7 +362,7 @@ export default function PromoPage() {
             className="flex items-center gap-2 mb-4"
             variants={itemVariants}
           >
-            <div className="w-12 h-12 rounded-full bg-[#89C13E] flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-[gray] flex items-center justify-center">
               <span className="text-white font-bold text-xl">%</span>
             </div>
             <span className="text-[#89C13E] font-medium">
@@ -265,13 +374,13 @@ export default function PromoPage() {
             className="text-4xl md:text-6xl font-bold font-bricolage_grotesque mb-6 max-w-3xl"
             variants={itemVariants}
           >
-            <span className="text-gray-800">Special</span>{" "}
+            <span className="text-gray-300">Special</span>{" "}
             <span className="text-[#89C13E]">Promotional</span>{" "}
-            <span className="text-gray-800">Prices</span>
+            <span className="text-gray-300">Prices</span>
           </motion.h1>
 
           <motion.p
-            className="text-gray-600 text-lg md:text-xl max-w-2xl mb-8"
+            className="text-gray-300 text-lg md:text-xl max-w-2xl mb-8"
             variants={itemVariants}
           >
             Advance your career with our professional training programs and
@@ -290,7 +399,7 @@ export default function PromoPage() {
             </Link>
             <Link
               href="#schedule"
-              className="border border-[#DBE1E7] text-gray-700 px-8 py-4 rounded-md font-medium transition-all hover:bg-gray-50 text-center"
+              className="border border-[#89C13E] text-white px-8 py-4 rounded-md font-medium transition-all hover:bg-gray-300 hover:text-[#4B006E] text-center"
             >
               See Schedule
             </Link>
@@ -303,7 +412,7 @@ export default function PromoPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-end items-center gap-3">
           <span
             className={`font-medium ${
-              !isNigeria ? "text-[#89C13E]" : "text-gray-500"
+              isNigeria ? "text-[#4B006E]" : "text-gray-500"
             }`}
           >
             USD
@@ -311,13 +420,13 @@ export default function PromoPage() {
           <Switch.Root
             checked={isNigeria}
             onCheckedChange={() => setIsNigeria(!isNigeria)}
-            className="w-[42px] h-[25px] bg-gray-200 rounded-full relative data-[state=checked]:bg-[#89C13E] transition-colors"
+            className="w-[42px] h-[25px] bg-gray-200 rounded-full relative data-[state=checked]:bg-[#4B006E] transition-colors"
           >
             <Switch.Thumb className="block w-[21px] h-[21px] bg-white rounded-full shadow-md transition-transform translate-x-1 data-[state=checked]:translate-x-[19px]" />
           </Switch.Root>
           <span
             className={`font-medium ${
-              isNigeria ? "text-[#89C13E]" : "text-gray-500"
+              !isNigeria ? "text-[#4B006E]" : "text-gray-500"
             }`}
           >
             NGN
@@ -354,7 +463,7 @@ export default function PromoPage() {
             <motion.div
               className={`border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:shadow-md p-6 ${
                 selectedType === "training"
-                  ? "border-[#89C13E] shadow-md"
+                  ? "border-[#4B006E] shadow-md"
                   : "border-[#DBE1E7]"
               }`}
               onClick={() => handleTypeChange("training")}
@@ -369,13 +478,15 @@ export default function PromoPage() {
                 preparation.
               </p>
               <div className="flex items-center justify-between">
-                <span className="text-[#89C13E] font-medium">Promo Price:</span>
-                <span className="text-[#89C13E] font-bold text-xl">
+                <span className="text-[#4B006E] font-medium">Promo Price:</span>
+                <span className="text-[#4B006E] font-bold text-xl">
                   {isNigeria
                     ? `NGN ${formatPrice(
-                        promoData?.prices.naira.training || 0
+                        promoData?.prices.naira[selectedType] || 0
                       )}`
-                    : `$${formatPrice(promoData?.prices.dollar.training || 0)}`}
+                    : `$${formatPrice(
+                        promoData?.prices.dollar[selectedType] || 0
+                      )}`}
                 </span>
               </div>
             </motion.div>
@@ -383,7 +494,7 @@ export default function PromoPage() {
             <motion.div
               className={`border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:shadow-md p-6 ${
                 selectedType === "mentoring"
-                  ? "border-[#89C13E] shadow-md"
+                  ? "border-[#4B006E] shadow-md"
                   : "border-[#DBE1E7]"
               }`}
               onClick={() => handleTypeChange("mentoring")}
@@ -397,8 +508,8 @@ export default function PromoPage() {
                 3-month personalized mentoring program with industry experts.
               </p>
               <div className="flex items-center justify-between">
-                <span className="text-[#89C13E] font-medium">Promo Price:</span>
-                <span className="text-[#89C13E] font-bold text-xl">
+                <span className="text-[#4B006E] font-medium">Promo Price:</span>
+                <span className="text-[#4B006E] font-bold text-xl">
                   {isNigeria
                     ? `NGN ${formatPrice(
                         promoData?.prices.naira.mentoring || 0
@@ -413,7 +524,7 @@ export default function PromoPage() {
             <motion.div
               className={`border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:shadow-md p-6 ${
                 selectedType === "training&mentoring"
-                  ? "border-[#89C13E] shadow-md"
+                  ? "border-[#4B006E] shadow-md"
                   : "border-[#DBE1E7]"
               }`}
               onClick={() => handleTypeChange("training&mentoring")}
@@ -428,8 +539,10 @@ export default function PromoPage() {
                 program.
               </p>
               <div className="flex items-center justify-between">
-                <span className="text-[#89C13E] font-medium">Promo Price:</span>
-                <span className="text-[#89C13E] font-bold text-xl">
+                <span className="text-[#4B006E]  font-medium">
+                  Promo Price:
+                </span>
+                <span className="text-[#4B006E]  font-bold text-xl">
                   {isNigeria
                     ? `NGN ${formatPrice(
                         promoData?.prices.naira["training&mentoring"] || 0
@@ -461,20 +574,30 @@ export default function PromoPage() {
                   started today.
                 </motion.p>
               </div>
-
               <motion.div
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                 variants={containerVariants}
               >
-                {data.map((training) => (
+                {displayItems.slice(0, visibleItems).map((training, index) => (
                   <motion.div
-                    key={training.id}
+                    key={`${training.id}-${index}`}
                     className={`border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:shadow-md ${
-                      selectedTraining.id === training.id
-                        ? "border-[#89C13E] shadow-md"
+                      selectedTraining.id === training.id &&
+                      paymentInfo.start_date ===
+                        training.mondayDate.toLocaleDateString("en-US", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })
+                        ? "border-[#4B006E] shadow-md"
                         : "border-[#DBE1E7]"
                     }`}
-                    onClick={() => handleTrainingChange(training.id.toString())}
+                    onClick={() =>
+                      handleTrainingChange(
+                        training.id.toString(),
+                        training.mondayDate
+                      )
+                    }
                     whileHover={{ scale: 1.02 }}
                     variants={itemVariants}
                   >
@@ -489,15 +612,19 @@ export default function PromoPage() {
                       <div className="flex items-center justify-between mb-4">
                         <span className="text-gray-500">Start Date:</span>
                         <span className="text-gray-700 font-medium">
-                          {training.start_date}
+                          {training.mondayDate.toLocaleDateString("en-US", {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric",
+                          })}
                         </span>
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <span className="text-[#89C13E] font-medium">
+                        <span className="text-[#4B006E] font-medium">
                           Promo Price:
                         </span>
-                        <span className="text-[#89C13E] font-bold text-xl">
+                        <span className="text-[#4B006E] font-bold text-xl">
                           {isNigeria
                             ? `NGN ${formatPrice(
                                 promoData?.prices.naira[selectedType] || 0
@@ -509,13 +636,31 @@ export default function PromoPage() {
                       </div>
                     </div>
 
-                    {selectedTraining.id === training.id && (
-                      <div className="bg-[#ECF5E0] text-[#89C13E] font-medium text-center py-2">
-                        Selected
-                      </div>
-                    )}
+                    {selectedTraining.id === training.id &&
+                      paymentInfo.start_date ===
+                        training.mondayDate.toLocaleDateString("en-US", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        }) && (
+                        <div className="bg-[#4B006E] text-gray-300 font-medium text-center py-2">
+                          Selected
+                        </div>
+                      )}
                   </motion.div>
                 ))}
+              </motion.div>
+
+              <motion.div
+                className="flex justify-center mt-8"
+                variants={itemVariants}
+              >
+                <button
+                  onClick={handleSeeMore}
+                  className="bg-white border border-[#4B006E] text-[#4B006E] hover:bg-[#F5E0F0] px-8 py-3 rounded-md font-medium transition-all"
+                >
+                  {visibleItems >= 15 ? "See Less" : "See More"}
+                </button>
               </motion.div>
             </div>
           )}
@@ -547,7 +692,7 @@ export default function PromoPage() {
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#ECF5E0] flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-full bg-[#F5E0F0] flex items-center justify-center mb-4">
                     <Image
                       src="/trophy.svg"
                       alt="Certificate"
@@ -569,7 +714,7 @@ export default function PromoPage() {
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#ECF5E0] flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-full bg-[#F5E0F0] flex items-center justify-center mb-4">
                     <Image
                       src="/material.svg"
                       alt="Practice"
@@ -591,7 +736,7 @@ export default function PromoPage() {
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#ECF5E0] flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-full bg-[#F5E0F0] flex items-center justify-center mb-4">
                     <Image
                       src="/resources.svg"
                       alt="Resources"
@@ -618,7 +763,7 @@ export default function PromoPage() {
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#ECF5E0] flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-full bg-[#F5E0F0] flex items-center justify-center mb-4">
                     <Image
                       src="/expert.svg"
                       alt="Mentoring"
@@ -640,7 +785,7 @@ export default function PromoPage() {
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#ECF5E0] flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-full bg-[#F5E0F0] flex items-center justify-center mb-4">
                     <Image
                       src="/template.svg"
                       alt="Templates"
@@ -662,7 +807,7 @@ export default function PromoPage() {
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#ECF5E0] flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-full bg-[#F5E0F0] flex items-center justify-center mb-4">
                     <Image
                       src="/network.svg"
                       alt="Network"
@@ -729,7 +874,7 @@ export default function PromoPage() {
 
       {/* CTA Section */}
       <motion.div
-        className="w-full bg-[#89C13E] py-16 px-6 md:px-12 text-white"
+        className="w-full bg-[#4B006E] py-16 px-6 md:px-12 text-white"
         variants={fadeIn}
       >
         <div className="max-w-4xl mx-auto text-center">
@@ -759,14 +904,15 @@ export default function PromoPage() {
             {selectedType === "mentoring" ? (
               <Link
                 href={`/mentorship/pricing`}
-                className="bg-white text-[#89C13E] px-12 py-4 rounded-md font-medium transition-all hover:bg-opacity-90 inline-block"
+                className="bg-white text-[#4B006E] px-12 py-4 rounded-md font-medium transition-all hover:bg-opacity-90 inline-block"
               >
                 Enroll Now
               </Link>
             ) : (
               <Link
-                href={`/training/${paymentInfo.training_id}`}
-                className="bg-white text-[#89C13E] px-12 py-4 rounded-md font-medium transition-all hover:bg-opacity-90 inline-block"
+                onClick={notifyuser}
+                href={routetoPath()}
+                className="bg-white text-[#4B006E] px-12 py-4 rounded-md font-medium transition-all hover:bg-opacity-90 inline-block"
               >
                 Enroll Now
               </Link>

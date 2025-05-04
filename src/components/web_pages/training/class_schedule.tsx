@@ -10,6 +10,7 @@ import { Class, ScheduleData, TrainingOption1 } from "@/utils/types/types";
 import { usePayment } from "@/utils/context/payment";
 import { useNavigation } from "@/utils/context/payment";
 import { usePathname } from "next/navigation";
+import { notify } from "@/utils/reusables/functions";
 
 const { days, times } = data as ScheduleData;
 
@@ -115,6 +116,30 @@ export default function ClassSchedule(props: SchedulePropsData) {
     }));
   };
 
+  const notifyuser = () => {
+    if (
+      props.promo &&
+      (paymentInfo.start_date === "1st March, 2034" ||
+        !paymentInfo.start_date ||
+        paymentInfo.start_date === "")
+    ) {
+      notify("select a training schedule");
+    }
+  };
+
+  const routetoPath = (): string => {
+    if (
+      props.promo &&
+      (paymentInfo.start_date === "1st March, 2034" ||
+        !paymentInfo.start_date ||
+        paymentInfo.start_date === "")
+    ) {
+      return "";
+    } else {
+      return `/training/${paymentInfo.training_id}`;
+    }
+  };
+
   useEffect(() => {
     BacktoSummary();
   }, [isNigeria]);
@@ -171,7 +196,13 @@ export default function ClassSchedule(props: SchedulePropsData) {
       </div>
       <div ref={scheduleRef} className="w-full overflow-x-auto">
         <table className="min-w-full border-collapse font-bricolage_grotesque">
-          <thead className="bg-[#ECF5E0] text-[#89C13E] font-bold">
+          <thead
+            className={`${
+              pathname.includes("promo")
+                ? "text-[#4B006E] bg-[#5b0c7a75]"
+                : "text-[#89C13E] bg-[#ECF5E0]"
+            } font-bold`}
+          >
             <tr>
               <th className="border border-black md:p-6 p-2 md:w-[100px] md:h-[100px] text-xs sm:text-sm">
                 Day
@@ -189,7 +220,13 @@ export default function ClassSchedule(props: SchedulePropsData) {
           <tbody>
             {days.map((day) => (
               <tr key={day}>
-                <td className="border border-black md:p-6 md:w-[100px] md:h-[100px] p-2 text-xs sm:text-sm bg-[#ECF5E0] text-[#89C13E] font-bold">
+                <td
+                  className={`border border-black md:p-6 md:w-[100px] md:h-[100px] p-2 text-xs sm:text-sm ${
+                    pathname.includes("promo")
+                      ? "text-[#4B006E] bg-[#5b0c7a75]"
+                      : "text-[#89C13E] bg-[#ECF5E0]"
+                  } font-bold`}
+                >
                   {day}
                 </td>
                 {times.map((time) => (
@@ -198,13 +235,24 @@ export default function ClassSchedule(props: SchedulePropsData) {
                     className="border border-black md:p-6 p-2 text-center"
                   >
                     {isClassScheduled(day, time) ? (
-                      <Image
-                        src="/check.svg"
-                        alt="check-mark"
-                        width={20}
-                        height={20}
-                        className="mx-auto"
-                      />
+                      pathname.includes("promo") ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="w-5 h-5 text-white rounded-full bg-[#4B006E] mx-auto"
+                        >
+                          <path d="M20.285 6.709a1 1 0 00-1.414-1.418l-9.192 9.193-4.243-4.243a1 1 0 10-1.414 1.415l5 5a1 1 0 001.414 0l10-10z" />
+                        </svg>
+                      ) : (
+                        <Image
+                          src="/check.svg"
+                          alt="check-mark"
+                          width={20}
+                          height={20}
+                          className="mx-auto"
+                        />
+                      )
                     ) : (
                       ""
                     )}
@@ -218,8 +266,11 @@ export default function ClassSchedule(props: SchedulePropsData) {
 
       <div className="flex flex-col sm:flex-row justify-center items-center py-6 gap-4 w-full font-medium font-bricolage_grotesque">
         <Link
-          href={`/training/${paymentInfo.training_id}`}
-          className="bg-[#89C13E] text-white px-12 py-4 flex justify-center items-center rounded-md w-full sm:w-auto text-xs sm:text-sm"
+          onClick={notifyuser}
+          href={routetoPath()}
+          className={`${
+            pathname.includes("promo") ? "bg-[#4B006E]" : "bg-[#89C13E]"
+          } text-white px-12 py-4 flex justify-center items-center rounded-md w-full sm:w-auto text-xs sm:text-sm`}
         >
           Pay now {isNigeria ? "NGN " : "$"}
           {isNigeria
@@ -236,9 +287,14 @@ export default function ClassSchedule(props: SchedulePropsData) {
         </Link>
         <button
           onClick={downloadPdf}
-          className="text-[#89C13E] bg-white px-12 py-4 flex justify-center items-center rounded-md border border-[#DBE1E7] w-full sm:w-auto text-xs sm:text-sm"
+          className={`${
+            pathname.includes("promo") ? "text-[#4B006E]" : "text-[#89C13E]"
+          } bg-white px-12 py-4 flex justify-center items-center rounded-md border border-[#DBE1E7] w-full sm:w-auto text-xs sm:text-sm`}
         >
-          <DownloadIcon color="#89C13E" className="mr-2" />
+          <DownloadIcon
+            color={pathname.includes("promo") ? "#4B006E" : "#89C13E"}
+            className="mr-2"
+          />
           Download Schedule
         </button>
       </div>

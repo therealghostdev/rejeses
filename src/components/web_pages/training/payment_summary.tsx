@@ -59,7 +59,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
       return formatPrice(adjustedPrice);
     }
 
-    if (promoData && isNigeria) {
+    if (promoData?.isPromo && isNigeria) {
       const nairaPrices = promoData.prices.naira;
       const selectedNairaPrice =
         nairaPrices?.[selectedType as keyof typeof nairaPrices] || 0;
@@ -70,7 +70,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
       return formatPrice(adjustedPromoNairaPrice);
     }
 
-    if (promoData && !isNigeria) {
+    if (promoData?.isPromo && !isNigeria) {
       const dollarPrices = promoData?.prices.dollar;
       const selectedDollarPrice =
         dollarPrices?.[selectedType as keyof typeof dollarPrices] || 0;
@@ -80,7 +80,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
       return formatPrice(adjustedPromoDollarPrice);
     }
 
-    return "";
+    return isNigeria ? adjustedPrice2 : adjustedPrice;
   };
 
   useEffect(() => {
@@ -208,7 +208,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
             <div className="flex justify-between w-full font-bricolage_grotesque">
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
-                {isNigeria ? "NGN" : "$"}
+                {isNigeria ? "NGN" : "$"} {" "}
                 {renderPrice()}
               </span>
             </div>

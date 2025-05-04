@@ -1,4 +1,5 @@
 import { EmailConfig } from "@/utils/types/types";
+import { toast } from "react-toastify";
 
 export function createEmailTemplate(
   name: string,
@@ -551,6 +552,14 @@ export const capitalizeCourseScheduleType = (item: string) => {
   const first = item.charAt(0).toUpperCase() + restOfItems;
   return first;
 };
+
+export const notify = (message: string) =>
+  toast.error(message, {
+    autoClose: 3000,
+    hideProgressBar: true,
+    theme: "colored",
+    toastId: "1",
+  });
 
 // Function to get the appropriate email configuration based on environment
 export const getEmailConfig = (

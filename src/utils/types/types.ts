@@ -218,6 +218,8 @@ export interface FormDataTYpe {
 export interface PaymentInfo {
   price: number;
   price2: number;
+  original_price: number;
+  original_price2: number;
   training_id: number | null;
   training_type: string;
   start_date: string;
@@ -245,8 +247,16 @@ export interface PromoData {
   };
 }
 
+export interface PromoBannerProps {
+  promoData: PromoData;
+}
+
 export interface OrderResponse {
   data: string;
+}
+
+export interface PromoPricingProps {
+  promoData: PromoData | null;
 }
 
 export interface TransactionResponseType {
