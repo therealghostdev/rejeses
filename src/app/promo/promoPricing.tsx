@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 
 const PromoPricing = forwardRef<HTMLElement, PromoPricingProps>(
   ({ promoData }, ref) => {
-    if (!promoData?.isPromo) return null;
-
     const pathname = usePathname();
+
+    if (!promoData?.isPromo) return null;
 
     return (
       <section className="w-full my-12" ref={ref} id="pricing">
