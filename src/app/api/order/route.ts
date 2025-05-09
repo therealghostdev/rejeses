@@ -11,6 +11,7 @@ import {
   generatePromoCode,
 } from "@/app/services/repository/promocode/promocode";
 import { OrderType } from "../../services/repository/order/order";
+import { Prisma } from "@prisma/client";
 
 export async function GET(req: Request) {
   try {
@@ -199,7 +200,7 @@ export async function PUT(req: Request) {
       status,
     } = requestBody;
 
-    const validFields: Partial<OrderType2> = {};
+    const validFields: Partial<Omit<Prisma.OrderUpdateInput, "id" | "updatedAt" | "createdAt">>= {};
     const refinedStatus = status?.toLowerCase() as StatusType;
 
     if (firstName !== undefined) validFields.firstName = firstName;
