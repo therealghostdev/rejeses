@@ -161,17 +161,14 @@ export default function Nav_desktop() {
                   </motion.span>
                 ) : (
                   <motion.span
+                    key={index}
                     className="flex justify-center items-center rounded-md transition_button"
                     whileHover={{
                       scale: 1.05,
                       boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.4)",
                     }}
                   >
-                    <Link
-                      className={button.className}
-                      href={button.url}
-                      key={index}
-                    >
+                    <Link className={button.className} href={button.url}>
                       {button.label.toUpperCase()}
                     </Link>
                   </motion.span>
