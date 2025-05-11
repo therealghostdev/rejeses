@@ -1,5 +1,5 @@
 {
-  "isPromo": true,
+  "isPromo": false,
   "prices": {
     "naira": {
       "training": 50000,
