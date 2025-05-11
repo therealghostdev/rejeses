@@ -7,9 +7,9 @@
       "training&mentoring": 515000
     },
     "dollar": {
-      "training": 60,
-      "mentoring": 240,
-      "training&mentoring": 300
+      "training": 80,
+      "mentoring": 300,
+      "training&mentoring": 380
     }
   }
 }
