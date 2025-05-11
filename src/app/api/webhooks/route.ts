@@ -65,6 +65,8 @@ export async function POST(req: Request) {
       customer: { email },
     } = body.data;
 
+    console.log(currency, "is currency");
+
     const retrievedFirstName = custom_fields.map(
       (item: any) => item.first_name
     );
@@ -181,7 +183,7 @@ export async function POST(req: Request) {
               order.courseSchedule,
               order.courseScheduleType,
               order.amount,
-              order.startDate,
+              currency,
               order.participants as { name: string; email: string }[],
               false,
               true
@@ -215,7 +217,7 @@ export async function POST(req: Request) {
                 order.courseSchedule,
                 order.courseScheduleType,
                 order.amount,
-                order.startDate,
+                currency,
                 order.participants as { name: string; email: string }[],
                 true,
                 false
@@ -246,7 +248,7 @@ export async function POST(req: Request) {
                 order.courseSchedule,
                 order.courseScheduleType,
                 order.amount,
-                order.startDate,
+                currency,
                 order.participants as { name: string; email: string }[],
                 true,
                 false

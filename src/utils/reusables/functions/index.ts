@@ -325,7 +325,9 @@ export function createCourseEmailTemplate(
 
             <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Amount Paid:</div>
             <div style="margin-bottom: 15px; font-size: 15px;">
-              ${currency === "naira" ? "NGN" : "$"} ${formatPrice(amount)}
+              ${
+                currency === "naira" || currency === "NGN" ? "NGN" : "$"
+              } ${formatPrice(amount)}
             </div>
 
             ${renderParticipantsSection()}

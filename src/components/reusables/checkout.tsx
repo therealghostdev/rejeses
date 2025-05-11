@@ -595,6 +595,9 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
           const fixedPrice =
             (paymentInfo.promoPrices?.prices.naira["training&mentoring"] ||
               300000) * count;
+
+              console.log(fixedPrice, "chec");
+              
           return VatCalculation(fixedPrice);
         }
       } else if (

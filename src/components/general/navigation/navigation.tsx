@@ -144,9 +144,13 @@ export default function Nav_desktop() {
             <section className="flex space-x-2">
               {linkButtons.map((button, index) =>
                 index === 0 ? (
-                  <span
+                  <motion.span
                     key={index}
                     className="mx-2 bg-[#89C13E] py-3 rounded-[.3rem]"
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0px 5px 15px rgba(137, 193, 62, 0.4)",
+                    }}
                   >
                     <Link
                       className={`${button.className} lg:py-4`}
@@ -154,15 +158,23 @@ export default function Nav_desktop() {
                     >
                       {button.label.toUpperCase()}
                     </Link>
-                  </span>
+                  </motion.span>
                 ) : (
-                  <Link
-                    className={button.className}
-                    href={button.url}
-                    key={index}
+                  <motion.span
+                    className="flex justify-center items-center rounded-md transition_button"
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.4)",
+                    }}
                   >
-                    {button.label.toUpperCase()}
-                  </Link>
+                    <Link
+                      className={button.className}
+                      href={button.url}
+                      key={index}
+                    >
+                      {button.label.toUpperCase()}
+                    </Link>
+                  </motion.span>
                 )
               )}
             </section>

@@ -230,7 +230,10 @@ export default function Header() {
 
             <motion.span
               className="mx-2 margin-sm-override"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0px 5px 15px rgba(0,0,0, 0.4)",
+              }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >

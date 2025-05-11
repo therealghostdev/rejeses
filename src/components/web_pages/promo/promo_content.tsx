@@ -11,6 +11,8 @@ import { TrainingType, PaymentInfo } from "@/utils/types/types";
 import usePromoData from "@/utils/hooks/usePromoData";
 import { getNextMondayDates } from "@/utils/reusables/functions";
 import { notify } from "@/utils/reusables/functions";
+import priceData from "@/utils/data/price_data.json";
+import Button from "@/components/reusables/button";
 
 export default function PromoPage() {
   const { promoData, isLoading } = usePromoData();
@@ -76,6 +78,7 @@ export default function PromoPage() {
     const selected = data.find((item) => item.id.toString() === trainingId);
     if (selected) {
       setSelectedTraining(selected);
+      console.log(selected, "here");
 
       if (mondayDate) {
         const formattedDate = mondayDate.toLocaleDateString("en-US", {
@@ -93,6 +96,10 @@ export default function PromoPage() {
   };
 
   useEffect(() => {
+    console.log(selectedTraining, "sel");
+  });
+
+  useEffect(() => {
     setPaymentInfo(initialPaymentInfo);
   }, []);
 
@@ -105,6 +112,22 @@ export default function PromoPage() {
         cohortIndex: 0,
         mondayDate: mondayDates[0],
       };
+
+      const mentoringprice =
+        firstTraining.pricing.individuals[1].training_with_mentorship;
+
+      const price = promoData?.prices.naira[type];
+      const price2 = promoData?.prices.dollar[type];
+
+      if (type === "training&mentoring" && mentoringprice) {
+        setPaymentInfo((prev) => ({
+          ...prev,
+          price: price || 0,
+          price2: price2 || 0,
+          original_price: mentoringprice.price2,
+          original_price2: mentoringprice.price,
+        }));
+      }
 
       handleTrainingChange(
         firstTraining.id.toString(),
@@ -136,7 +159,7 @@ export default function PromoPage() {
               selectedTraining.pricing.individuals[0].training_only?.price2 || 0
             )
           : selectedType === "mentoring"
-          ? 450000 // Mentoring price
+          ? priceData[0].pricing.individuals[0].training_only?.price2 || 0 // Mentoring price
           : Number(
               selectedTraining.pricing.individuals[1].training_with_mentorship
                 ?.price2 || 0
@@ -148,7 +171,7 @@ export default function PromoPage() {
               selectedTraining.pricing.individuals[0].training_only?.price || 0
             )
           : selectedType === "mentoring"
-          ? 300 // Mentoring price
+          ? priceData[0].pricing.individuals[0].training_only?.price || 0 // Mentoring price
           : Number(
               selectedTraining.pricing.individuals[1].training_with_mentorship
                 ?.price || 0
@@ -191,10 +214,16 @@ export default function PromoPage() {
     console.log("selectedType", selectedType);
     console.log("selectedTraining", selectedTraining);
     console.log("startDate", paymentInfo);
+    console.log("promo data", promoData);
+
     if (selectedType && selectedTraining) {
       handleTypeChange(selectedType);
     }
   }, [selectedType, selectedTraining]);
+
+  const clearState = () => {
+    setPaymentInfo(initialPaymentInfo);
+  };
 
   const routetoPath = (): string => {
     if (
@@ -391,18 +420,34 @@ export default function PromoPage() {
             className="flex flex-col sm:flex-row gap-4"
             variants={itemVariants}
           >
-            <Link
-              href="#training-options"
-              className="bg-[#89C13E] text-white px-8 py-4 rounded-md font-medium transition-all hover:bg-opacity-90 text-center"
+            <motion.span
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0px 5px 15px rgba(137, 193, 62, 0.4)",
+              }}
+              className="flex justify-center items-center"
             >
-              View Promotions
-            </Link>
-            <Link
-              href="#schedule"
-              className="border border-[#89C13E] text-white px-8 py-4 rounded-md font-medium transition-all hover:bg-gray-300 hover:text-[#4B006E] text-center"
+              <Link
+                href="#training-options"
+                className="bg-[#89C13E] text-white px-8 py-4 rounded-md font-medium transition-all hover:bg-opacity-90 text-center"
+              >
+                View Promotions
+              </Link>
+            </motion.span>
+            <motion.span
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0px 5px 15px rgba(137, 193, 62, 0.4)",
+              }}
+              className="flex justify-center items-center"
             >
-              See Schedule
-            </Link>
+              <Link
+                href="#schedule"
+                className="border border-[#89C13E] text-white px-8 py-4 rounded-md font-medium transition-all hover:bg-gray-300 hover:text-[#4B006E] text-center"
+              >
+                See Schedule
+              </Link>
+            </motion.span>
           </motion.div>
         </div>
       </motion.div>
@@ -482,10 +527,10 @@ export default function PromoPage() {
                 <span className="text-[#4B006E] font-bold text-xl">
                   {isNigeria
                     ? `NGN ${formatPrice(
-                        promoData?.prices.naira[selectedType] || 0
+                        promoData?.prices.naira["training"] || 0
                       )}`
                     : `$${formatPrice(
-                        promoData?.prices.dollar[selectedType] || 0
+                        promoData?.prices.dollar["training"] || 0
                       )}`}
                 </span>
               </div>
@@ -900,22 +945,23 @@ export default function PromoPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
+            className="flex justify-center"
           >
             {selectedType === "mentoring" ? (
-              <Link
-                href={`/mentorship/pricing`}
-                className="bg-white text-[#4B006E] px-12 py-4 rounded-md font-medium transition-all hover:bg-opacity-90 inline-block"
-              >
-                Enroll Now
-              </Link>
+              <Button
+                url="/mentorship/pricing"
+                bg="white"
+                text="Enroll Now"
+                text_color="#4B006E"
+              />
             ) : (
-              <Link
-                onClick={notifyuser}
-                href={routetoPath()}
-                className="bg-white text-[#4B006E] px-12 py-4 rounded-md font-medium transition-all hover:bg-opacity-90 inline-block"
-              >
-                Enroll Now
-              </Link>
+              <Button
+                click={notifyuser}
+                url={routetoPath()}
+                bg="white"
+                text="Enroll Now"
+                text_color="#4B006E"
+              />
             )}
           </motion.div>
         </div>

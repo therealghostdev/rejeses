@@ -273,6 +273,10 @@ export default function Certifications({ certification }: CertificationProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.9 }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0px 5px 15px rgba(137, 193, 62, 0.4)",
+              }}
             >
               <Link
                 href="/training"

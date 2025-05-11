@@ -88,6 +88,14 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
   }, [paymentInfo, pricingItem, isNigeria]);
 
   useEffect(() => {
+    console.log(paymentInfo, "payment");
+  }, []);
+
+  useEffect(() => {
+    console.log(paymentInfo, "payment2");
+  }, [paymentInfo]);
+
+  useEffect(() => {
     const isPromo = promoData?.isPromo;
 
     if (
@@ -208,8 +216,7 @@ export default function TrainingPayment({ pricingItem }: ClientPageProps) {
             <div className="flex justify-between w-full font-bricolage_grotesque">
               <span className="text-2xl font-bold">Total:</span>
               <span className="text-2xl font-bold text-[#89C13E]">
-                {isNigeria ? "NGN" : "$"} {" "}
-                {renderPrice()}
+                {isNigeria ? "NGN" : "$"} {renderPrice()}
               </span>
             </div>
           </div>

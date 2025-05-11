@@ -6,11 +6,17 @@ import data from "@/utils/data/schedule.json";
 import Image from "next/image";
 import Link from "next/link";
 import { DownloadIcon } from "@radix-ui/react-icons";
-import { Class, ScheduleData, TrainingOption1 } from "@/utils/types/types";
+import {
+  Class,
+  ScheduleData,
+  TrainingOption,
+  TrainingOption1,
+} from "@/utils/types/types";
 import { usePayment } from "@/utils/context/payment";
 import { useNavigation } from "@/utils/context/payment";
 import { usePathname } from "next/navigation";
 import { notify } from "@/utils/reusables/functions";
+import data2 from "@/utils/data/training_data.json";
 
 const { days, times } = data as ScheduleData;
 
@@ -26,7 +32,7 @@ interface SchedulePropsData {
 
 export default function ClassSchedule(props: SchedulePropsData) {
   const scheduleRef = useRef<HTMLDivElement>(null);
-  const { paymentInfo, setPaymentInfo } = usePayment();
+  const { paymentInfo, setPaymentInfo, selectedType } = usePayment();
   const { isNigeria } = useNavigation();
   const pathname = usePathname();
 
@@ -98,6 +104,21 @@ export default function ClassSchedule(props: SchedulePropsData) {
 
   // Update payment information
   const BacktoSummary = () => {
+    let mentoringprice: any;
+    let trainingprice: TrainingOption | undefined;
+    if (props.promo) {
+      mentoringprice =
+        props.all.pricing.individuals[0].training_with_mentorship;
+
+      trainingprice = props.all.pricing.individuals[1].training_only;
+    }
+
+    console.log(mentoringprice, "is ment price");
+    console.log(trainingprice, "is train price");
+    console.log(props.all, "all");
+    console.log(props.data, "data");
+    console.log(props.promo, "isPromo");
+
     setPaymentInfo((prev) => ({
       ...prev,
       price: props.promo
@@ -107,11 +128,26 @@ export default function ClassSchedule(props: SchedulePropsData) {
         ? props.promoPrices?.nairaPrice || 0
         : individualPrice2,
       training_id: props.all.id,
-      training_type: "Project Management Training",
+      training_type:
+        props.promo && selectedType === "training"
+          ? "Project Management Training"
+          : props.promo && selectedType === "training&mentoring"
+          ? "Project Management Training & Mentoring"
+          : "Project Management Training",
       start_date: props.all.start_date,
-      training_option: `You are subscribing to <b>rejeses consult</b> 35-hour training plan. You will be charged ${
-        isNigeria ? "NGN " : "$"
-      }${formatPrice(individualPrice2)} for this.`,
+      training_option: `You are subscribing to <b>rejeses consult</b> ${
+        props.promo && selectedType === "training"
+          ? "35-hour training plan"
+          : props.promo && selectedType === "training&mentoring"
+          ? "35-hour training and mentoring plan"
+          : "35-hour training plan"
+      }. You will be charged ${isNigeria ? "NGN " : "$"}${formatPrice(
+        props.promo && isNigeria
+          ? props.promoPrices?.nairaPrice
+          : props.promo && !isNigeria
+          ? props.promoPrices?.dollarprice
+          : individualPrice2
+      )} for this.`,
       is_group: false,
     }));
   };
@@ -147,6 +183,11 @@ export default function ClassSchedule(props: SchedulePropsData) {
   useEffect(() => {
     console.log(props.promoPrices, "class");
   }, []);
+
+  useEffect(() => {
+    console.log(props, "class scg");
+    console.log(paymentInfo, "at class sched");
+  }, [props, paymentInfo]);
 
   return (
     <div className="flex flex-col items-center px-6 md:max-w-[90%] gap-6 w-full my-4 mt-12">
