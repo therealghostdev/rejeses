@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,10 +9,14 @@ import data from "@/utils/data/training_data.json";
 import { Switch } from "radix-ui";
 import { TrainingType, PaymentInfo } from "@/utils/types/types";
 import usePromoData from "@/utils/hooks/usePromoData";
-import { getNextMondayDates } from "@/utils/reusables/functions";
+import {
+  getNextMondayDates,
+  isPromoExpired,
+} from "@/utils/reusables/functions";
 import { notify } from "@/utils/reusables/functions";
 import priceData from "@/utils/data/price_data.json";
 import Button from "@/components/reusables/button";
+import PromoCountdown from "./promoCountDown";
 
 export default function PromoPage() {
   const { promoData, isLoading } = usePromoData();
@@ -20,10 +24,32 @@ export default function PromoPage() {
   const { paymentInfo, setPaymentInfo, selectedType, setSelectedType } =
     usePayment();
   const { isNigeria, setIsNigeria } = useNavigation();
-  const [visibleItems, setVisibleItems] = useState(6);
 
-  const mondayDates = getNextMondayDates(15);
+  const mondayDates: Date[] = useMemo(
+    () =>
+      getNextMondayDates(
+        undefined,
+        promoData?.dateRange[0],
+        promoData?.dateRange[1]
+      ) || [],
+    [promoData?.dateRange]
+  );
+
+  const [visibleItems, setVisibleItems] = useState(3);
   const itemsReplica = data[0];
+
+  const hasInitialised = useRef(false);
+  useEffect(() => {
+    if (!hasInitialised.current && mondayDates.length) {
+      // show the smaller of 3 or the number of dates
+      if (mondayDates.length < 3) {
+        setVisibleItems(Math.min(3, mondayDates.length));
+      } else {
+        setVisibleItems(3);
+      }
+      hasInitialised.current = true;
+    }
+  }, [mondayDates]);
 
   const initialPaymentInfo: PaymentInfo = {
     price: 0,
@@ -37,6 +63,7 @@ export default function PromoPage() {
     is_group: false,
     promoPrices: {
       isPromo: false,
+      dateRange: [],
       prices: {
         naira: {
           training: 0,
@@ -53,18 +80,28 @@ export default function PromoPage() {
   };
 
   const handleSeeMore = () => {
-    if (visibleItems < 15) {
-      setVisibleItems(visibleItems + 3);
+    if (mondayDates && visibleItems && visibleItems < mondayDates.length) {
+      setVisibleItems((prev) => Math.min(prev + 3, mondayDates.length));
     } else {
-      setVisibleItems(6);
+      if (mondayDates) {
+        if (mondayDates.length < 3) {
+          setVisibleItems(Math.min(1, mondayDates?.length));
+        } else {
+          setVisibleItems(3);
+        }
+      }
     }
   };
 
-  const displayItems = new Array(15).fill(itemsReplica).map((item, index) => ({
-    ...item,
-    cohortIndex: index % data.length,
-    mondayDate: mondayDates[index],
-  }));
+  const displayItems = useMemo(
+    () =>
+      mondayDates.map((date, index) => ({
+        ...itemsReplica,
+        cohortIndex: index % data.length,
+        mondayDate: date,
+      })),
+    [mondayDates, data]
+  );
 
   function formatPrice(price: number): string {
     if (price >= 1000) {
@@ -110,7 +147,7 @@ export default function PromoPage() {
       const firstTraining = {
         ...data[0],
         cohortIndex: 0,
-        mondayDate: mondayDates[0],
+        mondayDate: mondayDates && mondayDates[0],
       };
 
       const mentoringprice =
@@ -131,7 +168,7 @@ export default function PromoPage() {
 
       handleTrainingChange(
         firstTraining.id.toString(),
-        firstTraining.mondayDate
+        firstTraining.mondayDate ?? undefined
       );
     }
   };
@@ -333,8 +370,13 @@ export default function PromoPage() {
         className="relative w-full bg-gradient-to-r from-[#4B006E] to-white py-20 px-6 md:px-12"
         variants={fadeIn}
       >
+        {promoData?.isPromo &&
+          !isPromoExpired(promoData, promoData.dateRange[1]) && (
+            <PromoCountdown promoData={promoData} />
+          )}
+
         <motion.div
-          className="absolute top-0 right-0 w-40 h-40 md:w-64 md:h-64 opacity-10 text-[#4B006E]"
+          className="absolute top-4 right-8 w-40 h-40 md:w-64 md:h-64 opacity-10 text-[#4B006E]"
           animate={{
             rotate: 360,
             scale: [1, 1.1, 1],
@@ -409,7 +451,7 @@ export default function PromoPage() {
           </motion.h1>
 
           <motion.p
-            className="text-gray-300 text-lg md:text-xl max-w-2xl mb-8"
+            className="text-lg md:text-xl max-w-2xl mb-8 lg:bg-none lg:text-gray-300 bg-gradient-to-r from-[#ffffff] via-[#89C13E] to-[#1d2415] bg-clip-text text-transparent"
             variants={itemVariants}
           >
             Advance your career with our professional training programs and
@@ -623,90 +665,92 @@ export default function PromoPage() {
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                 variants={containerVariants}
               >
-                {displayItems.slice(0, visibleItems).map((training, index) => (
-                  <motion.div
-                    key={`${training.id}-${index}`}
-                    className={`border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:shadow-md ${
-                      selectedTraining.id === training.id &&
-                      paymentInfo.start_date ===
-                        training.mondayDate.toLocaleDateString("en-US", {
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                        })
-                        ? "border-[#4B006E] shadow-md"
-                        : "border-[#DBE1E7]"
-                    }`}
-                    onClick={() =>
-                      handleTrainingChange(
-                        training.id.toString(),
-                        training.mondayDate
-                      )
-                    }
-                    whileHover={{ scale: 1.02 }}
-                    variants={itemVariants}
-                  >
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold font-bricolage_grotesque mb-3">
-                        {training.title}
-                      </h3>
-                      <p className="text-gray-600 mb-6 line-clamp-2">
-                        {training.description}
-                      </p>
-
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-gray-500">Start Date:</span>
-                        <span className="text-gray-700 font-medium">
-                          {training.mondayDate.toLocaleDateString("en-US", {
+                {visibleItems !== null &&
+                  displayItems.slice(0, visibleItems).map((training, index) => (
+                    <motion.div
+                      key={`${training.id}-${index}`}
+                      className={`border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:shadow-md ${
+                        selectedTraining.id === training.id &&
+                        paymentInfo.start_date ===
+                          training?.mondayDate?.toLocaleDateString("en-US", {
                             day: "numeric",
                             month: "long",
                             year: "numeric",
-                          })}
-                        </span>
-                      </div>
+                          })
+                          ? "border-[#4B006E] shadow-md"
+                          : "border-[#DBE1E7]"
+                      }`}
+                      onClick={() =>
+                        handleTrainingChange(
+                          training.id.toString(),
+                          training.mondayDate
+                        )
+                      }
+                      whileHover={{ scale: 1.02 }}
+                      variants={itemVariants}
+                    >
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold font-bricolage_grotesque mb-3">
+                          {training.title}
+                        </h3>
 
-                      <div className="flex items-center justify-between">
-                        <span className="text-[#4B006E] font-medium">
-                          Promo Price:
-                        </span>
-                        <span className="text-[#4B006E] font-bold text-xl">
-                          {isNigeria
-                            ? `NGN ${formatPrice(
-                                promoData?.prices.naira[selectedType] || 0
-                              )}`
-                            : `$${formatPrice(
-                                promoData?.prices.dollar[selectedType] || 0
-                              )}`}
-                        </span>
-                      </div>
-                    </div>
-
-                    {selectedTraining.id === training.id &&
-                      paymentInfo.start_date ===
-                        training.mondayDate.toLocaleDateString("en-US", {
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                        }) && (
-                        <div className="bg-[#4B006E] text-gray-300 font-medium text-center py-2">
-                          Selected
+                        <div className="flex items-center justify-between mb-4">
+                          <span className="text-gray-500">Start Date:</span>
+                          <span className="text-gray-700 font-medium">
+                            {training.mondayDate?.toLocaleDateString("en-US", {
+                              day: "numeric",
+                              month: "long",
+                              year: "numeric",
+                            })}
+                          </span>
                         </div>
-                      )}
-                  </motion.div>
-                ))}
+
+                        <div className="flex items-center justify-between">
+                          <span className="text-[#4B006E] font-medium">
+                            Promo Price:
+                          </span>
+                          <span className="text-[#4B006E] font-bold text-xl">
+                            {isNigeria
+                              ? `NGN ${formatPrice(
+                                  promoData?.prices.naira[selectedType] || 0
+                                )}`
+                              : `$${formatPrice(
+                                  promoData?.prices.dollar[selectedType] || 0
+                                )}`}
+                          </span>
+                        </div>
+                      </div>
+
+                      {selectedTraining.id === training.id &&
+                        paymentInfo.start_date ===
+                          training.mondayDate?.toLocaleDateString("en-US", {
+                            day: "numeric",
+                            month: "long",
+                            year: "numeric",
+                          }) && (
+                          <div className="bg-[#4B006E] text-gray-300 font-medium text-center py-2">
+                            Selected
+                          </div>
+                        )}
+                    </motion.div>
+                  ))}
               </motion.div>
 
-              <motion.div
-                className="flex justify-center mt-8"
-                variants={itemVariants}
-              >
-                <button
-                  onClick={handleSeeMore}
-                  className="bg-white border border-[#4B006E] text-[#4B006E] hover:bg-[#F5E0F0] px-8 py-3 rounded-md font-medium transition-all"
+              {visibleItems && mondayDates && mondayDates?.length > 3 && (
+                <motion.div
+                  className="flex justify-center mt-8"
+                  variants={itemVariants}
                 >
-                  {visibleItems >= 15 ? "See Less" : "See More"}
-                </button>
-              </motion.div>
+                  <button
+                    onClick={handleSeeMore}
+                    className="bg-white border border-[#4B006E] text-[#4B006E] hover:bg-[#F5E0F0] px-8 py-3 rounded-md font-medium transition-all"
+                  >
+                    {visibleItems >= mondayDates?.length
+                      ? "See Less"
+                      : "See More"}
+                  </button>
+                </motion.div>
+              )}
             </div>
           )}
         </div>

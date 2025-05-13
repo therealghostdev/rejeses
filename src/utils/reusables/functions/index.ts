@@ -1,4 +1,4 @@
-import { EmailConfig } from "@/utils/types/types";
+import { EmailConfig, PromoData } from "@/utils/types/types";
 import { toast } from "react-toastify";
 
 export function createEmailTemplate(
@@ -145,22 +145,61 @@ export function createEmailTemplate(
   `;
 }
 
-export const getNextMondayDates = (count: number) => {
+export const getNextMondayDates = (
+  count?: number,
+  promoStartDate?: string,
+  promoEndDate?: string
+) => {
   const dates = [];
-  const today = new Date();
-  // Calculate the closest Monday
-  const dayOfWeek = today.getDay();
-  const daysUntilMonday = (dayOfWeek === 0 ? 1 : 8) - dayOfWeek; // Sunday to Monday or the next Monday
-  let currentMonday = new Date(today);
-  currentMonday.setDate(today.getDate() + daysUntilMonday);
+  if (count) {
+    const today = new Date();
+    // Calculate the closest Monday
+    const dayOfWeek = today.getDay();
+    const daysUntilMonday = (dayOfWeek === 0 ? 1 : 8) - dayOfWeek; // Sunday to Monday or the next Monday
+    let currentMonday = new Date(today);
+    currentMonday.setDate(today.getDate() + daysUntilMonday);
 
-  // Generate dates for each card
-  for (let i = 0; i < count; i++) {
-    dates.push(new Date(currentMonday));
-    currentMonday.setDate(currentMonday.getDate() + 7); // Move to the next Monday
+    // Generate dates for each card
+    for (let i = 0; i < count; i++) {
+      dates.push(new Date(currentMonday));
+      currentMonday.setDate(currentMonday.getDate() + 7); // Move to the next Monday
+    }
+
+    return dates;
+  } else if (promoStartDate && promoEndDate) {
+    const dates = [];
+
+    const startDate = new Date(promoStartDate);
+    const endDate = new Date(promoEndDate);
+
+    // Find the first Monday on or after the start date
+    let currentDate = new Date(startDate);
+    const day = currentDate.getDay();
+
+    // If not already Monday, move to next Monday
+    if (day !== 1) {
+      currentDate.setDate(currentDate.getDate() + ((1 + 7 - day) % 7));
+    }
+
+    // Add all Mondays within the range
+    while (currentDate <= endDate) {
+      dates.push(new Date(currentDate));
+      currentDate.setDate(currentDate.getDate() + 7); // Move to next Monday
+    }
+
+    return dates;
+  } else {
+    return null;
   }
+};
 
-  return dates;
+export const isPromoExpired = (promoData: PromoData, deadline: string) => {
+  if (!promoData || !promoData.dateRange) return true;
+
+  const currentDate = new Date();
+  const endDate = new Date(deadline);
+
+  return currentDate > endDate;
 };
 
 export function formatDate(courseDate: Date) {
@@ -253,6 +292,18 @@ export function createCourseEmailTemplate(
     return "";
   };
 
+  const registrationMessage = isPayer
+    ? `<p style="color: #666; font-weight: bold; font-size: 15px; margin-bottom: 15px;">
+      Thank you for registering for the <strong>${courseType}</strong> program.
+    </p>`
+    : participant
+    ? `<p style="color: #666; font-weight: bold; font-size: 15px; margin-bottom: 15px;">
+      You have been registered for the <strong>${courseType}</strong> program.
+    </p>`
+    : `<p style="color: #666; font-weight: bold; font-size: 15px; margin-bottom: 15px;">
+      Thank you for registering for the <strong>${courseType}</strong> program.
+    </p>`;
+
   return `
     <html>
       <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f4f4f4;">
@@ -269,15 +320,7 @@ export function createCourseEmailTemplate(
             </h1>
           </div>
           <div style="margin-top: 18px;">
-            <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">
-              ${
-                isPayer
-                  ? `Thank you for registering for the <strong>${courseType}</strong> program. You have paid for the following participants:`
-                  : participant
-                  ? `You have been registered for the <strong>${courseType}</strong> program.`
-                  : `Thank you for registering for the <strong>${courseType}</strong> program.`
-              }
-            </div>
+            ${registrationMessage}
 
             ${
               courseType.includes("Mentoring")

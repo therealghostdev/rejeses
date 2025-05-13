@@ -1,5 +1,6 @@
 {
   "isPromo": true,
+  "dateRange": ["2025-05-15", "2025-06-15"],
   "prices": {
     "naira": {
       "training": 65000,

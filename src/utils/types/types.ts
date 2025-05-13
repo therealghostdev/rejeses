@@ -233,6 +233,7 @@ export type TrainingType = "training" | "mentoring" | "training&mentoring";
 
 export interface PromoData {
   isPromo: boolean;
+  dateRange: string[]
   prices: {
     naira: {
       training: number;
