@@ -315,7 +315,11 @@ export default function PromoPage() {
   }
 
   // If promo is disabled according to the JSON file
-  if (promoData && !promoData.isPromo) {
+  if (
+    (promoData && !promoData.isPromo) ||
+    (promoData && isPromoExpired(promoData, promoData.dateRange[1])) ||
+    !promoData?.isPromo
+  ) {
     return (
       <motion.div
         className="flex flex-col items-center justify-center min-h-[70vh] p-8 text-center"
@@ -622,7 +626,7 @@ export default function PromoPage() {
                 Training + Mentoring
               </h3>
               <p className="text-gray-600 mb-6">
-                Complete package with 35-hour training and 6-month mentorship
+                Complete package with 35-hour training and 3-month mentorship
                 program.
               </p>
               <div className="flex items-center justify-between">

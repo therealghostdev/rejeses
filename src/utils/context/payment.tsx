@@ -80,6 +80,7 @@ export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({
     classScheduleType: "",
     is_group: false,
     promoPrices: {
+      dateRange: [],
       isPromo: false,
       prices: {
         naira: {

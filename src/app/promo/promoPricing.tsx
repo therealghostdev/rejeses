@@ -3,10 +3,16 @@ import Link from "next/link";
 import { forwardRef } from "react";
 import { PromoPricingProps } from "@/utils/types/types";
 import { usePathname } from "next/navigation";
+import { useNavigation } from "@/utils/context/payment";
 
 const PromoPricing = forwardRef<HTMLElement, PromoPricingProps>(
   ({ promoData }, ref) => {
     const pathname = usePathname();
+    const { isNigeria } = useNavigation();
+    const currencySymbol = isNigeria ? "₦" : "$";
+    const priceData = isNigeria
+      ? promoData?.prices?.naira
+      : promoData?.prices?.dollar;
 
     if (!promoData?.isPromo) return null;
 
@@ -22,17 +28,17 @@ const PromoPricing = forwardRef<HTMLElement, PromoPricingProps>(
 
             <div className="p-6 md:p-8">
               <div className="grid md:grid-cols-2 gap-8">
-                {/* Nigeria Pricing */}
-                <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-all">
+                <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-all col-span-full">
                   <h3 className="text-2xl font-bold mb-2 font-bricolage_grotesque">
-                    Nigeria Pricing
+                    Prices
                   </h3>
                   <div className="space-y-4 mt-4">
                     {pathname.includes("training") && (
                       <div className="flex justify-between items-center pb-2 border-b border-gray-200">
                         <span className="font-medium">Training Only</span>
                         <span className="text-xl font-bold text-[#89C13E]">
-                          ₦{promoData.prices.naira.training.toLocaleString()}
+                          {currencySymbol}
+                          {priceData && priceData.training.toLocaleString()}
                         </span>
                       </div>
                     )}
@@ -40,7 +46,8 @@ const PromoPricing = forwardRef<HTMLElement, PromoPricingProps>(
                       <div className="flex justify-between items-center pb-2 border-b border-gray-200">
                         <span className="font-medium">Mentoring</span>
                         <span className="text-xl font-bold text-[#89C13E]">
-                          ₦{promoData.prices.naira.mentoring.toLocaleString()}
+                          {currencySymbol}
+                          {priceData && priceData.mentoring.toLocaleString()}
                         </span>
                       </div>
                     )}
@@ -51,46 +58,9 @@ const PromoPricing = forwardRef<HTMLElement, PromoPricingProps>(
                           Training & Mentoring
                         </span>
                         <span className="text-xl font-bold text-[#89C13E]">
-                          ₦
-                          {promoData.prices.naira[
-                            "training&mentoring"
-                          ].toLocaleString()}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* International Pricing */}
-                <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-all">
-                  <h3 className="text-2xl font-bold mb-2 font-bricolage_grotesque">
-                    International Pricing
-                  </h3>
-                  <div className="space-y-4 mt-4">
-                    {pathname.includes("training") && (
-                      <div className="flex justify-between items-center pb-2 border-b border-gray-200">
-                        <span className="font-medium">Training Only</span>
-                        <span className="text-xl font-bold text-[#89C13E]">
-                          ${promoData.prices.dollar.training}
-                        </span>
-                      </div>
-                    )}
-                    {pathname.includes("mentorship") && (
-                      <div className="flex justify-between items-center pb-2 border-b border-gray-200">
-                        <span className="font-medium">Mentoring</span>
-                        <span className="text-xl font-bold text-[#89C13E]">
-                          ${promoData.prices.dollar.mentoring}
-                        </span>
-                      </div>
-                    )}
-                    {(pathname.includes("training") ||
-                      pathname.includes("mentorship")) && (
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium">
-                          Training & Mentoring
-                        </span>
-                        <span className="text-xl font-bold text-[#89C13E]">
-                          ${promoData.prices.dollar["training&mentoring"]}
+                          {currencySymbol}
+                          {priceData &&
+                            priceData["training&mentoring"].toLocaleString()}
                         </span>
                       </div>
                     )}

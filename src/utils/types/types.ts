@@ -233,7 +233,7 @@ export type TrainingType = "training" | "mentoring" | "training&mentoring";
 
 export interface PromoData {
   isPromo: boolean;
-  dateRange: string[]
+  dateRange: string[];
   prices: {
     naira: {
       training: number;
@@ -246,6 +246,12 @@ export interface PromoData {
       "training&mentoring": number;
     };
   };
+}
+
+export interface AnimatedAboutcardProps {
+  children?: React.ReactNode;
+  delay: number;
+  className?: string;
 }
 
 export interface PromoBannerProps {

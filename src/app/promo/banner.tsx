@@ -1,11 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { PromoBannerProps } from "@/utils/types/types";
+import { useNavigation } from "@/utils/context/payment";
 
-const PromoBanner = ({ promoData }: PromoBannerProps) => {
+const PromoBanner = ({
+  promoData,
+}: PromoBannerProps & { isNigeria: boolean }) => {
   const [isVisible, setIsVisible] = useState(false);
   const pathname = usePathname();
+  const { isNigeria } = useNavigation();
 
   useEffect(() => {
     if (promoData && promoData.isPromo) {
@@ -14,6 +20,20 @@ const PromoBanner = ({ promoData }: PromoBannerProps) => {
   }, [promoData]);
 
   if (!isVisible) return null;
+
+  const isTraining = pathname.includes("training");
+  const isMentorship = pathname.includes("mentorship");
+
+  const naira = promoData?.prices?.naira;
+  const dollar = promoData?.prices?.dollar;
+
+  const price = isNigeria
+    ? isTraining
+      ? `₦${naira?.training?.toLocaleString() || "50,000"}`
+      : `₦${naira?.mentoring?.toLocaleString() || "250,000"}`
+    : isTraining
+    ? `$${dollar?.training || 60}`
+    : `$${dollar?.mentoring || 240}`;
 
   return (
     <section className="w-full py-6 mb-6 bg-gradient-to-r from-[#89C13E] to-[#6aa025] shadow-lg rounded-lg overflow-hidden">
@@ -35,20 +55,7 @@ const PromoBanner = ({ promoData }: PromoBannerProps) => {
             </h2>
             <p className="text-white/90 text-lg">
               Get exclusive discounts on our training programs! Prices as low as{" "}
-              <span className="font-bold">
-                $
-                {pathname.includes("training")
-                  ? promoData?.prices?.dollar?.training || 60
-                  : promoData?.prices?.dollar?.mentoring || 240}
-              </span>{" "}
-              or{" "}
-              <span className="font-bold">
-                ₦
-                {pathname.includes("training")
-                  ? promoData?.prices?.naira?.training?.toLocaleString() ||
-                    "50,000"
-                  : promoData?.prices?.naira?.mentoring || "250,000"}
-              </span>
+              <span className="font-bold">{price}</span>
             </p>
           </div>
 
@@ -63,4 +70,5 @@ const PromoBanner = ({ promoData }: PromoBannerProps) => {
     </section>
   );
 };
+
 export default PromoBanner;

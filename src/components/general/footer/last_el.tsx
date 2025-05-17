@@ -9,7 +9,8 @@ export default function LastEl() {
         <div className="w-full md:w-auto flex items-center space-x-2 text-gray-600">
           <p className="text-xl font-bricolage_grotesque">&copy;</p>
           <p className="text-base font-bricolage_grotesque">
-            2025 <span className="font-bold">Rejeses Consult</span>.
+            {new Date().getFullYear()}{" "}
+            <span className="font-bold">Rejeses Consult</span>.
           </p>
           <p className="text-base font-bricolage_grotesque hidden md:block">
             All rights reserved.

@@ -1,114 +1,98 @@
 "use client";
 
-import type React from "react";
-
+import React, { useState, useEffect, useRef } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Tagline from "./tagline";
 import Image_slider from "./image_slider";
 import Mobile_Image_slider from "./mobile_image_slider";
-import { useState, useEffect, useRef } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import Tagline from "./tagline";
-import Logo_slider from "../../../reusables/animation/logo_slider";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import Logo_slider from "@/components/reusables/animation/logo_slider";
 
 const useAnimateOnScroll = (ref: React.RefObject<HTMLElement>) => {
-  const isInView = useInView(ref, {
-    amount: 0.3,
-  });
-
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  useEffect(() => {
-    if (isInView) {
-      setHasAnimated(true);
-    } else if (hasAnimated) {
-      const timer = setTimeout(() => {
-        setHasAnimated(false);
-      }, 100);
-
-      return () => clearTimeout(timer);
-    }
-  }, [isInView, hasAnimated]);
-
+  const isInView = useInView(ref, { amount: 0.3 });
   return { isInView, shouldAnimate: isInView };
 };
 
 export default function Header() {
-  const [width, setWidth] = useState<number>(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const pathname = usePathname();
   const router = useRouter();
 
-  // Refs for intersection observer
   const headingRef = useRef(null);
   const paragraphRef = useRef(null);
   const logosRef = useRef(null);
   const buttonsRef = useRef(null);
+  const headerTextRef = useRef(null);
 
   const { shouldAnimate: headingInView } = useAnimateOnScroll(headingRef);
   const { shouldAnimate: paragraphInView } = useAnimateOnScroll(paragraphRef);
+  const { shouldAnimate: headerTextInView } = useAnimateOnScroll(headerTextRef);
   const { shouldAnimate: logosInView } = useAnimateOnScroll(logosRef);
   const { shouldAnimate: buttonsInView } = useAnimateOnScroll(buttonsRef);
 
+  useEffect(() => {
+    const updateWidth = () => setIsMobile(window.innerWidth <= 767);
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
   const headingVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: -100 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
-      },
+      transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
+
+  const headerTextVariants = {
+    hidden: { opacity: 0, x: 200 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 2, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
   const paragraphVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, x: -200 },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        delay: 0.2,
-        ease: [0.22, 1, 0.36, 1],
-      },
+      x: 0,
+      transition: { duration: 1.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
   const buttonVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 100 },
     visible: {
       opacity: 1,
       y: 0,
+      transition: { duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
+
+  const companyLogosVariants = {
+    hidden: { opacity: 0, x: 100 },
+    visible: {
+      opacity: 1,
+      x: 0,
       transition: {
-        duration: 0.6,
-        delay: 0.4,
+        duration: 1.2,
+        staggerChildren: 0.1,
         ease: [0.22, 1, 0.36, 1],
       },
     },
   };
 
-  const companyLogosVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  // Letter animation for the heading
   const letterVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: -50, rotate: -5 },
+    visible: { opacity: 1, y: 0, rotate: 0 },
   };
 
-  // Split text into characters for animating
   const splitText = (text: string) => {
     return text.split(" ").map((word, wordIndex) => (
       <span
@@ -138,52 +122,31 @@ export default function Header() {
     ));
   };
 
-  const handleEnrollClick = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
+  const handleEnrollClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-
     if (pathname === "/training") {
-      const pricingSection = document.getElementById("upcoming-training");
-      if (pricingSection) {
-        pricingSection.scrollIntoView({ behavior: "smooth" });
-      }
+      const section = document.getElementById("upcoming-training");
+      if (section) section.scrollIntoView({ behavior: "smooth" });
     } else {
       router.push("/training#upcoming-training");
     }
   };
-
-  useEffect(() => {
-    const updateWidth = () => {
-      const newWidth = window.innerWidth;
-      setWidth(newWidth);
-      setIsMobile(newWidth <= 767);
-    };
-
-    window.addEventListener("resize", updateWidth);
-
-    // Initial check
-    updateWidth();
-
-    return () => {
-      window.removeEventListener("resize", updateWidth);
-    };
-  }, []);
 
   return (
     <header className="bg-[#F5F0FA] flex flex-col w-full gap-4 overflow-hidden">
       <div className="w-full flex flex-col justify-center items-center my-8">
         <Tagline />
         <div className="md:w-3/4 w-full flex flex-col justify-center items-center gap-3 px-4 py-8 mt-8 mb-8">
-          {/* Animated Heading */}
           <motion.h1
-            ref={headingRef}
+            ref={headerTextRef}
+            variants={headerTextVariants}
+            initial="hidden"
+            animate={headerTextInView ? "visible" : "hidden"}
             className="lg:text-[60px] md:text-6xl text-5xl text-center font-bold lg:leading-[80px] leading-tight font-bricolage_grotesque"
           >
-            {splitText("Learn and become excellent at project management")}
+            Learn and become excellent at project management
           </motion.h1>
 
-          {/* Animated Paragraph */}
           <motion.p
             ref={paragraphRef}
             variants={paragraphVariants}
@@ -203,7 +166,6 @@ export default function Header() {
             is here to help you learn and master project management.
           </motion.p>
 
-          {/* Animated Buttons */}
           <motion.div
             ref={buttonsRef}
             variants={buttonVariants}
@@ -222,6 +184,7 @@ export default function Header() {
             >
               <Link
                 href="/training#upcoming-training"
+                onClick={handleEnrollClick}
                 className="bg-[#89C13E] text-white px-6 py-4 rounded-[.3rem] font-bricolage_grotesque transition_button4"
               >
                 Enroll Now
@@ -229,7 +192,7 @@ export default function Header() {
             </motion.span>
 
             <motion.span
-              className="mx-2 margin-sm-override"
+              className="mx-2"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0px 5px 15px rgba(0,0,0, 0.4)",
@@ -250,7 +213,6 @@ export default function Header() {
 
       {!isMobile ? <Image_slider /> : <Mobile_Image_slider />}
 
-      {/* Animated Companies Section */}
       <motion.div
         ref={logosRef}
         variants={companyLogosVariants}
@@ -259,19 +221,18 @@ export default function Header() {
         className="flex w-full flex-col justify-center items-center bg-[#FCFCFC] py-12 px-4 gap-6 mt-6"
       >
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={logosInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, x: 100 }}
+          animate={logosInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+          transition={{ duration: 1.2, delay: 0.6 }}
           className="text-lg text-center font-bricolage_grotesque text-[#5B5B5B]"
         >
           Learn directly from people who have worked at such companies as
         </motion.p>
 
-        {/* Custom wrapper for Logo_slider */}
         <AnimatePresence mode="wait">
           {logosInView && (
             <motion.div
-              key={logosInView ? "visible" : "hidden"}
+              key="logos-visible"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
