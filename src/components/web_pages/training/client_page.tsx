@@ -70,15 +70,17 @@ export default function Training_page() {
   };
 
   useEffect(() => {
-    setPaymentInfo((prev) => ({
-      ...prev,
-      start_date: startDates[0].toLocaleDateString("en-US", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      }),
-      training_type: "Project Management Training",
-    }));
+    if (startDates) {
+      setPaymentInfo((prev) => ({
+        ...prev,
+        start_date: startDates[0].toLocaleDateString("en-US", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        }),
+        training_type: "Project Management Training",
+      }));
+    }
 
     if (window.location.hash === "#pricing" && pricingRef.current) {
       pricingRef.current.scrollIntoView({ behavior: "smooth" });
@@ -209,7 +211,9 @@ export default function Training_page() {
   return (
     <section className="w-full flex flex-col justify-center items-center">
       <section className="w-full px-8 flex flex-col gap-6 py-12  md:max-w-[98%] justify-center">
-        {promoData && <PromoBanner promoData={promoData} />}
+        {promoData && (
+          <PromoBanner isNigeria={isNigeria} promoData={promoData} />
+        )}
 
         <div className="flex flex-col w-full gap-4 lg:px-12 md:px-6 md:mt-10">
           <h1 className="md:text-5xl text-3xl font-bold font-bricolage_grotesque">
