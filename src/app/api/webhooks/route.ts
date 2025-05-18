@@ -135,15 +135,10 @@ export async function POST(req: Request) {
         fee: fees,
       });
 
-      await updateOrder(Number(transaction.orderRef), {
-        status: StatusType.completed,
-      });
-
       const order = await getOrderByTransactionRef(
         Number(transaction.orderRef)
       );
 
-      console.log(order?.participants);
       let courseParticipants;
       if (order && order.participants) {
         courseParticipants = order.participants as Participant[];
@@ -257,6 +252,10 @@ export async function POST(req: Request) {
           }
         }
       }
+
+      await updateOrder(Number(transaction.orderRef), {
+        status: StatusType.completed,
+      });
 
       return Response.json(
         { message: "Transaction completed" },

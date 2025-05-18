@@ -36,17 +36,27 @@ export default function UpcomingCohorts() {
             className="lg:w-[30%] md:w-[45%] w-full border border-[#DBE1E7] md:mx-4 md:my-4 mx-2 my-2 rounded-2xl shadow-sm shadow-[#0000001A] cursor-pointer hover:border-[#89C13E] transition-all duration-300"
             style={{ transform: "translateZ(0)" }}
             key={index}
-            whileHover={{ scale: 1.05, transition: { duration: 0.1, type: "keyframes" } }}
-            whileTap={{ scale: 1.08, transition: { duration: 0.1, type: "keyframes"} }}
+            whileHover={{
+              scale: 1.05,
+              transition: { duration: 0.1, type: "keyframes" },
+            }}
+            whileTap={{
+              scale: 1.08,
+              transition: { duration: 0.1, type: "keyframes" },
+            }}
           >
             <Card
               id={index}
               description={""}
-              date={mondayDates[index].toLocaleDateString("en-US", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}
+              date={
+                (mondayDates &&
+                  mondayDates[index].toLocaleDateString("en-US", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })) ||
+                "no date set"
+              }
               title={item.title}
               id2={item.id}
               price={item.pricing}
