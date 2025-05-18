@@ -77,8 +77,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
             ...prev,
             promoPrices: {
               isPromo: true,
+              dateRange: data.dateRange,
               prices: {
-                // <-- FIXED: added colon here
                 naira: {
                   training: data.prices.naira.training,
                   mentoring: data.prices.naira.mentoring,
@@ -529,27 +529,16 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
   const VatCalculation = (priceval: number): number => {
     const P = Math.ceil(priceval);
 
-    // Paystack fee
-    const flatFee = P < 2500 ? 0 : 100;
-    const percentFee = 0.015 * P;
-    const psFee = Math.min(percentFee + flatFee, 2000);
+    // VAT is 2% of the price
+    const vat = 0.02 * P;
 
-    // VAT on Paystack fee
-    const vatOnFee = 0.075 * psFee;
+    // Total amount to be paid by customer
+    const total = P + vat;
 
-    // VAT on actual price
-    const vatOnPrice = 0.075 * P;
+    // Set the fee (just the VAT in this case)
+    setFees(Math.ceil(vat));
 
-    // Customer covers 2% of *both* VATs
-    const customerVAT = 0.02 * (vatOnFee + vatOnPrice);
-
-    // Total extra charges
-    const totalExtra = psFee + customerVAT;
-
-    setFees(Math.ceil(totalExtra));
-
-    // Final amount
-    return Math.ceil(P + totalExtra);
+    return Math.ceil(total);
   };
 
   const getPrice = useCallback((): number => {
@@ -596,8 +585,8 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
             (paymentInfo.promoPrices?.prices.naira["training&mentoring"] ||
               300000) * count;
 
-              console.log(fixedPrice, "chec");
-              
+          console.log(fixedPrice, "chec");
+
           return VatCalculation(fixedPrice);
         }
       } else if (
