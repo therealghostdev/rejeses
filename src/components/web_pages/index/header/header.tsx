@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView, AnimatePresence, delay } from "framer-motion";
 import Link from "next/link";
 import Tagline from "./tagline";
 import Image_slider from "./image_slider";
@@ -49,25 +49,32 @@ export default function Header() {
   };
 
   const headerTextVariants = {
-    hidden: { opacity: 0, x: 200 },
+    hidden: { opacity: 0, x: 80 },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 2, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 4, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
   const paragraphVariants = {
-    hidden: { opacity: 0, x: -200 },
+    hidden: { opacity: 0, x: -80 },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 1.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
+      transition: {
+        duration: 3,
+        delay: 0.3,
+        ease: [0.22, 1, 0.36, 1],
+        type: "spring",
+        stiffness: 60,
+        damping: 18,
+      },
     },
   };
 
   const buttonVariants = {
-    hidden: { opacity: 0, y: 100 },
+    hidden: { opacity: 0, y: 60 },
     visible: {
       opacity: 1,
       y: 0,

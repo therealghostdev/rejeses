@@ -110,12 +110,12 @@ const AnimatedCard = ({
       initial="offscreen"
       whileInView="onscreen"
       viewport={{ once: false, amount: 0.3 }}
-      className={`bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl ${className}`}
+      className={`bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:shadow-xl h-full flex flex-col ${className}`}
     >
       <motion.div
         variants={cardVariants}
         transition={{ delay }}
-        className="h-full"
+        className="h-full flex flex-col"
       >
         {children}
       </motion.div>
@@ -174,7 +174,7 @@ export default function AboutUs() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.9 }}
             >
-              Rejeses PM Consulting: Building Skills, Driving Success
+              We Build Skills. We Drive Success
             </motion.p>
           </motion.div>
         </motion.div>
@@ -194,10 +194,7 @@ export default function AboutUs() {
             delay={0.2}
             className="col-span-1 md:col-span-2 lg:col-span-3"
           >
-            <div className="p-6 md:p-8 border-l-4 border-[#4B006E]">
-              <h2 className="text-2xl md:text-3xl font-semibold text-[#535353] font-bricolage_grotesque mb-4">
-                We Build Skills. We Drive Success.
-              </h2>
+            <div className="p-6 md:p-8 border-l-4 border-[#4B006E] flex-grow">
               <motion.div
                 className="text-[#535353] flex flex-col gap-y-4"
                 variants={fadeInRight}
@@ -230,7 +227,7 @@ export default function AboutUs() {
 
           {/* Mission Card */}
           <AnimatedCard delay={0.3}>
-            <div className="h-full p-6 md:p-8 bg-gradient-to-br from-white to-[#4B006E]/5 border-t-4 border-[#4B006E]">
+            <div className="h-full p-6 md:p-8 bg-gradient-to-br from-white to-[#4B006E]/5 border-t-4 border-[#4B006E] flex flex-col">
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
@@ -257,7 +254,7 @@ export default function AboutUs() {
                 Our Mission
               </h2>
               <motion.p
-                className="text-lg text-[#535353]"
+                className="text-lg text-[#535353] flex-grow"
                 variants={fadeInRight}
                 initial="hidden"
                 whileInView="visible"
@@ -272,7 +269,7 @@ export default function AboutUs() {
 
           {/* Vision Card */}
           <AnimatedCard delay={0.4}>
-            <div className="h-full p-6 md:p-8 bg-gradient-to-br from-white to-[#4B006E]/5 border-t-4 border-[#4B006E]">
+            <div className="h-full p-6 md:p-8 bg-gradient-to-br from-white to-[#4B006E]/5 border-t-4 border-[#4B006E] flex flex-col">
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
@@ -305,7 +302,7 @@ export default function AboutUs() {
                 Our Vision
               </h2>
               <motion.p
-                className="text-lg text-[#535353]"
+                className="text-lg text-[#535353] flex-grow"
                 variants={fadeInRight}
                 initial="hidden"
                 whileInView="visible"
@@ -320,7 +317,7 @@ export default function AboutUs() {
 
           {/* Core Values Card */}
           <AnimatedCard delay={0.5}>
-            <div className="h-full p-6 md:p-8 bg-gradient-to-br from-white to-[#4B006E]/5 border-t-4 border-[#4B006E]">
+            <div className="h-full p-6 md:p-8 bg-gradient-to-br from-white to-[#4B006E]/5 border-t-4 border-[#4B006E] flex flex-col">
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
@@ -344,10 +341,13 @@ export default function AboutUs() {
                 </svg>
               </motion.div>
               <h2 className="text-2xl md:text-3xl font-semibold text-[#535353] font-bricolage_grotesque mb-4">
-                Our Core Values
+                Our Philosophy: The REJESES Framework
               </h2>
+              <motion.p className="mb-4 text-lg text-[#535353]">
+                R.E.J.E.S.E.S is more than our name it&apos;s our belief system:
+              </motion.p>
               <motion.ul
-                className="space-y-2 flex flex-col gap-y-2 text-[#535353]"
+                className="space-y-2 flex flex-col gap-y-2 text-[#535353] overflow-y-auto max-h-[400px] pr-2"
                 variants={staggeredList}
                 initial="hidden"
                 whileInView="visible"
@@ -374,8 +374,9 @@ export default function AboutUs() {
                   </motion.span>
                   <div>
                     <p className="text-lg">
-                      <b>Empowerment:</b> Equipping individuals and teams to
-                      succeed.
+                      <b>R &#45; Real Execution:</b> We drive action through
+                      practical tools, tested methodologies, and focused
+                      delivery.
                     </p>
                   </div>
                 </motion.li>
@@ -401,8 +402,8 @@ export default function AboutUs() {
                   </motion.span>
                   <div>
                     <p className="text-lg">
-                      <b>Collaboration:</b> Building strong partnerships with
-                      our clients.
+                      <b>E &#45; Excellence:</b> Quality is non-negotiable—from our
+                      training content to our client engagements.
                     </p>
                   </div>
                 </motion.li>
@@ -428,8 +429,8 @@ export default function AboutUs() {
                   </motion.span>
                   <div>
                     <p className="text-lg">
-                      <b>Excellence:</b> Delivering top-tier services with
-                      measurable results.
+                      <b>J &#45; Judicious Strategy:</b> We promote intelligent,
+                      evidence-based project planning and execution.
                     </p>
                   </div>
                 </motion.li>
@@ -455,18 +456,98 @@ export default function AboutUs() {
                   </motion.span>
                   <div>
                     <p className="text-lg">
-                      <b>Adaptability:</b> Staying ahead in a rapidly changing
-                      business landscape.
+                      <b>E – Empowerment:</b> We develop professionals into
+                      confident, certified, and capable project leaders.
+                    </p>
+                  </div>
+                </motion.li>
+
+                <motion.li
+                  variants={listItem}
+                  className="flex items-start transform-gpu"
+                  whileHover={{ x: 5, transition: { duration: 0.2 } }}
+                >
+                  <motion.span
+                    className="mr-2 mt-[2px] text-lg"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1, rotate: 360 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 20,
+                      delay: 0.5,
+                    }}
+                    viewport={{ once: false, amount: 0.3 }}
+                  >
+                    ⭐
+                  </motion.span>
+                  <div>
+                    <p className="text-lg">
+                      <b>S &#45; Success Orientation:</b> We measure ourselves by
+                      the success of our clients and their projects.
+                    </p>
+                  </div>
+                </motion.li>
+
+                <motion.li
+                  variants={listItem}
+                  className="flex items-start transform-gpu"
+                  whileHover={{ x: 5, transition: { duration: 0.2 } }}
+                >
+                  <motion.span
+                    className="mr-2 mt-[2px] text-lg"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1, rotate: 360 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 20,
+                      delay: 0.6,
+                    }}
+                    viewport={{ once: false, amount: 0.3 }}
+                  >
+                    ⭐
+                  </motion.span>
+                  <div>
+                    <p className="text-lg">
+                      <b>E &#45; Enterprise Agility:</b> We embed agile thinking for
+                      resilience in uncertain environments.
+                    </p>
+                  </div>
+                </motion.li>
+
+                <motion.li
+                  variants={listItem}
+                  className="flex items-start transform-gpu"
+                  whileHover={{ x: 5, transition: { duration: 0.2 } }}
+                >
+                  <motion.span
+                    className="mr-2 mt-[2px] text-lg"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1, rotate: 360 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 20,
+                      delay: 0.7,
+                    }}
+                    viewport={{ once: false, amount: 0.3 }}
+                  >
+                    ⭐
+                  </motion.span>
+                  <div>
+                    <p className="text-lg">
+                      <b>S &#45;Service Leadership:</b> We lead by serving—putting
+                      our client&apos;s transformation first.
                     </p>
                   </div>
                 </motion.li>
               </motion.ul>
             </div>
           </AnimatedCard>
-
           {/* Why Choose Us Card */}
           <AnimatedCard delay={0.4} className="col-span-1 md:col-span-2">
-            <div className="p-6 md:p-8 bg-gradient-to-br from-white to-[#4B006E]/5 border-t-4 border-[#4B006E]">
+            <div className="p-6 md:p-8 bg-gradient-to-br from-white to-[#4B006E]/5 border-t-4 border-[#4B006E] flex flex-col h-full">
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
@@ -493,7 +574,7 @@ export default function AboutUs() {
                 Why Choose Us?
               </h2>
               <motion.ul
-                className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[#535353]"
+                className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[#535353] flex-grow"
                 variants={staggeredList}
                 initial="hidden"
                 whileInView="visible"
@@ -634,12 +715,12 @@ export default function AboutUs() {
 
         {/* Let's Grow Together Section */}
         <AnimatedCard delay={0.3} className="mb-12">
-          <div className="p-6 md:p-8 bg-gradient-to-br from-[#4B006E]/10 to-white border-l-4 border-[#4B006E]">
+          <div className="p-6 md:p-8 bg-gradient-to-br from-[#4B006E]/10 to-white border-l-4 border-[#4B006E] flex flex-col h-full">
             <h2 className="text-2xl md:text-3xl font-semibold text-[#535353] font-bricolage_grotesque mb-4">
               Let&apos;s Grow Together
             </h2>
             <motion.div
-              className="text-[#535353] flex flex-col gap-y-4"
+              className="text-[#535353] flex flex-col gap-y-4 flex-grow"
               variants={fadeInRight}
               initial="hidden"
               whileInView="visible"

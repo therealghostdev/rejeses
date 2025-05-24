@@ -671,60 +671,83 @@ export default function PromoPage() {
               >
                 {visibleItems !== null &&
                   displayItems.slice(0, visibleItems).map((training, index) => (
-                    <motion.div
+                    <div
                       key={`${training.id}-${index}`}
-                      className={`border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:shadow-md ${
-                        selectedTraining.id === training.id &&
-                        paymentInfo.start_date ===
-                          training?.mondayDate?.toLocaleDateString("en-US", {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric",
-                          })
-                          ? "border-[#4B006E] shadow-md"
-                          : "border-[#DBE1E7]"
-                      }`}
-                      onClick={() =>
-                        handleTrainingChange(
-                          training.id.toString(),
-                          training.mondayDate
-                        )
-                      }
-                      whileHover={{ scale: 1.02 }}
-                      variants={itemVariants}
+                      className="flex flex-col"
                     >
-                      <div className="p-6">
-                        <h3 className="text-xl font-bold font-bricolage_grotesque mb-3">
-                          {training.title}
-                        </h3>
-
-                        <div className="flex items-center justify-between mb-4">
-                          <span className="text-gray-500">Start Date:</span>
-                          <span className="text-gray-700 font-medium">
-                            {training.mondayDate?.toLocaleDateString("en-US", {
+                      {/* Training card */}
+                      <motion.div
+                        className={`border-2 rounded-lg overflow-hidden cursor-pointer transition-all hover:shadow-md ${
+                          selectedTraining.id === training.id &&
+                          paymentInfo.start_date ===
+                            training?.mondayDate?.toLocaleDateString("en-US", {
                               day: "numeric",
                               month: "long",
                               year: "numeric",
-                            })}
-                          </span>
+                            })
+                            ? "border-[#4B006E] shadow-md"
+                            : "border-[#DBE1E7]"
+                        }`}
+                        onClick={() =>
+                          handleTrainingChange(
+                            training.id.toString(),
+                            training.mondayDate
+                          )
+                        }
+                        whileHover={{ scale: 1.02 }}
+                        variants={itemVariants}
+                      >
+                        <div className="p-6">
+                          <h3 className="text-xl font-bold font-bricolage_grotesque mb-3">
+                            {selectedType === "training"
+                              ? "Training Only"
+                              : "Training + Mentoring"}
+                          </h3>
+
+                          <div className="flex items-center justify-between mb-4">
+                            <span className="text-gray-500">Start Date:</span>
+                            <span className="text-gray-700 font-medium">
+                              {training.mondayDate?.toLocaleDateString(
+                                "en-US",
+                                {
+                                  day: "numeric",
+                                  month: "long",
+                                  year: "numeric",
+                                }
+                              )}
+                            </span>
+                          </div>
+
+                          <div className="flex items-center justify-between">
+                            <span className="text-[#4B006E] font-medium">
+                              Promo Price:
+                            </span>
+                            <span className="text-[#4B006E] font-bold text-xl">
+                              {isNigeria
+                                ? `NGN ${formatPrice(
+                                    promoData?.prices.naira[selectedType] || 0
+                                  )}`
+                                : `$${formatPrice(
+                                    promoData?.prices.dollar[selectedType] || 0
+                                  )}`}
+                            </span>
+                          </div>
                         </div>
 
-                        <div className="flex items-center justify-between">
-                          <span className="text-[#4B006E] font-medium">
-                            Promo Price:
-                          </span>
-                          <span className="text-[#4B006E] font-bold text-xl">
-                            {isNigeria
-                              ? `NGN ${formatPrice(
-                                  promoData?.prices.naira[selectedType] || 0
-                                )}`
-                              : `$${formatPrice(
-                                  promoData?.prices.dollar[selectedType] || 0
-                                )}`}
-                          </span>
-                        </div>
-                      </div>
+                        {selectedTraining.id === training.id &&
+                          paymentInfo.start_date ===
+                            training.mondayDate?.toLocaleDateString("en-US", {
+                              day: "numeric",
+                              month: "long",
+                              year: "numeric",
+                            }) && (
+                            <div className="bg-[#4B006E] text-gray-300 font-medium text-center py-2">
+                              Selected
+                            </div>
+                          )}
+                      </motion.div>
 
+                      {/* Payment link - completely separate from the card, appears below it */}
                       {selectedTraining.id === training.id &&
                         paymentInfo.start_date ===
                           training.mondayDate?.toLocaleDateString("en-US", {
@@ -732,11 +755,21 @@ export default function PromoPage() {
                             month: "long",
                             year: "numeric",
                           }) && (
-                          <div className="bg-[#4B006E] text-gray-300 font-medium text-center py-2">
-                            Selected
+                          <div className="mt-2 text-center">
+                            <Link
+                              href={routetoPath()}
+                              className="text-[#DF8244] font-medium inline-block"
+                            >
+                              Click to pay now {isNigeria ? "NGN " : "$"}
+                              {formatPrice(
+                                isNigeria
+                                  ? promoData?.prices.naira[selectedType] ?? 0
+                                  : promoData?.prices.dollar[selectedType] ?? 0
+                              )}
+                            </Link>
                           </div>
                         )}
-                    </motion.div>
+                    </div>
                   ))}
               </motion.div>
 

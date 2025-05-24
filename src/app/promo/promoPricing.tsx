@@ -44,7 +44,7 @@ const PromoPricing = forwardRef<HTMLElement, PromoPricingProps>(
                     )}
                     {pathname.includes("mentorship") && (
                       <div className="flex justify-between items-center pb-2 border-b border-gray-200">
-                        <span className="font-medium">Mentoring</span>
+                        <span className="font-medium">Mentoring Only</span>
                         <span className="text-xl font-bold text-[#89C13E]">
                           {currencySymbol}
                           {priceData && priceData.mentoring.toLocaleString()}

@@ -194,7 +194,7 @@ export default function Nav_desktop() {
             <AnimatePresence>
               {openMobileNav && (
                 <motion.div
-                  className="absolute md:top-20 top-12 left-0 w-full bg-white z-10 p-4 md:px-14 px-8"
+                  className="absolute md:top-20 top-12 left-0 w-full bg-white z-20 p-4 md:px-14 px-8"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
