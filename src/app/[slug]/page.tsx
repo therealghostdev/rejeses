@@ -15,7 +15,8 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   }));
 }
 
-export default function CertificationPage({ params }: PageProps): JSX.Element {
+export default async function CertificationPage(props: PageProps): Promise<JSX.Element> {
+  const params = await props.params;
   const typedData: CertificationData = data;
   const contents: Certification | undefined = typedData[params.slug];
 

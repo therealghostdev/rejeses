@@ -8,7 +8,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const pricingItem = data.find(
     (item) => item.id.toString() === params.slug.toString()
   );
