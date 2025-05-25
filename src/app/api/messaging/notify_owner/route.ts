@@ -152,7 +152,7 @@ export async function POST(req: Request) {
             ${
               participants &&
               Array.isArray(participants) &&
-              participants.length > 0
+              participants.length > 0 && participants[0].name !== ""
                 ? `
                   <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Participants:</div>
                   <ul style="margin-bottom: 15px; font-size: 15px; padding-left: 20px;">

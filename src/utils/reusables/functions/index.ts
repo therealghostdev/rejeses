@@ -255,15 +255,24 @@ export function createCourseEmailTemplate(
         <div style="margin-top: 20px;">
           <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Course Participants:</div>
           <ul style="font-size: 15px; padding-left: 18px; margin: 10px 0;">
-            ${courseparticipants
-              .map((p) => `<li>${p.name} (${p.email})</li>`)
-              .join("")}
+            ${
+              courseparticipants &&
+              courseparticipants.length > 0 &&
+              courseparticipants[0].name !== "" &&
+              courseparticipants
+                .map((p) => `<li>${p.name} (${p.email})</li>`)
+                .join("")
+            }
           </ul>
         </div>
       `;
     }
 
-    if (participant && otherParticipants.length > 0) {
+    if (
+      participant &&
+      otherParticipants.length > 0 &&
+      otherParticipants[0].name !== ""
+    ) {
       return `
         <div style="margin-top: 20px;">
           <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Other Participants:</div>
@@ -276,7 +285,11 @@ export function createCourseEmailTemplate(
       `;
     }
 
-    if (!participant && courseparticipants.length > 1) {
+    if (
+      !participant &&
+      courseparticipants.length > 1 &&
+      courseparticipants[0].name !== ""
+    ) {
       return `
         <div style="margin-top: 20px;">
           <div style="color: #666; font-weight: bold; margin-bottom: 5px; font-size: 15px;">Participants:</div>
@@ -373,7 +386,11 @@ export function createCourseEmailTemplate(
               } ${formatPrice(amount)}
             </div>
 
-            ${renderParticipantsSection()}
+            ${
+              courseparticipants.length > 0 &&
+              courseparticipants[0].name !== "" &&
+              renderParticipantsSection()
+            }
 
             <div style="background-color: #f9f9f9; border-left: 4px solid #89c13e; padding: 15px; margin-top: 20px; font-size: 15px;">
               ${
