@@ -8,6 +8,7 @@ import {
   CertificationData,
   Certification,
 } from "@/utils/types/types";
+import { JSX } from "react";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return Object.keys(data).map((slug) => ({

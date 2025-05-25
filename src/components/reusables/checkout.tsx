@@ -681,7 +681,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                   onChange={handleChange}
                   name="firstName"
                   value={formData.firstName}
-                  className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#666666]"
+                  className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-hidden text-[#666666]"
                 />
               </div>
 
@@ -694,7 +694,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                   onChange={handleChange}
                   name="lastName"
                   value={formData.lastName}
-                  className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#666666]"
+                  className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-hidden text-[#666666]"
                 />
               </div>
 
@@ -707,7 +707,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                   onChange={handleChange}
                   name="email"
                   value={formData.email}
-                  className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#666666]"
+                  className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-hidden text-[#666666]"
                 />
               </div>
 
@@ -743,7 +743,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                     onChange={handleChange}
                     name="discount"
                     value={formData.discount}
-                    className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#666666]"
+                    className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-hidden text-[#666666]"
                   />
                 </div>
               )} */}
@@ -765,7 +765,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                         : "bg-[#497016] hover:bg-[#5a8620]"
                     } text-white flex justify-center items-center text-xl transition-colors`}
                   >
-                    <span className="transform translate-y-[-1px]">-</span>
+                    <span className="transform -translate-y-px">-</span>
                   </motion.button>
 
                   <div className="flex flex-col items-center">
@@ -788,7 +788,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                     type="button"
                     className="w-10 h-10 rounded-full bg-[#497016] text-white flex justify-center items-center text-xl hover:bg-[#5a8620] transition-colors"
                   >
-                    <span className="transform translate-y-[-1px]">+</span>
+                    <span className="transform -translate-y-px">+</span>
                   </motion.button>
                 </div>
 
@@ -874,7 +874,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                                 onChange={handleChange}
                                 name={`participantName-${index}`}
                                 value={formData.participants[index]?.name || ""}
-                                className="w-full py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#9CA3AF] focus:border-[#89C13E] transition-all"
+                                className="w-full py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-hidden text-[#9CA3AF] focus:border-[#89C13E] transition-all"
                               />
                             </div>
 
@@ -894,7 +894,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                                 value={
                                   formData.participants[index]?.email || ""
                                 }
-                                className="w-full py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-none text-[#9CA3AF] focus:border-[#89C13E] transition-all"
+                                className="w-full py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-hidden text-[#9CA3AF] focus:border-[#89C13E] transition-all"
                               />
                             </div>
                           </div>

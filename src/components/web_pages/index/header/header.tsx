@@ -9,7 +9,7 @@ import Image_slider from "./image_slider";
 import Mobile_Image_slider from "./mobile_image_slider";
 import Logo_slider from "@/components/reusables/animation/logo_slider";
 
-const useAnimateOnScroll = (ref: React.RefObject<HTMLElement>) => {
+const useAnimateOnScroll = (ref: React.RefObject<HTMLElement | null>) => {
   const isInView = useInView(ref, { amount: 0.3 });
   return { isInView, shouldAnimate: isInView };
 };

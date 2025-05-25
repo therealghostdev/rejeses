@@ -14,6 +14,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import Loading from "@/app/feed/loading";
 import { useNavigation } from "@/utils/context/payment";
+import { JSX } from "react";
 
 type TransactionSuccessProps = Partial<
   Omit<TransactionDataType, "accessCode" | "fee" | "createdAt">

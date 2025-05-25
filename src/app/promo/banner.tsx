@@ -36,7 +36,7 @@ const PromoBanner = ({
     : `$${dollar?.mentoring || 240}`;
 
   return (
-    <section className="w-full py-6 mb-6 bg-gradient-to-r from-[#89C13E] to-[#6aa025] shadow-lg rounded-lg overflow-hidden">
+    <section className="w-full py-6 mb-6 bg-linear-to-r from-[#89C13E] to-[#6aa025] shadow-lg rounded-lg overflow-hidden">
       <div className="relative w-full max-w-6xl mx-auto px-4">
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full">

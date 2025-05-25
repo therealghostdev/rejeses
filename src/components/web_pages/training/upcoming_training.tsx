@@ -33,7 +33,7 @@ export default function UpcomingCohorts() {
       <div className="w-full flex flex-wrap py-2">
         {displayItems.slice(0, visibleItems).map((item, index) => (
           <motion.div
-            className="lg:w-[30%] md:w-[45%] w-full border border-[#DBE1E7] md:mx-4 md:my-4 mx-2 my-2 rounded-2xl shadow-sm shadow-[#0000001A] cursor-pointer hover:border-[#89C13E] transition-all duration-300"
+            className="lg:w-[30%] md:w-[45%] w-full border border-[#DBE1E7] md:mx-4 md:my-4 mx-2 my-2 rounded-2xl shadow-xs shadow-[#0000001A] cursor-pointer hover:border-[#89C13E] transition-all duration-300"
             style={{ transform: "translateZ(0)" }}
             key={index}
             whileHover={{

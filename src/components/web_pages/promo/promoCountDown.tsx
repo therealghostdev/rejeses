@@ -60,7 +60,7 @@ const PromoCountdown = ({ promoData }: PromoCountdownProps) => {
   return (
     <motion.div
       ref={ref}
-      className="bg-gradient-to-r from-orange-600 to-orange-400 text-white rounded-2xl p-6 shadow-lg mb-8 max-w-xl mx-auto"
+      className="bg-linear-to-r from-orange-600 to-orange-400 text-white rounded-2xl p-6 shadow-lg mb-8 max-w-xl mx-auto"
       initial={{ opacity: 0, y: 20 }}
       animate={controls}
       transition={{ duration: 0.6, ease: "easeOut" }}

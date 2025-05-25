@@ -182,7 +182,7 @@ export default function Nav_desktop() {
           <div>
             <button
               onClick={handleHamburgerClick}
-              className="focus:outline-none"
+              className="focus:outline-hidden"
             >
               {!openMobileNav ? (
                 <HamburgerMenuIcon width="30px" height="30px" color="#090909" />

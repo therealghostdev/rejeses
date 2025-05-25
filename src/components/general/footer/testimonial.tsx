@@ -96,7 +96,7 @@ const TestimonialCarousel: React.FC<UniqueComponentsProps> = ({ data }) => {
             aria-label="Previous"
             className="absolute left-[10%] z-10 h-[200px] w-[100px] flex items-center justify-center bg-transparent"
           >
-            <div className="w-0 h-0 border-t-[100px] border-t-transparent border-r-[100px] border-r-[#535353] border-b-[100px] border-b-transparent transform -scale-x-100 rotate-180" />
+            <div className="w-0 h-0 border-t-100 border-t-transparent border-r-100 border-r-[#535353] border-b-100 border-b-transparent transform -scale-x-100 rotate-180" />
           </motion.button>
         )}
 
@@ -175,7 +175,7 @@ const TestimonialCarousel: React.FC<UniqueComponentsProps> = ({ data }) => {
             aria-label="Next"
             className="absolute right-[10%] z-10 h-[200px] w-[100px] flex items-center justify-center bg-transparent"
           >
-            <div className="w-0 h-0 border-t-[100px] border-t-transparent border-r-[100px] border-r-[#535353] border-b-[100px] border-b-transparent rotate-180" />
+            <div className="w-0 h-0 border-t-100 border-t-transparent border-r-100 border-r-[#535353] border-b-100 border-b-transparent rotate-180" />
           </motion.button>
         )}
       </div>

@@ -371,7 +371,7 @@ export default function PromoPage() {
     >
       {/* Hero Banner */}
       <motion.div
-        className="relative w-full bg-gradient-to-r from-[#4B006E] to-white py-20 px-6 md:px-12"
+        className="relative w-full bg-linear-to-r from-[#4B006E] to-white py-20 px-6 md:px-12"
         variants={fadeIn}
       >
         {promoData?.isPromo &&
@@ -408,20 +408,20 @@ export default function PromoPage() {
             <path
               d="M140 60L60 140"
               stroke="currentColor"
-              stroke-width="6"
-              stroke-linecap="round"
+              strokeWidth="6"
+              strokeLinecap="round"
             />
 
             {/* Price tag shapes */}
             <path
               d="M40 100l15-15h30l5-5v-20l-5-5h-20l-5 5-20 20v20z"
               fill="currentColor"
-              fill-opacity="0.5"
+              fillOpacity="0.5"
             />
             <path
               d="M140 60l15 15v30l5 5h20l5-5v-20l-5-5-20-20h-20z"
               fill="currentColor"
-              fill-opacity="0.5"
+              fillOpacity="0.5"
             />
 
             {/* Star burst elements */}
@@ -455,7 +455,7 @@ export default function PromoPage() {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl max-w-2xl mb-8 lg:bg-none lg:text-gray-300 bg-gradient-to-r from-[#ffffff] via-[#89C13E] to-[#1d2415] bg-clip-text text-transparent"
+            className="text-lg md:text-xl max-w-2xl mb-8 lg:bg-none lg:text-gray-300 bg-linear-to-r from-[#ffffff] via-[#89C13E] to-[#1d2415] bg-clip-text text-transparent"
             variants={itemVariants}
           >
             Advance your career with our professional training programs and
@@ -755,18 +755,14 @@ export default function PromoPage() {
                             month: "long",
                             year: "numeric",
                           }) && (
-                          <div className="mt-2 text-center">
-                            <Link
-                              href={routetoPath()}
-                              className="text-[#DF8244] font-medium inline-block"
-                            >
-                              Click to pay now {isNigeria ? "NGN " : "$"}
-                              {formatPrice(
-                                isNigeria
-                                  ? promoData?.prices.naira[selectedType] ?? 0
-                                  : promoData?.prices.dollar[selectedType] ?? 0
-                              )}
-                            </Link>
+                          <div className="mt-2 text-center flex justify-center">
+                            <Button
+                              click={notifyuser}
+                              url={routetoPath()}
+                              bg="#DF8244"
+                              text="Pay now"
+                              text_color="#4B006E"
+                            />
                           </div>
                         )}
                     </div>
@@ -814,7 +810,7 @@ export default function PromoPage() {
             selectedType === "training&mentoring" ? (
               <>
                 <motion.div
-                  className="bg-white p-6 rounded-lg shadow-sm border border-[#DBE1E7]"
+                  className="bg-white p-6 rounded-lg shadow-xs border border-[#DBE1E7]"
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >
@@ -836,7 +832,7 @@ export default function PromoPage() {
                 </motion.div>
 
                 <motion.div
-                  className="bg-white p-6 rounded-lg shadow-sm border border-[#DBE1E7]"
+                  className="bg-white p-6 rounded-lg shadow-xs border border-[#DBE1E7]"
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >
@@ -858,7 +854,7 @@ export default function PromoPage() {
                 </motion.div>
 
                 <motion.div
-                  className="bg-white p-6 rounded-lg shadow-sm border border-[#DBE1E7]"
+                  className="bg-white p-6 rounded-lg shadow-xs border border-[#DBE1E7]"
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >
@@ -885,7 +881,7 @@ export default function PromoPage() {
             selectedType === "training&mentoring" ? (
               <>
                 <motion.div
-                  className="bg-white p-6 rounded-lg shadow-sm border border-[#DBE1E7]"
+                  className="bg-white p-6 rounded-lg shadow-xs border border-[#DBE1E7]"
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >
@@ -907,7 +903,7 @@ export default function PromoPage() {
                 </motion.div>
 
                 <motion.div
-                  className="bg-white p-6 rounded-lg shadow-sm border border-[#DBE1E7]"
+                  className="bg-white p-6 rounded-lg shadow-xs border border-[#DBE1E7]"
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >
@@ -929,7 +925,7 @@ export default function PromoPage() {
                 </motion.div>
 
                 <motion.div
-                  className="bg-white p-6 rounded-lg shadow-sm border border-[#DBE1E7]"
+                  className="bg-white p-6 rounded-lg shadow-xs border border-[#DBE1E7]"
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
                 >

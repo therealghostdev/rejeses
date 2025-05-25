@@ -218,21 +218,22 @@ export default function ClassSchedule(props: SchedulePropsData) {
             </strong>
             , and the course is completed in
             <strong className="font-bricolage_grotesque"> four days:</strong>
-            <ul className="list-disc list-inside pl-4">
-              <li>
-                <strong className="font-bricolage_grotesque">Saturdays</strong>:{" "}
-                <strong className="font-bricolage_grotesque">
-                  08:00 to 17:00 (CET/WAT)
-                </strong>
-              </li>
-              <li>
-                <strong className="font-bricolage_grotesque">Sundays</strong>:{" "}
-                <strong className="font-bricolage_grotesque">
-                  12:00 to 20:00 (CET/WAT)
-                </strong>
-              </li>
-            </ul>
           </p>
+
+          <ul className="list-disc list-inside pl-4">
+            <li>
+              <strong className="font-bricolage_grotesque">Saturdays</strong>:{" "}
+              <strong className="font-bricolage_grotesque">
+                08:00 to 17:00 (CET/WAT)
+              </strong>
+            </li>
+            <li>
+              <strong className="font-bricolage_grotesque">Sundays</strong>:{" "}
+              <strong className="font-bricolage_grotesque">
+                12:00 to 20:00 (CET/WAT)
+              </strong>
+            </li>
+          </ul>
         </div>
       </div>
       <div ref={scheduleRef} className="w-full overflow-x-auto">
