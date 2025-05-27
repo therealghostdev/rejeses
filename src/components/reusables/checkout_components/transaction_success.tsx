@@ -371,14 +371,14 @@ export default function Transaction_success({
         </div>
 
         <button
-          className="bg-[white] flex justify-center gap-x-4 py-4 px-2 w-full my-4 text-[#89C13E] border border-[#89C13E] rounded-md font-bold"
+          className="bg-[white] flex justify-center gap-x-4 py-4 px-2 w-full my-4 text-[#89C13E] border border-[#89C13E] rounded-md font-bold cursor-pointer"
           onClick={downloadTransactReceipt}
         >
           Download Receipt {copyingData && <Loading />}
         </button>
 
         <button
-          className="bg-[#89C13E] py-4 px-2 w-full my-4 text-white rounded-md font-bold"
+          className="bg-[#89C13E] py-4 px-2 w-full my-4 text-white rounded-md font-bold cursor-pointer"
           onClick={returnBtnClick}
         >
           Back Home

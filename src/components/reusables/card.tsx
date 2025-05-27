@@ -4,7 +4,7 @@ import { GeneralCardProps } from "@/utils/types/types";
 
 export default function GeneralCard(props: GeneralCardProps) {
   const formatComment = (comment: string) => {
-    const parts = comment.split(/(rejeses)/i);
+    const parts = comment?.split(/(rejeses)/i);
     return parts.map((part, index) =>
       /rejeses/i.test(part) ? (
         <span key={index} className="font-bold">

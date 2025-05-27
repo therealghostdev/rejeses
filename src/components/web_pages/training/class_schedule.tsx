@@ -331,7 +331,7 @@ export default function ClassSchedule(props: SchedulePropsData) {
           onClick={downloadPdf}
           className={`${
             pathname.includes("promo") ? "text-[#4B006E]" : "text-[#89C13E]"
-          } bg-white px-12 py-4 flex justify-center items-center rounded-md border border-[#DBE1E7] w-full sm:w-auto text-xs sm:text-sm`}
+          } bg-white px-12 py-4 flex justify-center items-center rounded-md border border-[#DBE1E7] w-full sm:w-auto text-xs sm:text-sm cursor-pointer`}
         >
           <DownloadIcon
             color={pathname.includes("promo") ? "#4B006E" : "#89C13E"}

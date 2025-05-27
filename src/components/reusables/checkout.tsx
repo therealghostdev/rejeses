@@ -647,6 +647,21 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
     console.log(paymentInfo.price, "price at about");
   }, [paymentInfo]);
 
+  useEffect(() => {
+    console.log(formData.participants, "is participants");
+    if (count === 1 && !showInput) {
+      setFormData((prev) => ({
+        ...prev,
+        participants: [],
+      }));
+    } else if (count === 1 && showInput) {
+      setFormData((prev) => ({
+        ...prev,
+        participants: [{ name: "", email: "" }],
+      }));
+    }
+  }, [count, showInput]);
+
   return (
     <section
       className="flex justify-center items-center w-full min-h-screen px-8 lg:py-12 py-4"
@@ -729,24 +744,6 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
                   </option>
                 </select>
               </div>
-
-              {/* {!paymentInfo.is_group && isPromo && (
-                <div className="w-full py-4 flex items-center">
-                  <label
-                    htmlFor="Discount for NYSC members only"
-                    hidden
-                  ></label>
-                  <input
-                    id="Discount for NYSC members only"
-                    type="text"
-                    placeholder="Enter Promo Code (if applicable)"
-                    onChange={handleChange}
-                    name="discount"
-                    value={formData.discount}
-                    className="lg:w-3/4 w-[98%] py-3 px-4 bg-[#F7F8F9] rounded-md border border-[#DBE1E7] outline-hidden text-[#666666]"
-                  />
-                </div>
-              )} */}
 
               <div className="w-full py-6 flex flex-col">
                 <label className="text-lg font-medium text-[#333] mb-2 font-bricolage_grotesque">
@@ -1062,7 +1059,7 @@ export default function Checkout({ pricingItem }: ClientPageProps) {
             <div className="w-full flex justify-center items-center">
               <button
                 onClick={handleFormSubmit}
-                className="bg-[#89C13E] py-6 px-4 text-white rounded-md flex justify-center items-center w-full"
+                className="bg-[#89C13E] py-6 px-4 text-white rounded-md flex justify-center items-center w-full cursor-pointer"
               >
                 Complete Checkout
                 {mutation.isPending && (

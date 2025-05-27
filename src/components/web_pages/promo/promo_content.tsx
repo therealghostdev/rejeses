@@ -371,7 +371,7 @@ export default function PromoPage() {
     >
       {/* Hero Banner */}
       <motion.div
-        className="relative w-full bg-linear-to-r from-[#4B006E] to-white py-20 px-6 md:px-12"
+        className="relative w-full lg:bg-linear-to-r from-[#4B006E] to-white bg-[#4B006E] py-20 px-6 md:px-12"
         variants={fadeIn}
       >
         {promoData?.isPromo &&
@@ -455,7 +455,7 @@ export default function PromoPage() {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl max-w-2xl mb-8 lg:bg-none lg:text-gray-300 bg-linear-to-r from-[#ffffff] via-[#89C13E] to-[#1d2415] bg-clip-text text-transparent"
+            className="text-lg md:text-xl max-w-2xl mb-8 lg:bg-none lg:text-gray-300 bg-linear-to-r from-[#ffffff] to-[#6fb413] bg-clip-text text-transparent"
             variants={itemVariants}
           >
             Advance your career with our professional training programs and
@@ -759,9 +759,9 @@ export default function PromoPage() {
                             <Button
                               click={notifyuser}
                               url={routetoPath()}
-                              bg="#DF8244"
+                              bg="#4B006E"
                               text="Pay now"
-                              text_color="#4B006E"
+                              text_color="#FFFFFF"
                             />
                           </div>
                         )}

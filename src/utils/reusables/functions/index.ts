@@ -387,10 +387,12 @@ export function createCourseEmailTemplate(
             </div>
 
             ${
+              courseparticipants &&
               courseparticipants.length > 0 &&
-              courseparticipants[0].name !== "" &&
-              renderParticipantsSection()
-            }
+              courseparticipants[0].name !== ""
+                ? renderParticipantsSection()
+                : ""
+            }            
 
             <div style="background-color: #f9f9f9; border-left: 4px solid #89c13e; padding: 15px; margin-top: 20px; font-size: 15px;">
               ${

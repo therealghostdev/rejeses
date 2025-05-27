@@ -32,7 +32,7 @@ const Button: React.FC<ButtonProps> = ({
       }}
       onClick={handleClick}
       style={{ background: bg, color: text_color ? text_color : "" }}
-      className={`flex items-center justify-center space-x-2 rounded-md px-6 py-4 bricolage_text text-nowrap text-ellipsis btn ${transition_class}`}
+      className={`flex items-center justify-center space-x-2 rounded-md px-6 py-4 bricolage_text text-nowrap text-ellipsis btn cursor-pointer ${transition_class}`}
     >
       <span>{text}</span>
       {Icon && <span className="ml-2">{Icon}</span>}
