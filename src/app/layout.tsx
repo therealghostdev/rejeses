@@ -8,6 +8,13 @@ import Scroll_to_top from "@/components/general/bact_to_top/scroll_to_top";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import Script from "next/script";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 const bricolage_grotesque = localfont({
   src: [
@@ -113,7 +120,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${aller.variable} ${bricolage_grotesque.variable} max-w-[1440px] m-auto`}
+        className={`${inter.variable} ${aller.variable} ${bricolage_grotesque.variable} max-w-[1440px] m-auto`}
       >
         <ToastContainer />
         <PaymentProvider>

@@ -9,6 +9,7 @@
 
   --font-bricolage_grotesque: var(--font-bricolage-grotesque);
   --font-aller: var(--font-aller);
+  --font-inter: var(--font-inter);
 
   --animate-slide-down: slideDown 300ms ease-out;
   --animate-slide-up: slideUp 300ms ease-out;
@@ -63,13 +64,11 @@ html {
 }
 
 body {
-  font-family: var(--font-aller);
-  font-weight: 200;
+  font-family: var(--font-inter);
   color: rgb(var(--text-general));
   background: rgb(var(--background-general));
   overflow-x: hidden;
   min-height: -webkit-fill-available;
-  font-size: 18px;
 }
 
 .font-bricolage_grotesque {
